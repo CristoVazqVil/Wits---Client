@@ -1,0 +1,27 @@
+﻿<Window x:Class="Wits.CreateAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wits"
+        xmlns:p = "clr-namespace:Wits.Properties"
+        Icon="D:\UV\Tecnologias\Wits\Wits\Wits\Images\windowLogo.jpeg"
+        mc:Ignorable="d"
+        Title="{x:Static p:Resources.CreateTitle}" Height="490" Width="825">
+    <Grid>
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
+        <Image x:Name="imageRectangle" Margin="74,24,74,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\loginRectangle.png" Stretch="Fill"/>
+        <TextBox x:Name="textBoxUsername" HorizontalAlignment="Center" Margin="0,86,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="412" Height="38" FontSize="18" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
+        <Image x:Name="imageCreate" Margin="536,334,114,35" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData"/>
+        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="412" Height="38" FontSize="18" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters"/>
+        <TextBlock x:Name="textBlockCreate" HorizontalAlignment="Left" Margin="741,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontSize="20"><Run Language="es-es" Text="{x:Static p:Resources.CreateAccount}"/></TextBlock>
+        <Image x:Name="imageBack" Margin="111,44,638,327" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow"/>
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,214,0,0"/>
+        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" Margin="0,281,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered"/>
+        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" BorderThickness="0" FontSize="18" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="202,214,471,203"/>
+        <TextBox x:Name="textBoxConfirmPassword" Background="Transparent" BorderThickness="0" FontSize="18" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="202,281,432,140"/>
+        <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" HorizontalAlignment="Left" Margin="202,321,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
+        <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" HorizontalAlignment="Left" Margin="202,356,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
+        <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" HorizontalAlignment="Left" Margin="202,382,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
+    </Grid>
+</Window>

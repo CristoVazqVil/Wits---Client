@@ -1,0 +1,20 @@
+﻿<Window x:Class="Wits.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wits"
+        Icon="D:\UV\Tecnologias\Wits\Wits\Wits\Images\windowLogo.jpeg"
+        mc:Ignorable="d"
+        Title="Menu" Height="490" Width="825">
+    <Grid>
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MenuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
+
+        <Image Margin="382,2,10,255" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\logoNeonLetters.png" Stretch="Fill"/>
+        <Image Margin="480,313,107,36" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill"/>
+        <Image Margin="484,196,111,166" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\yellowOval.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="New Game"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="Join"/></TextBlock>
+
+    </Grid>
+</Window>
