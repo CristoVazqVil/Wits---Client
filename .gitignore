@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Agrega los patrones para ignorar archivos de video, audio y otros archivos grandes al final del archivo
+*.mp4
+*.avi
+*.wav
+*.iso
+*.gz
+*.tar

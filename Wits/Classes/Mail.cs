@@ -38,7 +38,7 @@ namespace Wits.Classes
                 mail.From = new MailAddress(from, displayName);
                 mail.To.Add(to);
 
-                mail.Subject = "Wits And Wagers User Created. Welcome, " + username + "!";
+                mail.Subject = "User Created. Welcome, " + username + "!";
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
