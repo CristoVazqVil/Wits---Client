@@ -12,10 +12,23 @@
         <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
         <Image x:Name="imageRectangle" Margin="74,24,74,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\loginRectangle.png" Stretch="Fill"/>
         <TextBox x:Name="textBoxUsername" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,86,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="412" Height="38" FontSize="20" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
-        <Image x:Name="imageCreate" Margin="536,334,114,35" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData"/>
+        <Image x:Name="imageCreate" Margin="536,334,114,35" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformCreateImage" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformCreateImage" X="0" Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
         <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="412" Height="38" FontSize="20" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters"/>
-        <TextBlock x:Name="textBlockCreate" IsEnabled="False" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="578,360,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" FontFamily="Neon Tubes 2" FontSize="18"><Run Language="es-es" Text="{x:Static p:Resources.CreateAccount}"/></TextBlock>
-        <Image x:Name="imageBack" Margin="111,44,638,327" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow"/>
+        <Image x:Name="imageBack" Margin="111,44,638,327" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformBack" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformBack" X="0" Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
         <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,214,0,0"/>
         <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" Margin="0,281,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered"/>
         <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="20" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="202,214,471,203"/>
@@ -23,5 +36,13 @@
         <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,321,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
         <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,356,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
         <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,382,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
+        <Label x:Name="labelCreate" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight" Content="{x:Static p:Resources.CreateAccount}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="564,359,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="96" Height="36" RenderTransformOrigin="0.498,0.32">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformCreateLabel" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformCreateLabel" X="0" Y="0" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
     </Grid>
 </Window>
