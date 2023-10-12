@@ -181,8 +181,6 @@
     <Resource Include="Images\mainMenubg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Music\" />
-    <Folder Include="Videos\" />
     <Folder Include="Windows\" />
   </ItemGroup>
   <ItemGroup>
@@ -213,7 +211,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Videos\CreateBackground.mp4" />
+    <Content Include="Videos\MainBackground.mp4" />
+    <Content Include="Videos\MenuBackground.mp4" />
     <Resource Include="Images\UKFlag.png" />
+    <Content Include="Music\Death By Glamour - Undertale.wav" />
+    <Content Include="Music\Song1.wav" />
+    <Content Include="Music\Song2.wav" />
+    <Content Include="Music\Song3.wav" />
+    <Content Include="Music\Song4.wav" />
+    <Content Include="Music\Song5.wav" />
+    <Content Include="Music\Song6.wav" />
+    <Content Include="Music\Song7.wav" />
+    <Content Include="Music\Song8.wav" />
     <Content Include="resources\CreatedUserEmail.html" />
     <Resource Include="Images\windowLogo.jpeg" />
   </ItemGroup>
