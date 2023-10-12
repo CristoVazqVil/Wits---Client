@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
@@ -16,6 +17,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using Wits.Classes;
 
@@ -235,6 +237,62 @@ namespace Wits
         private void CloseWindow(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+
+        private void CreateHighlight(object sender, MouseEventArgs e)
+        {
+            double scaleFactor = 1.1;
+            double centerX = imageCreate.ActualWidth / 2;
+            double centerY = imageCreate.ActualHeight / 2;
+
+            scaleTransformCreateImage.ScaleX = scaleFactor;
+            scaleTransformCreateImage.ScaleY = scaleFactor;
+
+            translateTransformCreateImage.X = -(centerX * (scaleFactor - 1));
+            translateTransformCreateImage.Y = -(centerY * (scaleFactor - 1));
+
+            double centerX2 = labelCreate.ActualWidth / 2;
+            double centerY2 = labelCreate.ActualHeight / 2;
+
+            scaleTransformCreateLabel.ScaleX = scaleFactor;
+            scaleTransformCreateLabel.ScaleY = scaleFactor;
+
+            translateTransformCreateLabel.X = -(centerX2 * (scaleFactor - 1));
+            translateTransformCreateLabel.Y = -(centerY2 * (scaleFactor - 1));
+        }
+
+        private void UndoCreateHighlight(object sender, MouseEventArgs e)
+        {
+            scaleTransformCreateImage.ScaleX = 1.0;
+            scaleTransformCreateImage.ScaleY = 1.0;
+            translateTransformCreateImage.X = 0;
+            translateTransformCreateImage.Y = 0;
+            scaleTransformCreateLabel.ScaleX = 1.0;
+            scaleTransformCreateLabel.ScaleY = 1.0;
+            translateTransformCreateLabel.X = 0;
+            translateTransformCreateLabel.Y = 0;
+        }
+
+        private void BackHighlight(object sender, MouseEventArgs e)
+        {
+            double scaleFactor = 1.1;
+
+            double centerX = imageBack.ActualWidth / 2;
+            double centerY = imageBack.ActualHeight / 2;
+
+            scaleTransformBack.ScaleX = scaleFactor;
+            scaleTransformBack.ScaleY = scaleFactor;
+
+            translateTransformBack.X = -(centerX * (scaleFactor - 1));
+            translateTransformBack.Y = -(centerY * (scaleFactor - 1));
+        }
+
+        private void UndoBackHighlight(object sender, MouseEventArgs e)
+        {
+            scaleTransformBack.ScaleX = 1.0;
+            scaleTransformBack.ScaleY = 1.0;
+            translateTransformBack.X = 0;
+            translateTransformBack.Y = 0;
         }
     }
 }
