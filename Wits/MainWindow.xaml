@@ -17,55 +17,48 @@
         <Image x:Name="imageMex" Margin="10,643,1003,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\MexicoFlag.png" MouseEnter="EsHighlight" MouseLeave="UndoEsHighlight" Stretch="Fill" MouseDown="ChangeSpanish">
             <Image.RenderTransform>
                 <TransformGroup>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="imageMex" Margin="10,408,747,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\MexicoFlag.png" MouseEnter="EsHighlight" MouseLeave="UndoEsHighlight" Stretch="Fill" MouseDown="ChangeSpanish">
-        <Image x:Name="imageUK" Margin="82,643,931,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\UKFlag.png" MouseEnter="EnHighlight" MouseLeave="UndoEnHighlight" Stretch="Fill" MouseDown="ChangeEnglish">
                     <ScaleTransform x:Name="scaleTransformMex" ScaleX="1" ScaleY="1" />
                     <TranslateTransform x:Name="translateTransformMex" X="0" Y="0" />
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageGameLogo" HorizontalAlignment="Left" Height="151" Margin="276,31,0,0" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\logoNeonLetters.png" VerticalAlignment="Top" Width="277"/>
-        <Image x:Name="imageUK" Margin="83,408,676,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\UKFlag.png" MouseEnter="EnHighlight" MouseLeave="UndoEnHighlight" Stretch="Fill" MouseDown="ChangeEnglish">
-        <Image x:Name="imageLogin" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\redOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,408,186" MouseDown="LoginGame">
+        <Image x:Name="imageUK" Margin="82,643,931,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\UKFlag.png" MouseEnter="EnHighlight" MouseLeave="UndoEnHighlight" Stretch="Fill" MouseDown="ChangeEnglish">
+            <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformUK" ScaleX="1" ScaleY="1" />
                     <TranslateTransform x:Name="translateTransformUK" X="0" Y="0" />
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageLogin" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\redOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="338,262,323,129" MouseDown="LoginGame">
-        <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
+        <Image x:Name="imageLogin" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\redOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,408,186" MouseDown="LoginGame">
+            <Image.RenderTransform>
+                <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformLogin" ScaleX="1" ScaleY="1" />
                     <TranslateTransform x:Name="translateTransformLogin" X="0" Y="0" />
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="330,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="180" Height="33" FontSize="15" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Bartex" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="366,278,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="97" Height="36" RenderTransformOrigin="0.498,0.32">
-        <Label x:Name="labelNoAccount" Content="{x:Static p:Resources.NoAccount}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="295,535,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" Width="347" Height="37"/>
-        <TextBlock x:Name="textBlockGetOne" MouseEnter="GetOneHighlight" MouseLeave="UndoGetOneHighlight" HorizontalAlignment="Left" TextAlignment="Justify" TextDecorations="Underline" Foreground="White" FontFamily="Neon Tubes 2" FontWeight="Bold" FontSize="22" Margin="609,540,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.GetOneHere}" VerticalAlignment="Top" MouseDown="OpenCreateAccountWindow">
+        <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
+            <Label.RenderTransform>
+                <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformGo" ScaleX="1" ScaleY="1" />
                     <TranslateTransform x:Name="translateTransformGo" X="0" Y="0" />
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="labelNoAccount" Content="{x:Static p:Resources.NoAccount}" FontFamily="Bartex" FontSize="17" Foreground="White" HorizontalAlignment="Left" Margin="276,340,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" Width="289" Height="37"/>
-        <TextBlock x:Name="textBlockGetOne" MouseEnter="GetOneHighlight" MouseLeave="UndoGetOneHighlight" HorizontalAlignment="Left" TextAlignment="Justify" TextDecorations="Underline" Foreground="White" FontFamily="Bartex" FontWeight="Bold" FontSize="17" Margin="448,350,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.GetOneHere}" VerticalAlignment="Top" MouseDown="OpenCreateAccountWindow">
-        <Label x:Name="labelPlaysAsGuest" Content="{x:Static p:Resources.PlayAsGuest}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="390,581,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="288" Height="37"/>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="339" Height="60" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="377,0,0,0"/>
-        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontFamily="Beon" FontSize="22" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="377,322,463,322"/>
+        <Label x:Name="labelNoAccount" Content="{x:Static p:Resources.NoAccount}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="295,535,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" VerticalAlignment="Top" Width="347" Height="37"/>
+        <TextBlock x:Name="textBlockGetOne" MouseEnter="GetOneHighlight" MouseLeave="UndoGetOneHighlight" HorizontalAlignment="Left" TextAlignment="Justify" TextDecorations="Underline" Foreground="White" FontFamily="Neon Tubes 2" FontWeight="Bold" FontSize="22" Margin="609,540,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.GetOneHere}" VerticalAlignment="Top" MouseDown="OpenCreateAccountWindow">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformGetOne" ScaleX="1" ScaleY="1" />
                     <TranslateTransform x:Name="translateTransformGetOne" X="0" Y="0" />
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <Label x:Name="labelPlaysAsGuest" Content="{x:Static p:Resources.PlayAsGuest}" FontFamily="Bartex" FontSize="17" Foreground="White" HorizontalAlignment="Left" Margin="276,373,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="289" Height="37"/>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Height="38" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="330,208,0,0"/>
-        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontSize="15" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="330,208,353,208"/>
+        <Label x:Name="labelPlaysAsGuest" Content="{x:Static p:Resources.PlayAsGuest}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="390,581,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="288" Height="37"/>
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="339" Height="60" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="377,0,0,0"/>
+        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontFamily="Beon" FontSize="22" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="377,322,463,322"/>
 
     </Grid>
 </Window>
