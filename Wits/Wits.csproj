@@ -193,27 +193,17 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\WitsService\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WitsService\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WitsService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WitsService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WitsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Videos\CreateBackground.mp4" />
     <Content Include="Videos\MainBackground.mp4" />
     <Content Include="Videos\MenuBackground.mp4" />
+    <Content Include="Videos\WitsLogo.mp4" />
     <Resource Include="Images\UKFlag.png" />
     <Content Include="Music\Death By Glamour - Undertale.wav" />
     <Content Include="Music\Song1.wav" />
@@ -226,6 +216,9 @@
     <Content Include="Music\Song8.wav" />
     <Content Include="resources\CreatedUserEmail.html" />
     <Resource Include="Images\windowLogo.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WitsService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

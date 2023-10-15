@@ -7,12 +7,12 @@
         xmlns:p = "clr-namespace:Wits.Properties"
         Icon="D:\UV\Tecnologias\Wits\Wits\Wits\Images\windowLogo.jpeg"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.CreateTitle}" Height="490" Width="825">
+        Title="{x:Static p:Resources.CreateTitle}" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid>
         <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
         <Image x:Name="imageRectangle" Margin="74,24,74,10" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\loginRectangle.png" Stretch="Fill"/>
-        <TextBox x:Name="textBoxUsername" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,86,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="412" Height="38" FontSize="20" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
-        <Image x:Name="imageCreate" Margin="536,334,114,35" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight">
+        <TextBox x:Name="textBoxUsername" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,152,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="585" Height="59" FontSize="22" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
+        <Image x:Name="imageCreate" Margin="723,534,138,51" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformCreateImage" ScaleX="1" ScaleY="1" />
@@ -20,8 +20,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,150,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="412" Height="38" FontSize="20" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters"/>
-        <Image x:Name="imageBack" Margin="111,44,638,327" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
+        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,235,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="584" Height="64" FontSize="22" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters"/>
+        <Image x:Name="imageBack" Margin="111,44,859,535" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformBack" ScaleX="1" ScaleY="1" />
@@ -29,14 +29,14 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,214,0,0"/>
-        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="412" Height="38" Margin="0,281,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered"/>
-        <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="20" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="202,214,471,203"/>
-        <TextBox x:Name="textBoxConfirmPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="20" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="202,281,357,140"/>
-        <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,321,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
-        <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,356,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
-        <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="202,382,0,0" VerticalAlignment="Top" Height="26" Width="308"/>
-        <Label x:Name="labelCreate" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight" Content="{x:Static p:Resources.CreateAccount}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="20" Foreground="White" HorizontalAlignment="Left" Margin="564,359,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="96" Height="36" RenderTransformOrigin="0.498,0.32">
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="585" Height="67" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,326,0,0"/>
+        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="584" Height="67" Margin="0,421,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered"/>
+        <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,336,426,301"/>
+        <TextBox x:Name="textBoxConfirmPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,434,312,206"/>
+        <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,509,0,0" VerticalAlignment="Top" FontSize="20" Height="35" Width="412"/>
+        <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,551,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="348"/>
+        <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,599,0,0" VerticalAlignment="Top" FontSize="20" Height="37" Width="357"/>
+        <Label x:Name="labelCreate" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight" Content="{x:Static p:Resources.CreateAccount}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="769,567,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="96" Height="36" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformCreateLabel" ScaleX="1" ScaleY="1" />

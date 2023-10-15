@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,18 +22,41 @@ namespace Wits
     /// </summary>
     public partial class Menu : Window
     {
-        private SoundPlayer music;
+        private MediaPlayer mediaPlayer;
+        private Random random = new Random();
+        private List<Uri> songs = new List<Uri>()
+        {
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song1.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song2.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song3.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song4.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song5.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song6.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song7.wav", UriKind.Absolute),
+            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song8.wav", UriKind.Absolute)
+        }; 
 
         public Menu()
         {
             InitializeComponent();
-            Random randomNum = new Random();
-            int songNum = randomNum.Next(1, 9);
-            String numString = songNum.ToString();
-            music = new SoundPlayer(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song" + numString + ".wav");
-            Console.WriteLine("Song " + numString);
-            music.Play();
             backgroundVideo.Play();
+            mediaPlayer = new MediaPlayer();
+            mediaPlayer.MediaEnded += SongEnded;
+            PlayRandomSong();
+        }
+
+        private void PlayRandomSong()
+        {
+            int randomIndex = random.Next(songs.Count);
+            Uri songUri = songs[randomIndex];
+
+            mediaPlayer.Open(songUri);
+            mediaPlayer.Play();
+        }
+
+        private void SongEnded(object sender, EventArgs e)
+        {
+            PlayRandomSong();
         }
 
         private void RestartVideo(object sender, RoutedEventArgs e)

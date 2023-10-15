@@ -32,7 +32,6 @@ namespace Wits
         private SoundPlayer music;
         public MainWindow()
         {
-
             InitializeComponent();
             music = new SoundPlayer(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav"); 
             music.Play();
@@ -55,10 +54,14 @@ namespace Wits
 
                 if (player != null)
                 {
+                    if (music != null)
+                    {
+                        music.Stop();
+                        music.Dispose();
+                    }
                     Menu createMenu = new Menu();
                     createMenu.ShowDialog();
                     this.Close();
-                    music.Stop();
                 }
                 else
                 {
