@@ -16,7 +16,7 @@ namespace Wits.Classes
             string msge = "An error occurred while sending the confirmation email";
             string from = "witsandwagers12@hotmail.com";
             string displayName = "Wits And Wagers";
-            string htmlFilePath = @"D:\UV\Tecnologias\Wits\Wits\Wits\resources\CreatedUserEmail.html";
+            string htmlFilePath = @"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\resources\CreatedUserEmail.html";
             string body;
 
             try

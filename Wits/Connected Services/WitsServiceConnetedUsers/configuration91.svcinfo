@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="x38MANsrpbaSQgrd4vL13kZ26LhKfWWtUQtRntkFB38=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="ZOAHdeS4XFhhCM3rP0nLbcVlvpN8h8g5121H3T+0C4o=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IPlayerManager">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IPlayerManager2">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IPlayerManager</serializedValue>
+          <serializedValue>NetTcpBinding_IPlayerManager2</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -119,10 +119,10 @@
         </property>
       </properties>
     </bindingConfiguration>
-    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IConnectedUsers1">
+    <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IConnectedUsers2">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IConnectedUsers1</serializedValue>
+          <serializedValue>NetTcpBinding_IConnectedUsers2</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -239,7 +239,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IPlayerManager" contract="WitsService.IPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/PlayerManager" bindingConfiguration="NetTcpBinding_IPlayerManager">
+    <endpoint name="NetTcpBinding_IPlayerManager2" contract="WitsServiceConnetedUsers.IPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/PlayerManager" bindingConfiguration="NetTcpBinding_IPlayerManager2">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/PlayerManager</serializedValue>
@@ -251,10 +251,10 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IPlayerManager</serializedValue>
+          <serializedValue>NetTcpBinding_IPlayerManager2</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WitsService.IPlayerManager</serializedValue>
+          <serializedValue>WitsServiceConnetedUsers.IPlayerManager</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -314,7 +314,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IPlayerManager</serializedValue>
+          <serializedValue>NetTcpBinding_IPlayerManager2</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -324,7 +324,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConnectedUsers1" contract="WitsService.IConnectedUsers" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ConnectedUsers" bindingConfiguration="NetTcpBinding_IConnectedUsers1">
+    <endpoint name="NetTcpBinding_IConnectedUsers2" contract="WitsServiceConnetedUsers.IConnectedUsers" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ConnectedUsers" bindingConfiguration="NetTcpBinding_IConnectedUsers2">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>net.tcp://localhost:8081/ConnectedUsers</serializedValue>
@@ -336,10 +336,10 @@
           <serializedValue>netTcpBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IConnectedUsers1</serializedValue>
+          <serializedValue>NetTcpBinding_IConnectedUsers2</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>WitsService.IConnectedUsers</serializedValue>
+          <serializedValue>WitsServiceConnetedUsers.IConnectedUsers</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -399,7 +399,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>NetTcpBinding_IConnectedUsers1</serializedValue>
+          <serializedValue>NetTcpBinding_IConnectedUsers2</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

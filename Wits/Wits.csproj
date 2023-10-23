@@ -81,6 +81,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Mail.cs" />
+    <Compile Include="Connected Services\WitsServiceConnetedUsers\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\WitsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,6 +133,22 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\WitsServiceConnetedUsers\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WitsServiceConnetedUsers\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WitsServiceConnetedUsers\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WitsServiceConnetedUsers\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WitsServiceConnetedUsers\PlayerManager.wsdl" />
+    <None Include="Connected Services\WitsServiceConnetedUsers\Wits.WitsServiceConnetedUsers.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\WitsService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -135,6 +156,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WitsService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WitsService\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WitsService\PlayerManager.wsdl" />
@@ -193,6 +217,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WitsServiceConnetedUsers\" />
     <WCFMetadataStorage Include="Connected Services\WitsService\" />
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +236,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\WitsServiceConnetedUsers\item.disco" />
+    <None Include="Connected Services\WitsServiceConnetedUsers\configuration91.svcinfo" />
+    <None Include="Connected Services\WitsServiceConnetedUsers\configuration.svcinfo" />
+    <None Include="Connected Services\WitsServiceConnetedUsers\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Videos\CreateBackground.mp4" />
     <Content Include="Videos\MainBackground.mp4" />
     <Content Include="Videos\MenuBackground.mp4" />

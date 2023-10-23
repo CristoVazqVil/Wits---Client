@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Wits.WitsService {
+namespace Wits.WitsServiceConnetedUsers {
     using System.Runtime.Serialization;
     using System;
     
@@ -139,35 +139,35 @@ namespace Wits.WitsService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IPlayerManager")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsServiceConnetedUsers.IPlayerManager")]
     public interface IPlayerManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddPlayerResponse")]
-        int AddPlayer(Wits.WitsService.Player player);
+        int AddPlayer(Wits.WitsServiceConnetedUsers.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddPlayerResponse")]
-        System.Threading.Tasks.Task<int> AddPlayerAsync(Wits.WitsService.Player player);
+        System.Threading.Tasks.Task<int> AddPlayerAsync(Wits.WitsServiceConnetedUsers.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUser", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserResponse")]
-        Wits.WitsService.Player GetPlayerByUser(string username);
+        Wits.WitsServiceConnetedUsers.Player GetPlayerByUser(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUser", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserResponse")]
-        System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAsync(string username);
+        System.Threading.Tasks.Task<Wits.WitsServiceConnetedUsers.Player> GetPlayerByUserAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse")]
-        Wits.WitsService.Player GetPlayerByUserAndPassword(string username, string userPassword);
+        Wits.WitsServiceConnetedUsers.Player GetPlayerByUserAndPassword(string username, string userPassword);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse")]
-        System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword);
+        System.Threading.Tasks.Task<Wits.WitsServiceConnetedUsers.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IPlayerManagerChannel : Wits.WitsService.IPlayerManager, System.ServiceModel.IClientChannel {
+    public interface IPlayerManagerChannel : Wits.WitsServiceConnetedUsers.IPlayerManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class PlayerManagerClient : System.ServiceModel.ClientBase<Wits.WitsService.IPlayerManager>, Wits.WitsService.IPlayerManager {
+    public partial class PlayerManagerClient : System.ServiceModel.ClientBase<Wits.WitsServiceConnetedUsers.IPlayerManager>, Wits.WitsServiceConnetedUsers.IPlayerManager {
         
         public PlayerManagerClient() {
         }
@@ -188,33 +188,33 @@ namespace Wits.WitsService {
                 base(binding, remoteAddress) {
         }
         
-        public int AddPlayer(Wits.WitsService.Player player) {
+        public int AddPlayer(Wits.WitsServiceConnetedUsers.Player player) {
             return base.Channel.AddPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<int> AddPlayerAsync(Wits.WitsService.Player player) {
+        public System.Threading.Tasks.Task<int> AddPlayerAsync(Wits.WitsServiceConnetedUsers.Player player) {
             return base.Channel.AddPlayerAsync(player);
         }
         
-        public Wits.WitsService.Player GetPlayerByUser(string username) {
+        public Wits.WitsServiceConnetedUsers.Player GetPlayerByUser(string username) {
             return base.Channel.GetPlayerByUser(username);
         }
         
-        public System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAsync(string username) {
+        public System.Threading.Tasks.Task<Wits.WitsServiceConnetedUsers.Player> GetPlayerByUserAsync(string username) {
             return base.Channel.GetPlayerByUserAsync(username);
         }
         
-        public Wits.WitsService.Player GetPlayerByUserAndPassword(string username, string userPassword) {
+        public Wits.WitsServiceConnetedUsers.Player GetPlayerByUserAndPassword(string username, string userPassword) {
             return base.Channel.GetPlayerByUserAndPassword(username, userPassword);
         }
         
-        public System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword) {
+        public System.Threading.Tasks.Task<Wits.WitsServiceConnetedUsers.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword) {
             return base.Channel.GetPlayerByUserAndPasswordAsync(username, userPassword);
         }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IConnectedUsers")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsServiceConnetedUsers.IConnectedUsers")]
     public interface IConnectedUsers {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/AddConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse")]
@@ -237,12 +237,12 @@ namespace Wits.WitsService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IConnectedUsersChannel : Wits.WitsService.IConnectedUsers, System.ServiceModel.IClientChannel {
+    public interface IConnectedUsersChannel : Wits.WitsServiceConnetedUsers.IConnectedUsers, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConnectedUsersClient : System.ServiceModel.ClientBase<Wits.WitsService.IConnectedUsers>, Wits.WitsService.IConnectedUsers {
+    public partial class ConnectedUsersClient : System.ServiceModel.ClientBase<Wits.WitsServiceConnetedUsers.IConnectedUsers>, Wits.WitsServiceConnetedUsers.IConnectedUsers {
         
         public ConnectedUsersClient() {
         }

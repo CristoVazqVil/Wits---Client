@@ -28,11 +28,31 @@ namespace Wits
             Random randomNum = new Random();
             int songNum = randomNum.Next(1, 9);
             String numString = songNum.ToString();
-            music = new SoundPlayer(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song" + numString + ".wav");
+            music = new SoundPlayer(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song" + numString + ".wav");
             Console.WriteLine("Song " + numString);
             music.Play();
             backgroundVideo.Play();
+            LoadConnectedUsers();
         }
+
+        private void LoadConnectedUsers()
+        {
+            // Llamar al servicio para obtener la lista de usuarios conectados
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
+            string[] connectedUsersArray = client.GetConnectedUsers();
+            List<string> connectedUsers = new List<string>(connectedUsersArray);
+
+            // Crear una cadena con los usuarios conectados
+            string usersText = string.Join(", ", connectedUsers);
+
+            // Actualizar el contenido del TextBlock
+            usersTextBlock.Text = "Usuarios Conectados: " + usersText;
+            Console.WriteLine(connectedUsersArray + "usersText " +  usersText + "ConecteduUser" + connectedUsers);
+        }
+
+
+
+
 
         private void RestartVideo(object sender, RoutedEventArgs e)
         {
