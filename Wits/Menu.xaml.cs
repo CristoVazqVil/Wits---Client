@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -32,11 +33,17 @@ namespace Wits
             music = new SoundPlayer(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song" + numString + ".wav");
             Console.WriteLine("Song " + numString);
             music.Play();
+
+            string videoPath = @"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video" + numString + ".mp4";
+            songPlaying.Source = new Uri(videoPath);
             backgroundVideo.Play();
             LoadConnectedUsers();
             Closing += OnWindowClosing;
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
             loggedInUser = client.GetCurrentlyLoggedInUser();
+            var slideAnimation = (Storyboard)this.Resources["SlideAnimation"];
+            songPlaying.RenderTransform = new TranslateTransform();
+            slideAnimation.Begin();
         }
 
         private void LoadConnectedUsers()

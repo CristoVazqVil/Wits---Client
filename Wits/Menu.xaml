@@ -7,6 +7,16 @@
         Icon="Images\windowLogo.jpeg"
         mc:Ignorable="d"
         Title="Menu" Height="490" Width="825">
+    <Window.Resources>
+        <Storyboard x:Key="SlideAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="songPlaying">
+                <EasingDoubleKeyFrame KeyTime="0:0:0" Value="-306"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="10"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:9" Value="-306"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
     <Grid>
         <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Videos\MenuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
 
@@ -16,6 +26,10 @@
         <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="New Game"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="Join"/></TextBlock>
         <TextBlock x:Name="usersTextBlock" HorizontalAlignment="Left" Margin="39,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="181" Width="274" FontSize="22" FontFamily="Bahnschrift Condensed"  Foreground="White"/>
-
+        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="167" Margin="10,10,0,0" VerticalAlignment="Top" Width="294" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
+            <MediaElement.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </MediaElement.RenderTransform>
+        </MediaElement>
     </Grid>
 </Window>
