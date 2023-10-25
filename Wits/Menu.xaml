@@ -15,7 +15,7 @@
         <Image Margin="484,196,111,166" Source="Images\yellowOval.png" Stretch="Fill"/>
         <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="New Game"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" TextAlignment="Center" Margin="484,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="192" Foreground="White" FontSize="20"><Run Language="es-es" Text="Join"/></TextBlock>
-        <TextBlock x:Name="usersTextBlock" HorizontalAlignment="Left" Margin="39,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="181" Width="274" FontSize="22" FontFamily="Bahnschrift Condensed" Text="fdfdaf" Foreground="White"/>
+        <TextBlock x:Name="usersTextBlock" HorizontalAlignment="Left" Margin="39,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="181" Width="274" FontSize="22" FontFamily="Bahnschrift Condensed"  Foreground="White"/>
 
     </Grid>
 </Window>

@@ -234,6 +234,18 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse")]
         System.Threading.Tasks.Task PrintConnectedUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        void RemoveConnectedUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        System.Threading.Tasks.Task RemoveConnectedUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
+        string GetCurrentlyLoggedInUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
+        System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -285,6 +297,22 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task PrintConnectedUsersAsync() {
             return base.Channel.PrintConnectedUsersAsync();
+        }
+        
+        public void RemoveConnectedUser(string username) {
+            base.Channel.RemoveConnectedUser(username);
+        }
+        
+        public System.Threading.Tasks.Task RemoveConnectedUserAsync(string username) {
+            return base.Channel.RemoveConnectedUserAsync(username);
+        }
+        
+        public string GetCurrentlyLoggedInUser() {
+            return base.Channel.GetCurrentlyLoggedInUser();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync() {
+            return base.Channel.GetCurrentlyLoggedInUserAsync();
         }
     }
 }

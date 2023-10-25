@@ -4,27 +4,6 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
@@ -33,27 +12,6 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
         <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
@@ -102,6 +60,18 @@
   <wsdl:message name="IConnectedUsers_PrintConnectedUsers_OutputMessage">
     <wsdl:part name="parameters" element="tns:PrintConnectedUsersResponse" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveConnectedUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConnectedUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveConnectedUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConnectedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetCurrentlyLoggedInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentlyLoggedInUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentlyLoggedInUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
@@ -128,6 +98,14 @@
     <wsdl:operation name="PrintConnectedUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers" message="tns:IConnectedUsers_PrintConnectedUsers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse" message="tns:IConnectedUsers_PrintConnectedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveConnectedUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" message="tns:IConnectedUsers_RemoveConnectedUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse" message="tns:IConnectedUsers_RemoveConnectedUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyLoggedInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -191,24 +169,36 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemoveConnectedUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyLoggedInUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="PlayerManager">
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
       <soap12:address location="net.tcp://localhost:8081/PlayerManager" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/PlayerManager</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>KID-A\dplat</Upn>
-        </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IConnectedUsers" binding="tns:NetTcpBinding_IConnectedUsers">
       <soap12:address location="net.tcp://localhost:8081/ConnectedUsers" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ConnectedUsers</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>KID-A\dplat</Upn>
-        </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>
