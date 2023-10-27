@@ -56,7 +56,7 @@ namespace Wits
 
             Dispatcher.Invoke(() =>
             {
-                usersTextBlock.Text = "Usuarios Conectados: " + usersText;
+                usersTextBlock.Text = "Connected Users: " + usersText;
             });
 
             Console.WriteLine(connectedUsersArray + "usersText " + usersText + "ConecteduUser" + connectedUsers);

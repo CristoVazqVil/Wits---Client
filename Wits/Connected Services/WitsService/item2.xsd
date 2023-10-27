@@ -11,4 +11,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="Question">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnswerEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="answerEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="answerES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="questionEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="questionES" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Question" nillable="true" type="tns:Question" />
 </xs:schema>
