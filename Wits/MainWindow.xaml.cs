@@ -36,6 +36,7 @@ namespace Wits
             music = new SoundPlayer(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav"); 
             music.Play();
             backgroundVideo.Play();
+            mediaElementLogo.Play();
         }
 
         private void OpenCreateAccountWindow(object sender, MouseButtonEventArgs e)
@@ -59,8 +60,8 @@ namespace Wits
                         music.Stop();
                         music.Dispose();
                     }
-                    Menu createMenu = new Menu();
-                    createMenu.ShowDialog();
+                    GameWindow gameWindow = new GameWindow();
+                    gameWindow.ShowDialog();
                     this.Close();
                 }
                 else
@@ -75,7 +76,7 @@ namespace Wits
             
         }
 
-        private void RestartVideo(object sender, RoutedEventArgs e)
+        private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
         {
             backgroundVideo.Position = TimeSpan.Zero;
             backgroundVideo.Play();
@@ -226,6 +227,12 @@ namespace Wits
             var mainWindow = new MainWindow();
             mainWindow.Show();
             Close();
+        }
+
+        private void RestartLogoVideo(object sender, RoutedEventArgs e)
+        {
+            mediaElementLogo.Position = TimeSpan.Zero;
+            mediaElementLogo.Play();
         }
     }
 }

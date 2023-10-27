@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="5130ff28-2ad2-4942-8df1-208c53abcccb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="d44d2348-3299-469e-8992-2df3aa4eeb8a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8082" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.54.135:8082" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="8b21a870-4b45-4718-bdc0-fcebb8093f27" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd2" />
-    <MetadataFile FileName="PlayerManager.wsdl" MetadataType="Wsdl" ID="b45f28de-1ad9-462a-ac3a-b34ae369eaa0" SourceId="1" SourceUrl="http://localhost:8082/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="539e9236-3ce8-4532-ab2f-c7a850b193ae" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd0" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="9b4698ad-0a7d-4760-8de1-7681a2b1fd85" SourceId="1" SourceUrl="http://localhost:8082/?disco" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="5cfc92ea-35a9-4daf-8d96-60bf1774c55f" SourceId="1" SourceUrl="http://localhost:8082/?xsd=xsd1" />
+    <MetadataFile FileName="PlayerManager.wsdl" MetadataType="Wsdl" ID="cde4b954-cf12-4374-a6ff-b06c1cd1588b" SourceId="1" SourceUrl="http://192.168.54.135:8082/?wsdl" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="7d98a3f7-c44e-4dbc-bf33-5b6e1875a4ba" SourceId="1" SourceUrl="http://192.168.54.135:8082/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="f9fbff64-adc3-44cd-9572-afcc9a81ee91" SourceId="1" SourceUrl="http://192.168.54.135:8082/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9da61d44-46bd-4754-ad28-0eb6ebabfb45" SourceId="1" SourceUrl="http://192.168.54.135:8082/?xsd=xsd3" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="4fd02144-0570-4055-86b7-516e924c0936" SourceId="1" SourceUrl="http://192.168.54.135:8082/?xsd=xsd2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="c3dd23f6-b9e8-418d-b507-870de0494338" SourceId="1" SourceUrl="http://192.168.54.135:8082/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

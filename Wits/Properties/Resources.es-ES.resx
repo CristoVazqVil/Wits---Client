@@ -144,6 +144,12 @@
   <data name="InvalidEmail" xml:space="preserve">
     <value>Email inválido</value>
   </data>
+  <data name="JoinGame" xml:space="preserve">
+    <value>Unirme</value>
+  </data>
+  <data name="NewGame" xml:space="preserve">
+    <value>Nueva Partida</value>
+  </data>
   <data name="NoAccount" xml:space="preserve">
     <value>¿No tienes cuenta aún?</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="PlayAsGuest" xml:space="preserve">
     <value>Jugar como invitado</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>Ronda</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Wits And Wagers</value>

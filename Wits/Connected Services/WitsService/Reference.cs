@@ -138,6 +138,163 @@ namespace Wits.WitsService {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Question", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class Question : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnswerENField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AnswerESField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string QuestionENField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string QuestionESField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string answerEN1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string answerES1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string questionEN1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string questionES1Field;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AnswerEN {
+            get {
+                return this.AnswerENField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnswerENField, value) != true)) {
+                    this.AnswerENField = value;
+                    this.RaisePropertyChanged("AnswerEN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AnswerES {
+            get {
+                return this.AnswerESField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnswerESField, value) != true)) {
+                    this.AnswerESField = value;
+                    this.RaisePropertyChanged("AnswerES");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string QuestionEN {
+            get {
+                return this.QuestionENField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QuestionENField, value) != true)) {
+                    this.QuestionENField = value;
+                    this.RaisePropertyChanged("QuestionEN");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string QuestionES {
+            get {
+                return this.QuestionESField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QuestionESField, value) != true)) {
+                    this.QuestionESField = value;
+                    this.RaisePropertyChanged("QuestionES");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="answerEN")]
+        public string answerEN1 {
+            get {
+                return this.answerEN1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.answerEN1Field, value) != true)) {
+                    this.answerEN1Field = value;
+                    this.RaisePropertyChanged("answerEN1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="answerES")]
+        public string answerES1 {
+            get {
+                return this.answerES1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.answerES1Field, value) != true)) {
+                    this.answerES1Field = value;
+                    this.RaisePropertyChanged("answerES1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="questionEN")]
+        public string questionEN1 {
+            get {
+                return this.questionEN1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.questionEN1Field, value) != true)) {
+                    this.questionEN1Field = value;
+                    this.RaisePropertyChanged("questionEN1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(Name="questionES")]
+        public string questionES1 {
+            get {
+                return this.questionES1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.questionES1Field, value) != true)) {
+                    this.questionES1Field = value;
+                    this.RaisePropertyChanged("questionES1");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IPlayerManager")]
     public interface IPlayerManager {
@@ -159,6 +316,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse")]
         System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetQuestionByID", ReplyAction="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse")]
+        Wits.WitsService.Question GetQuestionByID(int questionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetQuestionByID", ReplyAction="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse")]
+        System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -210,6 +373,117 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword) {
             return base.Channel.GetPlayerByUserAndPasswordAsync(username, userPassword);
+        }
+        
+        public Wits.WitsService.Question GetQuestionByID(int questionId) {
+            return base.Channel.GetQuestionByID(questionId);
+        }
+        
+        public System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId) {
+            return base.Channel.GetQuestionByIDAsync(questionId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IConnectedUsers")]
+    public interface IConnectedUsers {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/AddConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse")]
+        void AddConnectedUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/AddConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse")]
+        System.Threading.Tasks.Task AddConnectedUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse")]
+        string[] GetConnectedUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse")]
+        System.Threading.Tasks.Task<string[]> GetConnectedUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse")]
+        void PrintConnectedUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse")]
+        System.Threading.Tasks.Task PrintConnectedUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        void RemoveConnectedUser(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        System.Threading.Tasks.Task RemoveConnectedUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
+        string GetCurrentlyLoggedInUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
+        System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IConnectedUsersChannel : Wits.WitsService.IConnectedUsers, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ConnectedUsersClient : System.ServiceModel.ClientBase<Wits.WitsService.IConnectedUsers>, Wits.WitsService.IConnectedUsers {
+        
+        public ConnectedUsersClient() {
+        }
+        
+        public ConnectedUsersClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public ConnectedUsersClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConnectedUsersClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ConnectedUsersClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void AddConnectedUser(string username) {
+            base.Channel.AddConnectedUser(username);
+        }
+        
+        public System.Threading.Tasks.Task AddConnectedUserAsync(string username) {
+            return base.Channel.AddConnectedUserAsync(username);
+        }
+        
+        public string[] GetConnectedUsers() {
+            return base.Channel.GetConnectedUsers();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetConnectedUsersAsync() {
+            return base.Channel.GetConnectedUsersAsync();
+        }
+        
+        public void PrintConnectedUsers() {
+            base.Channel.PrintConnectedUsers();
+        }
+        
+        public System.Threading.Tasks.Task PrintConnectedUsersAsync() {
+            return base.Channel.PrintConnectedUsersAsync();
+        }
+        
+        public void RemoveConnectedUser(string username) {
+            base.Channel.RemoveConnectedUser(username);
+        }
+        
+        public System.Threading.Tasks.Task RemoveConnectedUserAsync(string username) {
+            return base.Channel.RemoveConnectedUserAsync(username);
+        }
+        
+        public string GetCurrentlyLoggedInUser() {
+            return base.Channel.GetCurrentlyLoggedInUser();
+        }
+        
+        public System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync() {
+            return base.Channel.GetCurrentlyLoggedInUserAsync();
         }
     }
 }

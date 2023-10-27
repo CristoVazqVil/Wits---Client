@@ -4,36 +4,24 @@
     <wsp:ExactlyOne>
       <wsp:All>
         <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
-        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
-          <wsp:Policy>
-            <sp:TransportToken>
-              <wsp:Policy>
-                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
-                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
-                </msf:WindowsTransportSecurity>
-              </wsp:Policy>
-            </sp:TransportToken>
-            <sp:AlgorithmSuite>
-              <wsp:Policy>
-                <sp:Basic256 />
-              </wsp:Policy>
-            </sp:AlgorithmSuite>
-            <sp:Layout>
-              <wsp:Policy>
-                <sp:Strict />
-              </wsp:Policy>
-            </sp:Layout>
-          </wsp:Policy>
-        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IConnectedUsers_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
         <wsaw:UsingAddressing />
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" />
+      <xsd:import schemaLocation="http://192.168.54.135:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.54.135:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.54.135:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" />
+      <xsd:import schemaLocation="http://192.168.54.135:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPlayerManager_AddPlayer_InputMessage">
@@ -54,6 +42,42 @@
   <wsdl:message name="IPlayerManager_GetPlayerByUserAndPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerByUserAndPasswordResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetQuestionByID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionByID" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_GetQuestionByID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddConnectedUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_AddConnectedUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddConnectedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetConnectedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedUsers" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetConnectedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_PrintConnectedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:PrintConnectedUsers" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_PrintConnectedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PrintConnectedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveConnectedUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConnectedUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveConnectedUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConnectedUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetCurrentlyLoggedInUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentlyLoggedInUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentlyLoggedInUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
@@ -66,6 +90,32 @@
     <wsdl:operation name="GetPlayerByUserAndPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword" message="tns:IPlayerManager_GetPlayerByUserAndPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse" message="tns:IPlayerManager_GetPlayerByUserAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionByID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetQuestionByID" message="tns:IPlayerManager_GetQuestionByID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse" message="tns:IPlayerManager_GetQuestionByID_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IConnectedUsers">
+    <wsdl:operation name="AddConnectedUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUser" message="tns:IConnectedUsers_AddConnectedUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse" message="tns:IConnectedUsers_AddConnectedUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers" message="tns:IConnectedUsers_GetConnectedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse" message="tns:IConnectedUsers_GetConnectedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PrintConnectedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers" message="tns:IConnectedUsers_PrintConnectedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse" message="tns:IConnectedUsers_PrintConnectedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveConnectedUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" message="tns:IConnectedUsers_RemoveConnectedUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse" message="tns:IConnectedUsers_RemoveConnectedUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyLoggedInUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -98,15 +148,76 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetQuestionByID">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetQuestionByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IConnectedUsers" type="tns:IConnectedUsers">
+    <wsp:PolicyReference URI="#NetTcpBinding_IConnectedUsers_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="AddConnectedUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/AddConnectedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PrintConnectedUsers">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveConnectedUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentlyLoggedInUser">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="PlayerManager">
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
-      <soap12:address location="net.tcp://localhost:8081/PlayerManager" />
+      <soap12:address location="net.tcp://192.168.54.135:8081/PlayerManager" />
       <wsa10:EndpointReference>
-        <wsa10:Address>net.tcp://localhost:8081/PlayerManager</wsa10:Address>
-        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPPP\cris9</Upn>
-        </Identity>
+        <wsa10:Address>net.tcp://192.168.54.135:8081/PlayerManager</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IConnectedUsers" binding="tns:NetTcpBinding_IConnectedUsers">
+      <soap12:address location="net.tcp://192.168.54.135:8081/ConnectedUsers" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://192.168.54.135:8081/ConnectedUsers</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

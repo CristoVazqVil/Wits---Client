@@ -68,7 +68,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="BoardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CreateAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -80,6 +88,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BoardPage.xaml.cs">
+      <DependentUpon>BoardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Mail.cs" />
     <Compile Include="Connected Services\WitsService\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -89,18 +100,21 @@
     <Compile Include="CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameWindow.xaml.cs">
+      <DependentUpon>GameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Menu.xaml">
+    <Page Include="MenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu.xaml.cs">
-      <DependentUpon>Menu.xaml</DependentUpon>
+    <Compile Include="MenuPage.xaml.cs">
+      <DependentUpon>MenuPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -137,8 +151,14 @@
     <None Include="Connected Services\WitsService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\WitsService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\WitsService\PlayerManager.wsdl" />
     <None Include="Connected Services\WitsService\Wits.WitsService.Player.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WitsService\Wits.WitsService.Question.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -193,6 +213,14 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ProfilePictures\niurka.png" />
+    <Resource Include="ProfilePictures\zelda.png" />
+    <Resource Include="ProfilePictures\ganondorf.png" />
+    <Resource Include="ProfilePictures\betty.png" />
+    <Resource Include="Images\wallet.png" />
+    <Resource Include="Images\questionFrame.png" />
+    <Resource Include="Images\answerFrame.png" />
+    <Resource Include="Images\playersMenu.png" />
     <None Include="Connected Services\WitsService\item.disco" />
     <None Include="Connected Services\WitsService\configuration91.svcinfo" />
     <None Include="Connected Services\WitsService\configuration.svcinfo" />
@@ -200,10 +228,11 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Videos\boardVideobackground.mp4" />
+    <Content Include="Videos\witsLogo.mp4" />
     <Content Include="Videos\CreateBackground.mp4" />
     <Content Include="Videos\MainBackground.mp4" />
     <Content Include="Videos\MenuBackground.mp4" />
-    <Content Include="Videos\WitsLogo.mp4" />
     <Resource Include="Images\UKFlag.png" />
     <Content Include="Music\Death By Glamour - Undertale.wav" />
     <Content Include="Music\Song1.wav" />

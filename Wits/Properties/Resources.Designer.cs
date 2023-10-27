@@ -142,6 +142,24 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Join Game.
+        /// </summary>
+        public static string JoinGame {
+            get {
+                return ResourceManager.GetString("JoinGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Game.
+        /// </summary>
+        public static string NewGame {
+            get {
+                return ResourceManager.GetString("NewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
         public static string NoAccount {
@@ -165,6 +183,15 @@ namespace Wits.Properties {
         public static string PlayAsGuest {
             get {
                 return ResourceManager.GetString("PlayAsGuest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Round.
+        /// </summary>
+        public static string Round {
+            get {
+                return ResourceManager.GetString("Round", resourceCulture);
             }
         }
         
