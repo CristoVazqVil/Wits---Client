@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using Wits.Classes;
+using Wits.WitsService;
 
 namespace Wits
 {
@@ -92,7 +93,15 @@ namespace Wits
 
                 if(question != null)
                 {
-                    textBoxQuestion.Text = question.QuestionEN;
+                    string validateEN = labelRound.Content.ToString();
+                    if (validateEN.Substring(0, 5).Equals("Round"))
+                    {
+                        textBoxQuestion.Text = question.QuestionEN;
+                    }
+                    else
+                    {
+                        textBoxQuestion.Text = question.QuestionES;
+                    }
                 }
             }
             catch (FaultException ex)
@@ -112,7 +121,15 @@ namespace Wits
 
                 if (answer != null)
                 {
-                    textBoxQuestion.Text = answer.AnswerEN;
+                    string validateEN = labelRound.Content.ToString();
+                    if (validateEN.Substring(0, 5).Equals("Round"))
+                    {
+                        textBoxQuestion.Text = answer.AnswerEN;
+                    }
+                    else
+                    {
+                        textBoxQuestion.Text = answer.AnswerES;
+                    }
                 }
             }
             catch (FaultException ex)

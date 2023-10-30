@@ -153,6 +153,9 @@
   <data name="NoAccount" xml:space="preserve">
     <value>¿No tienes cuenta aún?</value>
   </data>
+  <data name="OnlineFriends" xml:space="preserve">
+    <value>Amigos en línea:</value>
+  </data>
   <data name="PasswordsUnmatch" xml:space="preserve">
     <value>Contraseñas no coinciden</value>
   </data>

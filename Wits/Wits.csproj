@@ -228,6 +228,14 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Music\Video1.mp4" />
+    <Content Include="Music\Video2.mp4" />
+    <Content Include="Music\Video3.mp4" />
+    <Content Include="Music\Video4.mp4" />
+    <Content Include="Music\Video5.mp4" />
+    <Content Include="Music\Video6.mp4" />
+    <Content Include="Music\Video7.mp4" />
+    <Content Include="Music\Video8.mp4" />
     <Content Include="Videos\boardVideobackground.mp4" />
     <Content Include="Videos\witsLogo.mp4" />
     <Content Include="Videos\CreateBackground.mp4" />

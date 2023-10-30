@@ -153,6 +153,9 @@
   <data name="NoAccount" xml:space="preserve">
     <value>Don't have an account?</value>
   </data>
+  <data name="OnlineFriends" xml:space="preserve">
+    <value>Online Friends:</value>
+  </data>
   <data name="PasswordsUnmatch" xml:space="preserve">
     <value>Passwords don't match</value>
   </data>

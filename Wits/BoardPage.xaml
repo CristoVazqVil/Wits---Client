@@ -11,10 +11,10 @@
     <Grid>
         <MediaElement x:Name="backgroundVideo" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\boardVideobackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo" Margin="0,0,0,37" HorizontalAlignment="Left" Width="1074" />
         <Image x:Name="imageUserProfilePic" Source="ProfilePictures\niurka.png" HorizontalAlignment="Left" Height="70" Margin="994,10,0,0" VerticalAlignment="Top" Width="65"/>
-        <Image HorizontalAlignment="Left" Source="Images\wallet.png" Height="94" Margin="100,69,0,0" VerticalAlignment="Top" Width="114"/>
+        <Image x:Name="imageWallet" HorizontalAlignment="Left" Source="Images\wallet.png" Height="94" Margin="100,69,0,0" VerticalAlignment="Top" Width="114"/>
         <Label x:Name="labelChips" Content="58" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="25" Margin="209,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.375"/>
         <Image x:Name="imageQuestionFrame" Opacity="0" HorizontalAlignment="Center" Source="Images\questionFrame.png" Height="379" Margin="0,212,0,0" VerticalAlignment="Top" Width="952"/>
-        <Label x:Name="labelRound" Content="Round 1" HorizontalAlignment="Center" Foreground="White" FontFamily="Neon Tubes 2" FontSize="35" Margin="0,63,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelRound" Content="{x:Static p:Resources.Round}" HorizontalAlignment="Center" Foreground="White" FontFamily="Neon Tubes 2" FontSize="35" Margin="0,63,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imagePlayersSettings" HorizontalAlignment="Left" Source="Images/playersMenu.png" Height="97" Margin="-10,582,0,0" VerticalAlignment="Top" Width="114"/>
         <TextBox x:Name="textBoxQuestion" BorderThickness="0" Opacity="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Beon" FontSize="18" Background="Transparent" TextAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="374,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="549"/>
     </Grid>

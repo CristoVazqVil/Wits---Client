@@ -169,6 +169,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Online Friends:.
+        /// </summary>
+        public static string OnlineFriends {
+            get {
+                return ResourceManager.GetString("OnlineFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Passwords don&apos;t match.
         /// </summary>
         public static string PasswordsUnmatch {

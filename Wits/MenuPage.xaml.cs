@@ -13,6 +13,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
@@ -46,16 +47,22 @@ namespace Wits
             mediaPlayer.MediaEnded += SongEnded;
             PlayRandomSong();
             LoadConnectedUsers();
-            //LoadConnectedUsers();
         }
 
         private void PlayRandomSong()
         {
             int randomIndex = random.Next(songs.Count);
+            int videoNum = randomIndex + 1;
+            String numString = videoNum.ToString();
             Uri songUri = songs[randomIndex];
+            string videoPath = @"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video" + numString + ".mp4";
+            songPlaying.Source = new Uri(videoPath);
 
             mediaPlayer.Open(songUri);
             mediaPlayer.Play();
+            var slideAnimation = (Storyboard)this.Resources["SlideAnimation"];
+            songPlaying.RenderTransform = new TranslateTransform();
+            slideAnimation.Begin();
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -153,10 +160,10 @@ namespace Wits
 
             Dispatcher.Invoke(() =>
             {
-                usersTextBlock.Text = "Connected Users: " + usersText;
+                textBlockOnlineFriends.Text = "Connected Users: " + usersText;
             });
 
-            Console.WriteLine(connectedUsersArray + "usersText " + usersText + "ConecteduUser" + connectedUsers);
+            Console.WriteLine(connectedUsersArray + "usersText " + usersText + "ConnectedUser" + connectedUsers);
 
             Task.Delay(5000).ContinueWith(t => LoadConnectedUsers());
         }
