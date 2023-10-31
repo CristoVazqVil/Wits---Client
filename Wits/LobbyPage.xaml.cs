@@ -20,10 +20,13 @@ namespace Wits
     /// </summary>
     public partial class LobbyPage : Page
     {
+        private string loggedInUser;
         public LobbyPage()
         {
             InitializeComponent();
             backgroundVideo.Play();
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
+            loggedInUser = client.GetCurrentlyLoggedInUser();
         }
 
         private void RestartVideo(object sender, RoutedEventArgs e)
@@ -104,6 +107,19 @@ namespace Wits
             scaleTransformInvite2.ScaleY = 1.0;
             translateTransformInvite2.X = 0;
             translateTransformInvite2.Y = 0;
+        }
+
+        private void SendMessage(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string message = textBoxMessage.Text;
+                if (!string.IsNullOrWhiteSpace(message))
+                {
+                    listBoxChat.Items.Add(loggedInUser + ": " + message);
+                    textBoxMessage.Clear();
+                }
+            }
         }
     }
 }

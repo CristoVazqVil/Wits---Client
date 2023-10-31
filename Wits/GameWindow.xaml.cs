@@ -33,7 +33,6 @@ namespace Wits
         {
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
             client.RemoveConnectedUser(loggedInUser);
-
         }
     }
 }

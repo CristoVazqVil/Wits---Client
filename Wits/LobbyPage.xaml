@@ -28,8 +28,8 @@
             </Image.RenderTransform>
         </Image>
         <Label x:Name="labelLobby" Content="{x:Static p:Resources.Lobby}" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="45" Margin="46,37,0,0" VerticalAlignment="Top" Width="552"/>
-        <ListBox x:Name="listBoxChat" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" Margin="587,101,32,258"/>
-        <TextBox x:Name="textBoxMessage" Text="{x:Static p:Resources.TypeHere}" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" VerticalContentAlignment="Center" Foreground="White" FontSize="18" FontFamily="Beon" HorizontalAlignment="Left" Margin="587,421,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Height="60"/>
+        <ListBox x:Name="listBoxChat" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" Margin="587,101,32,258" Foreground="White" FontSize="15" FontFamily="Beon"/>
+        <TextBox x:Name="textBoxMessage" Text="{x:Static p:Resources.TypeHere}" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" VerticalContentAlignment="Center" Foreground="White" FontSize="18" FontFamily="Beon" HorizontalAlignment="Left" Margin="587,421,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Height="60" KeyDown="SendMessage"/>
         <Label x:Name="labelStartGame" MouseEnter="StartGameHighlight" MouseLeave="UndoStartGameHighlight" Content="{x:Static p:Resources.StartGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="24" Foreground="White" HorizontalAlignment="Left" Margin="552,592,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="230" Height="54" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
