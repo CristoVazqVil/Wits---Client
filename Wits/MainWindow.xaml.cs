@@ -33,7 +33,7 @@ namespace Wits
         public MainWindow()
         {
             InitializeComponent();
-            music = new SoundPlayer(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav"); 
+            music = new SoundPlayer(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Death By Glamour - Undertale.wav"); 
             music.Play();
             backgroundVideo.Play();
             mediaElementLogo.Play();
