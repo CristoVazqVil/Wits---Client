@@ -6,10 +6,11 @@
       xmlns:local="clr-namespace:Wits"
       xmlns:p = "clr-namespace:Wits.Properties"
       mc:Ignorable="d" 
-      Title="{x:Static p:Resources.Title}" Height="720" Width="1080">
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="{x:Static p:Resources.Title}">
 
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\boardVideobackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo" Margin="0,0,0,37" HorizontalAlignment="Left" Width="1074" />
+        <MediaElement x:Name="backgroundVideo" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\boardVideobackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo"/>
         <Image x:Name="imageUserProfilePic" Source="ProfilePictures\niurka.png" HorizontalAlignment="Left" Height="70" Margin="994,10,0,0" VerticalAlignment="Top" Width="65"/>
         <Image x:Name="imageWallet" HorizontalAlignment="Left" Source="Images\wallet.png" Height="94" Margin="100,69,0,0" VerticalAlignment="Top" Width="114"/>
         <Label x:Name="labelChips" Content="58" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="25" Margin="209,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.375"/>

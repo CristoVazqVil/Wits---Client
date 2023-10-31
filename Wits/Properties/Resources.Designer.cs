@@ -142,11 +142,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invite Friend.
+        /// </summary>
+        public static string InviteFriend {
+            get {
+                return ResourceManager.GetString("InviteFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Join Game.
         /// </summary>
         public static string JoinGame {
             get {
                 return ResourceManager.GetString("JoinGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lobby.
+        /// </summary>
+        public static string Lobby {
+            get {
+                return ResourceManager.GetString("Lobby", resourceCulture);
             }
         }
         
@@ -205,11 +223,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start Game.
+        /// </summary>
+        public static string StartGame {
+            get {
+                return ResourceManager.GetString("StartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wits And Wagers.
         /// </summary>
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type Here.
+        /// </summary>
+        public static string TypeHere {
+            get {
+                return ResourceManager.GetString("TypeHere", resourceCulture);
             }
         }
         

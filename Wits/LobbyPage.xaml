@@ -1,0 +1,50 @@
+﻿<Page x:Class="Wits.LobbyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wits"
+      xmlns:p = "clr-namespace:Wits.Properties"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1080"
+      Title="{x:Static p:Resources.Title}">
+
+    <Grid>
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MenuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo"/>
+        <Image x:Name="imageStartGame" Margin="542,572,264,17" Source="Images\yellowOval.png" Stretch="Fill" MouseDown="OpenGameWindow" MouseEnter="StartGameHighlight" MouseLeave="UndoStartGameHighlight">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformStartGame" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformStartGame" X="0" Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="imageInviteFriend" Margin="816,566,0,2" Source="Images\greenOval.png" Stretch="Fill" MouseEnter="InviteHighlight" MouseLeave="UndoInviteHighlight">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformInvite" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformInvite" X="0" Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label x:Name="labelLobby" Content="{x:Static p:Resources.Lobby}" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="45" Margin="46,37,0,0" VerticalAlignment="Top" Width="552"/>
+        <ListBox x:Name="listBoxChat" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" Margin="587,101,32,258"/>
+        <TextBox x:Name="textBoxMessage" Text="{x:Static p:Resources.TypeHere}" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" VerticalContentAlignment="Center" Foreground="White" FontSize="18" FontFamily="Beon" HorizontalAlignment="Left" Margin="587,421,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="448" Height="60"/>
+        <Label x:Name="labelStartGame" MouseEnter="StartGameHighlight" MouseLeave="UndoStartGameHighlight" Content="{x:Static p:Resources.StartGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="24" Foreground="White" HorizontalAlignment="Left" Margin="552,592,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="230" Height="54" RenderTransformOrigin="0.498,0.32">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformStartGame2" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformStartGame2" X="0" Y="0" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label x:Name="labelInviteFriend" MouseEnter="InviteHighlight" MouseLeave="UndoInviteHighlight" Content="{x:Static p:Resources.InviteFriend}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="24" Foreground="White" HorizontalAlignment="Left" Margin="798,592,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="282" Height="54" RenderTransformOrigin="0.498,0.32">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform x:Name="scaleTransformInvite2" ScaleX="1" ScaleY="1" />
+                    <TranslateTransform x:Name="translateTransformInvite2" X="0" Y="0" />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+    </Grid>
+</Page>

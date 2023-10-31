@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Wits"
         xmlns:p = "clr-namespace:Wits.Properties"
         mc:Ignorable="d"
-        Title="{x:Static p:Resources.Title}" Height="720" Width="1080">
+        d:DesignHeight="720" d:DesignWidth="1080"
+        Title="{x:Static p:Resources.Title}">
     <Page.Resources>
         <Storyboard x:Key="SlideAnimation">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="songPlaying">
@@ -37,7 +38,7 @@
             </Image.RenderTransform>
         </Image>
         <TextBlock x:Name="textBlockOnlineFriends" HorizontalAlignment="Left" Margin="29,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="273" Width="384" FontSize="22" Foreground="White" FontFamily="Neon Tubes 2"/>
-        <Label x:Name="labelNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Content="{x:Static p:Resources.NewGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="634,349,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="328" Height="66" RenderTransformOrigin="0.498,0.32">
+        <Label x:Name="labelNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Content="{x:Static p:Resources.NewGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="630,333,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="328" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformNewGame2" ScaleX="1" ScaleY="1" />
@@ -45,7 +46,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Label x:Name="labelJoinGame" MouseEnter="JoinHighlight" MouseLeave="UndoJoinHighlight" Content="{x:Static p:Resources.JoinGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="686,550,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
+        <Label x:Name="labelJoinGame" MouseEnter="JoinHighlight" MouseLeave="UndoJoinHighlight" Content="{x:Static p:Resources.JoinGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="681,542,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformJoin2" ScaleX="1" ScaleY="1" />

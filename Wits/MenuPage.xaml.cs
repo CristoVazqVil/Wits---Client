@@ -147,8 +147,8 @@ namespace Wits
         private void OpenGameWindow(object sender, MouseButtonEventArgs e)
         {
             mediaPlayer.Stop();
-            BoardPage boardPage = new BoardPage();
-            this.NavigationService.Navigate(boardPage);
+            LobbyPage lobbyPage = new LobbyPage();
+            this.NavigationService.Navigate(lobbyPage);
         }
         private void LoadConnectedUsers()
         {
