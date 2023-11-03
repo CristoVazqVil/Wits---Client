@@ -322,6 +322,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetQuestionByID", ReplyAction="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse")]
         System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateProfilePicture", ReplyAction="http://tempuri.org/IPlayerManager/UpdateProfilePictureResponse")]
+        bool UpdateProfilePicture(string username, int profilePictureId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateProfilePicture", ReplyAction="http://tempuri.org/IPlayerManager/UpdateProfilePictureResponse")]
+        System.Threading.Tasks.Task<bool> UpdateProfilePictureAsync(string username, int profilePictureId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -381,6 +387,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId) {
             return base.Channel.GetQuestionByIDAsync(questionId);
+        }
+        
+        public bool UpdateProfilePicture(string username, int profilePictureId) {
+            return base.Channel.UpdateProfilePicture(username, profilePictureId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateProfilePictureAsync(string username, int profilePictureId) {
+            return base.Channel.UpdateProfilePictureAsync(username, profilePictureId);
         }
     }
     

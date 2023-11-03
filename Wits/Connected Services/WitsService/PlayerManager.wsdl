@@ -48,6 +48,12 @@
   <wsdl:message name="IPlayerManager_GetQuestionByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetQuestionByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdateProfilePicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfilePicture" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdateProfilePicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProfilePictureResponse" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConnectedUser" />
   </wsdl:message>
@@ -94,6 +100,10 @@
     <wsdl:operation name="GetQuestionByID">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetQuestionByID" message="tns:IPlayerManager_GetQuestionByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse" message="tns:IPlayerManager_GetQuestionByID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfilePicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdateProfilePicture" message="tns:IPlayerManager_UpdateProfilePicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdateProfilePictureResponse" message="tns:IPlayerManager_UpdateProfilePicture_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IConnectedUsers">
@@ -150,6 +160,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetQuestionByID">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetQuestionByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProfilePicture">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/UpdateProfilePicture" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
