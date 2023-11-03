@@ -96,6 +96,7 @@
       <DependentUpon>BoardPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Mail.cs" />
+    <Compile Include="Classes\UserSingleton.cs" />
     <Compile Include="Connected Services\WitsService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

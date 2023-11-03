@@ -417,6 +417,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
         System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
+        string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
+        System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -484,6 +490,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync() {
             return base.Channel.GetCurrentlyLoggedInUserAsync();
+        }
+        
+        public string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers) {
+            return base.Channel.GetConnectedFriends(principalPlayer, allConnectedUsers);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers) {
+            return base.Channel.GetConnectedFriendsAsync(principalPlayer, allConnectedUsers);
         }
     }
 }

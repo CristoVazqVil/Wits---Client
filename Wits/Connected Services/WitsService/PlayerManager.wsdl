@@ -78,6 +78,12 @@
   <wsdl:message name="IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentlyLoggedInUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetConnectedFriends_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedFriends" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_GetConnectedFriends_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConnectedFriendsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
@@ -116,6 +122,10 @@
     <wsdl:operation name="GetCurrentlyLoggedInUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse" message="tns:IConnectedUsers_GetCurrentlyLoggedInUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedFriends">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse" message="tns:IConnectedUsers_GetConnectedFriends_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -199,6 +209,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCurrentlyLoggedInUser">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedFriends">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

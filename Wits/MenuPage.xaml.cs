@@ -17,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
+using Wits.Classes;
 
 namespace Wits
 {
@@ -46,7 +47,7 @@ namespace Wits
             mediaPlayer = new MediaPlayer();
             mediaPlayer.MediaEnded += SongEnded;
             PlayRandomSong();
-            LoadConnectedUsers();
+            LoadConnectedFriends();
         }
 
         private void PlayRandomSong()
@@ -150,22 +151,22 @@ namespace Wits
             LobbyPage lobbyPage = new LobbyPage();
             this.NavigationService.Navigate(lobbyPage);
         }
-        private void LoadConnectedUsers()
+        private void LoadConnectedFriends()
         {
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            string[] connectedUsersArray = client.GetConnectedUsers();
-            List<string> connectedUsers = new List<string>(connectedUsersArray);
+            string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username, client.GetConnectedUsers());
+            List<string> connectedFriends = new List<string>(connectedFriendsArray);
 
-            string usersText = string.Join(", ", connectedUsers);
+            string usersText = string.Join(", ", connectedFriends);
 
             Dispatcher.Invoke(() =>
             {
                 textBlockOnlineFriends.Text = "Connected Users: " + usersText;
             });
 
-            Console.WriteLine(connectedUsersArray + "usersText " + usersText + "ConnectedUser" + connectedUsers);
+            Console.WriteLine(connectedFriendsArray + "usersText " + usersText + "ConnectedUser" + connectedFriends);
 
-            Task.Delay(5000).ContinueWith(t => LoadConnectedUsers());
+            Task.Delay(5000).ContinueWith(t => LoadConnectedFriends());
         }
 
     }

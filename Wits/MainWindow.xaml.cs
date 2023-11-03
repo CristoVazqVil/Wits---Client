@@ -21,6 +21,7 @@ using System.Security;
 using System.ServiceModel;
 using System.Globalization;
 using System.Threading;
+using Wits.Classes;
 
 namespace Wits
 {
@@ -60,6 +61,7 @@ namespace Wits
                         music.Stop();
                         music.Dispose();
                     }
+                    UserSingleton.Instance.SetUsername(textBoxUser.Text);
                     GameWindow gameWindow = new GameWindow();
                     gameWindow.ShowDialog();
                     this.Close();
