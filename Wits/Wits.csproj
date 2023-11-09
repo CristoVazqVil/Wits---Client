@@ -62,6 +62,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -280,6 +283,9 @@
     <Resource Include="ProfilePictures\8.png" />
     <Resource Include="ProfilePictures\6.png" />
     <Content Include="Videos\boardVideobackground.mp4" />
+    <Content Include="Videos\celebrationsMenu.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\menuBackground.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
