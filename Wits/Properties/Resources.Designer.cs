@@ -97,6 +97,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Game ID:.
+        /// </summary>
+        public static string EnterGameId {
+            get {
+                return ResourceManager.GetString("EnterGameId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         public static string EnterPassword {
@@ -106,11 +115,38 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Player User:.
+        /// </summary>
+        public static string EnterPlayerUser {
+            get {
+                return ResourceManager.GetString("EnterPlayerUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter User.
         /// </summary>
         public static string EnterUser {
             get {
                 return ResourceManager.GetString("EnterUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed.
+        /// </summary>
+        public static string Failed {
+            get {
+                return ResourceManager.GetString("Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There´s no game with the entered ID.
+        /// </summary>
+        public static string GameDoesNotExist {
+            get {
+                return ResourceManager.GetString("GameDoesNotExist", resourceCulture);
             }
         }
         
@@ -187,6 +223,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Existing Game.
+        /// </summary>
+        public static string NotExistingGame {
+            get {
+                return ResourceManager.GetString("NotExistingGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Online Friends:.
         /// </summary>
         public static string OnlineFriends {
@@ -223,6 +268,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There&apos;s a server error, sorry!.
+        /// </summary>
+        public static string ServerError {
+            get {
+                return ResourceManager.GetString("ServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Game.
         /// </summary>
         public static string StartGame {
@@ -255,6 +309,15 @@ namespace Wits.Properties {
         public static string WeakPassword {
             get {
                 return ResourceManager.GetString("WeakPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect user or password, try again!.
+        /// </summary>
+        public static string WrongPassword {
+            get {
+                return ResourceManager.GetString("WrongPassword", resourceCulture);
             }
         }
     }

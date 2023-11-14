@@ -195,11 +195,12 @@ namespace Wits
                 }
                 else
                 {
-                    MessageBox.Show("There was a problem...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (FaultException ex)
             {
+                Console.WriteLine(ex.ToString());
                 MessageBox.Show("The username is already used, use another one", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,21 +13,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wits.Classes;
 
 namespace Wits
 {
     /// <summary>
     /// Interaction logic for lobbyPage.xaml
     /// </summary>
-    public partial class LobbyPage : Page
+    public partial class LobbyPage : Page, WitsService.IChatManagerCallback
     {
-        private string loggedInUser;
+        public int gameId = GameSingleton.Instance.GameId;
         public LobbyPage()
         {
             InitializeComponent();
             backgroundVideo.Play();
-            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            loggedInUser = client.GetCurrentlyLoggedInUser();
+            labelGameId.Content = gameId;
+            imageStartGame.Visibility = Visibility.Hidden;
+            labelStartGame.Visibility = Visibility.Hidden;
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
+            client.RegisterUserContext(UserSingleton.Instance.Username);
+            ValidateGameLeader();
         }
 
         private void RestartVideo(object sender, RoutedEventArgs e)
@@ -116,9 +123,74 @@ namespace Wits
                 string message = textBoxMessage.Text;
                 if (!string.IsNullOrWhiteSpace(message))
                 {
-                    listBoxChat.Items.Add(loggedInUser + ": " + message);
-                    textBoxMessage.Clear();
+                    try
+                    {
+                        InstanceContext context = new InstanceContext(this);
+                        WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
+                        client.SendNewMessage(UserSingleton.Instance.Username + ": " + message, gameId);
+                        textBoxMessage.Clear();
+                    }
+                    catch (FaultException ex)
+                    {
+                        Console.WriteLine(ex.ToString());
+                    }
+                    
                 }
+            }
+        }
+
+        private void ValidateGameLeader()
+        {
+            WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+            try
+            {
+                string gameLeader = client.GetGameLeader(gameId);
+                if (gameLeader.Equals(UserSingleton.Instance.Username))
+                {
+                    imageStartGame.Visibility = Visibility.Visible;
+                    labelStartGame.Visibility = Visibility.Visible;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+        public void UpdateChat(string message)
+        {
+            listBoxChat.Items.Add(message);
+        }
+
+        private void InviteUser(object sender, MouseButtonEventArgs e)
+        {
+            var window = new EnterPlayerUserWindow();
+            var result = window.ShowDialog();
+
+            if (result == true)
+            {
+                string invitedUser = window.playerUser;
+                try
+                {
+                    WitsService.Player invitedPlayer = new WitsService.Player();
+                    WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
+                    invitedPlayer = client.GetPlayerByUser(invitedUser);
+
+                    if (invitedPlayer != null)
+                    {
+                        string sendedEmail = Mail.sendInvitationMail(invitedPlayer.Email, gameId);
+                        MessageBox.Show("The player has been invited\n" + sendedEmail, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("That player does not exist...", "Not Existing Player", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (FaultException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
             }
         }
     }

@@ -21,6 +21,7 @@ using System.Security;
 using System.ServiceModel;
 using System.Globalization;
 using System.Threading;
+using Wits.Classes;
 
 namespace Wits
 {
@@ -60,9 +61,10 @@ namespace Wits
                         music.Stop();
                         music.Dispose();
                     }
+                    UserSingleton.Instance.SetUsername(textBoxUser.Text);
                     GameWindow gameWindow = new GameWindow();
                     gameWindow.ShowDialog();
-                    this.Close();
+                    Close();
                 }
                 else
                 {
@@ -71,7 +73,8 @@ namespace Wits
             } 
             catch (FaultException ex)
             {
-                MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             
         }

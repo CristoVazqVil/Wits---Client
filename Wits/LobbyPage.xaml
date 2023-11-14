@@ -19,7 +19,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageInviteFriend" Margin="816,566,0,2" Source="Images\greenOval.png" Stretch="Fill" MouseEnter="InviteHighlight" MouseLeave="UndoInviteHighlight">
+        <Image x:Name="imageInviteFriend" Margin="816,566,0,2" Source="Images\greenOval.png" Stretch="Fill" MouseEnter="InviteHighlight" MouseLeave="UndoInviteHighlight" MouseDown="InviteUser">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformInvite" ScaleX="1" ScaleY="1" />
@@ -46,5 +46,6 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Label x:Name="labelGameId" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="45" Margin="603,32,0,0" VerticalAlignment="Top" Width="432"/>
     </Grid>
 </Page>

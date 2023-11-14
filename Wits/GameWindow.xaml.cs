@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wits.Classes;
 
 namespace Wits
 {
@@ -19,20 +21,19 @@ namespace Wits
     /// </summary>
     public partial class GameWindow : Window
     {
-        private string loggedInUser;
         public GameWindow()
         {
             InitializeComponent();
             framePage.Navigate(new Uri("MenuPage.xaml", UriKind.Relative));
-            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            loggedInUser = client.GetCurrentlyLoggedInUser();
-            Closing += OnWindowClosing;
         }
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            client.RemoveConnectedUser(loggedInUser);
+            WitsService.ChatManagerClient playerManager = new WitsService.ChatManagerClient(context);
+            client.RemoveConnectedUser(UserSingleton.Instance.Username);
+            playerManager.UnregisterUserContext(UserSingleton.Instance.Username);
         }
     }
 }

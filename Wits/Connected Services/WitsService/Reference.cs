@@ -417,6 +417,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
         System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
+        string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
+        System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -484,6 +490,214 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync() {
             return base.Channel.GetCurrentlyLoggedInUserAsync();
+        }
+        
+        public string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers) {
+            return base.Channel.GetConnectedFriends(principalPlayer, allConnectedUsers);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers) {
+            return base.Channel.GetConnectedFriendsAsync(principalPlayer, allConnectedUsers);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IGameService")]
+    public interface IGameService {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        void CreateGame(int gameId, string gameLeader, int numberOfPlayers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader, int numberOfPlayers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/JoinGame", ReplyAction="http://tempuri.org/IGameService/JoinGameResponse")]
+        int JoinGame(int gameId, string playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/JoinGame", ReplyAction="http://tempuri.org/IGameService/JoinGameResponse")]
+        System.Threading.Tasks.Task<int> JoinGameAsync(int gameId, string playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetScores", ReplyAction="http://tempuri.org/IGameService/GetScoresResponse")]
+        System.Collections.Generic.Dictionary<string, int> GetScores(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetScores", ReplyAction="http://tempuri.org/IGameService/GetScoresResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoresAsync(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/ModifyScore", ReplyAction="http://tempuri.org/IGameService/ModifyScoreResponse")]
+        void ModifyScore(int gameId, string playerId, int credits);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/ModifyScore", ReplyAction="http://tempuri.org/IGameService/ModifyScoreResponse")]
+        System.Threading.Tasks.Task ModifyScoreAsync(int gameId, string playerId, int credits);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetPlayerScore", ReplyAction="http://tempuri.org/IGameService/GetPlayerScoreResponse")]
+        int GetPlayerScore(int gameId, string playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetPlayerScore", ReplyAction="http://tempuri.org/IGameService/GetPlayerScoreResponse")]
+        System.Threading.Tasks.Task<int> GetPlayerScoreAsync(int gameId, string playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetGameLeader", ReplyAction="http://tempuri.org/IGameService/GetGameLeaderResponse")]
+        string GetGameLeader(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetGameLeader", ReplyAction="http://tempuri.org/IGameService/GetGameLeaderResponse")]
+        System.Threading.Tasks.Task<string> GetGameLeaderAsync(int gameId);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IGameServiceChannel : Wits.WitsService.IGameService, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GameServiceClient : System.ServiceModel.ClientBase<Wits.WitsService.IGameService>, Wits.WitsService.IGameService {
+        
+        public GameServiceClient() {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public GameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void CreateGame(int gameId, string gameLeader, int numberOfPlayers) {
+            base.Channel.CreateGame(gameId, gameLeader, numberOfPlayers);
+        }
+        
+        public System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader, int numberOfPlayers) {
+            return base.Channel.CreateGameAsync(gameId, gameLeader, numberOfPlayers);
+        }
+        
+        public int JoinGame(int gameId, string playerId) {
+            return base.Channel.JoinGame(gameId, playerId);
+        }
+        
+        public System.Threading.Tasks.Task<int> JoinGameAsync(int gameId, string playerId) {
+            return base.Channel.JoinGameAsync(gameId, playerId);
+        }
+        
+        public System.Collections.Generic.Dictionary<string, int> GetScores(int gameId) {
+            return base.Channel.GetScores(gameId);
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoresAsync(int gameId) {
+            return base.Channel.GetScoresAsync(gameId);
+        }
+        
+        public void ModifyScore(int gameId, string playerId, int credits) {
+            base.Channel.ModifyScore(gameId, playerId, credits);
+        }
+        
+        public System.Threading.Tasks.Task ModifyScoreAsync(int gameId, string playerId, int credits) {
+            return base.Channel.ModifyScoreAsync(gameId, playerId, credits);
+        }
+        
+        public int GetPlayerScore(int gameId, string playerId) {
+            return base.Channel.GetPlayerScore(gameId, playerId);
+        }
+        
+        public System.Threading.Tasks.Task<int> GetPlayerScoreAsync(int gameId, string playerId) {
+            return base.Channel.GetPlayerScoreAsync(gameId, playerId);
+        }
+        
+        public string GetGameLeader(int gameId) {
+            return base.Channel.GetGameLeader(gameId);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetGameLeaderAsync(int gameId) {
+            return base.Channel.GetGameLeaderAsync(gameId);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IChatManager", CallbackContract=typeof(Wits.WitsService.IChatManagerCallback))]
+    public interface IChatManager {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendNewMessage")]
+        void SendNewMessage(string message, int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/SendNewMessage")]
+        System.Threading.Tasks.Task SendNewMessageAsync(string message, int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/RegisterUserContext")]
+        void RegisterUserContext(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/RegisterUserContext")]
+        System.Threading.Tasks.Task RegisterUserContextAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/UnregisterUserContext")]
+        void UnregisterUserContext(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/UnregisterUserContext")]
+        System.Threading.Tasks.Task UnregisterUserContextAsync(string username);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatManagerCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/UpdateChat", ReplyAction="http://tempuri.org/IChatManager/UpdateChatResponse")]
+        void UpdateChat(string message);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IChatManagerChannel : Wits.WitsService.IChatManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ChatManagerClient : System.ServiceModel.DuplexClientBase<Wits.WitsService.IChatManager>, Wits.WitsService.IChatManager {
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
+        }
+        
+        public ChatManagerClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
+        }
+        
+        public void SendNewMessage(string message, int gameId) {
+            base.Channel.SendNewMessage(message, gameId);
+        }
+        
+        public System.Threading.Tasks.Task SendNewMessageAsync(string message, int gameId) {
+            return base.Channel.SendNewMessageAsync(message, gameId);
+        }
+        
+        public void RegisterUserContext(string username) {
+            base.Channel.RegisterUserContext(username);
+        }
+        
+        public System.Threading.Tasks.Task RegisterUserContextAsync(string username) {
+            return base.Channel.RegisterUserContextAsync(username);
+        }
+        
+        public void UnregisterUserContext(string username) {
+            base.Channel.UnregisterUserContext(username);
+        }
+        
+        public System.Threading.Tasks.Task UnregisterUserContextAsync(string username) {
+            return base.Channel.UnregisterUserContextAsync(username);
         }
     }
 }

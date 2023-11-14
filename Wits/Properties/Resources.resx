@@ -129,11 +129,23 @@
   <data name="EnterEmail" xml:space="preserve">
     <value>Enter Email</value>
   </data>
+  <data name="EnterGameId" xml:space="preserve">
+    <value>Enter Game ID:</value>
+  </data>
   <data name="EnterPassword" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="EnterPlayerUser" xml:space="preserve">
+    <value>Enter Player User:</value>
+  </data>
   <data name="EnterUser" xml:space="preserve">
     <value>Enter User</value>
+  </data>
+  <data name="Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="GameDoesNotExist" xml:space="preserve">
+    <value>There´s no game with the entered ID</value>
   </data>
   <data name="GetOneHere" xml:space="preserve">
     <value>Get one here!</value>
@@ -159,6 +171,9 @@
   <data name="NoAccount" xml:space="preserve">
     <value>Don't have an account?</value>
   </data>
+  <data name="NotExistingGame" xml:space="preserve">
+    <value>Not Existing Game</value>
+  </data>
   <data name="OnlineFriends" xml:space="preserve">
     <value>Online Friends:</value>
   </data>
@@ -171,6 +186,9 @@
   <data name="Round" xml:space="preserve">
     <value>Round</value>
   </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>There's a server error, sorry!</value>
+  </data>
   <data name="StartGame" xml:space="preserve">
     <value>Start Game</value>
   </data>
@@ -182,5 +200,8 @@
   </data>
   <data name="WeakPassword" xml:space="preserve">
     <value>The password is too weak</value>
+  </data>
+  <data name="WrongPassword" xml:space="preserve">
+    <value>Incorrect user or password, try again!</value>
   </data>
 </root>
