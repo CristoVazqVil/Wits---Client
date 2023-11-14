@@ -16,6 +16,22 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IGameService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IChatManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -84,6 +100,57 @@
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriendsResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_CreateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_JoinGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_JoinGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetScores" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetScores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetScoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ModifyScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyScore" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_ModifyScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModifyScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetPlayerScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayerScore" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetPlayerScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayerScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetGameLeader_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameLeader" />
+  </wsdl:message>
+  <wsdl:message name="IGameService_GetGameLeader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameLeaderResponse" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_SendNewMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendNewMessage" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_RegisterUserContext_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUserContext" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_UnregisterUserContext_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterUserContext" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_UpdateChat_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChat" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_UpdateChat_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateChatResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
@@ -126,6 +193,47 @@
     <wsdl:operation name="GetConnectedFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse" message="tns:IConnectedUsers_GetConnectedFriends_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IGameService">
+    <wsdl:operation name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/CreateGame" message="tns:IGameService_CreateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/CreateGameResponse" message="tns:IGameService_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/JoinGame" message="tns:IGameService_JoinGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/JoinGameResponse" message="tns:IGameService_JoinGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GetScores" message="tns:IGameService_GetScores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetScoresResponse" message="tns:IGameService_GetScores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModifyScore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/ModifyScore" message="tns:IGameService_ModifyScore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/ModifyScoreResponse" message="tns:IGameService_ModifyScore_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayerScore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GetPlayerScore" message="tns:IGameService_GetPlayerScore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetPlayerScoreResponse" message="tns:IGameService_GetPlayerScore_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameLeader">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameService/GetGameLeader" message="tns:IGameService_GetGameLeader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameService/GetGameLeaderResponse" message="tns:IGameService_GetGameLeader_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IChatManager">
+    <wsdl:operation name="SendNewMessage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/SendNewMessage" message="tns:IChatManager_SendNewMessage_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserContext">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/RegisterUserContext" message="tns:IChatManager_RegisterUserContext_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUserContext">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UnregisterUserContext" message="tns:IChatManager_UnregisterUserContext_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChat">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/UpdateChat" message="tns:IChatManager_UpdateChat_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UpdateChatResponse" message="tns:IChatManager_UpdateChat_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -226,6 +334,95 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IGameService" type="tns:IGameService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IGameService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="CreateGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="JoinGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/JoinGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetScores">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModifyScore">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/ModifyScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayerScore">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GetPlayerScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameLeader">
+      <soap12:operation soapAction="http://tempuri.org/IGameService/GetGameLeader" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IChatManager" type="tns:IChatManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IChatManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="SendNewMessage">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/SendNewMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterUserContext">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/RegisterUserContext" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUserContext">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/UnregisterUserContext" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateChat">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/UpdateChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="PlayerManager">
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
       <soap12:address location="net.tcp://localhost:8081/PlayerManager" />
@@ -237,6 +434,18 @@
       <soap12:address location="net.tcp://localhost:8081/ConnectedUsers" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/ConnectedUsers</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IGameService" binding="tns:NetTcpBinding_IGameService">
+      <soap12:address location="net.tcp://localhost:8081/GameService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/GameService</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IChatManager" binding="tns:NetTcpBinding_IChatManager">
+      <soap12:address location="net.tcp://localhost:8081/GameService" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/GameService</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

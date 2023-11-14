@@ -106,7 +106,8 @@ namespace Wits
             }
             catch (FaultException ex)
             {
-                MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -134,7 +135,8 @@ namespace Wits
             }
             catch (FaultException ex)
             {
-                MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

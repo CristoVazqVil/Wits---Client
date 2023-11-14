@@ -1,0 +1,58 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Wits
+{
+    /// <summary>
+    /// Interaction logic for InsertGameIdWindow.xaml
+    /// </summary>
+    public partial class InsertGameIdWindow : Window
+    {
+        public int gameId;
+        public InsertGameIdWindow()
+        {
+            InitializeComponent();
+            backgroundVideo.Play();
+        }
+
+        private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
+        {
+            backgroundVideo.Position = TimeSpan.Zero;
+            backgroundVideo.Play();
+        }
+
+        private void buttonSendId_Click(object sender, RoutedEventArgs e)
+        {
+            string gameIdString = textBoxGameId.Text;
+            if (!string.IsNullOrEmpty(gameIdString))
+            {
+                gameId = int.Parse(gameIdString);
+                this.DialogResult = true;
+                this.Close();
+            }
+        }
+
+        private void OnlyNumbers(object sender, TextCompositionEventArgs e)
+        {
+            foreach (char c in e.Text)
+            {
+                if (!char.IsDigit(c))
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+        }
+    }
+}

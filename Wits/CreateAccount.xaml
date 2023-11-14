@@ -21,7 +21,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,235,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="584" Height="64" FontSize="22" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters"/>
+        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,235,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="584" Height="64" FontSize="22" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters" PreviewKeyDown="DeleteSpaces"/>
         <Image x:Name="imageBack" Margin="111,44,859,535" Source="Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -30,8 +30,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="585" Height="67" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,326,0,0"/>
-        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="584" Height="67" Margin="0,421,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered"/>
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="585" Height="67" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,326,0,0" PreviewKeyDown="DeleteSpaces"/>
+        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="584" Height="67" Margin="0,421,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered" PreviewKeyDown="DeleteSpaces"/>
         <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,336,426,301"/>
         <TextBox x:Name="textBoxConfirmPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,434,312,206"/>
         <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,509,0,0" VerticalAlignment="Top" FontSize="20" Height="35" Width="412"/>

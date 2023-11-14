@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Media;
 using System.Reflection.Emit;
+using System.ServiceModel;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -156,18 +157,66 @@ namespace Wits
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
             string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username, client.GetConnectedUsers());
             List<string> connectedFriends = new List<string>(connectedFriendsArray);
-
             string usersText = string.Join(", ", connectedFriends);
 
             Dispatcher.Invoke(() =>
             {
-                textBlockOnlineFriends.Text = "Connected Users: " + usersText;
+                textBlockOnlineFriends.Text = "Online Friends: " + usersText;
             });
 
             Console.WriteLine(connectedFriendsArray + "usersText " + usersText + "ConnectedUser" + connectedFriends);
-
             Task.Delay(5000).ContinueWith(t => LoadConnectedFriends());
         }
 
+        private void CreateNewGame(object sender, MouseButtonEventArgs e)
+        {
+            Random random = new Random();
+            int newGameId = random.Next(10000, 100000);
+            try
+            {
+                WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                client.CreateGame(newGameId, UserSingleton.Instance.Username, 6);
+                mediaPlayer.Stop();
+                GameSingleton.Instance.SetGameId(newGameId);
+                LobbyPage lobbyPage = new LobbyPage();
+                this.NavigationService.Navigate(lobbyPage);
+            }
+            catch (FaultException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show("There´s a server problem, sorry!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void JoinExistingGame(object sender, MouseButtonEventArgs e)
+        {
+            var window = new InsertGameIdWindow();
+            var result = window.ShowDialog();
+
+            if (result == true) 
+            {
+                int existingGameId = window.gameId;
+                try
+                {
+                    WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                    if (client.JoinGame(existingGameId, UserSingleton.Instance.Username) == 1)
+                    {
+                        mediaPlayer.Stop();
+                        GameSingleton.Instance.SetGameId(existingGameId);
+                        LobbyPage lobbyPage = new LobbyPage();
+                        this.NavigationService.Navigate(lobbyPage);
+                    }
+                    else
+                    {
+                        MessageBox.Show("The game does not exist...", "Not Existing Game", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                catch (FaultException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("There´s a server problem, sorry!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+        }
     }
 }
