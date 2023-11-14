@@ -10,7 +10,7 @@
       Title="{x:Static p:Resources.Title}">
 
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MenuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo"/>
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo"/>
         <Image x:Name="imageStartGame" Margin="542,572,264,17" Source="Images\yellowOval.png" Stretch="Fill" MouseDown="OpenGameWindow" MouseEnter="StartGameHighlight" MouseLeave="UndoStartGameHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -47,5 +47,7 @@
             </Label.RenderTransform>
         </Label>
         <Label x:Name="labelGameId" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="45" Margin="603,32,0,0" VerticalAlignment="Top" Width="432"/>
+        <Image Source="/Images/backArrow.png" Margin="0,0,984,617" MouseDown="GoBack" />
+
     </Grid>
 </Page>

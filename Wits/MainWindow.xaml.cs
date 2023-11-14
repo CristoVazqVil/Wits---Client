@@ -83,6 +83,7 @@ namespace Wits
         {
             backgroundVideo.Position = TimeSpan.Zero;
             backgroundVideo.Play();
+          
         }
 
         private void LoginHighlight(object sender, MouseEventArgs e)

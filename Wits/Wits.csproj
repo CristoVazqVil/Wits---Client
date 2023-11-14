@@ -67,6 +67,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.2\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -138,11 +141,20 @@
     <Page Include="MenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Page>
+    <Page Include="ProfileCustomizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="ProfileCustomizationPage.xaml.cs">
+      <DependentUpon>ProfileCustomizationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -220,9 +232,6 @@
     <Resource Include="Images\createAccountbg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\greenOval.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\backArrow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -241,10 +250,10 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="ProfilePictures\niurka.png" />
-    <Resource Include="ProfilePictures\zelda.png" />
-    <Resource Include="ProfilePictures\ganondorf.png" />
-    <Resource Include="ProfilePictures\betty.png" />
+    <Resource Include="ProfilePictures\4.png" />
+    <Resource Include="ProfilePictures\5.png" />
+    <Resource Include="ProfilePictures\1.png" />
+    <Resource Include="ProfilePictures\3.png" />
     <Resource Include="Images\wallet.png" />
     <Resource Include="Images\questionFrame.png" />
     <Resource Include="Images\answerFrame.png" />
@@ -256,19 +265,91 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Music\Video1.mp4" />
-    <Content Include="Music\Video2.mp4" />
-    <Content Include="Music\Video3.mp4" />
-    <Content Include="Music\Video4.mp4" />
-    <Content Include="Music\Video5.mp4" />
-    <Content Include="Music\Video6.mp4" />
-    <Content Include="Music\Video7.mp4" />
-    <Content Include="Music\Video8.mp4" />
+    <Resource Include="Images\okButton.png" />
+    <Resource Include="Connected Services\WitsService\pencil.png" />
+    <Resource Include="Images\pencil.png" />
+    <Resource Include="Images\pinkOval.png" />
+    <Resource Include="Images\greenOval.png" />
+    <Resource Include="Images\purpleOval.png" />
+    <Content Include="Celebrations\1.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\10.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\2.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\3.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\4.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\5.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\6.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\7.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\8.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\houseButton.png" />
+    <Resource Include="Celebrations\rectangle.png" />
+    <Content Include="Celebrations\9.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video1.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video2.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video3.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video4.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video5.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video6.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video7.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Video8.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="ProfilePictures\7.png" />
+    <Resource Include="ProfilePictures\9.png" />
+    <Resource Include="ProfilePictures\12.png" />
+    <Resource Include="ProfilePictures\11.png" />
+    <Resource Include="ProfilePictures\10.png" />
+    <Resource Include="ProfilePictures\2.png" />
+    <Resource Include="ProfilePictures\8.png" />
+    <Resource Include="ProfilePictures\6.png" />
     <Content Include="Videos\boardVideobackground.mp4" />
+    <Content Include="Videos\celebrationsMenu.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Videos\menuBackground.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Videos\profileCustomizationBackground.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\witsLogo.mp4" />
-    <Content Include="Videos\CreateBackground.mp4" />
+    <Content Include="Videos\CreateBackground.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\MainBackground.mp4" />
-    <Content Include="Videos\MenuBackground.mp4" />
     <Resource Include="Images\UKFlag.png" />
     <Content Include="Music\Death By Glamour - Undertale.wav" />
     <Content Include="Music\Song1.wav" />
@@ -282,6 +363,31 @@
     <Content Include="resources\CreatedUserEmail.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Music\Song1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song2.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song3.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song4.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song5.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song6.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song7.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Song8.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\CreatedUserEmail.html" />
     <Resource Include="Images\windowLogo.jpeg" />
   </ItemGroup>
   <ItemGroup>

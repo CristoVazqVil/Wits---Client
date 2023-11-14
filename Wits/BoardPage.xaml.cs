@@ -34,12 +34,25 @@ namespace Wits
             InitializeComponent();
             backgroundVideo.Play();
             Loaded += Page_Loaded;
+            celebration.Play();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ShowQuestion();
+           
         }
+
+        private void ShowVictoryScreen()
+        {
+
+            celebration.Play();
+            victoryScreen.Margin = new Thickness(0);
+
+            DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
+            victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
+        }
+
 
         private async void ShowQuestion()
         {
@@ -74,6 +87,9 @@ namespace Wits
             DoubleAnimation hideAnimation = new DoubleAnimation(1, 0, TimeSpan.FromSeconds(1));
             imageQuestionFrame.BeginAnimation(OpacityProperty, hideAnimation);
             textBoxQuestion.BeginAnimation(OpacityProperty, hideAnimation);
+
+            await Task.Delay(1000);
+            ShowVictoryScreen();
         }
 
         private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
@@ -138,6 +154,17 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void CelebrationLoop(object sender, RoutedEventArgs e)
+        {
+            celebration.Position = TimeSpan.Zero;
+            celebration.Play();
+        }
+
+        private void GoToLobby(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

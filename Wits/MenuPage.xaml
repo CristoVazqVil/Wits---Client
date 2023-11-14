@@ -19,7 +19,7 @@
         </Storyboard>
     </Page.Resources>
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MenuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\menuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
         <Image x:Name="imageLogo" Margin="519,2,10,418" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\logoNeonLetters.png" Stretch="Fill"/>
         <Image x:Name="imageJoinGame" MouseEnter="JoinHighlight" MouseLeave="UndoJoinHighlight" Margin="623,483,107,10" Source="Images\greenOval.png" Stretch="Fill" MouseDown="JoinExistingGame">
             <Image.RenderTransform>
@@ -54,11 +54,14 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="10,10,0,0" VerticalAlignment="Top" Width="439" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video1.mp4">
+      
+        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="106,23,0,0" VerticalAlignment="Top" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="144"/>
+        <Image Source="/Images/pencil.png" Margin="207,20,777,599" MouseDown="openCustomization" />
+        <Image x:Name="profilePicture" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
+        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="2,-1,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
             <MediaElement.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </MediaElement.RenderTransform>
         </MediaElement>
-
     </Grid>
 </Page>

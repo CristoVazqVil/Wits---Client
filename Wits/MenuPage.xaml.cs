@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 using Wits.Classes;
+using Wits.WitsService;
 
 namespace Wits
 {
@@ -29,17 +30,18 @@ namespace Wits
     {
         private MediaPlayer mediaPlayer;
         private Random random = new Random();
+        private string loggedInUser;
         private List<Uri> songs = new List<Uri>()
         {
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song1.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song2.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song3.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song4.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song5.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song6.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song7.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song8.wav", UriKind.Absolute)
-        };
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song1.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song2.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song3.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song4.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song5.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song6.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song7.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song8.wav", UriKind.Absolute)
+         };
 
         public Menu()
         {
@@ -51,13 +53,14 @@ namespace Wits
             LoadConnectedFriends();
         }
 
+
         private void PlayRandomSong()
         {
             int randomIndex = random.Next(songs.Count);
             int videoNum = randomIndex + 1;
             String numString = videoNum.ToString();
             Uri songUri = songs[randomIndex];
-            string videoPath = @"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video" + numString + ".mp4";
+            string videoPath = @"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video" + numString + ".mp4";
             songPlaying.Source = new Uri(videoPath);
 
             mediaPlayer.Open(songUri);
@@ -65,6 +68,17 @@ namespace Wits
             var slideAnimation = (Storyboard)this.Resources["SlideAnimation"];
             songPlaying.RenderTransform = new TranslateTransform();
             slideAnimation.Begin();
+        }
+
+        private void SetProfilePicture(string username)
+        {
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(username);
+            int profilePictureId = playerData.ProfilePictureId;
+            string profilePictureFileName = profilePictureId + ".png";
+            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+            profilePicture.Source = new BitmapImage(profilePictureUri);
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -218,5 +232,12 @@ namespace Wits
                 }
             }
         }
+        private void openCustomization(object sender, MouseButtonEventArgs e)
+        {
+            ProfileCustomizationPage profileCustomizationPage = new ProfileCustomizationPage();
+            this.NavigationService.Navigate(profileCustomizationPage);
+        }
+
+
     }
 }
