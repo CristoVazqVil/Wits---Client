@@ -35,6 +35,8 @@ namespace Wits
             userName.Content = loggedInUser;
             SetProfilePicture(loggedInUser);
             currentVisibleRectangle = null;
+            background.Play();
+            CelebrationsVideo.Play();
 
         }
 
@@ -153,13 +155,25 @@ namespace Wits
                     }
                     else
                     {
-                        // Manejar el error en caso de falla al actualizar la celebración
-                    }
+                    MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
                 }
                 else
                 {
-                    // Manejar el error en caso de falla al actualizar la foto de perfil
-                }
+                 MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
+
+        private void RestartBackground(object sender, RoutedEventArgs e)
+        {
+            background.Position = TimeSpan.Zero;
+            background.Play();
         }
+
+        private void RestartCelebrations(object sender, RoutedEventArgs e)
+        {
+            CelebrationsVideo.Position = TimeSpan.Zero;
+            CelebrationsVideo.Play();
+        }
+    }
     }

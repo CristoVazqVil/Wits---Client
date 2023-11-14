@@ -31,14 +31,14 @@ namespace Wits
         private string loggedInUser;
         private List<Uri> songs = new List<Uri>()
         {
-             new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song1.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song2.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song3.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song4.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song5.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song6.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song7.wav", UriKind.Absolute),
-            new Uri(@"D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song8.wav", UriKind.Absolute)
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song1.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song2.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song3.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song4.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song5.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song6.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song7.wav", UriKind.Absolute),
+            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song8.wav", UriKind.Absolute)
          };
 
         public Menu()
@@ -48,6 +48,8 @@ namespace Wits
             mediaPlayer = new MediaPlayer();
             mediaPlayer.MediaEnded += SongEnded;
             PlayRandomSong();
+
+
             LoadConnectedUsers();
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
             loggedInUser = client.GetCurrentlyLoggedInUser();

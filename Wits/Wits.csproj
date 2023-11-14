@@ -211,9 +211,6 @@
     <Resource Include="Images\createAccountbg.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\greenOval.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\backArrow.png" />
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +247,41 @@
     <Resource Include="Images\okButton.png" />
     <Resource Include="Connected Services\WitsService\pencil.png" />
     <Resource Include="Images\pencil.png" />
+    <Resource Include="Images\pinkOval.png" />
+    <Resource Include="Images\greenOval.png" />
+    <Resource Include="Images\purpleOval.png" />
+    <Content Include="Celebrations\1.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\10.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\2.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\3.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\4.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\5.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\6.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\7.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Celebrations\8.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\houseButton.png" />
+    <Resource Include="Celebrations\rectangle.png" />
+    <Content Include="Celebrations\9.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Music\Video1.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -293,7 +325,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Videos\witsLogo.mp4" />
-    <Content Include="Videos\CreateBackground.mp4" />
+    <Content Include="Videos\CreateBackground.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\MainBackground.mp4" />
     <Resource Include="Images\UKFlag.png" />
     <Content Include="Music\Death By Glamour - Undertale.wav" />

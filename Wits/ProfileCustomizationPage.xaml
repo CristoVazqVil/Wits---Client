@@ -29,7 +29,7 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <MediaElement HorizontalAlignment="Center" Height="724" VerticalAlignment="Top" Width="1156" Source="Videos\profileCustomizationBackground.mp4" Stretch="Fill" Margin="0,-29,0,0"/>
+        <MediaElement x:Name="background" HorizontalAlignment="Center" Height="724" VerticalAlignment="Top" Width="1156" Source="Videos\profileCustomizationBackground.mp4" Stretch="Fill" Margin="0,-29,0,0" MediaEnded="RestartBackground" LoadedBehavior="Manual" />
         <Image x:Name="currentPicture" Source="/ProfilePictures/1.png" Margin="23,-38,570,350" RenderTransformOrigin="0.911,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -65,8 +65,8 @@
             <Image Source="/ProfilePictures/8.png" Margin="212,500,716,99" MouseDown="profilePictureClick" />
             <Image Source="/ProfilePictures/6.png" Margin="888,324,54,262" MouseDown="profilePictureClick" />
             <Image Source="/ProfilePictures/2.png" Margin="231,332,734,259" MouseDown="profilePictureClick" />
-            <Image x:Name="celebrationButton" Source="/Images/yellowOval.png" Margin="791,225,44,380" MouseDown="ShowCelebrations" />
-
+            <Image x:Name="celebrationButton" Source="/Images/pinkOval.png" Margin="791,225,44,380" MouseDown="ShowCelebrations" />
+            
         </Grid>
 
         <Image Source="/Images/backArrow.png" Margin="47,42,964,598" MouseDown="openMainMenu" />
@@ -76,14 +76,28 @@
 
 
         <Grid x:Name="Celebrations" Margin="-1200,0,0,0">
-            <MediaElement Source="Videos\celebrationsMenu.mp4" Margin="-7,271,1157,106" />
+            <MediaElement x:Name="CelebrationsVideo" Source="Videos\celebrationsMenu.mp4" Margin="-7,271,1157,106" MediaEnded="RestartCelebrations" LoadedBehavior="Manual" />
             <Rectangle x:Name="_1" HorizontalAlignment="Left" Height="110" Margin="159,311,0,0"  VerticalAlignment="Top" Width="144" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
             <Rectangle x:Name="_2" HorizontalAlignment="Left" Height="115" Margin="316,305,0,0" VerticalAlignment="Top" Width="119" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF"  />
             <Rectangle x:Name="_3" HorizontalAlignment="Left" Height="110" Margin="486,311,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_4" HorizontalAlignment="Left" Height="110" Margin="640,319,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_5" HorizontalAlignment="Left" Height="110" Margin="787,319,0,0"  VerticalAlignment="Top" Width="146" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_6" HorizontalAlignment="Left" Height="110" Margin="173,435,0,0"  VerticalAlignment="Top" Width="119" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_7" HorizontalAlignment="Left" Height="110" Margin="309,439,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_8" HorizontalAlignment="Left" Height="110" Margin="503,439,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_9" HorizontalAlignment="Left" Height="110" Margin="641,433,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+            <Rectangle x:Name="_10" HorizontalAlignment="Left" Height="110" Margin="790,439,0,0"  VerticalAlignment="Top" Width="130" StrokeThickness="5" MouseDown="Rectangle_Click" Fill="#00FFFFFF" />
+
+
+
+
             <Image x:Name="picturesButton" Source="/Images/greenOval.png" Margin="740,172,1229,430" MouseDown="ShowPictures" />
+            <Label Content="Celebrations"  IsEnabled="False" IsHitTestVisible="False" HorizontalAlignment="Left" Margin="2042,241,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"/>
+            <Label Content="Profile Pics" HorizontalAlignment="Left" Margin="834,187,0,0" VerticalAlignment="Top" Foreground="White" FontSize="22"  IsEnabled="False" IsHitTestVisible="False"  />
 
 
         </Grid>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="1250,324,0,0" VerticalAlignment="Top"/>
 
 
 

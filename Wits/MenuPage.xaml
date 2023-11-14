@@ -29,7 +29,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Margin="627,286,107,242" Source="Images\yellowOval.png" Stretch="Fill" MouseDown="OpenGameWindow">
+        <Image x:Name="imageNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Margin="627,286,107,242" Source="Images\pinkOval.png" Stretch="Fill" MouseDown="OpenGameWindow">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformNewGame" ScaleX="1" ScaleY="1" />
@@ -54,14 +54,14 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="-515,5,0,0" VerticalAlignment="Top" Width="439" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video1.mp4">
+      
+        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="106,23,0,0" VerticalAlignment="Top" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="144"/>
+        <Image Source="/Images/pencil.png" Margin="207,20,777,599" MouseDown="openCustomization" />
+        <Image x:Name="profilePicture" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
+        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="2,-1,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
             <MediaElement.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </MediaElement.RenderTransform>
         </MediaElement>
-        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="106,23,0,0" VerticalAlignment="Top" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="144"/>
-    <Image Source="/Images/pencil.png" Margin="207,20,777,599" MouseDown="openCustomization" />
-    <Image x:Name="profilePicture" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
-
     </Grid>
 </Page>

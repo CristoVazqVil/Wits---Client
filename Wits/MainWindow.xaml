@@ -28,7 +28,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageLogin" Source="Images\redOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,408,186" MouseDown="LoginGame">
+        <Image x:Name="imageLogin" Source="Images\purpleOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,408,186" MouseDown="LoginGame">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformLogin" ScaleX="1" ScaleY="1" />
