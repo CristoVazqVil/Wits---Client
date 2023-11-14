@@ -30,8 +30,9 @@ namespace Wits
     {
         private MediaPlayer mediaPlayer;
         private Random random = new Random();
-        private string loggedInUser;
+        private string username = UserSingleton.Instance.Username;
         private List<Uri> songs = new List<Uri>()
+
         {
             new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song1.wav", UriKind.Absolute),
             new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song2.wav", UriKind.Absolute),
@@ -51,6 +52,7 @@ namespace Wits
             mediaPlayer.MediaEnded += SongEnded;
             PlayRandomSong();
             LoadConnectedFriends();
+            SetProfilePicture();
         }
 
 
@@ -70,7 +72,7 @@ namespace Wits
             slideAnimation.Begin();
         }
 
-        private void SetProfilePicture(string username)
+        private void SetProfilePicture()
         {
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
             Player playerData = playerManagerClient.GetPlayerByUser(username);
@@ -79,6 +81,8 @@ namespace Wits
             string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
             Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
             profilePicture.Source = new BitmapImage(profilePictureUri);
+            userName.Content = username;
+
         }
 
         private void SongEnded(object sender, EventArgs e)
