@@ -22,8 +22,8 @@
         <Grid x:Name="victoryScreen" Margin="-1168,0,1168,0">
             <Image Source="/Celebrations/rectangle.png" Margin="277,136,263,36" Stretch="Fill"  />
             <MediaElement x:Name="celebration" HorizontalAlignment="Left" Height="428" Margin="326,165,0,0" VerticalAlignment="Top" Width="440" Source="Celebrations\10.mp4" MediaEnded="CelebrationLoop" LoadedBehavior="Manual" />
-            <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="454,173,454,427" />
-            <Label x:Name="username" Content="diddy wins!" HorizontalAlignment="Left" Height="118" Margin="429,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
+            <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="424,173,433,369" />
+            <Label x:Name="Winner" Content="diddy wins!" HorizontalAlignment="Left" Height="118" Margin="429,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
             <Image x:Name="HomeButton" Source="/Images/houseButton.png" Margin="680,525,290,85" MouseDown="GoToLobby" />
 
         </Grid>

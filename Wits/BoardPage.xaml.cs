@@ -28,6 +28,7 @@ namespace Wits
     {
         public Random random = new Random();
         public int randomQuestion = 0;
+        private string userName = UserSingleton.Instance.Username;
 
         public BoardPage()
         {
@@ -40,11 +41,30 @@ namespace Wits
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ShowQuestion();
-           
+
         }
 
         private void ShowVictoryScreen()
         {
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(userName);
+            int profilePictureId = playerData.ProfilePictureId;
+            string profilePictureFileName = profilePictureId + ".png";
+            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+            
+            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+            profilePicture.Source = new BitmapImage(profilePictureUri);
+
+            int celebrationId = playerData.CelebrationId;
+            string celebrationFileName = celebrationId + ".mp4";
+            string celebrationPath = "Celebrations/" + celebrationFileName;
+
+            Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
+            celebration.Source = celebrationUri;  
+
+
+            Winner.Content = userName + " Wins!";
+
 
             celebration.Play();
             victoryScreen.Margin = new Thickness(0);

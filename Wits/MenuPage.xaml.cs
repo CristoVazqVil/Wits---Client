@@ -26,6 +26,7 @@ namespace Wits
     /// <summary>
     /// Lógica de interacción para Menu.xaml
     /// </summary>
+    /// a ver si ya 
     public partial class Menu : Page
     {
         private MediaPlayer mediaPlayer;
