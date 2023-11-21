@@ -4,14 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wits"
+
         xmlns:p = "clr-namespace:Wits.Properties"
         Icon="Images\windowLogo.jpeg"
         mc:Ignorable="d"    
         Title="{x:Static p:Resources.Title}" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MainBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartBackgroundVideo" />
-        <Image x:Name="imageLoginRectangle" Margin="256,16,240,16" Source="Images\loginRectangle.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
-        <Image x:Name="imageMex" Margin="10,643,1003,10" Source="Images\MexicoFlag.png" MouseEnter="EsHighlight" MouseLeave="UndoEsHighlight" Stretch="Fill" MouseDown="ChangeSpanish">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Videos\MainBackground.mp4" MediaEnded="RestartBackgroundVideo" Grid.ColumnSpan="2" />
+        <Image x:Name="imageLoginRectangle" Margin="256,16,190,16" Source="Images\loginRectangle.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+        <Image x:Name="imageMex" Margin="10,643,953,10" Source="Images\MexicoFlag.png" MouseEnter="EsHighlight" MouseLeave="UndoEsHighlight" Stretch="Fill" MouseDown="ChangeSpanish">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformMex" ScaleX="1" ScaleY="1" />
@@ -19,7 +24,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageUK" Margin="82,643,931,10" Source="Images\UKFlag.png" MouseEnter="EnHighlight" MouseLeave="UndoEnHighlight" Stretch="Fill" MouseDown="ChangeEnglish">
+        <Image x:Name="imageUK" Margin="82,643,881,10" Source="Images\UKFlag.png" MouseEnter="EnHighlight" MouseLeave="UndoEnHighlight" Stretch="Fill" MouseDown="ChangeEnglish">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformUK" ScaleX="1" ScaleY="1" />
@@ -27,7 +32,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageLogin" Source="Images\redOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,408,186" MouseDown="LoginGame">
+        <Image x:Name="imageLogin" Source="Images\purpleOval.png" Stretch="Fill" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Margin="420,392,358,186" MouseDown="LoginGame">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformLogin" ScaleX="1" ScaleY="1" />
@@ -35,7 +40,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="190" Margin="390,56,0,0" VerticalAlignment="Top" Width="324" MediaEnded="RestartLogoVideo"/>
+        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
         <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
@@ -56,6 +61,6 @@
         </TextBlock>
         <Label x:Name="labelPlaysAsGuest" Content="{x:Static p:Resources.PlayAsGuest}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="390,581,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="288" Height="37"/>
         <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="339" Height="60" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="377,0,0,0"/>
-        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontFamily="Beon" FontSize="22" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="377,322,463,322"/>
+        <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontFamily="Beon" FontSize="22" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="377,322,413,322"/>
     </Grid>
 </Window>

@@ -134,7 +134,7 @@ namespace Wits
                     {
                         Console.WriteLine(ex.ToString());
                     }
-                    
+
                 }
             }
         }
@@ -192,6 +192,13 @@ namespace Wits
                 }
 
             }
+
+
+        }
+
+        private void GoBack(object sender, MouseButtonEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }
