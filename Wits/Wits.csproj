@@ -303,6 +303,11 @@
     <Content Include="Celebrations\9.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\redBox.png" />
+    <Resource Include="Images\okGreenBox.png" />
+    <Resource Include="Images\AnswerRectangle1.png" />
+    <Resource Include="Images\warningBox.png" />
+    <Resource Include="Images\purpleCelebrationBox.png" />
     <Content Include="Music\Video1.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wits.Classes;
 using Wits.WitsService;
 
 namespace Wits
@@ -22,7 +23,6 @@ namespace Wits
     /// </summary>
     public partial class ProfileCustomizationPage : Page
     {
-        private string loggedInUser;
         private Rectangle currentVisibleRectangle = null;
         private int selectedCelebrationId = -1;
 
@@ -31,9 +31,8 @@ namespace Wits
         {
             InitializeComponent();
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            loggedInUser = client.GetCurrentlyLoggedInUser();
-            userName.Content = loggedInUser;
-            SetProfilePicture(loggedInUser);
+            userName.Content = UserSingleton.Instance.Username;
+            SetProfilePicture(UserSingleton.Instance.Username);
             currentVisibleRectangle = null;
             background.Play();
             CelebrationsVideo.Play();
@@ -70,7 +69,7 @@ namespace Wits
 
 
 
-        private void profilePictureClick(object sender, MouseButtonEventArgs e)
+        private void ProfilePictureClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is Image clickedImage)
             {
@@ -79,7 +78,7 @@ namespace Wits
 
         }
 
-        private void openMainMenu(object sender, MouseButtonEventArgs e)
+        private void OpenMainMenu(object sender, MouseButtonEventArgs e)
         {
 
             this.NavigationService.GoBack();
@@ -100,12 +99,10 @@ namespace Wits
 
         private void Rectangle_Click(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Hizo clic");
             if (sender is Rectangle clickedRectangle)
             {
                 string rectangleName = clickedRectangle.Name;
                 string celebrationId = rectangleName.Replace("_", "");
-                Console.WriteLine("Celebration ID seleccionado: " + celebrationId);
 
                 if (int.TryParse(celebrationId, out int parsedCelebrationId))
                 {
@@ -144,10 +141,10 @@ namespace Wits
 
                 WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
                 int newProfilePictureId = profilePictureId;
-                bool success = playerManagerClient.UpdateProfilePicture(loggedInUser, newProfilePictureId);
+                bool success = playerManagerClient.UpdateProfilePicture(UserSingleton.Instance.Username, newProfilePictureId);
                 if (success)
                 {
-                    bool celebrationUpdateSuccess = playerManagerClient.UpdateCelebration(loggedInUser, selectedCelebrationId);
+                    bool celebrationUpdateSuccess = playerManagerClient.UpdateCelebration(UserSingleton.Instance.Username, selectedCelebrationId);
 
                     if (celebrationUpdateSuccess)
                     {

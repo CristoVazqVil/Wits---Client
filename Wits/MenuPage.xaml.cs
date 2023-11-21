@@ -193,7 +193,7 @@ namespace Wits
             int newGameId = random.Next(10000, 100000);
             try
             {
-                WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                 client.CreateGame(newGameId, UserSingleton.Instance.Username, 6);
                 mediaPlayer.Stop();
                 GameSingleton.Instance.SetGameId(newGameId);
@@ -217,7 +217,7 @@ namespace Wits
                 int existingGameId = window.gameId;
                 try
                 {
-                    WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                    WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                     if (client.JoinGame(existingGameId, UserSingleton.Instance.Username) == 1)
                     {
                         mediaPlayer.Stop();

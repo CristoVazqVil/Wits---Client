@@ -141,7 +141,7 @@ namespace Wits
 
         private void ValidateGameLeader()
         {
-            WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+            WitsService.GameManagerClient client = new WitsService.GameManagerClient();
             try
             {
                 string gameLeader = client.GetGameLeader(gameId);

@@ -160,6 +160,9 @@ namespace Wits.WitsService {
         private string QuestionESField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TrueAnswerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string answerEN1Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -170,6 +173,9 @@ namespace Wits.WitsService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string questionES1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int trueAnswer1Field;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -233,6 +239,19 @@ namespace Wits.WitsService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TrueAnswer {
+            get {
+                return this.TrueAnswerField;
+            }
+            set {
+                if ((this.TrueAnswerField.Equals(value) != true)) {
+                    this.TrueAnswerField = value;
+                    this.RaisePropertyChanged("TrueAnswer");
+                }
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute(Name="answerEN")]
         public string answerEN1 {
             get {
@@ -285,6 +304,19 @@ namespace Wits.WitsService {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute(Name="trueAnswer")]
+        public int trueAnswer1 {
+            get {
+                return this.trueAnswer1Field;
+            }
+            set {
+                if ((this.trueAnswer1Field.Equals(value) != true)) {
+                    this.trueAnswer1Field = value;
+                    this.RaisePropertyChanged("trueAnswer1");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -316,12 +348,6 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse")]
         System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetQuestionByID", ReplyAction="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse")]
-        Wits.WitsService.Question GetQuestionByID(int questionId);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetQuestionByID", ReplyAction="http://tempuri.org/IPlayerManager/GetQuestionByIDResponse")]
-        System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateProfilePicture", ReplyAction="http://tempuri.org/IPlayerManager/UpdateProfilePictureResponse")]
         bool UpdateProfilePicture(string username, int profilePictureId);
@@ -387,14 +413,6 @@ namespace Wits.WitsService {
             return base.Channel.GetPlayerByUserAndPasswordAsync(username, userPassword);
         }
         
-        public Wits.WitsService.Question GetQuestionByID(int questionId) {
-            return base.Channel.GetQuestionByID(questionId);
-        }
-        
-        public System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId) {
-            return base.Channel.GetQuestionByIDAsync(questionId);
-        }
-        
         public bool UpdateProfilePicture(string username, int profilePictureId) {
             return base.Channel.UpdateProfilePicture(username, profilePictureId);
         }
@@ -428,23 +446,11 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse")]
         System.Threading.Tasks.Task<string[]> GetConnectedUsersAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse")]
-        void PrintConnectedUsers();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/PrintConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/PrintConnectedUsersResponse")]
-        System.Threading.Tasks.Task PrintConnectedUsersAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
         void RemoveConnectedUser(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
         System.Threading.Tasks.Task RemoveConnectedUserAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
-        string GetCurrentlyLoggedInUser();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUser", ReplyAction="http://tempuri.org/IConnectedUsers/GetCurrentlyLoggedInUserResponse")]
-        System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
         string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers);
@@ -496,28 +502,12 @@ namespace Wits.WitsService {
             return base.Channel.GetConnectedUsersAsync();
         }
         
-        public void PrintConnectedUsers() {
-            base.Channel.PrintConnectedUsers();
-        }
-        
-        public System.Threading.Tasks.Task PrintConnectedUsersAsync() {
-            return base.Channel.PrintConnectedUsersAsync();
-        }
-        
         public void RemoveConnectedUser(string username) {
             base.Channel.RemoveConnectedUser(username);
         }
         
         public System.Threading.Tasks.Task RemoveConnectedUserAsync(string username) {
             return base.Channel.RemoveConnectedUserAsync(username);
-        }
-        
-        public string GetCurrentlyLoggedInUser() {
-            return base.Channel.GetCurrentlyLoggedInUser();
-        }
-        
-        public System.Threading.Tasks.Task<string> GetCurrentlyLoggedInUserAsync() {
-            return base.Channel.GetCurrentlyLoggedInUserAsync();
         }
         
         public string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers) {
@@ -530,70 +520,76 @@ namespace Wits.WitsService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IGameService")]
-    public interface IGameService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IGameManager")]
+    public interface IGameManager {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/CreateGame", ReplyAction="http://tempuri.org/IGameManager/CreateGameResponse")]
         void CreateGame(int gameId, string gameLeader, int numberOfPlayers);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/CreateGame", ReplyAction="http://tempuri.org/IGameService/CreateGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/CreateGame", ReplyAction="http://tempuri.org/IGameManager/CreateGameResponse")]
         System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader, int numberOfPlayers);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/JoinGame", ReplyAction="http://tempuri.org/IGameService/JoinGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/JoinGame", ReplyAction="http://tempuri.org/IGameManager/JoinGameResponse")]
         int JoinGame(int gameId, string playerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/JoinGame", ReplyAction="http://tempuri.org/IGameService/JoinGameResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/JoinGame", ReplyAction="http://tempuri.org/IGameManager/JoinGameResponse")]
         System.Threading.Tasks.Task<int> JoinGameAsync(int gameId, string playerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetScores", ReplyAction="http://tempuri.org/IGameService/GetScoresResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetScores", ReplyAction="http://tempuri.org/IGameManager/GetScoresResponse")]
         System.Collections.Generic.Dictionary<string, int> GetScores(int gameId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetScores", ReplyAction="http://tempuri.org/IGameService/GetScoresResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetScores", ReplyAction="http://tempuri.org/IGameManager/GetScoresResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoresAsync(int gameId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/ModifyScore", ReplyAction="http://tempuri.org/IGameService/ModifyScoreResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/ModifyScore", ReplyAction="http://tempuri.org/IGameManager/ModifyScoreResponse")]
         void ModifyScore(int gameId, string playerId, int credits);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/ModifyScore", ReplyAction="http://tempuri.org/IGameService/ModifyScoreResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/ModifyScore", ReplyAction="http://tempuri.org/IGameManager/ModifyScoreResponse")]
         System.Threading.Tasks.Task ModifyScoreAsync(int gameId, string playerId, int credits);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetPlayerScore", ReplyAction="http://tempuri.org/IGameService/GetPlayerScoreResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetPlayerScore", ReplyAction="http://tempuri.org/IGameManager/GetPlayerScoreResponse")]
         int GetPlayerScore(int gameId, string playerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetPlayerScore", ReplyAction="http://tempuri.org/IGameService/GetPlayerScoreResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetPlayerScore", ReplyAction="http://tempuri.org/IGameManager/GetPlayerScoreResponse")]
         System.Threading.Tasks.Task<int> GetPlayerScoreAsync(int gameId, string playerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetGameLeader", ReplyAction="http://tempuri.org/IGameService/GetGameLeaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetGameLeader", ReplyAction="http://tempuri.org/IGameManager/GetGameLeaderResponse")]
         string GetGameLeader(int gameId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/GetGameLeader", ReplyAction="http://tempuri.org/IGameService/GetGameLeaderResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetGameLeader", ReplyAction="http://tempuri.org/IGameManager/GetGameLeaderResponse")]
         System.Threading.Tasks.Task<string> GetGameLeaderAsync(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetQuestionByID", ReplyAction="http://tempuri.org/IGameManager/GetQuestionByIDResponse")]
+        Wits.WitsService.Question GetQuestionByID(int questionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetQuestionByID", ReplyAction="http://tempuri.org/IGameManager/GetQuestionByIDResponse")]
+        System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IGameServiceChannel : Wits.WitsService.IGameService, System.ServiceModel.IClientChannel {
+    public interface IGameManagerChannel : Wits.WitsService.IGameManager, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class GameServiceClient : System.ServiceModel.ClientBase<Wits.WitsService.IGameService>, Wits.WitsService.IGameService {
+    public partial class GameManagerClient : System.ServiceModel.ClientBase<Wits.WitsService.IGameManager>, Wits.WitsService.IGameManager {
         
-        public GameServiceClient() {
+        public GameManagerClient() {
         }
         
-        public GameServiceClient(string endpointConfigurationName) : 
+        public GameManagerClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public GameServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public GameManagerClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GameServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public GameServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public GameManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -643,6 +639,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<string> GetGameLeaderAsync(int gameId) {
             return base.Channel.GetGameLeaderAsync(gameId);
+        }
+        
+        public Wits.WitsService.Question GetQuestionByID(int questionId) {
+            return base.Channel.GetQuestionByID(questionId);
+        }
+        
+        public System.Threading.Tasks.Task<Wits.WitsService.Question> GetQuestionByIDAsync(int questionId) {
+            return base.Channel.GetQuestionByIDAsync(questionId);
         }
     }
     
