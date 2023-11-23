@@ -34,6 +34,7 @@ namespace Wits
             labelPasswordDontMatch.Visibility = Visibility.Collapsed;
             labelWeakPassword.Visibility = Visibility.Collapsed;
             labelInvalidEmail.Visibility = Visibility.Collapsed;
+            labelNoEmptyFields.Visibility = Visibility.Collapsed;
             backgroundVideo.Play();
         }
 
@@ -42,49 +43,46 @@ namespace Wits
             labelPasswordDontMatch.Visibility = Visibility.Collapsed;
             labelWeakPassword.Visibility = Visibility.Collapsed;
             labelInvalidEmail.Visibility = Visibility.Collapsed;
+            labelNoEmptyFields.Visibility = Visibility.Collapsed;
             bool validation = true;
 
-            try
+            if (IsEmpty())
             {
-                if (IsEmailValid())
-                {
-
-                }
-                else
-                {
-                    validation = false;
-                    labelInvalidEmail.Visibility = Visibility.Visible;
-                }
+                validation = false;
+                labelNoEmptyFields.Visibility = Visibility.Visible;
             }
-            finally
+            else
             {
                 try
                 {
-                    if (IsPasswordSecure())
-                    {
-
-                    }
-                    else
+                    if (!IsEmailValid())
                     {
                         validation = false;
-                        labelWeakPassword.Visibility = Visibility.Visible;
+                        labelInvalidEmail.Visibility = Visibility.Visible;
                     }
                 }
                 finally
                 {
-                    if (IsPasswordTheSame())
+                    try
                     {
-
+                        if (!IsPasswordSecure())
+                        {
+                            validation = false;
+                            labelWeakPassword.Visibility = Visibility.Visible;
+                        }
                     }
-                    else
+                    finally
                     {
-                        validation = false;
-                        labelPasswordDontMatch.Visibility = Visibility.Visible;
+                        if (!IsPasswordTheSame())
+                        {
+                            validation = false;
+                            labelPasswordDontMatch.Visibility = Visibility.Visible;
+                        }
                     }
                 }
             }
 
-            if (validation == true)
+            if (validation)
             {
                 CreateUser();
             }
@@ -139,20 +137,18 @@ namespace Wits
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         private bool IsPasswordTheSame()
         {
-            if (passwordBoxPassword.Password.Length != passwordBoxConfirmPassword.Password.Length)
+            if (passwordBoxPassword.Password.Length == passwordBoxConfirmPassword.Password.Length)
             {
-                return false;
+                return string.Equals(passwordBoxPassword.Password, passwordBoxConfirmPassword.Password);
             }
 
-            return string.Equals(passwordBoxPassword.Password, passwordBoxConfirmPassword.Password);
+            return false;
         }
 
         private bool IsEmailValid()
@@ -161,10 +157,20 @@ namespace Wits
             {
                 return true;
             }
-            else
+
+            return false;
+        }
+
+        private bool IsEmpty()
+        {
+            if ((string.IsNullOrEmpty(textBoxEmail.Text) || textBoxEmail.Text.Equals(Properties.Resources.EnterEmail)) ||
+                (string.IsNullOrEmpty(textBoxUsername.Text) || textBoxUsername.Text.Equals(Properties.Resources.EnterUser)) ||
+                string.IsNullOrEmpty(passwordBoxPassword.Password) || string.IsNullOrEmpty(passwordBoxConfirmPassword.Password))
             {
-                return false;
+                return true;
             }
+
+            return false;
         }
 
         private void DeleteSpaces(object sender, KeyEventArgs e)
@@ -191,17 +197,17 @@ namespace Wits
                 if (client.AddPlayer(newPlayer) == 1)
                 {
                     string sendedEmail = Mail.sendConfirmationMail(textBoxEmail.Text, textBoxUsername.Text);
-                    MessageBox.Show("The user was successfully created\n" + sendedEmail, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.UserCreatedMessage + "\n" + sendedEmail, Properties.Resources.Success, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("The username is already used, use another one", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

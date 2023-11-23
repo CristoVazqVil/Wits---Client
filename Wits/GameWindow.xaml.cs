@@ -25,15 +25,13 @@ namespace Wits
         {
             InitializeComponent();
             framePage.Navigate(new Uri("MenuPage.xaml", UriKind.Relative));
+            Closing += OnWindowClosing;
         }
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            WitsService.ChatManagerClient playerManager = new WitsService.ChatManagerClient(context);
             client.RemoveConnectedUser(UserSingleton.Instance.Username);
-            playerManager.UnregisterUserContext(UserSingleton.Instance.Username);
         }
     }
 }

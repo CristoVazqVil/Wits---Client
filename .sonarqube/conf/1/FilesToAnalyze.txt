@@ -1,0 +1,131 @@
+﻿D:\UV\Tecnologias\Wits\Wits\Wits\App.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\App.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\BoardPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Classes\GameSingleton.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Classes\Mail.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Classes\UserSingleton.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\CreateAccount.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\EnterPlayerUserWindow.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestCardUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestMenuUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendCardUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendsUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\OnlineFriendCardUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\OnlineFriendMenuUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\GameWindow.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\InsertGameIdWindow.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\LobbyPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\MainWindow.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\MenuPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendsPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfileCustomizationPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Properties\AssemblyInfo.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\1.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\10.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\2.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\3.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\4.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\5.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\6.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\7.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\8.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\9.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song1.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song2.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song3.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song4.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song5.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song6.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song7.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song8.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video1.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video2.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video3.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video4.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video5.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video6.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video7.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video8.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\CreatedUserEmail.html
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\boardVideoBackground.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\celebrationsMenu.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\menuBackground.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\profileCustomizationBackground.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\witsLogo.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\CreateBackground.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MainBackground.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav
+D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.resx
+D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.es-ES.resx
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\appsettings.json
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item.xsd
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item1.xsd
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item2.xsd
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item3.xsd
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\PlayerManager.wsdl
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\Wits.WitsService.Player.datasource
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\Wits.WitsService.Question.datasource
+D:\UV\Tecnologias\Wits\Wits\Wits\packages.config
+D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Settings.settings
+D:\UV\Tecnologias\Wits\Wits\Wits\App.config
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item.disco
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\configuration91.svcinfo
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\configuration.svcinfo
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\Reference.svcmap
+D:\UV\Tecnologias\Wits\Wits\Wits\BoardPage.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\CreateAccount.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\EnterPlayerUserWindow.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestCardUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestMenuUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendCardUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendsUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\OnlineFriendCardUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\OnlineFriendMenuUserControl.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\GameWindow.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\InsertGameIdWindow.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\LobbyPage.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\MainWindow.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\MenuPage.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendsPage.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfileCustomizationPage.xaml
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\neon-lights-background-concept_52683-35551.jpg
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\loginRectangle.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\MexicoFlag.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\redOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\logoNeonLetters.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\demonNeon.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\createAccountbg.jpg
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\backArrow.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\mainMenubg.jpg
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\orangeOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\yellowOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\4.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\5.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\1.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\3.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\wallet.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\questionFrame.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\answerFrame.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\playersMenu.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\okButton.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\pencil.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\pencil.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\pinkOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\greenOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\purpleOval.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\houseButton.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\rectangle.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\block.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\delete.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\friends.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\notifications.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\7.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\9.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\12.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\11.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\10.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\2.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\8.png
+D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\6.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\UKFlag.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\windowLogo.jpeg

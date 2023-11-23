@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wits.Classes;
+using Wits.WitsService;
 
 namespace Wits
 {
@@ -22,7 +24,7 @@ namespace Wits
     /// </summary>
     public partial class LobbyPage : Page, WitsService.IChatManagerCallback
     {
-        public int gameId = GameSingleton.Instance.GameId;
+        private int gameId = GameSingleton.Instance.GameId;
         public LobbyPage()
         {
             InitializeComponent();
@@ -36,6 +38,13 @@ namespace Wits
             ValidateGameLeader();
         }
 
+        private void deleteContext()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
+            client.UnregisterUserContext(UserSingleton.Instance.Username);
+        }
+
         private void RestartVideo(object sender, RoutedEventArgs e)
         {
             backgroundVideo.Position = TimeSpan.Zero;
@@ -44,6 +53,7 @@ namespace Wits
 
         private void OpenGameWindow(object sender, MouseButtonEventArgs e)
         {
+            deleteContext();
             BoardPage boardPage = new BoardPage();
             this.NavigationService.Navigate(boardPage);
         }
@@ -141,7 +151,7 @@ namespace Wits
 
         private void ValidateGameLeader()
         {
-            WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+            WitsService.GameManagerClient client = new WitsService.GameManagerClient();
             try
             {
                 string gameLeader = client.GetGameLeader(gameId);
@@ -172,18 +182,17 @@ namespace Wits
                 string invitedUser = window.playerUser;
                 try
                 {
-                    WitsService.Player invitedPlayer = new WitsService.Player();
                     WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                    invitedPlayer = client.GetPlayerByUser(invitedUser);
+                    WitsService.Player invitedPlayer = client.GetPlayerByUser(invitedUser);
 
                     if (invitedPlayer != null)
                     {
                         string sendedEmail = Mail.sendInvitationMail(invitedPlayer.Email, gameId);
-                        MessageBox.Show("The player has been invited\n" + sendedEmail, "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Resources.PlayerInvitedMessage + "\n" + sendedEmail, Properties.Resources.Success, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     else
                     {
-                        MessageBox.Show("That player does not exist...", "Not Existing Player", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Resources.NotExistingPlayerMessage, Properties.Resources.NotExistingPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 catch (FaultException ex)
@@ -192,12 +201,11 @@ namespace Wits
                 }
 
             }
-
-
         }
 
         private void GoBack(object sender, MouseButtonEventArgs e)
         {
+            deleteContext();
             this.NavigationService.GoBack();
         }
     }

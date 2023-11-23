@@ -61,6 +61,132 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accept.
+        /// </summary>
+        public static string AcceptRequest {
+            get {
+                return ResourceManager.GetString("AcceptRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Or Block Player.
+        /// </summary>
+        public static string AddOrBlockPlayer {
+            get {
+                return ResourceManager.GetString("AddOrBlockPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All My Friends.
+        /// </summary>
+        public static string AllMyFriends {
+            get {
+                return ResourceManager.GetString("AllMyFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already Blocked Player.
+        /// </summary>
+        public static string AlreadyBlockedPlayer {
+            get {
+                return ResourceManager.GetString("AlreadyBlockedPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The player is already blocked.
+        /// </summary>
+        public static string AlreadyBlockedPlayerMessage {
+            get {
+                return ResourceManager.GetString("AlreadyBlockedPlayerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to block this player?.
+        /// </summary>
+        public static string BlockConfirmationMesssage {
+            get {
+                return ResourceManager.GetString("BlockConfirmationMesssage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You blocked this player before.
+        /// </summary>
+        public static string BlockedBeforeMessage {
+            get {
+                return ResourceManager.GetString("BlockedBeforeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You Are Blocked.
+        /// </summary>
+        public static string BlockedBy {
+            get {
+                return ResourceManager.GetString("BlockedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This player blocked you!.
+        /// </summary>
+        public static string BlockedByMessage {
+            get {
+                return ResourceManager.GetString("BlockedByMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blocked Player.
+        /// </summary>
+        public static string BlockedPlayer {
+            get {
+                return ResourceManager.GetString("BlockedPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Block Player.
+        /// </summary>
+        public static string BlockPlayer {
+            get {
+                return ResourceManager.GetString("BlockPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That player is blocked now!.
+        /// </summary>
+        public static string BlockPlayerMessage {
+            get {
+                return ResourceManager.GetString("BlockPlayerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while sending the confirmation email.
+        /// </summary>
+        public static string ConfirmationEmailError {
+            get {
+                return ResourceManager.GetString("ConfirmationEmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation Email sent!.
+        /// </summary>
+        public static string ConfirmationEmailSent {
+            get {
+                return ResourceManager.GetString("ConfirmationEmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmPassword {
@@ -84,6 +210,42 @@ namespace Wits.Properties {
         public static string CreateTitle {
             get {
                 return ResourceManager.GetString("CreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Friend.
+        /// </summary>
+        public static string DeleteFriend {
+            get {
+                return ResourceManager.GetString("DeleteFriend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this friend?.
+        /// </summary>
+        public static string DeleteFriendConfirmationMessage {
+            get {
+                return ResourceManager.GetString("DeleteFriendConfirmationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The allowed email domains are: outlook.com, gmail.com, hotmail.com and estudiantes.uv.mx.
+        /// </summary>
+        public static string EmailAdvice {
+            get {
+                return ResourceManager.GetString("EmailAdvice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There cannot be empty fields.
+        /// </summary>
+        public static string EmptyFields {
+            get {
+                return ResourceManager.GetString("EmptyFields", resourceCulture);
             }
         }
         
@@ -133,11 +295,74 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Existing Request or Friendship.
+        /// </summary>
+        public static string ExistingRequest {
+            get {
+                return ResourceManager.GetString("ExistingRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There&apos;s a request already or this player is your friend....
+        /// </summary>
+        public static string ExistingRequestMessage {
+            get {
+                return ResourceManager.GetString("ExistingRequestMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed.
         /// </summary>
         public static string Failed {
             get {
                 return ResourceManager.GetString("Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend Deleted.
+        /// </summary>
+        public static string FriendDeleted {
+            get {
+                return ResourceManager.GetString("FriendDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This player is no longer your friend....
+        /// </summary>
+        public static string FriendDeletedMessage {
+            get {
+                return ResourceManager.GetString("FriendDeletedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend Requests.
+        /// </summary>
+        public static string FriendRequests {
+            get {
+                return ResourceManager.GetString("FriendRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friends And Requests.
+        /// </summary>
+        public static string FriendsAndRequests {
+            get {
+                return ResourceManager.GetString("FriendsAndRequests", resourceCulture);
             }
         }
         
@@ -174,6 +399,24 @@ namespace Wits.Properties {
         public static string InvalidEmail {
             get {
                 return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred while sending the invitation email.
+        /// </summary>
+        public static string InvitationEmailError {
+            get {
+                return ResourceManager.GetString("InvitationEmailError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invitation Email Sent!.
+        /// </summary>
+        public static string InvitationEmailSent {
+            get {
+                return ResourceManager.GetString("InvitationEmailSent", resourceCulture);
             }
         }
         
@@ -232,11 +475,47 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The game does not exist....
+        /// </summary>
+        public static string NotExistingGameMessage {
+            get {
+                return ResourceManager.GetString("NotExistingGameMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Existing Player.
+        /// </summary>
+        public static string NotExistingPlayer {
+            get {
+                return ResourceManager.GetString("NotExistingPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That player does not exist....
+        /// </summary>
+        public static string NotExistingPlayerMessage {
+            get {
+                return ResourceManager.GetString("NotExistingPlayerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Online Friends:.
         /// </summary>
         public static string OnlineFriends {
             get {
                 return ResourceManager.GetString("OnlineFriends", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The password must have an uppercase letter, a lowercase letter, a number, a special character and at least 8 characters..
+        /// </summary>
+        public static string PasswordAdvice {
+            get {
+                return ResourceManager.GetString("PasswordAdvice", resourceCulture);
             }
         }
         
@@ -259,6 +538,51 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The player was invited!.
+        /// </summary>
+        public static string PlayerInvitedMessage {
+            get {
+                return ResourceManager.GetString("PlayerInvitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reject.
+        /// </summary>
+        public static string RejectRequest {
+            get {
+                return ResourceManager.GetString("RejectRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remember:.
+        /// </summary>
+        public static string Remember {
+            get {
+                return ResourceManager.GetString("Remember", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Sent.
+        /// </summary>
+        public static string RequestSent {
+            get {
+                return ResourceManager.GetString("RequestSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friend Request Sent!.
+        /// </summary>
+        public static string RequestSentMessage {
+            get {
+                return ResourceManager.GetString("RequestSentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Round.
         /// </summary>
         public static string Round {
@@ -268,11 +592,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There&apos;s a server error, sorry!.
+        ///   Looks up a localized string similar to Send Request.
         /// </summary>
-        public static string ServerError {
+        public static string SendRequest {
             get {
-                return ResourceManager.GetString("ServerError", resourceCulture);
+                return ResourceManager.GetString("SendRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Problem.
+        /// </summary>
+        public static string ServerProblem {
+            get {
+                return ResourceManager.GetString("ServerProblem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There&apos;s a server problem, Sorry!.
+        /// </summary>
+        public static string ServerProblemMessage {
+            get {
+                return ResourceManager.GetString("ServerProblemMessage", resourceCulture);
             }
         }
         
@@ -282,6 +624,33 @@ namespace Wits.Properties {
         public static string StartGame {
             get {
                 return ResourceManager.GetString("StartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That&apos;s You.
+        /// </summary>
+        public static string ThatIsYou {
+            get {
+                return ResourceManager.GetString("ThatIsYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hey, That&apos;s You!.
+        /// </summary>
+        public static string ThatIsYouMessage {
+            get {
+                return ResourceManager.GetString("ThatIsYouMessage", resourceCulture);
             }
         }
         
@@ -300,6 +669,24 @@ namespace Wits.Properties {
         public static string TypeHere {
             get {
                 return ResourceManager.GetString("TypeHere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The user was succesfully created, welcome!.
+        /// </summary>
+        public static string UserCreatedMessage {
+            get {
+                return ResourceManager.GetString("UserCreatedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That username is already used, use another one.
+        /// </summary>
+        public static string UsernameUsedMessage {
+            get {
+                return ResourceManager.GetString("UsernameUsedMessage", resourceCulture);
             }
         }
         

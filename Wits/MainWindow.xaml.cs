@@ -34,7 +34,7 @@ namespace Wits
         public MainWindow()
         {
             InitializeComponent();
-            music = new SoundPlayer(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Death By Glamour - Undertale.wav"); 
+            music = new SoundPlayer("Music/Death By Glamour - Undertale.wav"); 
             music.Play();
             backgroundVideo.Play();
             mediaElementLogo.Play();
@@ -50,9 +50,8 @@ namespace Wits
         {
             try
             {
-                WitsService.Player player = new WitsService.Player();
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                player = client.GetPlayerByUserAndPassword(textBoxUser.Text, EncryptPassword(passwordBoxPassword.Password));
+                WitsService.Player player = client.GetPlayerByUserAndPassword(textBoxUser.Text, EncryptPassword(passwordBoxPassword.Password));
 
                 if (player != null)
                 {
@@ -63,18 +62,18 @@ namespace Wits
                     }
                     UserSingleton.Instance.SetUsername(textBoxUser.Text);
                     GameWindow gameWindow = new GameWindow();
-                    gameWindow.ShowDialog();
-                    Close();
+                    gameWindow.Show();
+                    this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Incorrect user or password, Try again!", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.WrongPassword, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             } 
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             
         }

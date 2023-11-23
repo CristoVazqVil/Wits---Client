@@ -10,8 +10,8 @@
       Title="{x:Static p:Resources.Title}">
 
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Source="Videos\profileCustomizationBackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo"/>
-        <Image x:Name="imageUserProfilePic" Source="ProfilePictures\niurka.png" HorizontalAlignment="Left" Height="70" Margin="994,10,0,0" VerticalAlignment="Top" Width="65"/>
+        <MediaElement x:Name="backgroundVideo" Source="Videos\boardVideoBackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo"/>
+        <Image x:Name="imageUserProfilePic" Source="ProfilePictures\1.png" HorizontalAlignment="Left" Height="70" Margin="994,10,0,0" VerticalAlignment="Top" Width="65"/>
         <Image x:Name="imageWallet" HorizontalAlignment="Left" Source="Images\wallet.png" Height="94" Margin="100,69,0,0" VerticalAlignment="Top" Width="114"/>
         <Label x:Name="labelChips" Content="58" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="25" Margin="209,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.375"/>
         <Image x:Name="imageQuestionFrame" Opacity="0" HorizontalAlignment="Center" Source="Images\questionFrame.png" Height="379" Margin="0,212,0,0" VerticalAlignment="Top" Width="952"/>
@@ -23,7 +23,7 @@
             <Image Source="/Celebrations/rectangle.png" Margin="277,136,263,36" Stretch="Fill"  />
             <MediaElement x:Name="celebration" HorizontalAlignment="Left" Height="428" Margin="326,165,0,0" VerticalAlignment="Top" Width="440" Source="Celebrations\10.mp4" MediaEnded="CelebrationLoop" LoadedBehavior="Manual" />
             <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="424,173,433,369" />
-            <Label x:Name="Winner" Content="diddy wins!" HorizontalAlignment="Left" Height="118" Margin="429,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
+            <Label x:Name="Winner" Content="diddy wins!" HorizontalAlignment="Left" Height="118" Margin="412,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
             <Image x:Name="HomeButton" Source="/Images/houseButton.png" Margin="680,525,290,85" MouseDown="GoToLobby" />
 
         </Grid>

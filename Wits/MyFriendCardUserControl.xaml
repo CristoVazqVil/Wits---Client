@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Wits.MyFriendCardUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wits"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="510">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" MinWidth="100"/>
+                <ColumnDefinition Width="410"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="labelFriendUsername" Content="username" Foreground="White" FontFamily="Neon Tubes 2" FontSize="18" VerticalContentAlignment="Center" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="48" Width="255" Margin="10,0,0,0"/>
+            <Image x:Name="imageFriendProfile" HorizontalAlignment="Left" Height="80" VerticalAlignment="Top" Width="80" Margin="8,7,0,0"/>
+        </Grid>
+        <Image x:Name="imageDeleteFriend" Source="Images/delete.png" HorizontalAlignment="Left" Height="56" Margin="382,0,0,0" VerticalAlignment="Center" Width="48" MouseDown="DeleteFriend"/>
+        <Image x:Name="imageBlockFriend" Source="Images/block.png" HorizontalAlignment="Left" Height="56" Margin="430,0,0,0" VerticalAlignment="Center" Width="62" MouseDown="BlockPlayer"/>
+        <Border BorderBrush="#FF00FF" BorderThickness="4" CornerRadius="10"/>
+    </Grid>
+</UserControl>

@@ -26,14 +26,15 @@ namespace Wits
     /// </summary>
     public partial class BoardPage : Page
     {
-        public Random random = new Random();
-        public int randomQuestion = 0;
+        private Random random = new Random();
+        private int randomQuestion = 0;
         private string userName = UserSingleton.Instance.Username;
 
         public BoardPage()
         {
             InitializeComponent();
             backgroundVideo.Play();
+            SetProfilePicture();
             Loaded += Page_Loaded;
             celebration.Play();
         }
@@ -74,7 +75,7 @@ namespace Wits
         }
 
 
-        private async void ShowQuestion()
+        private async Task ShowQuestion()
         {
             SetQuestion();
             await Task.Delay(2000);
@@ -93,7 +94,7 @@ namespace Wits
             ShowAnswer();
         }
 
-        private async void ShowAnswer()
+        private async Task ShowAnswer()
         {
             SetAnswer();
             await Task.Delay(1000);
@@ -123,9 +124,8 @@ namespace Wits
             randomQuestion = random.Next(1, 6);
             try
             {
-                WitsService.Question question = new WitsService.Question();
-                WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                question = client.GetQuestionByID(randomQuestion);
+                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
+                WitsService.Question question = client.GetQuestionByID(randomQuestion);
 
                 if(question != null)
                 {
@@ -143,7 +143,7 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -152,9 +152,8 @@ namespace Wits
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/answerFrame.png", UriKind.RelativeOrAbsolute));
             try
             {
-                WitsService.Question answer = new WitsService.Question();
-                WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                answer = client.GetQuestionByID(randomQuestion);
+                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
+                WitsService.Question answer = client.GetQuestionByID(randomQuestion);
 
                 if (answer != null)
                 {
@@ -172,7 +171,7 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("There´s a server problem, soory!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -185,6 +184,17 @@ namespace Wits
         private void GoToLobby(object sender, MouseButtonEventArgs e)
         {
             this.NavigationService.GoBack();
+        }
+
+        private void SetProfilePicture()
+        {
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+            int profilePictureId = playerData.ProfilePictureId;
+            string profilePictureFileName = profilePictureId + ".png";
+            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+            imageUserProfilePic.Source = new BitmapImage(profilePictureUri);
         }
     }
 }

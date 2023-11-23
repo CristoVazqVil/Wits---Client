@@ -8,12 +8,12 @@
         Icon="Images\windowLogo.jpeg"
         mc:Ignorable="d"
         Title="{x:Static p:Resources.CreateTitle}" Height="720" Width="1080" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="SingleBorderWindow">
-    
+
     <Grid>
-        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
-        <Image x:Name="imageRectangle" Margin="74,24,74,10" Source="Images\loginRectangle.png" Stretch="Fill"/>
-        <TextBox x:Name="textBoxUsername" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,152,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="585" Height="59" FontSize="22" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
-        <Image x:Name="imageCreate" Margin="723,534,138,51" Source="Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight">
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\CreateBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
+        <Image x:Name="imageRectangle" Margin="66,28,53,6" Source="Images\loginRectangle.png" Stretch="Fill"/>
+        <TextBox x:Name="textBoxUsername" FontFamily="Beon" HorizontalAlignment="Left" Margin="203,251,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterUser}" VerticalAlignment="Top" Width="483" Height="50" FontSize="18" BorderThickness="1,1,1,1" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces" PreviewTextInput="DeleteUsernameCharacters"/>
+        <Image x:Name="imageCreate" Margin="714,512,148,73" Source="Images\greenOval.png" Stretch="Fill" MouseDown="ValidateData" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformCreateImage" ScaleX="1" ScaleY="1" />
@@ -21,8 +21,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,235,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="584" Height="64" FontSize="22" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters" PreviewKeyDown="DeleteSpaces"/>
-        <Image x:Name="imageBack" Margin="111,44,859,535" Source="Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
+        <TextBox x:Name="textBoxEmail" FontFamily="Beon" HorizontalAlignment="Left" Margin="203,313,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.EnterEmail}" VerticalAlignment="Top" Width="483" Height="50" FontSize="18" VerticalContentAlignment="Center" PreviewTextInput="DeleteEmailCharacters" PreviewKeyDown="DeleteSpaces"/>
+        <Image x:Name="imageBack" Margin="128,68,882,551" Source="Images\backArrow.png" Stretch="Fill" MouseDown="CloseWindow" MouseEnter="BackHighlight" MouseLeave="UndoBackHighlight">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformBack" ScaleX="1" ScaleY="1" />
@@ -30,14 +30,14 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="585" Height="67" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="0,326,0,0" PreviewKeyDown="DeleteSpaces"/>
-        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="584" Height="67" Margin="0,421,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered" PreviewKeyDown="DeleteSpaces"/>
-        <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,336,426,301"/>
-        <TextBox x:Name="textBoxConfirmPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="22" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="248,434,312,206"/>
-        <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,509,0,0" VerticalAlignment="Top" FontSize="20" Height="35" Width="412"/>
-        <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,551,0,0" VerticalAlignment="Top" FontSize="20" Height="34" Width="348"/>
-        <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="248,599,0,0" VerticalAlignment="Top" FontSize="20" Height="37" Width="357"/>
-        <Label x:Name="labelCreate" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight" Content="{x:Static p:Resources.CreateAccount}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="769,567,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="96" Height="36" RenderTransformOrigin="0.498,0.32">
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="50" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="203,380,0,0" PreviewKeyDown="DeleteSpaces"/>
+        <PasswordBox x:Name="passwordBoxConfirmPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Top" Width="483" Height="50" Margin="203,447,0,0" LostFocus="ConfirmDeleted" GotFocus="ConfirmEntered" PreviewKeyDown="DeleteSpaces"/>
+        <TextBox x:Name="textBoxEnterPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="18" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="203,397,486,262"/>
+        <TextBox x:Name="textBoxConfirmPassword" FontFamily="Beon" Background="Transparent" BorderThickness="0" FontSize="18" VerticalContentAlignment="Center" Text="{x:Static p:Resources.ConfirmPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="203,457,486,197"/>
+        <Label x:Name="labelWeakPassword" Content="{x:Static p:Resources.WeakPassword}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="198,543,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="412"/>
+        <Label x:Name="labelPasswordDontMatch" Content="{x:Static p:Resources.PasswordsUnmatch}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="198,578,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="348"/>
+        <Label x:Name="labelInvalidEmail" Content="{x:Static p:Resources.InvalidEmail}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="198,613,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="357"/>
+        <Label x:Name="labelCreate" MouseEnter="CreateHighlight" MouseLeave="UndoCreateHighlight" Content="{x:Static p:Resources.CreateAccount}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="770,545,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="96" Height="36" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformCreateLabel" ScaleX="1" ScaleY="1" />
@@ -45,5 +45,11 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Label x:Name="labelCreateAccount" Content="{x:Static p:Resources.CreateTitle}" Foreground="#bc13fe" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="198,78,0,0" VerticalAlignment="Top" FontSize="30" Height="45" Width="412"/>
+        <Label x:Name="labelRemember" Content="{x:Static p:Resources.Remember}" Foreground="#7f7f7f" FontFamily="Beon" HorizontalAlignment="Left" Margin="198,123,0,0" VerticalAlignment="Top" FontSize="20" Height="30" Width="303"/>
+        <TextBox x:Name="textBoxPasswordAdvice" TextAlignment="Justify" FontFamily="Beon" BorderThickness="0" Background="Transparent" FontSize="12" VerticalContentAlignment="Center" Text="{x:Static p:Resources.PasswordAdvice}" TextWrapping="Wrap" Foreground="#7f7f7f" IsHitTestVisible="False" Margin="209,153,399,503"/>
+        <TextBox x:Name="textBoxEmailAdvice" TextAlignment="Justify" FontFamily="Beon" BorderThickness="0" Background="Transparent" FontSize="12" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EmailAdvice}" TextWrapping="Wrap" Foreground="#7f7f7f" IsHitTestVisible="False" Margin="209,192,399,458"/>
+        <Label x:Name="labelNoEmptyFields" Content="{x:Static p:Resources.EmptyFields}" Foreground="PaleVioletRed" FontWeight="Bold" FontFamily="Neon Tubes 2" HorizontalAlignment="Left" Margin="198,512,0,0" VerticalAlignment="Top" FontSize="15" Height="30" Width="438"/>
+        <Image x:Name="imageUnicorn" Source="Images/unicorn.png" HorizontalAlignment="Left" Height="238" Margin="704,204,0,0" VerticalAlignment="Top" Width="238"/>
     </Grid>
 </Window>

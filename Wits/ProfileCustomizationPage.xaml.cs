@@ -13,6 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wits.Classes;
 using Wits.WitsService;
 
 namespace Wits
@@ -22,7 +23,6 @@ namespace Wits
     /// </summary>
     public partial class ProfileCustomizationPage : Page
     {
-        private string loggedInUser;
         private Rectangle currentVisibleRectangle = null;
         private int selectedCelebrationId = -1;
 
@@ -30,10 +30,8 @@ namespace Wits
         public ProfileCustomizationPage()
         {
             InitializeComponent();
-            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            loggedInUser = client.GetCurrentlyLoggedInUser();
-            userName.Content = loggedInUser;
-            SetProfilePicture(loggedInUser);
+            userName.Content = UserSingleton.Instance.Username;
+            SetProfilePicture(UserSingleton.Instance.Username);
             currentVisibleRectangle = null;
             background.Play();
             CelebrationsVideo.Play();
@@ -91,8 +89,6 @@ namespace Wits
         {
             TranslateTransform moveTransform = new TranslateTransform(1200, 0);
             imageContainer.RenderTransform = moveTransform;
-
-            TranslateTransform moveTransformCelebrations = new TranslateTransform(1200, 0);
             Celebrations.RenderTransform = moveTransform;
 
 
@@ -144,10 +140,10 @@ namespace Wits
 
                 WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
                 int newProfilePictureId = profilePictureId;
-                bool success = playerManagerClient.UpdateProfilePicture(loggedInUser, newProfilePictureId);
+                bool success = playerManagerClient.UpdateProfilePicture(UserSingleton.Instance.Username, newProfilePictureId);
                 if (success)
                 {
-                    bool celebrationUpdateSuccess = playerManagerClient.UpdateCelebration(loggedInUser, selectedCelebrationId);
+                    bool celebrationUpdateSuccess = playerManagerClient.UpdateCelebration(UserSingleton.Instance.Username, selectedCelebrationId);
 
                     if (celebrationUpdateSuccess)
                     {
@@ -155,12 +151,12 @@ namespace Wits
                     }
                     else
                     {
-                    MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 }
                 else
                 {
-                 MessageBox.Show("There was an error...", "Failed", MessageBoxButton.OK, MessageBoxImage.Information);
+                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

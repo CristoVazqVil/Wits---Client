@@ -20,7 +20,6 @@
     </Page.Resources>
     <Grid>
         <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\menuBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartVideo" />
-        <Image x:Name="imageLogo" Margin="519,2,10,418" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Images\logoNeonLetters.png" Stretch="Fill"/>
         <Image x:Name="imageJoinGame" MouseEnter="JoinHighlight" MouseLeave="UndoJoinHighlight" Margin="683,483,47,10" Source="Images\greenOval.png" Stretch="Fill" MouseDown="JoinExistingGame">
             <Image.RenderTransform>
                 <TransformGroup>
@@ -29,7 +28,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="imageNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Margin="687,286,47,242" Source="Images\pinkOval.png" Stretch="Fill" MouseDown="CreateNewGame">
+        <Image x:Name="imageNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Margin="687,345,47,183" Source="Images\pinkOval.png" Stretch="Fill" MouseDown="CreateNewGame">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformNewGame" ScaleX="1" ScaleY="1" />
@@ -37,8 +36,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <TextBlock x:Name="textBlockOnlineFriends" HorizontalAlignment="Left" Margin="29,359,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="273" Width="384" FontSize="22" Foreground="White" FontFamily="Neon Tubes 2"/>
-        <Label x:Name="labelNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Content="{x:Static p:Resources.NewGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="690,333,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="328" Height="66" RenderTransformOrigin="0.498,0.32">
+        <Label x:Name="labelNewGame" MouseEnter="NewGameHighlight" MouseLeave="UndoNewGameHighlight" Content="{x:Static p:Resources.NewGame}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="30" Foreground="White" HorizontalAlignment="Left" Margin="690,392,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="328" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform x:Name="scaleTransformNewGame2" ScaleX="1" ScaleY="1" />
@@ -55,13 +53,15 @@
             </Label.RenderTransform>
         </Label>
 
-        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="106,23,0,0" VerticalAlignment="Top" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="144"/>
-        <Image Source="/Images/pencil.png" Margin="207,20,777,599" MouseDown="openCustomization" />
+        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="151,34,0,0" VerticalAlignment="Top" FontFamily="Beon" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="490"/>
+        <Image Source="/Images/pencil.png" Margin="84,20,900,598" MouseDown="openCustomization" />
         <Image x:Name="profilePicture" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
-        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="2,-1,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
+        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="10,120,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
             <MediaElement.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </MediaElement.RenderTransform>
         </MediaElement>
+        <Grid x:Name="gridOnlineFriends" Margin="10,465,540,10"/>
+        <TextBlock x:Name="textBlockAllMyFriends" HorizontalAlignment="Left" TextAlignment="Justify" TextDecorations="Underline" Foreground="White" FontFamily="Neon Tubes 2" FontWeight="Bold" FontSize="35" Margin="10,406,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.FriendsAndRequests}" VerticalAlignment="Top" Width="536" Height="46" MouseDown="OpenMyFriendsPage"/>
     </Grid>
 </Page>
