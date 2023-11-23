@@ -17,10 +17,12 @@
       <xs:element minOccurs="0" name="AnswerES" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="QuestionEN" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="QuestionES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrueAnswer" type="xs:int" />
       <xs:element minOccurs="0" name="answerEN" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="answerES" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="questionEN" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="questionES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="trueAnswer" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Question" nillable="true" type="tns:Question" />

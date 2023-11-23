@@ -35,14 +35,14 @@ namespace Wits
         private List<Uri> songs = new List<Uri>()
 
         {
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song1.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song2.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song3.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song4.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song5.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song6.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song7.wav", UriKind.Absolute),
-            new Uri(@"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Song8.wav", UriKind.Absolute)
+            new Uri("Music/Song1.wav", UriKind.Relative),
+            new Uri("Music/Song2.wav", UriKind.Relative),
+            new Uri("Music/Song3.wav", UriKind.Relative),
+            new Uri("Music/Song4.wav", UriKind.Relative),
+            new Uri("Music/Song5.wav", UriKind.Relative),
+            new Uri("Music/Song6.wav", UriKind.Relative),
+            new Uri("Music/Song7.wav", UriKind.Relative),
+            new Uri("Music/Song8.wav", UriKind.Relative)
          };
 
         public Menu()
@@ -63,8 +63,8 @@ namespace Wits
             int videoNum = randomIndex + 1;
             String numString = videoNum.ToString();
             Uri songUri = songs[randomIndex];
-            string videoPath = @"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video" + numString + ".mp4";
-            songPlaying.Source = new Uri(videoPath);
+            string videoPath = "Music/Video" + numString + ".mp4";
+            songPlaying.Source = new Uri(videoPath, UriKind.Relative);
 
             mediaPlayer.Open(songUri);
             mediaPlayer.Play();
@@ -83,7 +83,6 @@ namespace Wits
             Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
             profilePicture.Source = new BitmapImage(profilePictureUri);
             userName.Content = username;
-
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -180,20 +179,28 @@ namespace Wits
 
             Dispatcher.Invoke(() =>
             {
-                textBlockOnlineFriends.Text = "Online Friends: " + usersText;
+                gridOnlineFriends.Children.Clear();
+                setFriendsMenu(connectedFriends);
             });
 
             Console.WriteLine(connectedFriendsArray + "usersText " + usersText + "ConnectedUser" + connectedFriends);
             Task.Delay(5000).ContinueWith(t => LoadConnectedFriends());
         }
 
+        private void setFriendsMenu(List<string> onlineFriendsList)
+        {
+            OnlineFriendMenuUserControl onlineFriends = new OnlineFriendMenuUserControl();
+            onlineFriends.SetFriends(onlineFriendsList);
+            gridOnlineFriends.Children.Add(onlineFriends);
+        }
+
         private void CreateNewGame(object sender, MouseButtonEventArgs e)
         {
-            Random random = new Random();
-            int newGameId = random.Next(10000, 100000);
+            Random randomId = new Random();
+            int newGameId = randomId.Next(10000, 100000);
             try
             {
-                WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                 client.CreateGame(newGameId, UserSingleton.Instance.Username, 6);
                 mediaPlayer.Stop();
                 GameSingleton.Instance.SetGameId(newGameId);
@@ -203,7 +210,7 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show("There´s a server problem, sorry!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -217,7 +224,7 @@ namespace Wits
                 int existingGameId = window.gameId;
                 try
                 {
-                    WitsService.GameServiceClient client = new WitsService.GameServiceClient();
+                    WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                     if (client.JoinGame(existingGameId, UserSingleton.Instance.Username) == 1)
                     {
                         mediaPlayer.Stop();
@@ -227,13 +234,13 @@ namespace Wits
                     }
                     else
                     {
-                        MessageBox.Show("The game does not exist...", "Not Existing Game", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Resources.NotExistingGameMessage, Properties.Resources.NotExistingGame, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 catch (FaultException ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    MessageBox.Show("There´s a server problem, sorry!", "Server Error", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
@@ -243,6 +250,10 @@ namespace Wits
             this.NavigationService.Navigate(profileCustomizationPage);
         }
 
-
+        private void OpenMyFriendsPage(object sender, MouseButtonEventArgs e)
+        {
+            MyFriendsPage myFriendsPage = new MyFriendsPage();
+            this.NavigationService.Navigate(myFriendsPage);
+        }
     }
 }

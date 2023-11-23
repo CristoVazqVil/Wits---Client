@@ -6,18 +6,36 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Wits.Properties;
+using Microsoft.Extensions.Configuration;
 
 namespace Wits.Classes
 {
-    public class Mail
+    public static class Mail
     {
+        private static readonly IConfiguration Configuration = new ConfigurationBuilder()
+        .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "resources"))
+        .AddJsonFile("appsettings.json")
+        .Build();
+
+        private static readonly string FROM_EMAIL = Configuration["EmailSettings:FromEmail"];
+        private static readonly string SMTP_HOST = Configuration["EmailSettings:SmtpHost"];
+        private static readonly string EMAIL_PASSWORD = Configuration["EmailSettings:EmailPassword"];
+        private static readonly int SMTP_PORT = Configuration.GetSection("EmailSettings")["SmtpPort"] != null
+            ? int.Parse(Configuration.GetSection("EmailSettings")["SmtpPort"])
+            : 0;
+
+        private const string DISPLAY_NAME = "Wits And Wagers";
+        private static SmtpClient client = new SmtpClient(SMTP_HOST, SMTP_PORT)
+        {
+            EnableSsl = true
+        };
+        private static MailMessage mail = new MailMessage();
 
         public static string sendConfirmationMail(string to, string username)
         {
-            string msge = "An error occurred while sending the confirmation email";
-            string from = "witsandwagers12@hotmail.com";
-            string displayName = "Wits And Wagers";
-            string htmlFilePath = @"C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\resources\CreatedUserEmail.html";
+            string msge = Properties.Resources.ConfirmationEmailError;
+            string htmlFilePath = "resources/CreatedUserEmail.html";
             string body;
 
             try
@@ -35,27 +53,21 @@ namespace Wits.Classes
 
             try
             {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(from, displayName);
+                mail.From = new MailAddress(FROM_EMAIL, DISPLAY_NAME);
                 mail.To.Add(to);
 
                 mail.Subject = "User Created. Welcome, " + username + "!";
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-
-                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
-                client.Credentials = new NetworkCredential(from, "xbcvotmftplusccm");
-                client.EnableSsl = true;
-
+                client.Credentials = new NetworkCredential(FROM_EMAIL, EMAIL_PASSWORD);
 
                 client.Send(mail);
-                msge = "Confirmation Email sent!";
-
+                msge = Properties.Resources.ConfirmationEmailSent;
             }
             catch (Exception ex)
             {
-                msge = ex.Message + ". An error occurred...";
+                msge = ex.Message + Properties.Resources.Failed;
                 Console.WriteLine(msge);
             }
 
@@ -64,10 +76,8 @@ namespace Wits.Classes
 
         public static string sendInvitationMail(string to, int gameId)
         {
-            string msge = "An error occurred while sending the invitation email";
-            string from = "witsandwagers12@hotmail.com";
-            string displayName = "Wits And Wagers";
-            string htmlFilePath = @"D:\UV\Tecnologias\Wits\Wits\Wits\resources\CreatedUserEmail.html";
+            string msge = Properties.Resources.InvitationEmailError;
+            string htmlFilePath = "resources/CreatedUserEmail.html";
             string body;
 
             try
@@ -85,27 +95,21 @@ namespace Wits.Classes
 
             try
             {
-                MailMessage mail = new MailMessage();
-                mail.From = new MailAddress(from, displayName);
+                mail.From = new MailAddress(FROM_EMAIL, DISPLAY_NAME);
                 mail.To.Add(to);
 
                 mail.Subject = "You are invited, use this code: " + gameId + "!";
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-
-                SmtpClient client = new SmtpClient("smtp.office365.com", 587);
-                client.Credentials = new NetworkCredential(from, "xbcvotmftplusccm");
-                client.EnableSsl = true;
-
+                client.Credentials = new NetworkCredential(FROM_EMAIL, EMAIL_PASSWORD);
 
                 client.Send(mail);
-                msge = "Invitation Email sent!";
-
+                msge = Properties.Resources.InvitationEmailSent;
             }
             catch (Exception ex)
             {
-                msge = ex.Message + ". An error occurred...";
+                msge = ex.Message + Properties.Resources.Failed;
                 Console.WriteLine(msge);
             }
 
