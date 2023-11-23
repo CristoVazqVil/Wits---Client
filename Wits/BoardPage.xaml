@@ -13,11 +13,15 @@
         <MediaElement x:Name="backgroundVideo" Source="Videos\boardVideoBackground.mp4" Stretch="Fill"  LoadedBehavior="Manual" MediaEnded="RestartBackgroundVideo"/>
         <Image x:Name="imageUserProfilePic" Source="ProfilePictures\1.png" HorizontalAlignment="Left" Height="70" Margin="994,10,0,0" VerticalAlignment="Top" Width="65"/>
         <Image x:Name="imageWallet" HorizontalAlignment="Left" Source="Images\wallet.png" Height="94" Margin="100,69,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="labelChips" Content="58" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="25" Margin="209,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.375"/>
-        <Image x:Name="imageQuestionFrame" Opacity="0" HorizontalAlignment="Center" Source="Images\questionFrame.png" Height="379" Margin="0,212,0,0" VerticalAlignment="Top" Width="952"/>
+        <Label x:Name="labelChips" Content="25" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="25" Margin="209,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.498,1.375"/>
         <Label x:Name="labelRound" Content="{x:Static p:Resources.Round}" HorizontalAlignment="Center" Foreground="White" FontFamily="Neon Tubes 2" FontSize="35" Margin="0,63,0,0" VerticalAlignment="Top"/>
         <Image x:Name="imagePlayersSettings" HorizontalAlignment="Left" Source="Images/playersMenu.png" Height="97" Margin="-10,582,0,0" VerticalAlignment="Top" Width="114"/>
-        <TextBox x:Name="textBoxQuestion" BorderThickness="0" Opacity="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Beon" FontSize="18" Background="Transparent" TextAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="374,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="549"/>
+
+        <Grid x:Name="GridQuestionsAndAnswers" Margin="-10,-749,10,749" >
+            <Image x:Name="imageQuestionFrame" Opacity="0" HorizontalAlignment="Center" Source="Images\questionFrame.png" Height="379" Margin="0,212,0,0" VerticalAlignment="Top" Width="952"/>
+            <TextBox x:Name="textBoxQuestion" BorderThickness="0" Opacity="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Beon" FontSize="18" Background="Transparent" TextAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="374,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="549"/>
+
+        </Grid>
 
         <Grid x:Name="victoryScreen" Margin="-1168,0,1168,0">
             <Image Source="/Celebrations/rectangle.png" Margin="277,136,263,36" Stretch="Fill"  />
@@ -25,7 +29,52 @@
             <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="424,173,433,369" />
             <Label x:Name="Winner" Content="diddy wins!" HorizontalAlignment="Left" Height="118" Margin="412,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
             <Image x:Name="HomeButton" Source="/Images/houseButton.png" Margin="680,525,290,85" MouseDown="GoToLobby" />
+        </Grid>
+
+        <Grid x:Name="GridEnterAnswer" Margin="1177,0,-1177,0">
+
+            <Image x:Name="PlayersAnswerGlow" Source="/Images/redBox.png" Margin="124,182,116,182" />
+            <Image x:Name="ImageAcceptAnswer" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveAnswer" />
+            <TextBox x:Name="TextBoxPlayersAnswer" Margin="194,251,184,250" Background="Black" BorderBrush="{x:Null}" FontSize="100" Foreground="White"
+            TextAlignment="Center" MaxLength="10" PreviewTextInput="AnswerIsNumber" SelectionBrush="{x:Null}" />
+            <Label x:Name="LabelInstrucion" Content="Enter Your Answer:" HorizontalAlignment="Left" Margin="218,150,0,0" VerticalAlignment="Top" Height="121" Width="724" Foreground="White" FontSize="60"/>
+            <Image x:Name="ImageAcceptWager" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveWager" Visibility="Hidden" />
 
         </Grid>
+
+        <Grid x:Name="GridAllAnswers" Margin="0,754,0,-754">
+            <Image x:Name="ImageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="55,109,657,51" MouseDown="SelectedAnswer" />
+            <Label x:Name="LabelAnswer1" Content="1997" HorizontalAlignment="Left" Margin="29,252,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+
+            <Image x:Name="ImageUserSelection" Source="/ProfilePictures/1.png" Margin="77,550,882,65" Visibility="Hidden"/>
+
+        </Grid>
+
+
+        <Grid x:Name="GridWarning" Margin="1177,822,-1177,-822" MouseDown="AcceptWarning" >
+            <Image Source="/Images/warningBox.png" Margin="156,126,156,126" />
+            <Image x:Name="ImageAccept" Source="/Images/okGreenBox.png" Margin="406,402,406,234" />
+             <Label Content="Please enter a valid amount within your available chips." 
+           HorizontalAlignment="Left" Margin="383,320,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="37" Width="395"/>
+
+        </Grid>
+
+        <Grid x:Name="GridRoundWinners" Margin="1177,-954,-1177,954" >
+            <Image Source="/Images/purpleCelebrationBox.png" />
+            <Label x:Name="LabelRightAnswer" Content="You're Right!" HorizontalAlignment="Center" Margin="0,539,0,0" VerticalAlignment="Top" Foreground="White" Height="98" Width="366" FontSize="60"/>
+            <Image x:Name="ImageProfilePicture1" Source="/ProfilePictures/1.png" Margin="344,210,594,390" />
+
+        </Grid>
+
     </Grid>
 </Page>
