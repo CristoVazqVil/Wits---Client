@@ -350,11 +350,15 @@
     <Content Include="Videos\profileCustomizationBackground.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Videos\witsLogo.mp4" />
+    <Content Include="Videos\witsLogo.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\CreateBackground.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Videos\MainBackground.mp4" />
+    <Content Include="Videos\MainBackground.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\UKFlag.png" />
     <Content Include="Music\Death By Glamour - Undertale.wav" />
     <Content Include="Music\Song1.wav" />

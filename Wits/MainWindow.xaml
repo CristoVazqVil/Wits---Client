@@ -14,7 +14,7 @@
             <ColumnDefinition Width="103*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Videos\MainBackground.mp4" MediaEnded="RestartBackgroundVideo" Grid.ColumnSpan="2" />
+        <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\MainBackground.mp4" MediaEnded="RestartBackgroundVideo" Grid.ColumnSpan="2" />
         <Image x:Name="imageLoginRectangle" Margin="256,16,190,16" Source="Images\loginRectangle.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
         <Image x:Name="imageMex" Margin="10,643,953,10" Source="Images\MexicoFlag.png" MouseEnter="EsHighlight" MouseLeave="UndoEsHighlight" Stretch="Fill" MouseDown="ChangeSpanish">
             <Image.RenderTransform>
@@ -40,7 +40,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
+        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
         <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
