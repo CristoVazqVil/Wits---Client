@@ -68,7 +68,7 @@ namespace Wits
 
 
 
-        private void profilePictureClick(object sender, MouseButtonEventArgs e)
+        private void ProfilePictureClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is Image clickedImage)
             {
@@ -77,7 +77,7 @@ namespace Wits
 
         }
 
-        private void openMainMenu(object sender, MouseButtonEventArgs e)
+        private void OpenMainMenu(object sender, MouseButtonEventArgs e)
         {
 
             this.NavigationService.GoBack();
@@ -96,12 +96,10 @@ namespace Wits
 
         private void Rectangle_Click(object sender, MouseButtonEventArgs e)
         {
-            Console.WriteLine("Hizo clic");
             if (sender is Rectangle clickedRectangle)
             {
                 string rectangleName = clickedRectangle.Name;
                 string celebrationId = rectangleName.Replace("_", "");
-                Console.WriteLine("Celebration ID seleccionado: " + celebrationId);
 
                 if (int.TryParse(celebrationId, out int parsedCelebrationId))
                 {

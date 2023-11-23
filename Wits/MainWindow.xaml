@@ -40,7 +40,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="D:\UV\Tecnologias\Wits\Wits\Wits\Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
+        <MediaElement x:Name="mediaElementLogo" LoadedBehavior="Manual" Source="Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
         <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
         <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>

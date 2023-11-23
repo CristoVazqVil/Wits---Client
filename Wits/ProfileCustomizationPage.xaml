@@ -53,23 +53,23 @@
 
         <Grid x:Name="imageContainer">
             <Label Content="Profile Pictures:" HorizontalAlignment="Left" Height="84" Margin="83,286,0,0" VerticalAlignment="Top" Width="375" Foreground="White" FontSize="36"/>
-            <Image x:Name="profilePicture1" Source="/ProfilePictures/1.png" Margin="61,334,889,263" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/3.png" Margin="381,334,555,265" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/4.png" Margin="551,335,370,264" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/5.png" Margin="729,331,227,262" MouseDown="profilePictureClick"/>
-            <Image Source="/ProfilePictures/7.png" Margin="70,501,899,98" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/9.png" Margin="385,501,559,98"  MouseDown="profilePictureClick" RenderTransformOrigin="0.463,0.5" />
-            <Image Source="/ProfilePictures/12.png" Margin="893,501,59,98" MouseDown="profilePictureClick"/>
-            <Image Source="/ProfilePictures/11.png" Margin="715,501,207,98" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/10.png" Margin="571,501,391,98" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/8.png" Margin="212,500,716,99" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/6.png" Margin="888,324,54,262" MouseDown="profilePictureClick" />
-            <Image Source="/ProfilePictures/2.png" Margin="231,332,734,259" MouseDown="profilePictureClick" />
+            <Image x:Name="profilePicture1" Source="/ProfilePictures/1.png" Margin="61,334,889,263" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/3.png" Margin="381,334,555,265" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/4.png" Margin="551,335,370,264" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/5.png" Margin="729,331,227,262" MouseDown="ProfilePictureClick"/>
+            <Image Source="/ProfilePictures/7.png" Margin="70,501,899,98" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/9.png" Margin="385,501,559,98"  MouseDown="ProfilePictureClick" RenderTransformOrigin="0.463,0.5" />
+            <Image Source="/ProfilePictures/12.png" Margin="893,501,59,98" MouseDown="ProfilePictureClick"/>
+            <Image Source="/ProfilePictures/11.png" Margin="715,501,207,98" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/10.png" Margin="571,501,391,98" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/8.png" Margin="212,500,716,99" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/6.png" Margin="888,324,54,262" MouseDown="ProfilePictureClick" />
+            <Image Source="/ProfilePictures/2.png" Margin="231,332,734,259" MouseDown="ProfilePictureClick" />
             <Image x:Name="celebrationButton" Source="/Images/pinkOval.png" Margin="791,225,44,380" MouseDown="ShowCelebrations" />
             
         </Grid>
 
-        <Image Source="/Images/backArrow.png" Margin="47,42,964,598" MouseDown="openMainMenu" />
+        <Image Source="/Images/backArrow.png" Margin="47,42,964,598" MouseDown="OpenMainMenu" />
         <Image Source="/Images/okButton.png" Margin="910,23,33,580" MouseDown="SaveChanges" />
 
 
