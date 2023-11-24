@@ -201,13 +201,13 @@ namespace Wits
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
-                MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

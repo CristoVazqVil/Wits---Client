@@ -221,7 +221,7 @@ namespace Wits
 
             if (result == true) 
             {
-                int existingGameId = window.gameId;
+                int existingGameId = window.GameId;
                 try
                 {
                     WitsService.GameManagerClient client = new WitsService.GameManagerClient();

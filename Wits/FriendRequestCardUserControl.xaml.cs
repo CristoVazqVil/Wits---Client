@@ -22,8 +22,7 @@ namespace Wits
     /// </summary>
     public partial class FriendRequestCardUserControl : UserControl
     {
-        public event EventHandler ButtonAcceptClicked;
-        public event EventHandler ButtonRejectClicked;
+        public event EventHandler ButtonClicked;
 
         public FriendRequestCardUserControl()
         {
@@ -59,7 +58,7 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            ButtonAcceptClicked?.Invoke(this, EventArgs.Empty);
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void RejectFriendRequest(object sender, RoutedEventArgs e)
@@ -77,7 +76,7 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            ButtonRejectClicked?.Invoke(this, EventArgs.Empty);
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
 
         private void AddFriendships(string acceptedPlayer)

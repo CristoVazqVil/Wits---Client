@@ -26,7 +26,7 @@ namespace Wits
     /// </summary>
     public partial class BoardPage : Page
     {
-        public Random random = new Random();
+        private Random random = new Random();
         private string userName = UserSingleton.Instance.Username;
         private List<int> usedQuestionIds = new List<int>();
         private int rounds = 1;
@@ -79,7 +79,7 @@ namespace Wits
 
 
 
-        private async void ShowQuestion()
+        private async Task ShowQuestion()
         {
 
             GridQuestionsAndAnswers.Margin = new Thickness(1, 1, -1, -1);
@@ -181,9 +181,8 @@ namespace Wits
 
             try
             {
-                WitsService.Question question = new WitsService.Question();
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                question = client.GetQuestionByID(newQuestionId);
+                WitsService.Question question = client.GetQuestionByID(newQuestionId);
 
                 if (question != null)
                 {
@@ -211,9 +210,8 @@ namespace Wits
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/answerFrame.png", UriKind.RelativeOrAbsolute));
             try
             {
-                WitsService.Question answer = new WitsService.Question();
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                answer = client.GetQuestionByID(newQuestionId);
+                WitsService.Question answer = client.GetQuestionByID(newQuestionId);
 
                 if (answer != null)
                 {

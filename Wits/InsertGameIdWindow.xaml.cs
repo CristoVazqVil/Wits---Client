@@ -19,7 +19,14 @@ namespace Wits
     /// </summary>
     public partial class InsertGameIdWindow : Window
     {
-        public int gameId;
+        private int gameId;
+
+        public int GameId
+        {
+            get { return gameId; }
+            private set { gameId = value; }
+        }
+
         public InsertGameIdWindow()
         {
             InitializeComponent();
@@ -37,7 +44,8 @@ namespace Wits
             string gameIdString = textBoxGameId.Text;
             if (!string.IsNullOrEmpty(gameIdString))
             {
-                gameId = int.Parse(gameIdString);
+                GameId = int.Parse(gameIdString);
+
                 this.DialogResult = true;
                 this.Close();
             }

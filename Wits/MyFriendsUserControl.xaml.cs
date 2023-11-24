@@ -47,8 +47,7 @@ namespace Wits
         private void AddFriendRow(string onlineFriend)
         {
             MyFriendCardUserControl friendCard = new MyFriendCardUserControl();
-            friendCard.ImageBlockClicked += MyFriendCard_ImageBlockClicked;
-            friendCard.ImageDeleteClicked += MyFriendCard_ImageDeleteClicked;
+            friendCard.ImageClicked += MyFriendCard_ImageClicked;
             Grid.SetRow(friendCard, rowsAdded);
             friendCard.setFriend(onlineFriend);
             gridFriends.Children.Add(friendCard);
@@ -65,13 +64,7 @@ namespace Wits
             rowsAdded--;
         }
 
-        private void MyFriendCard_ImageBlockClicked(object sender, EventArgs e)
-        {
-            MyFriendCardUserControl card = (MyFriendCardUserControl)sender;
-            RemoveFriendCard(card);
-        }
-
-        private void MyFriendCard_ImageDeleteClicked(object sender, EventArgs e)
+        private void MyFriendCard_ImageClicked(object sender, EventArgs e)
         {
             MyFriendCardUserControl card = (MyFriendCardUserControl)sender;
             RemoveFriendCard(card);

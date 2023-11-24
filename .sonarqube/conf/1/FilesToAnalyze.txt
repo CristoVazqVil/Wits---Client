@@ -119,6 +119,12 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Images\block.png
 D:\UV\Tecnologias\Wits\Wits\Wits\Images\delete.png
 D:\UV\Tecnologias\Wits\Wits\Wits\Images\friends.png
 D:\UV\Tecnologias\Wits\Wits\Wits\Images\notifications.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\unicorn.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\redBox.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\okGreenBox.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\AnswerRectangle1.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\warningBox.png
+D:\UV\Tecnologias\Wits\Wits\Wits\Images\purpleCelebrationBox.png
 D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\7.png
 D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\9.png
 D:\UV\Tecnologias\Wits\Wits\Wits\ProfilePictures\12.png

@@ -19,7 +19,14 @@ namespace Wits
     /// </summary>
     public partial class EnterPlayerUserWindow : Window
     {
-        public string playerUser;
+        private string playerUser;
+
+        public string PlayerUser
+        {
+            get { return playerUser; }
+            private set { playerUser = value; }
+        }
+
         public EnterPlayerUserWindow()
         {
             InitializeComponent();
@@ -34,8 +41,9 @@ namespace Wits
 
         private void buttonSendUser_Click(object sender, RoutedEventArgs e)
         {
-            playerUser = textBoxPlayerUser.Text;
-            if (!string.IsNullOrEmpty(playerUser))
+            PlayerUser = textBoxPlayerUser.Text;
+
+            if (!string.IsNullOrEmpty(PlayerUser))
             {
                 this.DialogResult = true;
                 this.Close();

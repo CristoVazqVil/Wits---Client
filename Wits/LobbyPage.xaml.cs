@@ -179,7 +179,7 @@ namespace Wits
 
             if (result == true)
             {
-                string invitedUser = window.playerUser;
+                string invitedUser = window.PlayerUser;
                 try
                 {
                     WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();

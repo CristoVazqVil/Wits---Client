@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Wits.Properties;
 using Microsoft.Extensions.Configuration;
+using System.Security.Cryptography;
 
 namespace Wits.Classes
 {
@@ -20,18 +21,18 @@ namespace Wits.Classes
 
         private static readonly string FROM_EMAIL = Configuration["EmailSettings:FromEmail"];
         private static readonly string SMTP_HOST = Configuration["EmailSettings:SmtpHost"];
-        private static readonly string EMAIL_PASSWORD = Configuration["EmailSettings:EmailPassword"];
+        private static readonly string EMAIL_PASSWORD = Decrypt(Configuration["EmailSettings:EmailPassword"]);
         private static readonly int SMTP_PORT = Configuration.GetSection("EmailSettings")["SmtpPort"] != null
             ? int.Parse(Configuration.GetSection("EmailSettings")["SmtpPort"])
             : 0;
 
+        private static MailMessage mail = new MailMessage();
         private const string DISPLAY_NAME = "Wits And Wagers";
         private static SmtpClient client = new SmtpClient(SMTP_HOST, SMTP_PORT)
         {
             EnableSsl = true
         };
-        private static MailMessage mail = new MailMessage();
-
+        
         public static string sendConfirmationMail(string to, string username)
         {
             string msge = Properties.Resources.ConfirmationEmailError;
@@ -114,6 +115,13 @@ namespace Wits.Classes
             }
 
             return msge;
+        }
+
+        static string Decrypt(string encryptedText)
+        {
+            byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+            byte[] decryptedBytes = ProtectedData.Unprotect(encryptedBytes, null, DataProtectionScope.CurrentUser);
+            return Encoding.UTF8.GetString(decryptedBytes);
         }
     }
 }

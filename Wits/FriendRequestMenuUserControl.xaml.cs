@@ -45,8 +45,7 @@ namespace Wits
         private void AddRequestRow(string onlineFriend)
         {
             FriendRequestCardUserControl requestCard = new FriendRequestCardUserControl();
-            requestCard.ButtonAcceptClicked += RequestCard_ButtonAcceptClicked;
-            requestCard.ButtonRejectClicked += RequestCard_ButtonRejectClicked;
+            requestCard.ButtonClicked += RequestCard_ButtonClicked;
             Grid.SetRow(requestCard, rowsAdded);
             requestCard.setFriend(onlineFriend);
             gridFriends.Children.Add(requestCard);
@@ -63,16 +62,11 @@ namespace Wits
             rowsAdded--;
         }
 
-        private void RequestCard_ButtonAcceptClicked(object sender, EventArgs e)
+        private void RequestCard_ButtonClicked(object sender, EventArgs e)
         {
             FriendRequestCardUserControl card = (FriendRequestCardUserControl)sender;
             RemoveFriendRequestCard(card);
         }
 
-        private void RequestCard_ButtonRejectClicked(object sender, EventArgs e)
-        {
-            FriendRequestCardUserControl card = (FriendRequestCardUserControl)sender;
-            RemoveFriendRequestCard(card);
-        }
     }
 }

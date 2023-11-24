@@ -24,8 +24,7 @@ namespace Wits
     {
         private const int PENDING = 0;
         private const int ACCEPTED = 1;
-        public event EventHandler ImageBlockClicked;
-        public event EventHandler ImageDeleteClicked;
+        public event EventHandler ImageClicked;
 
         public MyFriendCardUserControl()
         {
@@ -61,7 +60,7 @@ namespace Wits
                         DeleteFriendships(enteredPlayer);
                         DeleteAllRequests(enteredPlayer);
                         MessageBox.Show(Properties.Resources.BlockPlayerMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
-                        ImageBlockClicked?.Invoke(this, EventArgs.Empty);
+                        ImageClicked?.Invoke(this, EventArgs.Empty);
                     }
                 }
                 catch (FaultException ex)
@@ -82,7 +81,7 @@ namespace Wits
                 DeleteFriendships(enteredPlayer);
                 DeleteAcceptedRequests(enteredPlayer);
                 MessageBox.Show(Properties.Resources.FriendDeletedMessage, Properties.Resources.FriendDeleted, MessageBoxButton.OK, MessageBoxImage.Information);
-                ImageDeleteClicked?.Invoke(this, EventArgs.Empty);
+                ImageClicked?.Invoke(this, EventArgs.Empty);
             }
         }
 
