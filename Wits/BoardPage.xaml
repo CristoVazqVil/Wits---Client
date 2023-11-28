@@ -42,9 +42,15 @@
 
         </Grid>
 
-        <Grid x:Name="GridAllAnswers" Margin="0,754,0,-754">
-            <Image x:Name="ImageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="55,109,657,51" MouseDown="SelectedAnswer" />
-            <Label x:Name="LabelAnswer1" Content="1997" HorizontalAlignment="Left" Margin="29,252,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+        <Grid x:Name="GridAllAnswers" Margin="-20,754,20,-754">
+            <Image x:Name="ImageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="45,94,770,117" MouseDown="SelectedAnswer"  />
+            <Image x:Name="ImageAnswerPlayer2" Source="/Images/AnswerRectangle2.png" Margin="270,106,540,123"  MouseDown="SelectedAnswer" />
+            <Image x:Name="ImageAnswerPlayer3" Source="/Images/AnswerRectangle3.png" Margin="511,110,291,119" MouseDown="SelectedAnswer" />
+            <Image x:Name="ImageAnswerPlayer4" Source="/Images/AnswerRectangle4.png" Margin="748,107,42,106" MouseDown="SelectedAnswer" />
+
+        
+
+            <Label x:Name="LabelAnswer1" HorizontalAlignment="Left" Margin="-47,202,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -56,7 +62,44 @@
             </Label>
 
 
-            <Image x:Name="ImageUserSelection" Source="/ProfilePictures/1.png" Margin="77,550,882,65" Visibility="Hidden"/>
+            <Label x:Name="LabelAnswer2" Content="" HorizontalAlignment="Left" Margin="197,203,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+            <Label x:Name="LabelAnswer3" Content="" HorizontalAlignment="Left" Margin="443,216,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+            <Label x:Name="LabelAnswer4" Content="" HorizontalAlignment="Left" Margin="671,219,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+
+            <Image x:Name="imageSelectionPlayer1" Source="/ProfilePictures/1.png" Margin="359,597,629,31" Visibility="Hidden"/>
+            <Image x:Name="imageSelectionPlayer2" Source="/ProfilePictures/5.png" Margin="468,597,520,31" Visibility="Hidden"/>
+            <Image x:Name="imageSelectionPlayer3" Source="/ProfilePictures/6.png" Margin="565,597,423,31" Visibility="Hidden"/>
+            <Image x:Name="imageSelectionPlayer4" Source="/ProfilePictures/12.png" Margin="676,597,312,31" Visibility="Hidden"/>
+
 
         </Grid>
 
@@ -64,7 +107,7 @@
         <Grid x:Name="GridWarning" Margin="1177,822,-1177,-822" MouseDown="AcceptWarning" >
             <Image Source="/Images/warningBox.png" Margin="156,126,156,126" />
             <Image x:Name="ImageAccept" Source="/Images/okGreenBox.png" Margin="406,402,406,234" />
-             <Label Content="Please enter a valid amount within your available chips." 
+            <Label Content="Please enter a valid amount within your available chips." 
            HorizontalAlignment="Left" Margin="383,320,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="37" Width="395"/>
 
         </Grid>

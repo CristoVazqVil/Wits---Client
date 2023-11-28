@@ -201,9 +201,9 @@ namespace Wits
             try
             {
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                client.CreateGame(newGameId, UserSingleton.Instance.Username, 6);
+                client.CreateGame(newGameId, UserSingleton.Instance.Username);
                 mediaPlayer.Stop();
-                GameSingleton.Instance.SetGameId(newGameId);
+                GameSingleton.Instance.SetGame(newGameId, 1);
                 LobbyPage lobbyPage = new LobbyPage();
                 this.NavigationService.Navigate(lobbyPage);
             }
@@ -225,10 +225,11 @@ namespace Wits
                 try
                 {
                     WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                    if (client.JoinGame(existingGameId, UserSingleton.Instance.Username) == 1)
+                    int playerNumber = client.JoinGame(existingGameId, UserSingleton.Instance.Username);
+                    if (playerNumber > 0)
                     {
                         mediaPlayer.Stop();
-                        GameSingleton.Instance.SetGameId(existingGameId);
+                        GameSingleton.Instance.SetGame(existingGameId, playerNumber);
                         LobbyPage lobbyPage = new LobbyPage();
                         this.NavigationService.Navigate(lobbyPage);
                     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.Remoting.Contexts;
 using System.ServiceModel;
 using System.Text;
@@ -45,6 +46,8 @@ namespace Wits
             client.UnregisterUserContext(UserSingleton.Instance.Username);
         }
 
+       
+
         private void RestartVideo(object sender, RoutedEventArgs e)
         {
             backgroundVideo.Position = TimeSpan.Zero;
@@ -53,9 +56,16 @@ namespace Wits
 
         private void OpenGameWindow(object sender, MouseButtonEventArgs e)
         {
-            deleteContext();
-            BoardPage boardPage = new BoardPage();
-            this.NavigationService.Navigate(boardPage);
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
+                client.StartGame(gameId);
+            }
+            catch (FaultException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void StartGameHighlight(object sender, MouseEventArgs e)
@@ -208,5 +218,26 @@ namespace Wits
             deleteContext();
             this.NavigationService.GoBack();
         }
+
+
+        public void StartGamePage()
+        {
+            deleteContext();
+            BoardPage boardPage = new BoardPage();
+            this.NavigationService.Navigate(boardPage);
+        }
+
+        public void SendPlayerAnswers(Dictionary<int, string> playerAnswers)
+        {
+            // Implementa la lógica para procesar y mostrar las respuestas de los jugadores
+            Console.WriteLine("Received Player Answers:");
+            foreach (var kvp in playerAnswers)
+            {
+                Console.WriteLine($"Player {kvp.Key}: {kvp.Value}");
+                // Puedes realizar acciones adicionales aquí, si es necesario.
+            }
+        }
+
+
     }
 }
