@@ -25,6 +25,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ReceivePlayerSelectedAnswer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="selectedAnswer" type="xs:int" />
+        <xs:element minOccurs="0" name="idProfilePicture" type="xs:int" />
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadyToWager">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="isReady" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadyToShowAnswer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="isReady" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateAnswers">
     <xs:complexType>
       <xs:sequence>
@@ -37,10 +65,42 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateSelection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerSelectedAnswers" nillable="true" type="q2:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSelectionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowEnterWager">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowEnterWagerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowTrueAnswer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowTrueAnswerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="player" nillable="true" type="q2:Player" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="player" nillable="true" type="q3:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -61,7 +121,7 @@
   <xs:element name="GetPlayerByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserResult" nillable="true" type="q3:Player" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserResult" nillable="true" type="q4:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -76,7 +136,7 @@
   <xs:element name="GetPlayerByUserAndPasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserAndPasswordResult" nillable="true" type="q4:Player" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserAndPasswordResult" nillable="true" type="q5:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +150,7 @@
   <xs:element name="GetPlayerFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPlayerFriendsResult" nillable="true" type="q5:ArrayOfstring" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPlayerFriendsResult" nillable="true" type="q6:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -104,7 +164,7 @@
   <xs:element name="GetAllPlayerRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllPlayerRequestsResult" nillable="true" type="q6:ArrayOfstring" />
+        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllPlayerRequestsResult" nillable="true" type="q7:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -294,7 +354,7 @@
   <xs:element name="GetConnectedUsersResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetConnectedUsersResult" nillable="true" type="q7:ArrayOfstring" />
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetConnectedUsersResult" nillable="true" type="q8:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -314,14 +374,14 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="principalPlayer" nillable="true" type="xs:string" />
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="allConnectedUsers" nillable="true" type="q8:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="allConnectedUsers" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetConnectedFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetConnectedFriendsResult" nillable="true" type="q9:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetConnectedFriendsResult" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -363,7 +423,7 @@
   <xs:element name="GetScoresResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetScoresResult" nillable="true" type="q10:ArrayOfKeyValueOfstringint" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetScoresResult" nillable="true" type="q11:ArrayOfKeyValueOfstringint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -420,7 +480,7 @@
   <xs:element name="GetQuestionByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetQuestionByIDResult" nillable="true" type="q11:Question" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetQuestionByIDResult" nillable="true" type="q12:Question" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -446,7 +506,7 @@
   <xs:element name="GetQuestionIdsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetQuestionIdsResult" nillable="true" type="q12:ArrayOfint" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetQuestionIdsResult" nillable="true" type="q13:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -477,18 +537,6 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
       </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReceivePlayerAnswers">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerAnswers" nillable="true" type="q13:ArrayOfKeyValueOfintstring" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ReceivePlayerAnswersResponse">
-    <xs:complexType>
-      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateChat">

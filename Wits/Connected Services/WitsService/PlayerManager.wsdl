@@ -57,11 +57,38 @@
   <wsdl:message name="IActiveGame_SavePlayerAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePlayerAnswer" />
   </wsdl:message>
+  <wsdl:message name="IActiveGame_ReceivePlayerSelectedAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReceivePlayerSelectedAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ReadyToWager_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyToWager" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ReadyToShowAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyToShowAnswer" />
+  </wsdl:message>
   <wsdl:message name="IActiveGame_UpdateAnswers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateAnswers" />
   </wsdl:message>
   <wsdl:message name="IActiveGame_UpdateAnswers_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateAnswersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSelection" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateSelection_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSelectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowEnterWager_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowEnterWager" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowEnterWager_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowEnterWagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowTrueAnswer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowTrueAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowTrueAnswer_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowTrueAnswerResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_AddPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayer" />
@@ -249,12 +276,6 @@
   <wsdl:message name="IChatManager_UnregisterUserContext_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterUserContext" />
   </wsdl:message>
-  <wsdl:message name="IChatManager_ReceivePlayerAnswers_InputMessage">
-    <wsdl:part name="parameters" element="tns:ReceivePlayerAnswers" />
-  </wsdl:message>
-  <wsdl:message name="IChatManager_ReceivePlayerAnswers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ReceivePlayerAnswersResponse" />
-  </wsdl:message>
   <wsdl:message name="IChatManager_UpdateChat_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateChat" />
   </wsdl:message>
@@ -277,9 +298,30 @@
     <wsdl:operation name="SavePlayerAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/SavePlayerAnswer" message="tns:IActiveGame_SavePlayerAnswer_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ReceivePlayerSelectedAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer" message="tns:IActiveGame_ReceivePlayerSelectedAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToWager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToWager" message="tns:IActiveGame_ReadyToWager_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToShowAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer" message="tns:IActiveGame_ReadyToShowAnswer_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateAnswers">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswers" message="tns:IActiveGame_UpdateAnswers_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswersResponse" message="tns:IActiveGame_UpdateAnswers_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateSelection" message="tns:IActiveGame_UpdateSelection_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateSelectionResponse" message="tns:IActiveGame_UpdateSelection_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowEnterWager">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowEnterWager" message="tns:IActiveGame_ShowEnterWager_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowEnterWagerResponse" message="tns:IActiveGame_ShowEnterWager_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowTrueAnswer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswer" message="tns:IActiveGame_ShowTrueAnswer_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse" message="tns:IActiveGame_ShowTrueAnswer_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPlayerManager">
@@ -417,10 +459,6 @@
     <wsdl:operation name="UnregisterUserContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UnregisterUserContext" message="tns:IChatManager_UnregisterUserContext_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ReceivePlayerAnswers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/ReceivePlayerAnswers" message="tns:IChatManager_ReceivePlayerAnswers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/ReceivePlayerAnswersResponse" message="tns:IChatManager_ReceivePlayerAnswers_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="UpdateChat">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/UpdateChat" message="tns:IChatManager_UpdateChat_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UpdateChatResponse" message="tns:IChatManager_UpdateChat_InputCallbackMessage" />
@@ -451,8 +489,53 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ReceivePlayerSelectedAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToWager">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReadyToWager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToShowAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReadyToShowAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="UpdateAnswers">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateAnswers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSelection">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateSelection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowEnterWager">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowEnterWager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowTrueAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowTrueAnswer" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -760,15 +843,6 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="ReceivePlayerAnswers">
-      <soap12:operation soapAction="http://tempuri.org/IChatManager/ReceivePlayerAnswers" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="UpdateChat">
       <soap12:operation soapAction="http://tempuri.org/IChatManager/UpdateChat" style="document" />

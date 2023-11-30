@@ -15,6 +15,67 @@ namespace Wits.WitsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerSelectedAnswer", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class PlayerSelectedAnswer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProfilePictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SelectedAnswerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProfilePicture {
+            get {
+                return this.IdProfilePictureField;
+            }
+            set {
+                if ((this.IdProfilePictureField.Equals(value) != true)) {
+                    this.IdProfilePictureField = value;
+                    this.RaisePropertyChanged("IdProfilePicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SelectedAnswer {
+            get {
+                return this.SelectedAnswerField;
+            }
+            set {
+                if ((this.SelectedAnswerField.Equals(value) != true)) {
+                    this.SelectedAnswerField = value;
+                    this.RaisePropertyChanged("SelectedAnswer");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
     [System.SerializableAttribute()]
     public partial class Player : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -348,6 +409,24 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/SavePlayerAnswer")]
         System.Threading.Tasks.Task SavePlayerAnswerAsync(int playerNumber, string answer, int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer")]
+        void ReceivePlayerSelectedAnswer(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer")]
+        System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToWager")]
+        void ReadyToWager(int gameId, int playerNumber, bool isReady);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToWager")]
+        System.Threading.Tasks.Task ReadyToWagerAsync(int gameId, int playerNumber, bool isReady);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer")]
+        void ReadyToShowAnswer(int gameId, int playerNumber, bool isReady);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer")]
+        System.Threading.Tasks.Task ReadyToShowAnswerAsync(int gameId, int playerNumber, bool isReady);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -355,6 +434,15 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/UpdateAnswers", ReplyAction="http://tempuri.org/IActiveGame/UpdateAnswersResponse")]
         void UpdateAnswers(System.Collections.Generic.Dictionary<int, string> playerAnswers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/UpdateSelection", ReplyAction="http://tempuri.org/IActiveGame/UpdateSelectionResponse")]
+        void UpdateSelection(System.Collections.Generic.Dictionary<int, Wits.WitsService.PlayerSelectedAnswer> playerSelectedAnswers);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowEnterWager", ReplyAction="http://tempuri.org/IActiveGame/ShowEnterWagerResponse")]
+        void ShowEnterWager();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowTrueAnswer", ReplyAction="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse")]
+        void ShowTrueAnswer();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -407,6 +495,30 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task SavePlayerAnswerAsync(int playerNumber, string answer, int gameId) {
             return base.Channel.SavePlayerAnswerAsync(playerNumber, answer, gameId);
+        }
+        
+        public void ReceivePlayerSelectedAnswer(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId) {
+            base.Channel.ReceivePlayerSelectedAnswer(playerNumber, selectedAnswer, idProfilePicture, gameId);
+        }
+        
+        public System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId) {
+            return base.Channel.ReceivePlayerSelectedAnswerAsync(playerNumber, selectedAnswer, idProfilePicture, gameId);
+        }
+        
+        public void ReadyToWager(int gameId, int playerNumber, bool isReady) {
+            base.Channel.ReadyToWager(gameId, playerNumber, isReady);
+        }
+        
+        public System.Threading.Tasks.Task ReadyToWagerAsync(int gameId, int playerNumber, bool isReady) {
+            return base.Channel.ReadyToWagerAsync(gameId, playerNumber, isReady);
+        }
+        
+        public void ReadyToShowAnswer(int gameId, int playerNumber, bool isReady) {
+            base.Channel.ReadyToShowAnswer(gameId, playerNumber, isReady);
+        }
+        
+        public System.Threading.Tasks.Task ReadyToShowAnswerAsync(int gameId, int playerNumber, bool isReady) {
+            return base.Channel.ReadyToShowAnswerAsync(gameId, playerNumber, isReady);
         }
     }
     
@@ -942,12 +1054,6 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/UnregisterUserContext")]
         System.Threading.Tasks.Task UnregisterUserContextAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/ReceivePlayerAnswers", ReplyAction="http://tempuri.org/IChatManager/ReceivePlayerAnswersResponse")]
-        void ReceivePlayerAnswers(System.Collections.Generic.Dictionary<int, string> playerAnswers);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/ReceivePlayerAnswers", ReplyAction="http://tempuri.org/IChatManager/ReceivePlayerAnswersResponse")]
-        System.Threading.Tasks.Task ReceivePlayerAnswersAsync(System.Collections.Generic.Dictionary<int, string> playerAnswers);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1018,14 +1124,6 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task UnregisterUserContextAsync(string username) {
             return base.Channel.UnregisterUserContextAsync(username);
-        }
-        
-        public void ReceivePlayerAnswers(System.Collections.Generic.Dictionary<int, string> playerAnswers) {
-            base.Channel.ReceivePlayerAnswers(playerAnswers);
-        }
-        
-        public System.Threading.Tasks.Task ReceivePlayerAnswersAsync(System.Collections.Generic.Dictionary<int, string> playerAnswers) {
-            return base.Channel.ReceivePlayerAnswersAsync(playerAnswers);
         }
     }
 }
