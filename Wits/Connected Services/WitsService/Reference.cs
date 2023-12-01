@@ -1118,12 +1118,6 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/UnregisterUserContext")]
         System.Threading.Tasks.Task UnregisterUserContextAsync(string username);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/StartGame")]
-        void StartGame(int gameId);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/StartGame")]
-        System.Threading.Tasks.Task StartGameAsync(int gameId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1194,14 +1188,6 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task UnregisterUserContextAsync(string username) {
             return base.Channel.UnregisterUserContextAsync(username);
-        }
-        
-        public void StartGame(int gameId) {
-            base.Channel.StartGame(gameId);
-        }
-        
-        public System.Threading.Tasks.Task StartGameAsync(int gameId) {
-            return base.Channel.StartGameAsync(gameId);
         }
     }
 }

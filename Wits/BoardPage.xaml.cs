@@ -100,7 +100,7 @@ namespace Wits
 
         private void ShowVictoryScreen()
         {
-            GridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
             Player playerData = playerManagerClient.GetPlayerByUser(userName);
             int profilePictureId = playerData.ProfilePictureId;
@@ -230,12 +230,12 @@ namespace Wits
         private void PlayNextRound()
         {
             labelRound.Content = "Round " + rounds;
-            TextBoxPlayersAnswer.Text = "";
+            textBoxPlayersAnswer.Text = "";
             imageSelectionPlayer1.Visibility = Visibility.Hidden;
             imageSelectionPlayer2.Visibility = Visibility.Hidden;
             imageSelectionPlayer3.Visibility = Visibility.Hidden;
             imageSelectionPlayer4.Visibility = Visibility.Hidden;
-            ImageAcceptWager.Visibility = Visibility.Hidden;
+            imageAcceptWager.Visibility = Visibility.Hidden;
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
 
             LabelAnswer1.Content = "";
@@ -261,9 +261,9 @@ namespace Wits
             ImageWinner3.Visibility = Visibility.Hidden;
             ImageWinner4.Visibility = Visibility.Hidden;
 
-            ImageAcceptAnswer.Visibility = Visibility.Visible;
+            imageAcceptAnswer.Visibility = Visibility.Visible;
 
-            GridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
 
             correctPlayers.Clear();
 
@@ -408,9 +408,9 @@ namespace Wits
 
         private void SaveAnswer(object sender, MouseButtonEventArgs e)
         {
-            LabelInstrucion.Content = "Enter Your Answer:";
-            GridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-            string answerText = TextBoxPlayersAnswer.Text;
+            labelInstrucion.Content = "Enter Your Answer:";
+            gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+            string answerText = textBoxPlayersAnswer.Text;
 
             try
             {
@@ -436,7 +436,7 @@ namespace Wits
             {
                 label.Content = answerText;
             }
-            GridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
+            gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
         }
 
 
@@ -528,7 +528,7 @@ namespace Wits
             foreach (int playerNumber in correctPlayers)
             {
                 string winnerImageName = "ImageWinner" + playerNumber;
-                Image winnerImage = GridRoundWinners.FindName(winnerImageName) as Image;
+                Image winnerImage = gridRoundWinners.FindName(winnerImageName) as Image;
 
                 if (winnerImage != null)
                 {
@@ -549,7 +549,7 @@ namespace Wits
 
             if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount) && wagerAmount <= chipsAvailable)
             {
-                GridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
 
 
                 InstanceContext context = new InstanceContext(this);
@@ -557,8 +557,8 @@ namespace Wits
                 bool isReady = true;
                 client.ReadyToShowAnswer(gameId, player, isReady);
 
-                ImageAcceptWager.Visibility = Visibility.Hidden;
-                ImageAcceptAnswer.Visibility = Visibility.Hidden;
+                imageAcceptWager.Visibility = Visibility.Hidden;
+                imageAcceptAnswer.Visibility = Visibility.Hidden;
 
             }
             else
@@ -744,11 +744,11 @@ namespace Wits
         public void ShowEnterWager()
         {
 
-            GridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
-            TextBoxPlayersAnswer.Text = "";
-            ImageAcceptWager.Visibility = Visibility.Visible;
-            GridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
-            LabelInstrucion.Content = "How much will you wager?";
+            gridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
+            textBoxPlayersAnswer.Text = "";
+            imageAcceptWager.Visibility = Visibility.Visible;
+            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            labelInstrucion.Content = "How much will you wager?";
 
         }
 
@@ -831,7 +831,7 @@ namespace Wits
                 Console.WriteLine($"Player {playerNumber}");
             }
 
-            if (int.TryParse(TextBoxPlayersAnswer.Text, out int wagerAmount))
+            if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount))
             {
                 int currentChips = int.Parse(labelChips.Content.ToString());
                 int newChips = currentChips + wagerAmount;

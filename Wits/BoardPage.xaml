@@ -42,7 +42,7 @@
 
         </Grid>
 
-        <Grid x:Name="GridAllAnswers" Margin="-20,754,20,-754">
+        <Grid x:Name="gridAllAnswers" Margin="-20,754,20,-754">
             <Image x:Name="ImageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="45,94,770,117" MouseDown="SelectedAnswer"  />
             <Image x:Name="ImageAnswerPlayer2" Source="/Images/AnswerRectangle2.png" Margin="270,106,540,123"  MouseDown="SelectedAnswer" />
             <Image x:Name="ImageAnswerPlayer3" Source="/Images/AnswerRectangle3.png" Margin="511,110,291,119" MouseDown="SelectedAnswer" />
@@ -112,7 +112,7 @@
 
         </Grid>
 
-        <Grid x:Name="GridRoundWinners" Margin="1177,-954,-1177,954" >
+        <Grid x:Name="gridRoundWinners" Margin="1177,-954,-1177,954" >
             <Image Source="/Images/purpleCelebrationBox.png" />
             <Label x:Name="LabelRightAnswer" Content="You're Right!" HorizontalAlignment="Center" Margin="0,539,0,0" VerticalAlignment="Top" Foreground="White" Height="98" Width="366" FontSize="60"/>
             <Image x:Name="ImageWinner1" Source="/ProfilePictures/1.png" Margin="374,220,564,380" Visibility="Hidden"/>

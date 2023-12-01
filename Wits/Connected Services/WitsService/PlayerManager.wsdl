@@ -294,9 +294,6 @@
   <wsdl:message name="IChatManager_UnregisterUserContext_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterUserContext" />
   </wsdl:message>
-  <wsdl:message name="IChatManager_StartGame_InputMessage">
-    <wsdl:part name="parameters" element="tns:StartGame" />
-  </wsdl:message>
   <wsdl:message name="IChatManager_UpdateChat_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateChat" />
   </wsdl:message>
@@ -495,9 +492,6 @@
     </wsdl:operation>
     <wsdl:operation name="UnregisterUserContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UnregisterUserContext" message="tns:IChatManager_UnregisterUserContext_InputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/StartGame" message="tns:IChatManager_StartGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateChat">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/UpdateChat" message="tns:IChatManager_UpdateChat_OutputCallbackMessage" />
@@ -913,12 +907,6 @@
     </wsdl:operation>
     <wsdl:operation name="UnregisterUserContext">
       <soap12:operation soapAction="http://tempuri.org/IChatManager/UnregisterUserContext" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="StartGame">
-      <soap12:operation soapAction="http://tempuri.org/IChatManager/StartGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
