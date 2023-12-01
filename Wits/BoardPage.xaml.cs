@@ -347,12 +347,7 @@ namespace Wits
             imageSelectionPlayer4.Visibility = Visibility.Hidden;
             ImageAcceptWager.Visibility = Visibility.Hidden;
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
-            Console.Write("YA VA A LIMPIAR");
-
-            LabelAnswer1.Content = " ";
-            LabelAnswer2.Content = " ";
-            LabelAnswer3.Content = " ";
-            LabelAnswer4.Content = " ";
+          
 
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
@@ -846,10 +841,9 @@ namespace Wits
 
 
 
-        private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
+     
+       private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
-
-
             // Obtener la respuesta correcta para la pregunta actual
             int correctAnswer = trueAnswer;
 
@@ -892,7 +886,6 @@ namespace Wits
             // Lista para almacenar los playerNumber que respondieron correctamente
             List<int> correctPlayers = new List<int>();
 
-
             foreach (var kvp in playerSelectedAnswers)
             {
                 int playerNumber = kvp.Key;
@@ -906,31 +899,35 @@ namespace Wits
                     // Agregar el playerNumber a la lista de jugadores que respondieron correctamente
                     correctPlayers.Add(playerNumber);
                 }
-
-
-
-                if (int.TryParse(TextBoxPlayersAnswer.Text, out int wagerAmount))
-                {
-                    int currentChips = int.Parse(labelChips.Content.ToString());
-                    int newChips = currentChips + wagerAmount;
-
-                    // Verificar si el jugador está en la lista de jugadores correctos
-                    if (correctPlayers.Contains(player))
-                    {
-                        // Sumar la cantidad del TextBoxPlayersAnswer al LabelChips
-                        labelChips.Content = newChips.ToString();
-                    }
-                    else
-                    {
-                        // Restar la cantidad del TextBoxPlayersAnswer al LabelChips
-                        labelChips.Content = (currentChips - wagerAmount).ToString();
-                    }
-                }
-
-
-
             }
+
+            // Imprimir la lista de jugadores que respondieron correctamente
+            Console.WriteLine("Correct Players:");
+            foreach (int playerNumber in correctPlayers)
+            {
+                Console.WriteLine($"Player {playerNumber}");
+            }
+
+            if (int.TryParse(TextBoxPlayersAnswer.Text, out int wagerAmount))
+            {
+                int currentChips = int.Parse(labelChips.Content.ToString());
+                int newChips = currentChips + wagerAmount;
+
+                // Verificar si el jugador está en la lista de jugadores correctos
+                if (correctPlayers.Contains(player))
+                {
+                    // Sumar la cantidad del TextBoxPlayersAnswer al LabelChips
+                    labelChips.Content = newChips.ToString();
+                }
+                else
+                {
+                    // Restar la cantidad del TextBoxPlayersAnswer al LabelChips
+                    labelChips.Content = (currentChips - wagerAmount).ToString();
+                }
+            }
+
             this.correctPlayers = correctPlayers;
         }
+
     }
 }
