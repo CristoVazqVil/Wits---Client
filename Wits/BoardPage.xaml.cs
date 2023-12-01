@@ -361,6 +361,12 @@ namespace Wits
             client.ReadyToWager(gameId, player, isReady);
             client.ReadyToShowAnswer(gameId, player, isReady);
 
+
+            client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
+
+            client.SavePlayerAnswer(player, "", gameId);
+
+
             ImageWinner1.Visibility = Visibility.Hidden;
             ImageWinner2.Visibility = Visibility.Hidden;
             ImageWinner3.Visibility = Visibility.Hidden;
@@ -715,6 +721,9 @@ namespace Wits
                         ChangeProfilePicture(1, IdProfilePicturePlayerSelection);
                         switch (selectedAnswer)
                         {
+                            case 0:
+                                imageSelectionPlayer1.Visibility = Visibility.Hidden;
+                                break;
                             case 1:
                                 imageSelectionPlayer1.Margin = new Thickness(45, 510, 944, 118);
                                 break;
@@ -736,6 +745,9 @@ namespace Wits
                         imageSelectionPlayer2.Visibility = Visibility.Visible;
                         switch (selectedAnswer)
                         {
+                            case 0:
+                                imageSelectionPlayer2.Visibility = Visibility.Hidden;
+                                break;
                             case 1:
                                 imageSelectionPlayer2.Margin = new Thickness(204, 510, 784, 118);
                                 break;
@@ -757,6 +769,9 @@ namespace Wits
                         ChangeProfilePicture(3, IdProfilePicturePlayerSelection);
                         switch (selectedAnswer)
                         {
+                            case 0:
+                                imageSelectionPlayer3.Visibility = Visibility.Hidden;
+                                break;
                             case 1:
                                 imageSelectionPlayer3.Margin = new Thickness(45, 510, 944, 118);
                                 break;
@@ -779,6 +794,9 @@ namespace Wits
                         imageSelectionPlayer4.Visibility = Visibility.Visible;
                         switch (selectedAnswer)
                         {
+                            case 0:
+                                imageSelectionPlayer4.Visibility = Visibility.Hidden;
+                                break;
                             case 1:
                                 imageSelectionPlayer4.Margin = new Thickness(218, 106, 770, 522);
                                 break;
