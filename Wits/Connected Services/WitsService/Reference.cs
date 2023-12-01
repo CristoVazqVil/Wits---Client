@@ -337,6 +337,18 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddPlayerResponse")]
         System.Threading.Tasks.Task<int> AddPlayerAsync(Wits.WitsService.Player player);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/DeletePlayer", ReplyAction="http://tempuri.org/IPlayerManager/DeletePlayerResponse")]
+        int DeletePlayer(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/DeletePlayer", ReplyAction="http://tempuri.org/IPlayerManager/DeletePlayerResponse")]
+        System.Threading.Tasks.Task<int> DeletePlayerAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/IsPlayerLogged", ReplyAction="http://tempuri.org/IPlayerManager/IsPlayerLoggedResponse")]
+        bool IsPlayerLogged(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/IsPlayerLogged", ReplyAction="http://tempuri.org/IPlayerManager/IsPlayerLoggedResponse")]
+        System.Threading.Tasks.Task<bool> IsPlayerLoggedAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUser", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserResponse")]
         Wits.WitsService.Player GetPlayerByUser(string username);
         
@@ -348,6 +360,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse")]
         System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdatePassword", ReplyAction="http://tempuri.org/IPlayerManager/UpdatePasswordResponse")]
+        int UpdatePassword(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdatePassword", ReplyAction="http://tempuri.org/IPlayerManager/UpdatePasswordResponse")]
+        System.Threading.Tasks.Task<int> UpdatePasswordAsync(string username, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerFriends", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerFriendsResponse")]
         string[] GetPlayerFriends(string playerUsername);
@@ -463,6 +481,22 @@ namespace Wits.WitsService {
             return base.Channel.AddPlayerAsync(player);
         }
         
+        public int DeletePlayer(string username) {
+            return base.Channel.DeletePlayer(username);
+        }
+        
+        public System.Threading.Tasks.Task<int> DeletePlayerAsync(string username) {
+            return base.Channel.DeletePlayerAsync(username);
+        }
+        
+        public bool IsPlayerLogged(string username) {
+            return base.Channel.IsPlayerLogged(username);
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsPlayerLoggedAsync(string username) {
+            return base.Channel.IsPlayerLoggedAsync(username);
+        }
+        
         public Wits.WitsService.Player GetPlayerByUser(string username) {
             return base.Channel.GetPlayerByUser(username);
         }
@@ -477,6 +511,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<Wits.WitsService.Player> GetPlayerByUserAndPasswordAsync(string username, string userPassword) {
             return base.Channel.GetPlayerByUserAndPasswordAsync(username, userPassword);
+        }
+        
+        public int UpdatePassword(string username, string password) {
+            return base.Channel.UpdatePassword(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdatePasswordAsync(string username, string password) {
+            return base.Channel.UpdatePasswordAsync(username, password);
         }
         
         public string[] GetPlayerFriends(string playerUsername) {
@@ -585,32 +627,39 @@ namespace Wits.WitsService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IConnectedUsers")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WitsService.IConnectedUsers", CallbackContract=typeof(Wits.WitsService.IConnectedUsersCallback))]
     public interface IConnectedUsers {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/AddConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUser")]
         void AddConnectedUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/AddConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUser")]
         System.Threading.Tasks.Task AddConnectedUserAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse")]
-        string[] GetConnectedUsers();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu")]
+        void RemoveConnectedUserInMenu(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse")]
-        System.Threading.Tasks.Task<string[]> GetConnectedUsersAsync();
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu")]
+        System.Threading.Tasks.Task RemoveConnectedUserInMenuAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser")]
         void RemoveConnectedUser(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse")]
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser")]
         System.Threading.Tasks.Task RemoveConnectedUserAsync(string username);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
-        string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers);
+        string[] GetConnectedFriends(string principalPlayer);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
-        System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers);
+        System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IConnectedUsersCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/UpdateConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/UpdateConnectedFriendsResponse")]
+        void UpdateConnectedFriends();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -619,25 +668,26 @@ namespace Wits.WitsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ConnectedUsersClient : System.ServiceModel.ClientBase<Wits.WitsService.IConnectedUsers>, Wits.WitsService.IConnectedUsers {
+    public partial class ConnectedUsersClient : System.ServiceModel.DuplexClientBase<Wits.WitsService.IConnectedUsers>, Wits.WitsService.IConnectedUsers {
         
-        public ConnectedUsersClient() {
+        public ConnectedUsersClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public ConnectedUsersClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public ConnectedUsersClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public ConnectedUsersClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ConnectedUsersClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ConnectedUsersClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public ConnectedUsersClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public ConnectedUsersClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public ConnectedUsersClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
         public void AddConnectedUser(string username) {
@@ -648,12 +698,12 @@ namespace Wits.WitsService {
             return base.Channel.AddConnectedUserAsync(username);
         }
         
-        public string[] GetConnectedUsers() {
-            return base.Channel.GetConnectedUsers();
+        public void RemoveConnectedUserInMenu(string username) {
+            base.Channel.RemoveConnectedUserInMenu(username);
         }
         
-        public System.Threading.Tasks.Task<string[]> GetConnectedUsersAsync() {
-            return base.Channel.GetConnectedUsersAsync();
+        public System.Threading.Tasks.Task RemoveConnectedUserInMenuAsync(string username) {
+            return base.Channel.RemoveConnectedUserInMenuAsync(username);
         }
         
         public void RemoveConnectedUser(string username) {
@@ -664,12 +714,12 @@ namespace Wits.WitsService {
             return base.Channel.RemoveConnectedUserAsync(username);
         }
         
-        public string[] GetConnectedFriends(string principalPlayer, string[] allConnectedUsers) {
-            return base.Channel.GetConnectedFriends(principalPlayer, allConnectedUsers);
+        public string[] GetConnectedFriends(string principalPlayer) {
+            return base.Channel.GetConnectedFriends(principalPlayer);
         }
         
-        public System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer, string[] allConnectedUsers) {
-            return base.Channel.GetConnectedFriendsAsync(principalPlayer, allConnectedUsers);
+        public System.Threading.Tasks.Task<string[]> GetConnectedFriendsAsync(string principalPlayer) {
+            return base.Channel.GetConnectedFriendsAsync(principalPlayer);
         }
     }
     
@@ -678,10 +728,10 @@ namespace Wits.WitsService {
     public interface IGameManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/CreateGame", ReplyAction="http://tempuri.org/IGameManager/CreateGameResponse")]
-        void CreateGame(int gameId, string gameLeader, int numberOfPlayers);
+        void CreateGame(int gameId, string gameLeader);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/CreateGame", ReplyAction="http://tempuri.org/IGameManager/CreateGameResponse")]
-        System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader, int numberOfPlayers);
+        System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/JoinGame", ReplyAction="http://tempuri.org/IGameManager/JoinGameResponse")]
         int JoinGame(int gameId, string playerId);
@@ -747,12 +797,12 @@ namespace Wits.WitsService {
                 base(binding, remoteAddress) {
         }
         
-        public void CreateGame(int gameId, string gameLeader, int numberOfPlayers) {
-            base.Channel.CreateGame(gameId, gameLeader, numberOfPlayers);
+        public void CreateGame(int gameId, string gameLeader) {
+            base.Channel.CreateGame(gameId, gameLeader);
         }
         
-        public System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader, int numberOfPlayers) {
-            return base.Channel.CreateGameAsync(gameId, gameLeader, numberOfPlayers);
+        public System.Threading.Tasks.Task CreateGameAsync(int gameId, string gameLeader) {
+            return base.Channel.CreateGameAsync(gameId, gameLeader);
         }
         
         public int JoinGame(int gameId, string playerId) {
@@ -825,6 +875,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/UnregisterUserContext")]
         System.Threading.Tasks.Task UnregisterUserContextAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/StartGame")]
+        void StartGame(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatManager/StartGame")]
+        System.Threading.Tasks.Task StartGameAsync(int gameId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -832,6 +888,9 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/UpdateChat", ReplyAction="http://tempuri.org/IChatManager/UpdateChatResponse")]
         void UpdateChat(string message);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatManager/StartGamePage", ReplyAction="http://tempuri.org/IChatManager/StartGamePageResponse")]
+        void StartGamePage();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -884,6 +943,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task UnregisterUserContextAsync(string username) {
             return base.Channel.UnregisterUserContextAsync(username);
+        }
+        
+        public void StartGame(int gameId) {
+            base.Channel.StartGame(gameId);
+        }
+        
+        public System.Threading.Tasks.Task StartGameAsync(int gameId) {
+            return base.Channel.StartGameAsync(gameId);
         }
     }
 }

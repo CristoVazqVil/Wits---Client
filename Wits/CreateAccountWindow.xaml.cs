@@ -26,9 +26,9 @@ namespace Wits
     /// <summary>
     /// Lógica de interacción para CreateAccount.xaml
     /// </summary>
-    public partial class CreateAccount : Window
+    public partial class CreateAccountWindow : Window
     {
-        public CreateAccount()
+        public CreateAccountWindow()
         {
             InitializeComponent();
             labelPasswordDontMatch.Visibility = Visibility.Collapsed;

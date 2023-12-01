@@ -10,7 +10,7 @@
         Title="{x:Static p:Resources.Title}">
     <Page.Resources>
         <Storyboard x:Key="SlideAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="songPlaying">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="songPlayingVideo">
                 <EasingDoubleKeyFrame KeyTime="0:0:0" Value="-506"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:4" Value="10"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:7" Value="10"/>
@@ -53,10 +53,10 @@
             </Label.RenderTransform>
         </Label>
 
-        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="151,34,0,0" VerticalAlignment="Top" FontFamily="Beon" MouseDown="openCustomization" FontSize="36" Foreground="White" Width="490"/>
-        <Image Source="/Images/pencil.png" Margin="84,20,900,598" MouseDown="openCustomization" />
-        <Image x:Name="profilePicture" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
-        <MediaElement x:Name="songPlaying" HorizontalAlignment="Left" Height="176" Margin="10,120,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
+        <Label x:Name="userName" Content="USER" HorizontalAlignment="Left" Margin="151,34,0,0" VerticalAlignment="Top" FontFamily="Beon" MouseDown="OpenCustomization" FontSize="36" Foreground="White" Width="490"/>
+        <Image x:Name="imageEditProfile" Source="/Images/pencil.png" Margin="84,20,900,598" MouseDown="OpenCustomization" />
+        <Image x:Name="imageProfilePic" Source="/ProfilePictures/ganondorf.png" Margin="-6,21,954,599" />
+        <MediaElement x:Name="songPlayingVideo" HorizontalAlignment="Left" Height="176" Margin="10,120,0,0" VerticalAlignment="Top" Width="439" Source="C:\Users\dplat\OneDrive\Documentos\Codes n shit\WITS\Wits---Client\Wits\Music\Video1.mp4">
             <MediaElement.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </MediaElement.RenderTransform>

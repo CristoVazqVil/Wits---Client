@@ -13,13 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Wits.Classes;
+using Wits.WitsService;
 
 namespace Wits
 {
     /// <summary>
     /// Interaction logic for GameWindow.xaml
     /// </summary>
-    public partial class GameWindow : Window
+    public partial class GameWindow : Window, WitsService.IConnectedUsersCallback
     {
         public GameWindow()
         {
@@ -28,10 +29,21 @@ namespace Wits
             Closing += OnWindowClosing;
         }
 
+        public void UpdateConnectedFriends()
+        {
+            Console.WriteLine(":)");
+        }
+
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            client.RemoveConnectedUser(UserSingleton.Instance.Username);
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ConnectedUsersClient connectedClient = new WitsService.ConnectedUsersClient(context);
+            WitsService.PlayerManagerClient playerClient = new WitsService.PlayerManagerClient();
+            connectedClient.RemoveConnectedUser(UserSingleton.Instance.Username);
+            if (UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
+            {
+                playerClient.DeletePlayer(UserSingleton.Instance.Username);
+            }
         }
     }
 }

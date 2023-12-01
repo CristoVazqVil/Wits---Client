@@ -31,18 +31,20 @@ namespace Wits
     public partial class MainWindow : Window
     {
         private SoundPlayer music;
+        private Random random = new Random();
+
         public MainWindow()
         {
             InitializeComponent();
             music = new SoundPlayer("Music/Death By Glamour - Undertale.wav"); 
             music.Play();
             backgroundVideo.Play();
-            mediaElementLogo.Play();
+            logoVideo.Play();
         }
 
         private void OpenCreateAccountWindow(object sender, MouseButtonEventArgs e)
         {
-            CreateAccount createWindow = new CreateAccount();
+            CreateAccountWindow createWindow = new CreateAccountWindow();
             createWindow.ShowDialog(); 
         }
 
@@ -55,15 +57,22 @@ namespace Wits
 
                 if (player != null)
                 {
-                    if (music != null)
+                    if (!client.IsPlayerLogged(textBoxUser.Text))
                     {
-                        music.Stop();
-                        music.Dispose();
+                        if (music != null)
+                        {
+                            music.Stop();
+                            music.Dispose();
+                        }
+                        UserSingleton.Instance.SetUsername(textBoxUser.Text);
+                        GameWindow gameWindow = new GameWindow();
+                        gameWindow.Show();
+                        this.Close();
                     }
-                    UserSingleton.Instance.SetUsername(textBoxUser.Text);
-                    GameWindow gameWindow = new GameWindow();
-                    gameWindow.Show();
-                    this.Close();
+                    else
+                    {
+                        MessageBox.Show(Properties.Resources.AlreadyLogged, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
                 else
                 {
@@ -234,8 +243,35 @@ namespace Wits
 
         private void RestartLogoVideo(object sender, RoutedEventArgs e)
         {
-            mediaElementLogo.Position = TimeSpan.Zero;
-            mediaElementLogo.Play();
+            logoVideo.Position = TimeSpan.Zero;
+            logoVideo.Play();
+        }
+
+        private void EnterAsAGuest(object sender, MouseButtonEventArgs e)
+        {
+            WitsService.Player temporaryPlayer = new WitsService.Player();
+            temporaryPlayer.User = "Guest" + random.Next(1000, 10000).ToString();
+            temporaryPlayer.Email = random.Next(100000000, 1000000000).ToString();
+            temporaryPlayer.Password = random.Next(100000000, 1000000000).ToString();
+            temporaryPlayer.HighestScore = 0;
+            temporaryPlayer.ProfilePictureId = 1;
+            temporaryPlayer.CelebrationId = 1;
+            try
+            {
+                WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
+                if (client.AddPlayer(temporaryPlayer) == 1)
+                {
+                    UserSingleton.Instance.SetUsername(temporaryPlayer.User);
+                    GameWindow gameWindow = new GameWindow();
+                    gameWindow.Show();
+                    this.Close();
+                }
+            }
+            catch (FaultException ex)
+            {
+                Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

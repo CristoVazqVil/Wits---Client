@@ -133,7 +133,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CreateAccount.xaml">
+    <Page Include="ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +192,9 @@
     <Compile Include="BoardPage.xaml.cs">
       <DependentUpon>BoardPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\GameSingleton.cs" />
     <Compile Include="Classes\Mail.cs" />
     <Compile Include="Classes\UserSingleton.cs" />
@@ -196,8 +203,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="CreateAccount.xaml.cs">
-      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    <Compile Include="CreateAccountWindow.xaml.cs">
+      <DependentUpon>CreateAccountWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="EnterPlayerUserWindow.xaml.cs">
       <DependentUpon>EnterPlayerUserWindow.xaml</DependentUpon>
@@ -242,6 +249,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PlayerInGameCardUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayersInGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProfileCustomizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -254,6 +269,12 @@
     </Compile>
     <Compile Include="MyFriendsPage.xaml.cs">
       <DependentUpon>MyFriendsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerInGameCardUserControl.xaml.cs">
+      <DependentUpon>PlayerInGameCardUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayersInGameUserControl.xaml.cs">
+      <DependentUpon>PlayersInGameUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProfileCustomizationPage.xaml.cs">
       <DependentUpon>ProfileCustomizationPage.xaml</DependentUpon>
@@ -411,6 +432,9 @@
     <Resource Include="Images\friends.png" />
     <Resource Include="Images\notifications.png" />
     <Resource Include="Images\unicorn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\changePassword.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Content Include="Music\Song1.wav">

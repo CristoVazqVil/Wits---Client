@@ -106,6 +106,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hey!, This player is already logged in.
+        /// </summary>
+        public static string AlreadyLogged {
+            get {
+                return ResourceManager.GetString("AlreadyLogged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to block this player?.
         /// </summary>
         public static string BlockConfirmationMesssage {
@@ -169,6 +178,33 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Celebrations.
+        /// </summary>
+        public static string Celebrations {
+            get {
+                return ResourceManager.GetString("Celebrations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Password.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - The password must have an uppercase letter, a lowercase letter, a number, a special character, at least 8 characters and can&apos;t be the same as your current password..
+        /// </summary>
+        public static string ChangePasswordAdvice {
+            get {
+                return ResourceManager.GetString("ChangePasswordAdvice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred while sending the confirmation email.
         /// </summary>
         public static string ConfirmationEmailError {
@@ -183,6 +219,15 @@ namespace Wits.Properties {
         public static string ConfirmationEmailSent {
             get {
                 return ResourceManager.GetString("ConfirmationEmailSent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirm New Password:.
+        /// </summary>
+        public static string ConfirmNewPassword {
+            get {
+                return ResourceManager.GetString("ConfirmNewPassword", resourceCulture);
             }
         }
         
@@ -210,6 +255,15 @@ namespace Wits.Properties {
         public static string CreateTitle {
             get {
                 return ResourceManager.GetString("CreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Password:.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
             }
         }
         
@@ -246,6 +300,24 @@ namespace Wits.Properties {
         public static string EmptyFields {
             get {
                 return ResourceManager.GetString("EmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter your answer:.
+        /// </summary>
+        public static string EnterAnswer {
+            get {
+                return ResourceManager.GetString("EnterAnswer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a valid amount within your available chips..
+        /// </summary>
+        public static string EnterAValidAmount {
+            get {
+                return ResourceManager.GetString("EnterAValidAmount", resourceCulture);
             }
         }
         
@@ -394,6 +466,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to How much will you wager?.
+        /// </summary>
+        public static string HowMuch {
+            get {
+                return ResourceManager.GetString("HowMuch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid email.
         /// </summary>
         public static string InvalidEmail {
@@ -457,11 +538,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Password:.
+        /// </summary>
+        public static string NewPassword {
+            get {
+                return ResourceManager.GetString("NewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Don&apos;t have an account?.
         /// </summary>
         public static string NoAccount {
             get {
                 return ResourceManager.GetString("NoAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not you current password....
+        /// </summary>
+        public static string NotCurrentPassword {
+            get {
+                return ResourceManager.GetString("NotCurrentPassword", resourceCulture);
             }
         }
         
@@ -475,7 +574,7 @@ namespace Wits.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The game does not exist....
+        ///   Looks up a localized string similar to The game does not exist or has reached the maximum number of players..
         /// </summary>
         public static string NotExistingGameMessage {
             get {
@@ -520,6 +619,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The password has been changed successfully!.
+        /// </summary>
+        public static string PasswordChanged {
+            get {
+                return ResourceManager.GetString("PasswordChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Passwords don&apos;t match.
         /// </summary>
         public static string PasswordsUnmatch {
@@ -543,6 +651,15 @@ namespace Wits.Properties {
         public static string PlayerInvitedMessage {
             get {
                 return ResourceManager.GetString("PlayerInvitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Pics.
+        /// </summary>
+        public static string ProfilePics {
+            get {
+                return ResourceManager.GetString("ProfilePics", resourceCulture);
             }
         }
         
@@ -583,11 +700,20 @@ namespace Wits.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Round.
+        ///   Looks up a localized string similar to Round .
         /// </summary>
         public static string Round {
             get {
                 return ResourceManager.GetString("Round", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new password cannot be the same as your current password..
+        /// </summary>
+        public static string SamePassword {
+            get {
+                return ResourceManager.GetString("SamePassword", resourceCulture);
             }
         }
         
@@ -691,6 +817,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Warning!.
+        /// </summary>
+        public static string Warning {
+            get {
+                return ResourceManager.GetString("Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The password is too weak.
         /// </summary>
         public static string WeakPassword {
@@ -700,11 +835,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wins.
+        /// </summary>
+        public static string Wins {
+            get {
+                return ResourceManager.GetString("Wins", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect user or password, try again!.
         /// </summary>
         public static string WrongPassword {
             get {
                 return ResourceManager.GetString("WrongPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You&apos;re right!.
+        /// </summary>
+        public static string YouRight {
+            get {
+                return ResourceManager.GetString("YouRight", resourceCulture);
             }
         }
     }

@@ -21,7 +21,6 @@ namespace Wits.Classes
 
         private static readonly string FROM_EMAIL = Configuration["EmailSettings:FromEmail"];
         private static readonly string SMTP_HOST = Configuration["EmailSettings:SmtpHost"];
-        private static readonly string EMAIL_PASSWORD = Decrypt(Configuration["EmailSettings:EmailPassword"]);
         private static readonly int SMTP_PORT = Configuration.GetSection("EmailSettings")["SmtpPort"] != null
             ? int.Parse(Configuration.GetSection("EmailSettings")["SmtpPort"])
             : 0;
@@ -61,7 +60,7 @@ namespace Wits.Classes
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-                client.Credentials = new NetworkCredential(FROM_EMAIL, EMAIL_PASSWORD);
+                client.Credentials = new NetworkCredential(FROM_EMAIL, Decrypt(Configuration["EmailSettings:EmailPassword"]));
 
                 client.Send(mail);
                 msge = Properties.Resources.ConfirmationEmailSent;
@@ -103,7 +102,7 @@ namespace Wits.Classes
                 mail.Body = body;
                 mail.IsBodyHtml = true;
 
-                client.Credentials = new NetworkCredential(FROM_EMAIL, EMAIL_PASSWORD);
+                client.Credentials = new NetworkCredential(FROM_EMAIL, Decrypt(Configuration["EmailSettings:EmailPassword"]));
 
                 client.Send(mail);
                 msge = Properties.Resources.InvitationEmailSent;

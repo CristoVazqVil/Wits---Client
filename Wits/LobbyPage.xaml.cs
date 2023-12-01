@@ -53,9 +53,16 @@ namespace Wits
 
         private void OpenGameWindow(object sender, MouseButtonEventArgs e)
         {
-            deleteContext();
-            BoardPage boardPage = new BoardPage();
-            this.NavigationService.Navigate(boardPage);
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
+                client.StartGame(gameId);
+            }
+            catch (FaultException ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void StartGameHighlight(object sender, MouseEventArgs e)
@@ -207,6 +214,13 @@ namespace Wits
         {
             deleteContext();
             this.NavigationService.GoBack();
+        }
+
+        public void StartGamePage()
+        {
+            deleteContext();
+            BoardPage boardPage = new BoardPage();
+            this.NavigationService.Navigate(boardPage);
         }
     }
 }

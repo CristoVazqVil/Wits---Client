@@ -132,6 +132,9 @@
   <data name="AlreadyBlockedPlayerMessage" xml:space="preserve">
     <value>The player is already blocked</value>
   </data>
+  <data name="AlreadyLogged" xml:space="preserve">
+    <value>Hey!, This player is already logged in</value>
+  </data>
   <data name="BlockConfirmationMesssage" xml:space="preserve">
     <value>Are you sure you want to block this player?</value>
   </data>
@@ -153,11 +156,23 @@
   <data name="BlockPlayerMessage" xml:space="preserve">
     <value>That player is blocked now!</value>
   </data>
+  <data name="Celebrations" xml:space="preserve">
+    <value>Celebrations</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePasswordAdvice" xml:space="preserve">
+    <value>- The password must have an uppercase letter, a lowercase letter, a number, a special character, at least 8 characters and can't be the same as your current password.</value>
+  </data>
   <data name="ConfirmationEmailError" xml:space="preserve">
     <value>An error occurred while sending the confirmation email</value>
   </data>
   <data name="ConfirmationEmailSent" xml:space="preserve">
     <value>Confirmation Email sent!</value>
+  </data>
+  <data name="ConfirmNewPassword" xml:space="preserve">
+    <value>Confirm New Password:</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -167,6 +182,9 @@
   </data>
   <data name="CreateTitle" xml:space="preserve">
     <value>Create Account</value>
+  </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Current Password:</value>
   </data>
   <data name="DeleteFriend" xml:space="preserve">
     <value>Delete Friend</value>
@@ -179,6 +197,12 @@
   </data>
   <data name="EmptyFields" xml:space="preserve">
     <value>There cannot be empty fields</value>
+  </data>
+  <data name="EnterAnswer" xml:space="preserve">
+    <value>Enter your answer:</value>
+  </data>
+  <data name="EnterAValidAmount" xml:space="preserve">
+    <value>Please enter a valid amount within your available chips.</value>
   </data>
   <data name="EnterEmail" xml:space="preserve">
     <value>Enter Email</value>
@@ -228,6 +252,9 @@
   <data name="Go" xml:space="preserve">
     <value>Go!</value>
   </data>
+  <data name="HowMuch" xml:space="preserve">
+    <value>How much will you wager?</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Invalid email</value>
   </data>
@@ -249,14 +276,20 @@
   <data name="NewGame" xml:space="preserve">
     <value>New Game</value>
   </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>New Password:</value>
+  </data>
   <data name="NoAccount" xml:space="preserve">
     <value>Don't have an account?</value>
+  </data>
+  <data name="NotCurrentPassword" xml:space="preserve">
+    <value>Not you current password...</value>
   </data>
   <data name="NotExistingGame" xml:space="preserve">
     <value>Not Existing Game</value>
   </data>
   <data name="NotExistingGameMessage" xml:space="preserve">
-    <value>The game does not exist...</value>
+    <value>The game does not exist or has reached the maximum number of players.</value>
   </data>
   <data name="NotExistingPlayer" xml:space="preserve">
     <value>Not Existing Player</value>
@@ -270,6 +303,9 @@
   <data name="PasswordAdvice" xml:space="preserve">
     <value>- The password must have an uppercase letter, a lowercase letter, a number, a special character and at least 8 characters.</value>
   </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>The password has been changed successfully!</value>
+  </data>
   <data name="PasswordsUnmatch" xml:space="preserve">
     <value>Passwords don't match</value>
   </data>
@@ -278,6 +314,9 @@
   </data>
   <data name="PlayerInvitedMessage" xml:space="preserve">
     <value>The player was invited!</value>
+  </data>
+  <data name="ProfilePics" xml:space="preserve">
+    <value>Profile Pics</value>
   </data>
   <data name="RejectRequest" xml:space="preserve">
     <value>Reject</value>
@@ -292,7 +331,10 @@
     <value>Friend Request Sent!</value>
   </data>
   <data name="Round" xml:space="preserve">
-    <value>Round</value>
+    <value>Round </value>
+  </data>
+  <data name="SamePassword" xml:space="preserve">
+    <value>The new password cannot be the same as your current password.</value>
   </data>
   <data name="SendRequest" xml:space="preserve">
     <value>Send Request</value>
@@ -327,10 +369,19 @@
   <data name="UsernameUsedMessage" xml:space="preserve">
     <value>That username is already used, use another one</value>
   </data>
+  <data name="Warning" xml:space="preserve">
+    <value>Warning!</value>
+  </data>
   <data name="WeakPassword" xml:space="preserve">
     <value>The password is too weak</value>
   </data>
+  <data name="Wins" xml:space="preserve">
+    <value>Wins</value>
+  </data>
   <data name="WrongPassword" xml:space="preserve">
     <value>Incorrect user or password, try again!</value>
+  </data>
+  <data name="YouRight" xml:space="preserve">
+    <value>You're right!</value>
   </data>
 </root>

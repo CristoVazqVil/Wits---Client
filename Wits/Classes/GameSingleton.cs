@@ -10,6 +10,7 @@ namespace Wits.Classes
     {
         private static GameSingleton instance;
         public int GameId { get; private set; }
+        public int PlayerNumber { get; private set; }
 
         private GameSingleton() { }
 
@@ -25,14 +26,16 @@ namespace Wits.Classes
             }
         }
 
-        public void SetGameId(int gameId)
+        public void SetGame(int gameId, int playerNUmber)
         {
             GameId = gameId;
+            PlayerNumber = playerNUmber;
         }
 
-        public void ClearGameId()
+        public void ClearGame()
         {
             GameId = 0;
+            PlayerNumber = 0;
         }
     }
 }

@@ -27,13 +27,12 @@ namespace Wits
     /// Lógica de interacción para Menu.xaml
     /// </summary>
     /// a ver si ya 
-    public partial class Menu : Page
+    public partial class Menu : Page, WitsService.IConnectedUsersCallback
     {
         private MediaPlayer mediaPlayer;
         private Random random = new Random();
         private string username = UserSingleton.Instance.Username;
         private List<Uri> songs = new List<Uri>()
-
         {
             new Uri("Music/Song1.wav", UriKind.Relative),
             new Uri("Music/Song2.wav", UriKind.Relative),
@@ -51,8 +50,11 @@ namespace Wits
             backgroundVideo.Play();
             mediaPlayer = new MediaPlayer();
             mediaPlayer.MediaEnded += SongEnded;
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
+            client.AddConnectedUser(username);
             PlayRandomSong();
-            LoadConnectedFriends();
+            ValidateGuest();
             SetProfilePicture();
         }
 
@@ -64,12 +66,12 @@ namespace Wits
             String numString = videoNum.ToString();
             Uri songUri = songs[randomIndex];
             string videoPath = "Music/Video" + numString + ".mp4";
-            songPlaying.Source = new Uri(videoPath, UriKind.Relative);
+            songPlayingVideo.Source = new Uri(videoPath, UriKind.Relative);
 
             mediaPlayer.Open(songUri);
             mediaPlayer.Play();
             var slideAnimation = (Storyboard)this.Resources["SlideAnimation"];
-            songPlaying.RenderTransform = new TranslateTransform();
+            songPlayingVideo.RenderTransform = new TranslateTransform();
             slideAnimation.Begin();
         }
 
@@ -81,7 +83,7 @@ namespace Wits
             string profilePictureFileName = profilePictureId + ".png";
             string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
             Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            profilePicture.Source = new BitmapImage(profilePictureUri);
+            imageProfilePic.Source = new BitmapImage(profilePictureUri);
             userName.Content = username;
         }
 
@@ -164,29 +166,6 @@ namespace Wits
             translateTransformJoin2.Y = 0;
         }
 
-        private void OpenGameWindow(object sender, MouseButtonEventArgs e)
-        {
-            mediaPlayer.Stop();
-            LobbyPage lobbyPage = new LobbyPage();
-            this.NavigationService.Navigate(lobbyPage);
-        }
-        private void LoadConnectedFriends()
-        {
-            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient();
-            string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username, client.GetConnectedUsers());
-            List<string> connectedFriends = new List<string>(connectedFriendsArray);
-            string usersText = string.Join(", ", connectedFriends);
-
-            Dispatcher.Invoke(() =>
-            {
-                gridOnlineFriends.Children.Clear();
-                setFriendsMenu(connectedFriends);
-            });
-
-            Console.WriteLine(connectedFriendsArray + "usersText " + usersText + "ConnectedUser" + connectedFriends);
-            Task.Delay(5000).ContinueWith(t => LoadConnectedFriends());
-        }
-
         private void setFriendsMenu(List<string> onlineFriendsList)
         {
             OnlineFriendMenuUserControl onlineFriends = new OnlineFriendMenuUserControl();
@@ -201,9 +180,9 @@ namespace Wits
             try
             {
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                client.CreateGame(newGameId, UserSingleton.Instance.Username, 6);
+                client.CreateGame(newGameId, UserSingleton.Instance.Username);
                 mediaPlayer.Stop();
-                GameSingleton.Instance.SetGameId(newGameId);
+                GameSingleton.Instance.SetGame(newGameId, 1);
                 LobbyPage lobbyPage = new LobbyPage();
                 this.NavigationService.Navigate(lobbyPage);
             }
@@ -219,16 +198,17 @@ namespace Wits
             var window = new InsertGameIdWindow();
             var result = window.ShowDialog();
 
-            if (result == true) 
+            if (result == true)
             {
                 int existingGameId = window.GameId;
                 try
                 {
                     WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-                    if (client.JoinGame(existingGameId, UserSingleton.Instance.Username) == 1)
+                    int playerNumber = client.JoinGame(existingGameId, UserSingleton.Instance.Username);
+                    if (playerNumber > 0)
                     {
                         mediaPlayer.Stop();
-                        GameSingleton.Instance.SetGameId(existingGameId);
+                        GameSingleton.Instance.SetGame(existingGameId, playerNumber);
                         LobbyPage lobbyPage = new LobbyPage();
                         this.NavigationService.Navigate(lobbyPage);
                     }
@@ -244,16 +224,59 @@ namespace Wits
                 }
             }
         }
-        private void openCustomization(object sender, MouseButtonEventArgs e)
+
+        private void OpenCustomization(object sender, MouseButtonEventArgs e)
         {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
             ProfileCustomizationPage profileCustomizationPage = new ProfileCustomizationPage();
+            client.RemoveConnectedUserInMenu(username);
             this.NavigationService.Navigate(profileCustomizationPage);
         }
 
         private void OpenMyFriendsPage(object sender, MouseButtonEventArgs e)
         {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
             MyFriendsPage myFriendsPage = new MyFriendsPage();
+            client.RemoveConnectedUserInMenu(username);
             this.NavigationService.Navigate(myFriendsPage);
+        }
+
+        public void UpdateConnectedFriends()
+        {
+            if (!UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
+            {
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
+                string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username);
+                List<string> connectedFriends = new List<string>(connectedFriendsArray);
+
+                gridOnlineFriends.Children.Clear();
+                setFriendsMenu(connectedFriends);
+            }
+        }
+
+        private void OpenlobbyPage()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
+            LobbyPage lobbyPage = new LobbyPage();
+
+            client.RemoveConnectedUserInMenu(username);
+            this.NavigationService.Navigate(lobbyPage);
+        }
+
+        private void ValidateGuest()
+        {
+            if (UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
+            {
+                labelNewGame.Visibility = Visibility.Collapsed;
+                imageNewGame.Visibility = Visibility.Collapsed;
+                textBlockAllMyFriends.Visibility = Visibility.Collapsed;
+                gridOnlineFriends.Visibility = Visibility.Collapsed;
+                imageEditProfile.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

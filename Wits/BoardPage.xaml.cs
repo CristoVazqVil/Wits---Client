@@ -37,6 +37,7 @@ namespace Wits
         {
             InitializeComponent();
             backgroundVideo.Play();
+            ValidateGameLeader();
             SetProfilePicture();
             Loaded += Page_Loaded;
         }
@@ -44,8 +45,23 @@ namespace Wits
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             ShowQuestion();
-            labelRound.Content = "Round " + 1;
+            labelRound.Content = Properties.Resources.Round + 1;
 
+        }
+
+        private void SetPlayers()
+        {
+            List<string> playerList = new List<string>();
+            //Aquí hacer que recupere a jugadores menos al admin
+            PlayersInGameUserControl players = new PlayersInGameUserControl();
+            players.ImageCloseClicked += Players_ImageCloseClicked;
+            players.SetPlayers(playerList/*Lista jugadore*/);
+            gridPlayersInGame.Children.Add(players);
+        }
+
+        private void Players_ImageCloseClicked(object sender, EventArgs e)
+        {
+            gridPlayersInGame.Margin = new Thickness(-899, -594, 1211, 858);
         }
 
         private void ShowVictoryScreen()
@@ -64,13 +80,13 @@ namespace Wits
             string celebrationPath = "Celebrations/" + celebrationFileName;
 
             Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
-            celebration.Source = celebrationUri;
+            celebrationVideo.Source = celebrationUri;
 
 
-            Winner.Content = userName + " Wins!";
+            labelWinner.Content = userName + Properties.Resources.Wins;
 
 
-            celebration.Play();
+            celebrationVideo.Play();
             victoryScreen.Margin = new Thickness(0);
 
             DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
@@ -82,7 +98,7 @@ namespace Wits
         private async Task ShowQuestion()
         {
 
-            GridQuestionsAndAnswers.Margin = new Thickness(1, 1, -1, -1);
+            gridQuestionsAndAnswers.Margin = new Thickness(1, 1, -1, -1);
 
             SetQuestion();
             await Task.Delay(2000);
@@ -98,13 +114,13 @@ namespace Wits
             textBoxQuestion.BeginAnimation(OpacityProperty, hideAnimation);
 
             await Task.Delay(1000);
-            LabelInstrucion.Content = "Enter Your Answer:";
-            GridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            labelInstrucion.Content = Properties.Resources.EnterAnswer;
+            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
         }
 
         private async Task ShowAnswer()
         {
-            GridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
+            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
             SetAnswer();
             await Task.Delay(1000);
 
@@ -118,7 +134,7 @@ namespace Wits
             imageQuestionFrame.BeginAnimation(OpacityProperty, hideAnimation);
             textBoxQuestion.BeginAnimation(OpacityProperty, hideAnimation);
 
-            if (int.TryParse(TextBoxPlayersAnswer.Text, out int wagerAmount))
+            if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount))
             {
                 int currentChips = int.Parse(labelChips.Content.ToString());
                 int newChips = currentChips + wagerAmount;
@@ -132,7 +148,7 @@ namespace Wits
             ShowRoundWinners();
 
             await Task.Delay(5000);
-            GridRoundWinners.Margin = new Thickness(1177, -954, -1177, 954);
+            gridRoundWinners.Margin = new Thickness(1177, -954, -1177, 954);
 
             rounds++;
             
@@ -151,10 +167,10 @@ namespace Wits
 
         private void PlayNextRound()
         {
-            labelRound.Content = "Round " + rounds;
-            TextBoxPlayersAnswer.Text = "";
-            ImageUserSelection.Visibility = Visibility.Hidden;
-            ImageAcceptWager.Visibility = Visibility.Hidden;
+            labelRound.Content = Properties.Resources.Round + rounds;
+            textBoxPlayersAnswer.Text = "";
+            imageUserSelection.Visibility = Visibility.Hidden;
+            imageAcceptWager.Visibility = Visibility.Hidden;
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
             ShowQuestion();
 
@@ -235,8 +251,8 @@ namespace Wits
 
         private void CelebrationLoop(object sender, RoutedEventArgs e)
         {
-            celebration.Position = TimeSpan.Zero;
-            celebration.Play();
+            celebrationVideo.Position = TimeSpan.Zero;
+            celebrationVideo.Play();
         }
 
         private void GoToLobby(object sender, MouseButtonEventArgs e)
@@ -269,11 +285,11 @@ namespace Wits
 
         private void SaveAnswer(object sender, MouseButtonEventArgs e)
         {
-            LabelInstrucion.Content = "Enter Your Answer:";
-            GridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-            string answerText = TextBoxPlayersAnswer.Text;
-            LabelAnswer1.Content = answerText;
-            GridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
+            labelInstrucion.Content = Properties.Resources.EnterAnswer;
+            gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+            string answerText = textBoxPlayersAnswer.Text;
+            labelAnswer1.Content = answerText;
+            gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
         }
 
 
@@ -287,13 +303,13 @@ namespace Wits
             string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
 
             Uri ImageUserSelectionUri = new Uri(profilePicturePath, UriKind.Relative);
-            ImageUserSelection.Source = new BitmapImage(ImageUserSelectionUri);
+            imageUserSelection.Source = new BitmapImage(ImageUserSelectionUri);
 
-            ImageUserSelection.Visibility = Visibility.Visible;
+            imageUserSelection.Visibility = Visibility.Visible;
 
             await Task.Delay(6000);
 
-            GridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
+            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
             EnterWager();
         }
 
@@ -301,10 +317,10 @@ namespace Wits
 
         private void EnterWager()
         {
-            TextBoxPlayersAnswer.Text = "";
-            ImageAcceptWager.Visibility = Visibility.Visible;
-            GridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
-            LabelInstrucion.Content = "How much will you wager?";
+            textBoxPlayersAnswer.Text = "";
+            imageAcceptWager.Visibility = Visibility.Visible;
+            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            labelInstrucion.Content = Properties.Resources.HowMuch;
             
         }
 
@@ -317,9 +333,9 @@ namespace Wits
             string ImageProfilePicture1Path = "ProfilePictures/" + ImageProfilePicture1FileName;
 
             Uri ImageProfilePicture1Uri = new Uri(ImageProfilePicture1Path, UriKind.Relative);
-            ImageProfilePicture1.Source = new BitmapImage(ImageProfilePicture1Uri);
+            imageProfilePicture1.Source = new BitmapImage(ImageProfilePicture1Uri);
 
-            GridRoundWinners.Margin = new Thickness(0, 0, 0, 0);
+            gridRoundWinners.Margin = new Thickness(0, 0, 0, 0);
 
         }
 
@@ -329,25 +345,45 @@ namespace Wits
 
             int chipsAvailable = int.Parse(labelChips.Content.ToString());
 
-            if (int.TryParse(TextBoxPlayersAnswer.Text, out int wagerAmount) && wagerAmount <= chipsAvailable)
+            if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount) && wagerAmount <= chipsAvailable)
             {
-                GridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
                 ShowAnswer();
             }
             else
             {
-                GridWarning.Margin = new Thickness(0, 0, 0, 0);
-                TextBoxPlayersAnswer.Text = "";
+                gridWarning.Margin = new Thickness(0, 0, 0, 0);
+                textBoxPlayersAnswer.Text = "";
             }
            
         }
 
         private void AcceptWarning(object sender, MouseButtonEventArgs e)
         {
-            GridWarning.Margin = new Thickness(1177, 822, -1177, -822);
+            gridWarning.Margin = new Thickness(1177, 822, -1177, -822);
         }
 
+        private void ValidateGameLeader()
+        {
+            WitsService.GameManagerClient client = new WitsService.GameManagerClient();
+            try
+            {
+                string gameLeader = client.GetGameLeader(GameSingleton.Instance.GameId);
+                if (gameLeader.Equals(UserSingleton.Instance.Username))
+                {
+                    imagePlayersSettings.Visibility = Visibility.Visible;
+                    SetPlayers();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
 
-
+        private void OpenPlayersMenu(object sender, MouseButtonEventArgs e)
+        {
+            gridPlayersInGame.Margin = new Thickness(48, 205, 212, 66);
+        }
     }
 }

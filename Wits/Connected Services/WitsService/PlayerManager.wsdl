@@ -46,6 +46,18 @@
   <wsdl:message name="IPlayerManager_AddPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayerResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_DeletePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_DeletePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_IsPlayerLogged_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPlayerLogged" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_IsPlayerLogged_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPlayerLoggedResponse" />
+  </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPlayerByUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerByUser" />
   </wsdl:message>
@@ -57,6 +69,12 @@
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPlayerByUserAndPassword_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerByUserAndPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdatePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePassword" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdatePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePasswordResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_GetPlayerFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerFriends" />
@@ -139,26 +157,23 @@
   <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConnectedUser" />
   </wsdl:message>
-  <wsdl:message name="IConnectedUsers_AddConnectedUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddConnectedUserResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConnectedUsers_GetConnectedUsers_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetConnectedUsers" />
-  </wsdl:message>
-  <wsdl:message name="IConnectedUsers_GetConnectedUsers_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetConnectedUsersResponse" />
+  <wsdl:message name="IConnectedUsers_RemoveConnectedUserInMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveConnectedUserInMenu" />
   </wsdl:message>
   <wsdl:message name="IConnectedUsers_RemoveConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveConnectedUser" />
-  </wsdl:message>
-  <wsdl:message name="IConnectedUsers_RemoveConnectedUser_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RemoveConnectedUserResponse" />
   </wsdl:message>
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriends" />
   </wsdl:message>
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriendsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_UpdateConnectedFriends_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConnectedFriends" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_UpdateConnectedFriends_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateConnectedFriendsResponse" />
   </wsdl:message>
   <wsdl:message name="IGameManager_CreateGame_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateGame" />
@@ -211,16 +226,33 @@
   <wsdl:message name="IChatManager_UnregisterUserContext_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterUserContext" />
   </wsdl:message>
+  <wsdl:message name="IChatManager_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
   <wsdl:message name="IChatManager_UpdateChat_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateChat" />
   </wsdl:message>
   <wsdl:message name="IChatManager_UpdateChat_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateChatResponse" />
   </wsdl:message>
+  <wsdl:message name="IChatManager_StartGamePage_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:StartGamePage" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_StartGamePage_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:StartGamePageResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayerResponse" message="tns:IPlayerManager_AddPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/DeletePlayer" message="tns:IPlayerManager_DeletePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/DeletePlayerResponse" message="tns:IPlayerManager_DeletePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPlayerLogged">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/IsPlayerLogged" message="tns:IPlayerManager_IsPlayerLogged_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/IsPlayerLoggedResponse" message="tns:IPlayerManager_IsPlayerLogged_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlayerByUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerByUser" message="tns:IPlayerManager_GetPlayerByUser_InputMessage" />
@@ -229,6 +261,10 @@
     <wsdl:operation name="GetPlayerByUserAndPassword">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword" message="tns:IPlayerManager_GetPlayerByUserAndPassword_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPasswordResponse" message="tns:IPlayerManager_GetPlayerByUserAndPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePassword" message="tns:IPlayerManager_UpdatePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePasswordResponse" message="tns:IPlayerManager_UpdatePassword_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetPlayerFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/GetPlayerFriends" message="tns:IPlayerManager_GetPlayerFriends_InputMessage" />
@@ -286,19 +322,20 @@
   <wsdl:portType name="IConnectedUsers">
     <wsdl:operation name="AddConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUser" message="tns:IConnectedUsers_AddConnectedUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUserResponse" message="tns:IConnectedUsers_AddConnectedUser_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetConnectedUsers">
-      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedUsers" message="tns:IConnectedUsers_GetConnectedUsers_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedUsersResponse" message="tns:IConnectedUsers_GetConnectedUsers_OutputMessage" />
+    <wsdl:operation name="RemoveConnectedUserInMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu" message="tns:IConnectedUsers_RemoveConnectedUserInMenu_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" message="tns:IConnectedUsers_RemoveConnectedUser_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserResponse" message="tns:IConnectedUsers_RemoveConnectedUser_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse" message="tns:IConnectedUsers_GetConnectedFriends_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateConnectedFriends">
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/UpdateConnectedFriends" message="tns:IConnectedUsers_UpdateConnectedFriends_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/UpdateConnectedFriendsResponse" message="tns:IConnectedUsers_UpdateConnectedFriends_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IGameManager">
@@ -341,9 +378,16 @@
     <wsdl:operation name="UnregisterUserContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UnregisterUserContext" message="tns:IChatManager_UnregisterUserContext_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/StartGame" message="tns:IChatManager_StartGame_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateChat">
       <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/UpdateChat" message="tns:IChatManager_UpdateChat_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UpdateChatResponse" message="tns:IChatManager_UpdateChat_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGamePage">
+      <wsdl:output wsaw:Action="http://tempuri.org/IChatManager/StartGamePage" message="tns:IChatManager_StartGamePage_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/StartGamePageResponse" message="tns:IChatManager_StartGamePage_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -351,6 +395,24 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="AddPlayer">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/AddPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/DeletePlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPlayerLogged">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/IsPlayerLogged" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -369,6 +431,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetPlayerByUserAndPassword">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/GetPlayerByUserAndPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePassword">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/UpdatePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -502,30 +573,30 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetConnectedUsers">
-      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedUsers" style="document" />
+    <wsdl:operation name="RemoveConnectedUserInMenu">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUser">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetConnectedFriends">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedFriends" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetConnectedFriends">
-      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedFriends" style="document" />
+    <wsdl:operation name="UpdateConnectedFriends">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/UpdateConnectedFriends" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -622,8 +693,23 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/StartGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="UpdateChat">
       <soap12:operation soapAction="http://tempuri.org/IChatManager/UpdateChat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartGamePage">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/StartGamePage" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

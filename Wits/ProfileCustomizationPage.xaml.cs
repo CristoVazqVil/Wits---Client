@@ -30,11 +30,11 @@ namespace Wits
         public ProfileCustomizationPage()
         {
             InitializeComponent();
-            userName.Content = UserSingleton.Instance.Username;
+            labelUserName.Content = UserSingleton.Instance.Username;
             SetProfilePicture(UserSingleton.Instance.Username);
             currentVisibleRectangle = null;
-            background.Play();
-            CelebrationsVideo.Play();
+            backgroundVideo.Play();
+            celebrationsVideo.Play();
 
         }
 
@@ -46,11 +46,11 @@ namespace Wits
             string profilePictureFileName = profilePictureId + ".png";
             string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
             Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            currentPicture.Source = new BitmapImage(profilePictureUri);
+            imageCurrentPicture.Source = new BitmapImage(profilePictureUri);
 
             int celebrationId = playerData.CelebrationId;
             selectedCelebrationId = celebrationId;
-            string rectangleName = "_" + celebrationId;
+            string rectangleName = "rectangleVideo" + celebrationId;
             Rectangle selectedRectangle = FindName(rectangleName) as Rectangle;
 
             if (selectedRectangle != null)
@@ -72,7 +72,7 @@ namespace Wits
         {
             if (sender is Image clickedImage)
             {
-                currentPicture.Source = clickedImage.Source;
+                imageCurrentPicture.Source = clickedImage.Source;
             }
 
         }
@@ -99,7 +99,7 @@ namespace Wits
             if (sender is Rectangle clickedRectangle)
             {
                 string rectangleName = clickedRectangle.Name;
-                string celebrationId = rectangleName.Replace("_", "");
+                string celebrationId = rectangleName.Replace("rectangleVideo", "");
 
                 if (int.TryParse(celebrationId, out int parsedCelebrationId))
                 {
@@ -131,7 +131,7 @@ namespace Wits
 
         private void SaveChanges(object sender, MouseButtonEventArgs e)
         {
-            string currentPicturePath = currentPicture.Source.ToString();
+            string currentPicturePath = imageCurrentPicture.Source.ToString();
             string currentPictureFileName = System.IO.Path.GetFileName(currentPicturePath);
             currentPictureFileName = currentPictureFileName.Replace(".png", "");
             int.TryParse(currentPictureFileName, out int profilePictureId);
@@ -160,14 +160,20 @@ namespace Wits
 
         private void RestartBackground(object sender, RoutedEventArgs e)
         {
-            background.Position = TimeSpan.Zero;
-            background.Play();
+            backgroundVideo.Position = TimeSpan.Zero;
+            backgroundVideo.Play();
         }
 
         private void RestartCelebrations(object sender, RoutedEventArgs e)
         {
-            CelebrationsVideo.Position = TimeSpan.Zero;
-            CelebrationsVideo.Play();
+            celebrationsVideo.Position = TimeSpan.Zero;
+            celebrationsVideo.Play();
+        }
+
+        private void OpenChangePasswordPage(object sender, MouseButtonEventArgs e)
+        {
+            ChangePasswordPage changePasswordPage = new ChangePasswordPage();
+            this.NavigationService.Navigate(changePasswordPage);
         }
     }
     }
