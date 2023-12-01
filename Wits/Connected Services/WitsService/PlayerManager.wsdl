@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="PlayerManager" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IActiveGame_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IPlayerManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -36,10 +44,55 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" />
-      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IActiveGame_RegisterUserInGameContext_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterUserInGameContext" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UnregisterUserInGameContext_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnregisterUserInGameContext" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_SavePlayerAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:SavePlayerAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ReceivePlayerSelectedAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReceivePlayerSelectedAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ReadyToWager_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyToWager" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ReadyToShowAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadyToShowAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_WhoWon_InputMessage">
+    <wsdl:part name="parameters" element="tns:WhoWon" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateAnswers_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnswers" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateAnswers_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAnswersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateSelection_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSelection" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateSelection_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSelectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowEnterWager_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowEnterWager" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowEnterWager_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowEnterWagerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowTrueAnswer_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowTrueAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowTrueAnswer_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowTrueAnswerResponse" />
+  </wsdl:message>
   <wsdl:message name="IPlayerManager_AddPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayer" />
   </wsdl:message>
@@ -217,11 +270,26 @@
   <wsdl:message name="IGameManager_GetQuestionByID_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetQuestionByIDResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_GetRandomQuestionId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomQuestionId" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_GetRandomQuestionId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomQuestionIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_GetQuestionIds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionIds" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_GetQuestionIds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionIdsResponse" />
+  </wsdl:message>
   <wsdl:message name="IChatManager_SendNewMessage_InputMessage">
     <wsdl:part name="parameters" element="tns:SendNewMessage" />
   </wsdl:message>
   <wsdl:message name="IChatManager_RegisterUserContext_InputMessage">
     <wsdl:part name="parameters" element="tns:RegisterUserContext" />
+  </wsdl:message>
+  <wsdl:message name="IChatManager_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
   </wsdl:message>
   <wsdl:message name="IChatManager_UnregisterUserContext_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterUserContext" />
@@ -241,6 +309,45 @@
   <wsdl:message name="IChatManager_StartGamePage_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:StartGamePageResponse" />
   </wsdl:message>
+  <wsdl:portType name="IActiveGame">
+    <wsdl:operation name="RegisterUserInGameContext">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/RegisterUserInGameContext" message="tns:IActiveGame_RegisterUserInGameContext_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUserInGameContext">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UnregisterUserInGameContext" message="tns:IActiveGame_UnregisterUserInGameContext_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePlayerAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/SavePlayerAnswer" message="tns:IActiveGame_SavePlayerAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceivePlayerSelectedAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer" message="tns:IActiveGame_ReceivePlayerSelectedAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToWager">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToWager" message="tns:IActiveGame_ReadyToWager_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToShowAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer" message="tns:IActiveGame_ReadyToShowAnswer_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="WhoWon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/WhoWon" message="tns:IActiveGame_WhoWon_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswers">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswers" message="tns:IActiveGame_UpdateAnswers_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswersResponse" message="tns:IActiveGame_UpdateAnswers_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSelection">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateSelection" message="tns:IActiveGame_UpdateSelection_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateSelectionResponse" message="tns:IActiveGame_UpdateSelection_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowEnterWager">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowEnterWager" message="tns:IActiveGame_ShowEnterWager_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowEnterWagerResponse" message="tns:IActiveGame_ShowEnterWager_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowTrueAnswer">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswer" message="tns:IActiveGame_ShowTrueAnswer_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse" message="tns:IActiveGame_ShowTrueAnswer_InputCallbackMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
@@ -367,6 +474,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/GetQuestionByID" message="tns:IGameManager_GetQuestionByID_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/GetQuestionByIDResponse" message="tns:IGameManager_GetQuestionByID_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetRandomQuestionId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/GetRandomQuestionId" message="tns:IGameManager_GetRandomQuestionId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/GetRandomQuestionIdResponse" message="tns:IGameManager_GetRandomQuestionId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionIds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/GetQuestionIds" message="tns:IGameManager_GetQuestionIds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/GetQuestionIdsResponse" message="tns:IGameManager_GetQuestionIds_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IChatManager">
     <wsdl:operation name="SendNewMessage">
@@ -374,6 +489,9 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterUserContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/RegisterUserContext" message="tns:IChatManager_RegisterUserContext_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/StartGame" message="tns:IChatManager_StartGame_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UnregisterUserContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/UnregisterUserContext" message="tns:IChatManager_UnregisterUserContext_InputMessage" />
@@ -390,6 +508,88 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IChatManager/StartGamePageResponse" message="tns:IChatManager_StartGamePage_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IActiveGame" type="tns:IActiveGame">
+    <wsp:PolicyReference URI="#NetTcpBinding_IActiveGame_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegisterUserInGameContext">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/RegisterUserInGameContext" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UnregisterUserInGameContext">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UnregisterUserInGameContext" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="SavePlayerAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/SavePlayerAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReceivePlayerSelectedAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToWager">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReadyToWager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ReadyToShowAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReadyToShowAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="WhoWon">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/WhoWon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAnswers">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateAnswers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSelection">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateSelection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowEnterWager">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowEnterWager" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowTrueAnswer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowTrueAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IPlayerManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -671,6 +871,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetRandomQuestionId">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/GetRandomQuestionId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionIds">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/GetQuestionIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NetTcpBinding_IChatManager" type="tns:IChatManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IChatManager_policy" />
@@ -683,6 +901,12 @@
     </wsdl:operation>
     <wsdl:operation name="RegisterUserContext">
       <soap12:operation soapAction="http://tempuri.org/IChatManager/RegisterUserContext" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap12:operation soapAction="http://tempuri.org/IChatManager/StartGame" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -719,6 +943,12 @@
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="PlayerManager">
+    <wsdl:port name="NetTcpBinding_IActiveGame" binding="tns:NetTcpBinding_IActiveGame">
+      <soap12:address location="net.tcp://localhost:8081/ActiveGame" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/ActiveGame</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
       <soap12:address location="net.tcp://localhost:8081/PlayerManager" />
       <wsa10:EndpointReference>
