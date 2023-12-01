@@ -427,6 +427,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer")]
         System.Threading.Tasks.Task ReadyToShowAnswerAsync(int gameId, int playerNumber, bool isReady);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
+        void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
+        System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -519,6 +525,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task ReadyToShowAnswerAsync(int gameId, int playerNumber, bool isReady) {
             return base.Channel.ReadyToShowAnswerAsync(gameId, playerNumber, isReady);
+        }
+        
+        public void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
+            base.Channel.WhoWon(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        }
+        
+        public System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
+            return base.Channel.WhoWonAsync(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
         }
     }
     

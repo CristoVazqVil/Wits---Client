@@ -212,131 +212,11 @@ namespace Wits
             {
                 Console.WriteLine(ex.ToString());
             }
-
-
-
-
-
-            //lo siguiente seguramente se va a borrar jijij
-
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-
-            Uri imageSelectionPlayer1Uri = new Uri(profilePicturePath, UriKind.Relative);
-            imageSelectionPlayer1.Source = new BitmapImage(imageSelectionPlayer1Uri);
-
             imageSelectionPlayer1.Visibility = Visibility.Visible;
 
-            if (selectedImage != null)
-            {
-                switch (player)
-                {
-                    case 1:
-                        switch (selectedImage.Name)
-                        {
-                            case "ImageAnswerPlayer1":
-                                imageSelectionPlayer1.Margin = new Thickness(45, 510, 944, 118);
-                                break;
-                            case "ImageAnswerPlayer2":
-                                imageSelectionPlayer1.Margin = new Thickness(270, 506, 719, 122);
-                                break;
-                            case "ImageAnswerPlayer3":
-                                imageSelectionPlayer1.Margin = new Thickness(515, 510, 474, 118);
-                                break;
-                            case "ImageAnswerPlayer4":
-                                imageSelectionPlayer1.Margin = new Thickness(754, 510, 235, 118);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case 2:
-                        imageSelectionPlayer2.Visibility = Visibility.Visible;
-                        ChangeProfilePicture(2, profilePictureId);
+        } 
 
-                        switch (selectedImage.Name)
-                        {
-                            case "ImageAnswerPlayer1":
-                                imageSelectionPlayer1.Margin = new Thickness(204, 510, 784, 118);
-                                break;
-                            case "ImageAnswerPlayer2":
-                                imageSelectionPlayer1.Margin = new Thickness(448, 505, 540, 123);
-                                break;
-                            case "ImageAnswerPlayer3":
-                                imageSelectionPlayer1.Margin = new Thickness(693, 509, 295, 119);
-                                break;
-                            case "ImageAnswerPlayer4":
-                                imageSelectionPlayer1.Margin = new Thickness(940, 505, 48, 123);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    case 3:
-                        imageSelectionPlayer3.Visibility = Visibility.Visible;
-                        ChangeProfilePicture(3, profilePictureId);
-
-                        switch (selectedImage.Name)
-                        {
-                            case "ImageAnswerPlayer1":
-                                imageSelectionPlayer1.Margin = new Thickness(45, 510, 944, 118);
-                                break;
-                            case "ImageAnswerPlayer2":
-                                imageSelectionPlayer1.Margin = new Thickness(285, 107, 703, 521);
-                                break;
-                            case "ImageAnswerPlayer3":
-                                imageSelectionPlayer1.Margin = new Thickness(540, 107, 448, 521);
-                                break;
-                            case "ImageAnswerPlayer4":
-                                imageSelectionPlayer1.Margin = new Thickness(785, 110, 203, 518);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-
-                    case 4:
-                        imageSelectionPlayer4.Visibility = Visibility.Visible;
-                        ChangeProfilePicture(4, profilePictureId);
-                        switch (selectedImage.Name)
-                        {
-                            case "ImageAnswerPlayer1":
-                                imageSelectionPlayer1.Margin = new Thickness(218, 106, 770, 522);
-                                break;
-                            case "ImageAnswerPlayer2":
-                                imageSelectionPlayer1.Margin = new Thickness(461, 107, 527, 521);
-                                break;
-                            case "ImageAnswerPlayer3":
-                                imageSelectionPlayer1.Margin = new Thickness(693, 124, 295, 504);
-                                break;
-                            case "ImageAnswerPlayer4":
-                                imageSelectionPlayer1.Margin = new Thickness(940, 107, 48, 521);
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                // Hacer visible ImageUserSelection
-                imageSelectionPlayer1.Visibility = Visibility.Visible;
-
-                // Otras acciones que desees realizar cuando se selecciona una respuesta
-                // ...
-
-
-
-                // Aquí puedes llamar a la función EnterWager o cualquier otra acción necesaria
-            }
-        }
-
-
-
-
-
-
+        
         private void PlayNextRound()
         {
             labelRound.Content = "Round " + rounds;
@@ -347,7 +227,11 @@ namespace Wits
             imageSelectionPlayer4.Visibility = Visibility.Hidden;
             ImageAcceptWager.Visibility = Visibility.Hidden;
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
-          
+
+            LabelAnswer1.Content = "";
+            LabelAnswer2.Content = "";
+            LabelAnswer3.Content = "";
+            LabelAnswer4.Content = "";
 
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
@@ -374,6 +258,22 @@ namespace Wits
             correctPlayers.Clear();
 
             ShowQuestion();
+
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(userName);
+            int profilePictureId = playerData.ProfilePictureId;
+            int celebrationId = playerData.CelebrationId;
+
+
+            string scoreText = labelChips.Content.ToString();
+
+            // Intenta convertir el contenido a un entero
+            if (int.TryParse(scoreText, out int score))
+            {
+                client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId); ;
+            }
+
+           
 
             
 
@@ -610,18 +510,6 @@ namespace Wits
             return 0;
         }
 
-        private void EnterWager()
-        {
-            GridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
-            TextBoxPlayersAnswer.Text = "";
-            ImageAcceptWager.Visibility = Visibility.Visible;
-            GridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
-            LabelInstrucion.Content = "How much will you wager?";
-
-
-
-        }
-
         private void ShowRoundWinners()
         {
 
@@ -824,8 +712,11 @@ namespace Wits
         public void ShowEnterWager()
         {
 
-
-            EnterWager();
+            GridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
+            TextBoxPlayersAnswer.Text = "";
+            ImageAcceptWager.Visibility = Visibility.Visible;
+            GridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            LabelInstrucion.Content = "How much will you wager?";
 
         }
 

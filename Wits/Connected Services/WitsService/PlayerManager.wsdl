@@ -66,6 +66,9 @@
   <wsdl:message name="IActiveGame_ReadyToShowAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadyToShowAnswer" />
   </wsdl:message>
+  <wsdl:message name="IActiveGame_WhoWon_InputMessage">
+    <wsdl:part name="parameters" element="tns:WhoWon" />
+  </wsdl:message>
   <wsdl:message name="IActiveGame_UpdateAnswers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateAnswers" />
   </wsdl:message>
@@ -307,6 +310,9 @@
     <wsdl:operation name="ReadyToShowAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer" message="tns:IActiveGame_ReadyToShowAnswer_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="WhoWon">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/WhoWon" message="tns:IActiveGame_WhoWon_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="UpdateAnswers">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswers" message="tns:IActiveGame_UpdateAnswers_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswersResponse" message="tns:IActiveGame_UpdateAnswers_InputCallbackMessage" />
@@ -503,6 +509,12 @@
     </wsdl:operation>
     <wsdl:operation name="ReadyToShowAnswer">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/ReadyToShowAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="WhoWon">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/WhoWon" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

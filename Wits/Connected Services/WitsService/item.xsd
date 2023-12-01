@@ -53,6 +53,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="WhoWon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="numberPlayer" type="xs:int" />
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idCelebration" type="xs:int" />
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+        <xs:element minOccurs="0" name="idProfilePicture" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateAnswers">
     <xs:complexType>
       <xs:sequence>
