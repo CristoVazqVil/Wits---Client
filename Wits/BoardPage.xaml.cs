@@ -85,6 +85,7 @@ namespace Wits
 
         private void ShowVictoryScreen()
         {
+            GridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
             Player playerData = playerManagerClient.GetPlayerByUser(userName);
             int profilePictureId = playerData.ProfilePictureId;
@@ -341,16 +342,39 @@ namespace Wits
             labelRound.Content = "Round " + rounds;
             TextBoxPlayersAnswer.Text = "";
             imageSelectionPlayer1.Visibility = Visibility.Hidden;
+            imageSelectionPlayer2.Visibility = Visibility.Hidden;
+            imageSelectionPlayer3.Visibility = Visibility.Hidden;
+            imageSelectionPlayer4.Visibility = Visibility.Hidden;
             ImageAcceptWager.Visibility = Visibility.Hidden;
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
             Console.Write("YA VA A LIMPIAR");
+
             LabelAnswer1.Content = " ";
             LabelAnswer2.Content = " ";
             LabelAnswer3.Content = " ";
             LabelAnswer4.Content = " ";
 
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            client.RegisterUserInGameContext(UserSingleton.Instance.Username);
+            bool isReady = false;
+            client.ReadyToWager(gameId, player, isReady);
+            client.ReadyToShowAnswer(gameId, player, isReady);
+
+            ImageWinner1.Visibility = Visibility.Hidden;
+            ImageWinner2.Visibility = Visibility.Hidden;
+            ImageWinner3.Visibility = Visibility.Hidden;
+            ImageWinner4.Visibility = Visibility.Hidden;
+
+            ImageAcceptAnswer.Visibility = Visibility.Visible;
+
+            GridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+
+            correctPlayers.Clear();
+
             ShowQuestion();
 
+            
 
 
         }
@@ -599,6 +623,7 @@ namespace Wits
 
         private void ShowRoundWinners()
         {
+
             Console.WriteLine("JUGADORES CORRECTOS " + correctPlayers);
 
             foreach (int playerNumber in correctPlayers)
@@ -887,8 +912,7 @@ namespace Wits
 
 
             }
-
-
+            this.correctPlayers = correctPlayers;
         }
     }
 }
