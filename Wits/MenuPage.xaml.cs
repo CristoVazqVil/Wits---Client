@@ -29,7 +29,7 @@ namespace Wits
     /// a ver si ya 
     public partial class Menu : Page, WitsService.IConnectedUsersCallback
     {
-        private MediaPlayer mediaPlayer;
+        private MediaPlayer mediaPlayer = new MediaPlayer();
         private Random random = new Random();
         private string username = UserSingleton.Instance.Username;
         private List<Uri> songs = new List<Uri>()
@@ -48,14 +48,29 @@ namespace Wits
         {
             InitializeComponent();
             backgroundVideo.Play();
-            mediaPlayer = new MediaPlayer();
             mediaPlayer.MediaEnded += SongEnded;
             InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
-            client.AddConnectedUser(username);
             PlayRandomSong();
             ValidateGuest();
             SetProfilePicture();
+
+            try
+            {
+                client.AddConnectedUser(username);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
 
@@ -78,13 +93,30 @@ namespace Wits
         private void SetProfilePicture()
         {
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(username);
-            int profilePictureId = playerData.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            imageProfilePic.Source = new BitmapImage(profilePictureUri);
-            userName.Content = username;
+
+            try
+            {
+                Player playerData = playerManagerClient.GetPlayerByUser(username);
+                int profilePictureId = playerData.ProfilePictureId;
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                imageProfilePic.Source = new BitmapImage(profilePictureUri);
+                userName.Content = username;
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -177,9 +209,10 @@ namespace Wits
         {
             Random randomId = new Random();
             int newGameId = randomId.Next(10000, 100000);
+            WitsService.GameManagerClient client = new WitsService.GameManagerClient();
             try
             {
-                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
+                
                 client.CreateGame(newGameId, UserSingleton.Instance.Username);
                 mediaPlayer.Stop();
                 GameSingleton.Instance.SetGame(newGameId, 1);
@@ -189,6 +222,14 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
@@ -201,9 +242,10 @@ namespace Wits
             if (result == true)
             {
                 int existingGameId = window.GameId;
+                WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                 try
                 {
-                    WitsService.GameManagerClient client = new WitsService.GameManagerClient();
+                    
                     int playerNumber = client.JoinGame(existingGameId, UserSingleton.Instance.Username);
                     if (playerNumber > 0)
                     {
@@ -222,6 +264,14 @@ namespace Wits
                     Console.WriteLine(ex.ToString());
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+                catch (EndpointNotFoundException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (CommunicationException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
@@ -230,8 +280,25 @@ namespace Wits
             InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
             ProfileCustomizationPage profileCustomizationPage = new ProfileCustomizationPage();
-            client.RemoveConnectedUserInMenu(username);
-            this.NavigationService.Navigate(profileCustomizationPage);
+
+            try
+            {
+                client.RemoveConnectedUserInMenu(username);
+                this.NavigationService.Navigate(profileCustomizationPage);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void OpenMyFriendsPage(object sender, MouseButtonEventArgs e)
@@ -239,8 +306,25 @@ namespace Wits
             InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
             MyFriendsPage myFriendsPage = new MyFriendsPage();
-            client.RemoveConnectedUserInMenu(username);
-            this.NavigationService.Navigate(myFriendsPage);
+
+            try
+            {
+                client.RemoveConnectedUserInMenu(username);
+                this.NavigationService.Navigate(myFriendsPage);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         public void UpdateConnectedFriends()
@@ -249,11 +333,27 @@ namespace Wits
             {
                 InstanceContext context = new InstanceContext(this);
                 WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
-                string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username);
-                List<string> connectedFriends = new List<string>(connectedFriendsArray);
 
-                gridOnlineFriends.Children.Clear();
-                setFriendsMenu(connectedFriends);
+                try
+                {
+                    string[] connectedFriendsArray = client.GetConnectedFriends(UserSingleton.Instance.Username);
+                    List<string> connectedFriends = new List<string>(connectedFriendsArray);
+
+                    gridOnlineFriends.Children.Clear();
+                    setFriendsMenu(connectedFriends);
+                }
+                catch (FaultException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (CommunicationException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
@@ -263,8 +363,24 @@ namespace Wits
             WitsService.ConnectedUsersClient client = new WitsService.ConnectedUsersClient(context);
             LobbyPage lobbyPage = new LobbyPage();
 
-            client.RemoveConnectedUserInMenu(username);
-            this.NavigationService.Navigate(lobbyPage);
+            try
+            {
+                client.RemoveConnectedUserInMenu(username);
+                this.NavigationService.Navigate(lobbyPage);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void ValidateGuest()

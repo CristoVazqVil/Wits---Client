@@ -228,6 +228,15 @@
   <data name="ExistingRequestMessage" xml:space="preserve">
     <value>There's a request already or this player is your friend...</value>
   </data>
+  <data name="Expel" xml:space="preserve">
+    <value>Expel</value>
+  </data>
+  <data name="ExpelConfirmation" xml:space="preserve">
+    <value>Are you sure about expelling this player?</value>
+  </data>
+  <data name="Expelled" xml:space="preserve">
+    <value>You were kicked out of the game</value>
+  </data>
   <data name="Failed" xml:space="preserve">
     <value>Failed</value>
   </data>
@@ -312,8 +321,14 @@
   <data name="PlayAsGuest" xml:space="preserve">
     <value>Play as a guest</value>
   </data>
+  <data name="PlayerExpelled" xml:space="preserve">
+    <value>Player Expelled.</value>
+  </data>
   <data name="PlayerInvitedMessage" xml:space="preserve">
     <value>The player was invited!</value>
+  </data>
+  <data name="PlayersInGame" xml:space="preserve">
+    <value>Players:</value>
   </data>
   <data name="ProfilePics" xml:space="preserve">
     <value>Profile Pics</value>
@@ -344,6 +359,9 @@
   </data>
   <data name="ServerProblemMessage" xml:space="preserve">
     <value>There's a server problem, Sorry!</value>
+  </data>
+  <data name="ServerUnavailable" xml:space="preserve">
+    <value>Server is not available</value>
   </data>
   <data name="StartGame" xml:space="preserve">
     <value>Start Game</value>

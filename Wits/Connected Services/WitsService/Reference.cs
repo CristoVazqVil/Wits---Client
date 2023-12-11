@@ -404,6 +404,12 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UnregisterUserInGameContext")]
         System.Threading.Tasks.Task UnregisterUserInGameContextAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ExpelPlayer")]
+        void ExpelPlayer(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ExpelPlayer")]
+        System.Threading.Tasks.Task ExpelPlayerAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/SavePlayerAnswer")]
         void SavePlayerAnswer(int playerNumber, string answer, int gameId);
         
@@ -449,6 +455,9 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowTrueAnswer", ReplyAction="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse")]
         void ShowTrueAnswer();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/BeExpelled", ReplyAction="http://tempuri.org/IActiveGame/BeExpelledResponse")]
+        void BeExpelled();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -493,6 +502,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task UnregisterUserInGameContextAsync(string username) {
             return base.Channel.UnregisterUserInGameContextAsync(username);
+        }
+        
+        public void ExpelPlayer(string username) {
+            base.Channel.ExpelPlayer(username);
+        }
+        
+        public System.Threading.Tasks.Task ExpelPlayerAsync(string username) {
+            return base.Channel.ExpelPlayerAsync(username);
         }
         
         public void SavePlayerAnswer(int playerNumber, string answer, int gameId) {
@@ -948,11 +965,23 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/JoinGame", ReplyAction="http://tempuri.org/IGameManager/JoinGameResponse")]
         System.Threading.Tasks.Task<int> JoinGameAsync(int gameId, string playerId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/RemovePlayerInGame", ReplyAction="http://tempuri.org/IGameManager/RemovePlayerInGameResponse")]
+        int RemovePlayerInGame(int gameId, string playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/RemovePlayerInGame", ReplyAction="http://tempuri.org/IGameManager/RemovePlayerInGameResponse")]
+        System.Threading.Tasks.Task<int> RemovePlayerInGameAsync(int gameId, string playerId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetScores", ReplyAction="http://tempuri.org/IGameManager/GetScoresResponse")]
         System.Collections.Generic.Dictionary<string, int> GetScores(int gameId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetScores", ReplyAction="http://tempuri.org/IGameManager/GetScoresResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoresAsync(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeader", ReplyAction="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeaderResponse")]
+        string[] GetPlayersOfGameExceptLeader(int gameId, string leaderUser);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeader", ReplyAction="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeaderResponse")]
+        System.Threading.Tasks.Task<string[]> GetPlayersOfGameExceptLeaderAsync(int gameId, string leaderUser);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameManager/ModifyScore", ReplyAction="http://tempuri.org/IGameManager/ModifyScoreResponse")]
         void ModifyScore(int gameId, string playerId, int credits);
@@ -1034,12 +1063,28 @@ namespace Wits.WitsService {
             return base.Channel.JoinGameAsync(gameId, playerId);
         }
         
+        public int RemovePlayerInGame(int gameId, string playerId) {
+            return base.Channel.RemovePlayerInGame(gameId, playerId);
+        }
+        
+        public System.Threading.Tasks.Task<int> RemovePlayerInGameAsync(int gameId, string playerId) {
+            return base.Channel.RemovePlayerInGameAsync(gameId, playerId);
+        }
+        
         public System.Collections.Generic.Dictionary<string, int> GetScores(int gameId) {
             return base.Channel.GetScores(gameId);
         }
         
         public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, int>> GetScoresAsync(int gameId) {
             return base.Channel.GetScoresAsync(gameId);
+        }
+        
+        public string[] GetPlayersOfGameExceptLeader(int gameId, string leaderUser) {
+            return base.Channel.GetPlayersOfGameExceptLeader(gameId, leaderUser);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetPlayersOfGameExceptLeaderAsync(int gameId, string leaderUser) {
+            return base.Channel.GetPlayersOfGameExceptLeaderAsync(gameId, leaderUser);
         }
         
         public void ModifyScore(int gameId, string playerId, int credits) {

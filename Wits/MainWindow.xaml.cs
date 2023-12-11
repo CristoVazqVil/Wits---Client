@@ -22,6 +22,7 @@ using System.ServiceModel;
 using System.Globalization;
 using System.Threading;
 using Wits.Classes;
+using System.IO;
 
 namespace Wits
 {
@@ -84,14 +85,20 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
         {
             backgroundVideo.Position = TimeSpan.Zero;
             backgroundVideo.Play();
-          
         }
 
         private void LoginHighlight(object sender, MouseEventArgs e)
@@ -270,6 +277,14 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

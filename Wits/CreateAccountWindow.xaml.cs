@@ -209,6 +209,14 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void DeleteEmailCharacters(object sender, TextCompositionEventArgs e)

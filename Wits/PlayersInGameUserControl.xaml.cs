@@ -60,7 +60,7 @@ namespace Wits
 
         private void PlayerCard_ButtonClicked(object sender, EventArgs e)
         {
-            MyFriendCardUserControl card = (MyFriendCardUserControl)sender;
+            PlayerInGameCardUserControl card = (PlayerInGameCardUserControl)sender;
             gridPlayersInGame.Children.Remove(card);
             rowsAdded--;
         }

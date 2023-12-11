@@ -394,6 +394,33 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expel.
+        /// </summary>
+        public static string Expel {
+            get {
+                return ResourceManager.GetString("Expel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure about expelling this player?.
+        /// </summary>
+        public static string ExpelConfirmation {
+            get {
+                return ResourceManager.GetString("ExpelConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You were kicked out of the game.
+        /// </summary>
+        public static string Expelled {
+            get {
+                return ResourceManager.GetString("Expelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed.
         /// </summary>
         public static string Failed {
@@ -646,11 +673,29 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Player Expelled..
+        /// </summary>
+        public static string PlayerExpelled {
+            get {
+                return ResourceManager.GetString("PlayerExpelled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The player was invited!.
         /// </summary>
         public static string PlayerInvitedMessage {
             get {
                 return ResourceManager.GetString("PlayerInvitedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Players:.
+        /// </summary>
+        public static string PlayersInGame {
+            get {
+                return ResourceManager.GetString("PlayersInGame", resourceCulture);
             }
         }
         
@@ -741,6 +786,15 @@ namespace Wits.Properties {
         public static string ServerProblemMessage {
             get {
                 return ResourceManager.GetString("ServerProblemMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server is not available.
+        /// </summary>
+        public static string ServerUnavailable {
+            get {
+                return ResourceManager.GetString("ServerUnavailable", resourceCulture);
             }
         }
         

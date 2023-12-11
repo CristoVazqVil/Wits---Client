@@ -54,6 +54,9 @@
   <wsdl:message name="IActiveGame_UnregisterUserInGameContext_InputMessage">
     <wsdl:part name="parameters" element="tns:UnregisterUserInGameContext" />
   </wsdl:message>
+  <wsdl:message name="IActiveGame_ExpelPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExpelPlayer" />
+  </wsdl:message>
   <wsdl:message name="IActiveGame_SavePlayerAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:SavePlayerAnswer" />
   </wsdl:message>
@@ -92,6 +95,12 @@
   </wsdl:message>
   <wsdl:message name="IActiveGame_ShowTrueAnswer_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowTrueAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_BeExpelled_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:BeExpelled" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_BeExpelled_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:BeExpelledResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_AddPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayer" />
@@ -240,11 +249,23 @@
   <wsdl:message name="IGameManager_JoinGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_RemovePlayerInGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayerInGame" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_RemovePlayerInGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemovePlayerInGameResponse" />
+  </wsdl:message>
   <wsdl:message name="IGameManager_GetScores_InputMessage">
     <wsdl:part name="parameters" element="tns:GetScores" />
   </wsdl:message>
   <wsdl:message name="IGameManager_GetScores_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetScoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_GetPlayersOfGameExceptLeader_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersOfGameExceptLeader" />
+  </wsdl:message>
+  <wsdl:message name="IGameManager_GetPlayersOfGameExceptLeader_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayersOfGameExceptLeaderResponse" />
   </wsdl:message>
   <wsdl:message name="IGameManager_ModifyScore_InputMessage">
     <wsdl:part name="parameters" element="tns:ModifyScore" />
@@ -313,6 +334,9 @@
     <wsdl:operation name="UnregisterUserInGameContext">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UnregisterUserInGameContext" message="tns:IActiveGame_UnregisterUserInGameContext_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ExpelPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ExpelPlayer" message="tns:IActiveGame_ExpelPlayer_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SavePlayerAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/SavePlayerAnswer" message="tns:IActiveGame_SavePlayerAnswer_InputMessage" />
     </wsdl:operation>
@@ -343,6 +367,10 @@
     <wsdl:operation name="ShowTrueAnswer">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswer" message="tns:IActiveGame_ShowTrueAnswer_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse" message="tns:IActiveGame_ShowTrueAnswer_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BeExpelled">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/BeExpelled" message="tns:IActiveGame_BeExpelled_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/BeExpelledResponse" message="tns:IActiveGame_BeExpelled_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPlayerManager">
@@ -451,9 +479,17 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/JoinGame" message="tns:IGameManager_JoinGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/JoinGameResponse" message="tns:IGameManager_JoinGame_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RemovePlayerInGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/RemovePlayerInGame" message="tns:IGameManager_RemovePlayerInGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/RemovePlayerInGameResponse" message="tns:IGameManager_RemovePlayerInGame_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetScores">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/GetScores" message="tns:IGameManager_GetScores_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/GetScoresResponse" message="tns:IGameManager_GetScores_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayersOfGameExceptLeader">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeader" message="tns:IGameManager_GetPlayersOfGameExceptLeader_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeaderResponse" message="tns:IGameManager_GetPlayersOfGameExceptLeader_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ModifyScore">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/ModifyScore" message="tns:IGameManager_ModifyScore_InputMessage" />
@@ -517,6 +553,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="ExpelPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ExpelPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="SavePlayerAnswer">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/SavePlayerAnswer" style="document" />
       <wsdl:input>
@@ -576,6 +618,15 @@
     </wsdl:operation>
     <wsdl:operation name="ShowTrueAnswer">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowTrueAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BeExpelled">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/BeExpelled" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -820,8 +871,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RemovePlayerInGame">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/RemovePlayerInGame" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetScores">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/GetScores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayersOfGameExceptLeader">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/GetPlayersOfGameExceptLeader" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

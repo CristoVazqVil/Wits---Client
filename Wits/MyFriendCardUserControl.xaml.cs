@@ -35,13 +35,29 @@ namespace Wits
         {
             labelFriendUsername.Content = username;
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            Wits.WitsService.Player player = client.GetPlayerByUser(username);
 
-            int profilePictureId = player.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            imageFriendProfile.Source = new BitmapImage(profilePictureUri);
+            try
+            {
+                Wits.WitsService.Player player = client.GetPlayerByUser(username);
+                int profilePictureId = player.ProfilePictureId;
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                imageFriendProfile.Source = new BitmapImage(profilePictureUri);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void BlockPlayer(object sender, MouseButtonEventArgs e)
@@ -66,6 +82,14 @@ namespace Wits
                 catch (FaultException ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (CommunicationException ex)
+                {
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
@@ -98,6 +122,14 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
         private void DeleteAllRequests(string enteredPlayer)
         {
@@ -114,6 +146,14 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void DeleteAcceptedRequests(string enteredPlayer)
@@ -127,6 +167,14 @@ namespace Wits
             catch (FaultException ex)
             {
                 Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }

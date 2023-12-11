@@ -29,6 +29,7 @@ namespace Wits
     public partial class ChangePasswordPage : Page
     {
         private const int SUCCESS = 1;
+
         public ChangePasswordPage()
         {
             InitializeComponent();
@@ -65,9 +66,16 @@ namespace Wits
             }
             catch (FaultException ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void CancelChangePassword(object sender, MouseButtonEventArgs e)
@@ -106,10 +114,19 @@ namespace Wits
             }
             catch (FaultException ex)
             {
-                Console.WriteLine(ex.ToString());
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 return validator;
             }
-            
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                return validator;
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                return validator;
+            }
         }
 
         private bool IsPasswordSecure()
@@ -220,13 +237,28 @@ namespace Wits
         private void SetProfilePicture()
         {
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
-            int profilePictureId = playerData.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            imageProfilePic.Source = new BitmapImage(profilePictureUri);
-            labelUsername.Content = UserSingleton.Instance.Username;
+            try
+            {
+                Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+                int profilePictureId = playerData.ProfilePictureId;
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                imageProfilePic.Source = new BitmapImage(profilePictureUri);
+                labelUsername.Content = UserSingleton.Instance.Username;
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
     }
 }

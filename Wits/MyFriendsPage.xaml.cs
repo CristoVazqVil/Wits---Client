@@ -45,23 +45,57 @@ namespace Wits
         private void SetFriends()
         {
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            string[] myFriendArray = client.GetPlayerFriends(UserSingleton.Instance.Username);
-            List<string> friendList = new List<string>(myFriendArray);
-            MyFriendsUserControl myFriends = new MyFriendsUserControl();
-            myFriends.SetFriends(friendList);
-            gridMyFriends.Children.Add(myFriends);
+
+            try
+            {
+                string[] myFriendArray = client.GetPlayerFriends(UserSingleton.Instance.Username);
+                List<string> friendList = new List<string>(myFriendArray);
+                MyFriendsUserControl myFriends = new MyFriendsUserControl();
+                myFriends.SetFriends(friendList);
+                gridMyFriends.Children.Add(myFriends);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void SetProfile()
         {
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(username);
-            int profilePictureId = playerData.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            imageProfile.Source = new BitmapImage(profilePictureUri);
-            labelUsername.Content = username;
+
+            try
+            {
+                Player playerData = playerManagerClient.GetPlayerByUser(username);
+                int profilePictureId = playerData.ProfilePictureId;
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                imageProfile.Source = new BitmapImage(profilePictureUri);
+                labelUsername.Content = username;
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void OpemMainMenu(object sender, MouseButtonEventArgs e)
@@ -73,11 +107,28 @@ namespace Wits
         {
             gridMyFriends.Children.Clear();
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            string[] requestsArray = client.GetAllPlayerRequests(UserSingleton.Instance.Username);
-            List<string> requestsList = new List<string>(requestsArray);
-            FriendRequestMenuUserControl requests = new FriendRequestMenuUserControl();
-            requests.SetFriendRequests(requestsList);
-            gridMyFriends.Children.Add(requests);
+
+            try
+            {
+                string[] requestsArray = client.GetAllPlayerRequests(UserSingleton.Instance.Username);
+                List<string> requestsList = new List<string>(requestsArray);
+                FriendRequestMenuUserControl requests = new FriendRequestMenuUserControl();
+                requests.SetFriendRequests(requestsList);
+                gridMyFriends.Children.Add(requests);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private void SetFriendsMenu(object sender, MouseButtonEventArgs e)
@@ -109,6 +160,14 @@ namespace Wits
                     Console.WriteLine(ex.ToString());
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
+                catch (EndpointNotFoundException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (CommunicationException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
@@ -122,15 +181,30 @@ namespace Wits
                 MessageBoxResult result = MessageBox.Show(Properties.Resources.BlockConfirmationMesssage, Properties.Resources.BlockPlayer, MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    if (client.BlockPlayer(UserSingleton.Instance.Username, enteredPlayer) >= 1)
+                    try
                     {
-                        DeleteFriendshipsAndRequests(enteredPlayer);
-                        MessageBox.Show(Properties.Resources.BlockPlayerMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
-                        SetFriends();
+                        if (client.BlockPlayer(UserSingleton.Instance.Username, enteredPlayer) >= 1)
+                        {
+                            DeleteFriendshipsAndRequests(enteredPlayer);
+                            MessageBox.Show(Properties.Resources.BlockPlayerMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                            SetFriends();
+                        }
+                        else
+                        {
+                            MessageBox.Show(Properties.Resources.AlreadyBlockedPlayerMessage, Properties.Resources.AlreadyBlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
                     }
-                    else
+                    catch (FaultException ex)
                     {
-                        MessageBox.Show(Properties.Resources.AlreadyBlockedPlayerMessage, Properties.Resources.AlreadyBlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }
@@ -139,52 +213,104 @@ namespace Wits
         private void DeleteFriendshipsAndRequests(string enteredPlayer)
         {
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            client.DeleteRequest(enteredPlayer, UserSingleton.Instance.Username, PENDING);
-            client.DeleteRequest(enteredPlayer, UserSingleton.Instance.Username, ACCEPTED);
-            client.DeleteRequest(UserSingleton.Instance.Username, enteredPlayer, PENDING);
-            client.DeleteRequest(UserSingleton.Instance.Username, enteredPlayer, ACCEPTED);
-            client.DeleteFriendship(enteredPlayer, UserSingleton.Instance.Username);
-            client.DeleteFriendship(UserSingleton.Instance.Username, enteredPlayer);
+            try
+            {
+                client.DeleteRequest(enteredPlayer, UserSingleton.Instance.Username, PENDING);
+                client.DeleteRequest(enteredPlayer, UserSingleton.Instance.Username, ACCEPTED);
+                client.DeleteRequest(UserSingleton.Instance.Username, enteredPlayer, PENDING);
+                client.DeleteRequest(UserSingleton.Instance.Username, enteredPlayer, ACCEPTED);
+                client.DeleteFriendship(enteredPlayer, UserSingleton.Instance.Username);
+                client.DeleteFriendship(UserSingleton.Instance.Username, enteredPlayer);
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
         private bool IsAExistingPlayer(string enteredUsername)
         {
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            WitsService.Player enteredPlayer = client.GetPlayerByUser(enteredUsername);
 
-            if (enteredPlayer != null)
+            try
             {
-                return true;
+                WitsService.Player enteredPlayer = client.GetPlayerByUser(enteredUsername);
+
+                if (enteredPlayer != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (FaultException ex)
             {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 return false;
             }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+            
         }
 
         public bool IsAValidPlayer(string enteredUsername)
         {
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
             bool validator = false;
+
             if (!enteredUsername.Equals(UserSingleton.Instance.Username))
             {
                 if (IsAExistingPlayer(enteredUsername))
                 {
-                    if (!client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
+                    try
                     {
-                        if (!client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
+                        if (!client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
                         {
-                            validator = true;
-                            return validator;
+                            if (!client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
+                            {
+                                validator = true;
+                                return validator;
+                            }
+                            else
+                            {
+                                MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
                         }
                         else
                         {
-                            MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                     }
-                    else
+                    catch (FaultException ex)
                     {
-                        MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (EndpointNotFoundException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
                 else

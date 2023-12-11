@@ -27,7 +27,7 @@
             <Image Source="/Celebrations/rectangle.png" Margin="277,136,263,36" Stretch="Fill"  />
             <MediaElement x:Name="celebrationVideo" HorizontalAlignment="Left" Height="428" Margin="326,165,0,0" VerticalAlignment="Top" Width="440" Source="Celebrations\10.mp4" MediaEnded="CelebrationLoop" LoadedBehavior="Manual" />
             <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="424,173,433,369" />
-            <Label x:Name="labelWinner" Content="{x:Static p:Resources.Wins}" HorizontalAlignment="Left" Height="118" Margin="412,292,0,0" VerticalAlignment="Top" Width="270" FontSize="48" Foreground="White"/>
+            <Label x:Name="labelWinner" Content="{x:Static p:Resources.Wins}" FontFamily="Beon" HorizontalAlignment="Left" Height="118" Margin="412,0,0,0" VerticalAlignment="Center" Width="270" FontSize="48" Foreground="White"/>
             <Image x:Name="imageHomeButton" Source="/Images/houseButton.png" Margin="680,525,290,85" MouseDown="GoToLobby" />
         </Grid>
 
@@ -37,20 +37,20 @@
             <Image x:Name="imageAcceptAnswer" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveAnswer" />
             <TextBox x:Name="textBoxPlayersAnswer" Margin="194,251,184,250" Background="Black" BorderBrush="{x:Null}" FontSize="100" Foreground="White"
             TextAlignment="Center" MaxLength="10" PreviewTextInput="AnswerIsNumber" SelectionBrush="{x:Null}" />
-            <Label x:Name="labelInstrucion" Content="{x:Static p:Resources.EnterAnswer}" HorizontalAlignment="Left" Margin="218,150,0,0" VerticalAlignment="Top" Height="121" Width="724" Foreground="White" FontSize="60"/>
+            <Label x:Name="labelInstrucion" Content="{x:Static p:Resources.EnterAnswer}" FontFamily="Beon" HorizontalAlignment="Left" Margin="194,150,0,0" VerticalAlignment="Top" Height="121" Width="724" Foreground="White" FontSize="60"/>
             <Image x:Name="imageAcceptWager" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveWager" Visibility="Hidden" />
 
         </Grid>
 
         <Grid x:Name="gridAllAnswers" Margin="-20,754,20,-754">
-            <Image x:Name="ImageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="45,94,770,117" MouseDown="SelectedAnswer"  />
-            <Image x:Name="ImageAnswerPlayer2" Source="/Images/AnswerRectangle2.png" Margin="270,106,540,123"  MouseDown="SelectedAnswer" />
-            <Image x:Name="ImageAnswerPlayer3" Source="/Images/AnswerRectangle3.png" Margin="511,110,291,119" MouseDown="SelectedAnswer" />
-            <Image x:Name="ImageAnswerPlayer4" Source="/Images/AnswerRectangle4.png" Margin="748,107,42,106" MouseDown="SelectedAnswer" />
+            <Image x:Name="imageAnswerPlayer1" Source="/Images/AnswerRectangle1.png" Margin="45,94,770,117" MouseDown="SelectedAnswer"  />
+            <Image x:Name="imageAnswerPlayer2" Source="/Images/AnswerRectangle2.png" Margin="270,106,540,123"  MouseDown="SelectedAnswer" />
+            <Image x:Name="imageAnswerPlayer3" Source="/Images/AnswerRectangle3.png" Margin="511,110,291,119" MouseDown="SelectedAnswer" />
+            <Image x:Name="imageAnswerPlayer4" Source="/Images/AnswerRectangle4.png" Margin="748,107,42,106" MouseDown="SelectedAnswer" />
 
 
 
-            <Label x:Name="LabelAnswer1" HorizontalAlignment="Left" Margin="-47,202,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+            <Label x:Name="labelAnswer1" Content="" HorizontalContentAlignment="Center" FontFamily="Beon" HorizontalAlignment="Left" Margin="-47,202,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -62,7 +62,7 @@
             </Label>
 
 
-            <Label x:Name="LabelAnswer2" Content="" HorizontalAlignment="Left" Margin="197,203,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+            <Label x:Name="labelAnswer2" Content="" HorizontalContentAlignment="Center" FontFamily="Beon" HorizontalAlignment="Left" Margin="197,203,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -73,7 +73,7 @@
                 </Label.RenderTransform>
             </Label>
 
-            <Label x:Name="LabelAnswer3" Content="0" HorizontalAlignment="Left" Margin="443,216,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+            <Label x:Name="labelAnswer3" Content="" HorizontalContentAlignment="Center" FontFamily="Beon" HorizontalAlignment="Left" Margin="443,216,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -84,7 +84,7 @@
                 </Label.RenderTransform>
             </Label>
 
-            <Label x:Name="LabelAnswer4" Content="135" HorizontalAlignment="Left" Margin="671,219,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
+            <Label x:Name="labelAnswer4" Content="" FontFamily="Beon" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="671,219,0,0" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.5,0.5" Height="186" Width="450" FontSize="100" IsHitTestVisible="False">
                 <Label.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -106,19 +106,19 @@
 
         <Grid x:Name="gridWarning" Margin="1177,822,-1177,-822" MouseDown="AcceptWarning" >
             <Image Source="/Images/warningBox.png" Margin="156,126,156,126" />
-            <Image x:Name="ImageAccept" Source="/Images/okGreenBox.png" Margin="406,402,406,234" />
-            <Label Content="Please enter a valid amount within your available chips." 
-           HorizontalAlignment="Left" Margin="383,320,0,0" VerticalAlignment="Top" Foreground="White" FontSize="15" Height="37" Width="395"/>
+            <Image x:Name="imageAccept" Source="/Images/okGreenBox.png" Margin="406,402,406,234" />
+            <Label Content="{x:Static p:Resources.EnterAValidAmount}" FontFamily="Beon"
+           HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="383,320,0,0" VerticalAlignment="Top" Foreground="White" FontSize="13" Height="37" Width="395"/>
 
         </Grid>
 
         <Grid x:Name="gridRoundWinners" Margin="1177,-954,-1177,954" >
             <Image Source="/Images/purpleCelebrationBox.png" />
-            <Label x:Name="LabelRightAnswer" Content="You're Right!" HorizontalAlignment="Center" Margin="0,539,0,0" VerticalAlignment="Top" Foreground="White" Height="98" Width="366" FontSize="60"/>
-            <Image x:Name="ImageWinner1" Source="/ProfilePictures/1.png" Margin="374,220,564,380" Visibility="Hidden"/>
-            <Image x:Name="ImageWinner2" Source="/ProfilePictures/1.png" Margin="559,220,379,380" Visibility="Hidden"/>
-            <Image x:Name="ImageWinner3" Source="/ProfilePictures/1.png" Margin="374,370,564,230" Visibility="Hidden" />
-            <Image x:Name="ImageWinner4" Source="/ProfilePictures/1.png" Margin="559,370,379,230" Visibility="Hidden" />
+            <Label x:Name="labelRightAnswer" Content="{x:Static p:Resources.YouRight}" FontFamily="Beon" HorizontalAlignment="Center" Margin="0,566,0,0" VerticalAlignment="Top" Foreground="White" Height="98" Width="366" FontSize="60"/>
+            <Image x:Name="imageWinner1" Source="/ProfilePictures/1.png" Margin="374,220,564,380" Visibility="Hidden"/>
+            <Image x:Name="imageWinner2" Source="/ProfilePictures/1.png" Margin="559,220,379,380" Visibility="Hidden"/>
+            <Image x:Name="imageWinner3" Source="/ProfilePictures/1.png" Margin="374,370,564,230" Visibility="Hidden" />
+            <Image x:Name="imageWinner4" Source="/ProfilePictures/1.png" Margin="559,370,379,230" Visibility="Hidden" />
 
         </Grid>
         <Grid x:Name="gridPlayersInGame" Width="650" Margin="-899,-594,1211,858"/>

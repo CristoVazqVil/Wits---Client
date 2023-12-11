@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,29 +42,46 @@ namespace Wits
         private void SetProfilePicture(string username)
         {
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(username);
-            int profilePictureId = playerData.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            imageCurrentPicture.Source = new BitmapImage(profilePictureUri);
 
-            int celebrationId = playerData.CelebrationId;
-            selectedCelebrationId = celebrationId;
-            string rectangleName = "rectangleVideo" + celebrationId;
-            Rectangle selectedRectangle = FindName(rectangleName) as Rectangle;
-
-            if (selectedRectangle != null)
+            try
             {
-                if (currentVisibleRectangle != null)
-                {
-                    currentVisibleRectangle.Visibility = Visibility.Hidden;
-                }
+                Player playerData = playerManagerClient.GetPlayerByUser(username);
+                int profilePictureId = playerData.ProfilePictureId;
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                imageCurrentPicture.Source = new BitmapImage(profilePictureUri);
 
-                selectedRectangle.Visibility = Visibility.Visible;
-                currentVisibleRectangle = selectedRectangle;
-                selectedRectangle.Stroke = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF00D233"));
+                int celebrationId = playerData.CelebrationId;
+                selectedCelebrationId = celebrationId;
+                string rectangleName = "rectangleVideo" + celebrationId;
+                Rectangle selectedRectangle = FindName(rectangleName) as Rectangle;
+
+                if (selectedRectangle != null)
+                {
+                    if (currentVisibleRectangle != null)
+                    {
+                        currentVisibleRectangle.Visibility = Visibility.Hidden;
+                    }
+
+                    selectedRectangle.Visibility = Visibility.Visible;
+                    currentVisibleRectangle = selectedRectangle;
+                    selectedRectangle.Stroke = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF00D233"));
+                }
             }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            
         }
 
 
@@ -116,10 +134,6 @@ namespace Wits
             }
         }
 
-
-
-
-
         private void ShowPictures(object sender, MouseButtonEventArgs e)
         {
             TranslateTransform moveBackTransform = new TranslateTransform(0, 0);
@@ -135,9 +149,11 @@ namespace Wits
             string currentPictureFileName = System.IO.Path.GetFileName(currentPicturePath);
             currentPictureFileName = currentPictureFileName.Replace(".png", "");
             int.TryParse(currentPictureFileName, out int profilePictureId);
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            int newProfilePictureId = profilePictureId;
 
-                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-                int newProfilePictureId = profilePictureId;
+            try
+            {
                 bool success = playerManagerClient.UpdateProfilePicture(UserSingleton.Instance.Username, newProfilePictureId);
                 if (success)
                 {
@@ -150,11 +166,24 @@ namespace Wits
                     else
                     {
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                    }
                 }
                 else
                 {
                  MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

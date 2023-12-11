@@ -45,7 +45,7 @@ namespace Wits.Classes
                     body = reader.ReadToEnd();
                 }
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
                 Console.WriteLine("Reading HTML file error: " + ex.Message);
                 return msge;
@@ -65,7 +65,7 @@ namespace Wits.Classes
                 client.Send(mail);
                 msge = Properties.Resources.ConfirmationEmailSent;
             }
-            catch (Exception ex)
+            catch (SmtpException ex)
             {
                 msge = ex.Message + Properties.Resources.Failed;
                 Console.WriteLine(msge);
@@ -77,7 +77,7 @@ namespace Wits.Classes
         public static string sendInvitationMail(string to, int gameId)
         {
             string msge = Properties.Resources.InvitationEmailError;
-            string htmlFilePath = "resources/CreatedUserEmail.html";
+            string htmlFilePath = "resources/Invitation.html";
             string body;
 
             try
@@ -87,7 +87,7 @@ namespace Wits.Classes
                     body = reader.ReadToEnd();
                 }
             }
-            catch (Exception ex)
+            catch (IOException ex)
             {
                 Console.WriteLine("Reading HTML file error: " + ex.Message);
                 return msge;
@@ -107,7 +107,7 @@ namespace Wits.Classes
                 client.Send(mail);
                 msge = Properties.Resources.InvitationEmailSent;
             }
-            catch (Exception ex)
+            catch (SmtpException ex)
             {
                 msge = ex.Message + Properties.Resources.Failed;
                 Console.WriteLine(msge);

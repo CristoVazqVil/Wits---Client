@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
@@ -39,10 +40,26 @@ namespace Wits
             InstanceContext context = new InstanceContext(this);
             WitsService.ConnectedUsersClient connectedClient = new WitsService.ConnectedUsersClient(context);
             WitsService.PlayerManagerClient playerClient = new WitsService.PlayerManagerClient();
-            connectedClient.RemoveConnectedUser(UserSingleton.Instance.Username);
-            if (UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
+
+            try
             {
-                playerClient.DeletePlayer(UserSingleton.Instance.Username);
+                connectedClient.RemoveConnectedUser(UserSingleton.Instance.Username);
+                if (UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
+                {
+                    playerClient.DeletePlayer(UserSingleton.Instance.Username);
+                }
+            }
+            catch (FaultException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

@@ -196,6 +196,7 @@
       <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\GameSingleton.cs" />
+    <Compile Include="Classes\Logger.cs" />
     <Compile Include="Classes\Mail.cs" />
     <Compile Include="Classes\UserSingleton.cs" />
     <Compile Include="Connected Services\WitsService\Reference.cs">
@@ -305,6 +306,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="resources\log4net.config" />
     <None Include="resources\appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -440,6 +442,9 @@
     <Resource Include="Images\AnswerRectangle1.png" />
     <Resource Include="Images\AnswerRectangle3.png" />
     <Resource Include="Images\AnswerRectangle4.png" />
+    <Content Include="Music\Elite Four Battle.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Music\Song1.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -504,6 +509,7 @@
     <Content Include="resources\CreatedUserEmail.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="resources\Invitation.html" />
     <Content Include="Videos\boardVideoBackground.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

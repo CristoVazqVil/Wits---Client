@@ -16,6 +16,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ExpelPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="SavePlayerAnswer">
     <xs:complexType>
       <xs:sequence>
@@ -105,6 +112,16 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ShowTrueAnswerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeExpelled">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeExpelledResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -462,6 +479,21 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RemovePlayerInGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="playerId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemovePlayerInGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RemovePlayerInGameResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetScores">
     <xs:complexType>
       <xs:sequence>
@@ -473,6 +505,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetScoresResult" nillable="true" type="q9:ArrayOfKeyValueOfstringint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayersOfGameExceptLeader">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="leaderUser" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayersOfGameExceptLeaderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPlayersOfGameExceptLeaderResult" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -529,7 +576,7 @@
   <xs:element name="GetQuestionByIDResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetQuestionByIDResult" nillable="true" type="q10:Question" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetQuestionByIDResult" nillable="true" type="q11:Question" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -555,7 +602,7 @@
   <xs:element name="GetQuestionIdsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetQuestionIdsResult" nillable="true" type="q11:ArrayOfint" />
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetQuestionIdsResult" nillable="true" type="q12:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

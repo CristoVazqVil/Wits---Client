@@ -13,7 +13,7 @@
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Label x:Name="labelPlayersInGame" Content="{x:Static p:Resources.PlayAsGuest}" Foreground="White" FontFamily="Neon Tubes 2" FontSize="23" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="308"/>
+            <Label x:Name="labelPlayersInGame" Content="{x:Static p:Resources.PlayersInGame}" Foreground="White" FontFamily="Neon Tubes 2" FontSize="23" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="308"/>
             <Image x:Name="imageClosePlayers" Source="Images/block.png" Margin="594,4,10,4" MouseDown="ClosePlayersMenu"/>
             <Grid Grid.Row="1">
                 <Grid x:Name="gridPlayersInGame"/>
