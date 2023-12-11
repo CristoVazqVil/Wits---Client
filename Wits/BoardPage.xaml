@@ -19,7 +19,7 @@
 
         <Grid x:Name="gridQuestionsAndAnswers" Margin="-10,-749,10,749" >
             <Image x:Name="imageQuestionFrame" Opacity="0" HorizontalAlignment="Center" Source="Images\questionFrame.png" Height="379" Margin="0,212,0,0" VerticalAlignment="Top" Width="952"/>
-            <TextBox x:Name="textBoxQuestion" BorderThickness="0" Opacity="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Beon" FontSize="18" Background="Transparent" TextAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="374,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="549"/>
+            <TextBox x:Name="textBoxQuestion" BorderThickness="0" IsReadOnly="True" Opacity="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontFamily="Beon" FontSize="18" Background="Transparent" TextAlignment="Center" Foreground="White" HorizontalAlignment="Left" Margin="374,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="172" Width="549"/>
 
         </Grid>
 
@@ -27,7 +27,7 @@
             <Image Source="/Celebrations/rectangle.png" Margin="277,136,263,36" Stretch="Fill"  />
             <MediaElement x:Name="celebrationVideo" HorizontalAlignment="Left" Height="428" Margin="326,165,0,0" VerticalAlignment="Top" Width="440" Source="Celebrations\10.mp4" MediaEnded="CelebrationLoop" LoadedBehavior="Manual" />
             <Image x:Name="profilePicture" Source="/ProfilePictures/1.png" Margin="424,173,433,369" />
-            <Label x:Name="labelWinner" Content="{x:Static p:Resources.Wins}" FontFamily="Beon" HorizontalAlignment="Left" Height="118" Margin="412,0,0,0" VerticalAlignment="Center" Width="270" FontSize="48" Foreground="White"/>
+            <Label x:Name="labelWinner" Content="{x:Static p:Resources.Wins}" HorizontalAlignment="Left" Height="118" Margin="412,292,0,0" VerticalAlignment="Top" Width="443" FontSize="45" Foreground="White"/>
             <Image x:Name="imageHomeButton" Source="/Images/houseButton.png" Margin="680,525,290,85" MouseDown="GoToLobby" />
         </Grid>
 
