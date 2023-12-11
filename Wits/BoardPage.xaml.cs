@@ -58,6 +58,10 @@ namespace Wits
 
             client.ReadyToShowAnswer(gameId, player, isReady);
 
+
+            bool isRegistered = false;
+            client.GameEnded(gameId, player, isRegistered);
+
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -95,40 +99,6 @@ namespace Wits
                 Console.WriteLine(ex.ToString());
             }
         }
-
-
-
-        private void ShowVictoryScreen()
-        {
-            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
-            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(userName);
-            int profilePictureId = playerData.ProfilePictureId;
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
-
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            profilePicture.Source = new BitmapImage(profilePictureUri);
-
-            int celebrationId = playerData.CelebrationId;
-            string celebrationFileName = celebrationId + ".mp4";
-            string celebrationPath = "Celebrations/" + celebrationFileName;
-
-            Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
-            celebrationVideo.Source = celebrationUri;
-
-
-            labelWinner.Content = userName + Properties.Resources.Wins;
-
-
-            celebrationVideo.Play();
-            victoryScreen.Margin = new Thickness(0);
-
-            DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
-            victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
-        }
-
-
 
         private async Task ShowQuestion()
         {
@@ -193,7 +163,26 @@ namespace Wits
             else
             {
                 labelRound.Content = "";
-                ShowVictoryScreen();
+
+                string scoreText = labelChips.Content.ToString();
+
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+                Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+                int profilePictureId = playerData.ProfilePictureId;
+                int celebrationId = playerData.CelebrationId;
+
+
+
+                if (int.TryParse(scoreText, out int score))
+                {
+
+                    bool isRegistered = true;
+                    client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId);
+                    client.GameEnded(gameId, player, isRegistered);
+                }
+
             }
 
         }
@@ -275,17 +264,6 @@ namespace Wits
             int celebrationId = playerData.CelebrationId;
 
 
-            string scoreText = labelChips.Content.ToString();
-
-            // Intenta convertir el contenido a un entero
-            if (int.TryParse(scoreText, out int score))
-            {
-                client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId); ;
-            }
-
-           
-
-            
 
 
         }
@@ -302,6 +280,8 @@ namespace Wits
             {
                 GetQuestionIdsFromServer(gameId);
             }
+
+
 
             newQuestionId = questionIds.First();
             questionIds.RemoveAt(0);
@@ -852,5 +832,32 @@ namespace Wits
             this.correctPlayers = correctPlayers;
         }
 
+        void IActiveGameCallback.ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
+        {
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            string profilePictureFileName = profilePictureId + ".png";
+            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+
+            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+            profilePicture.Source = new BitmapImage(profilePictureUri);
+
+
+            string celebrationFileName = celebrationId + ".mp4";
+            string celebrationPath = "Celebrations/" + celebrationFileName;
+
+            Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
+            celebrationVideo.Source = celebrationUri;
+
+
+            labelWinner.Content = userName + Properties.Resources.Wins;
+
+
+            celebrationVideo.Play();
+            victoryScreen.Margin = new Thickness(0);
+
+            DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
+            victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
+
+        }
     }
 }

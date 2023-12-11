@@ -428,11 +428,23 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer")]
         System.Threading.Tasks.Task ReadyToShowAnswerAsync(int gameId, int playerNumber, bool isReady);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/GameEnded")]
+        void GameEnded(int gameId, int playerNumber, bool isRegistered);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/GameEnded")]
+        System.Threading.Tasks.Task GameEndedAsync(int gameId, int playerNumber, bool isRegistered);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
         void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
         System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
+        void ShowWinner(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
+        System.Threading.Tasks.Task ShowWinnerAsync(int gameId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -449,6 +461,9 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowTrueAnswer", ReplyAction="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse")]
         void ShowTrueAnswer();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowVictoryScreen", ReplyAction="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse")]
+        void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -527,12 +542,28 @@ namespace Wits.WitsService {
             return base.Channel.ReadyToShowAnswerAsync(gameId, playerNumber, isReady);
         }
         
+        public void GameEnded(int gameId, int playerNumber, bool isRegistered) {
+            base.Channel.GameEnded(gameId, playerNumber, isRegistered);
+        }
+        
+        public System.Threading.Tasks.Task GameEndedAsync(int gameId, int playerNumber, bool isRegistered) {
+            return base.Channel.GameEndedAsync(gameId, playerNumber, isRegistered);
+        }
+        
         public void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
             base.Channel.WhoWon(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
         }
         
         public System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
             return base.Channel.WhoWonAsync(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        }
+        
+        public void ShowWinner(int gameId) {
+            base.Channel.ShowWinner(gameId);
+        }
+        
+        public System.Threading.Tasks.Task ShowWinnerAsync(int gameId) {
+            return base.Channel.ShowWinnerAsync(gameId);
         }
     }
     

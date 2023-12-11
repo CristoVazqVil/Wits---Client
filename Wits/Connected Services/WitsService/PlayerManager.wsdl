@@ -66,8 +66,14 @@
   <wsdl:message name="IActiveGame_ReadyToShowAnswer_InputMessage">
     <wsdl:part name="parameters" element="tns:ReadyToShowAnswer" />
   </wsdl:message>
+  <wsdl:message name="IActiveGame_GameEnded_InputMessage">
+    <wsdl:part name="parameters" element="tns:GameEnded" />
+  </wsdl:message>
   <wsdl:message name="IActiveGame_WhoWon_InputMessage">
     <wsdl:part name="parameters" element="tns:WhoWon" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowWinner_InputMessage">
+    <wsdl:part name="parameters" element="tns:ShowWinner" />
   </wsdl:message>
   <wsdl:message name="IActiveGame_UpdateAnswers_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:UpdateAnswers" />
@@ -92,6 +98,12 @@
   </wsdl:message>
   <wsdl:message name="IActiveGame_ShowTrueAnswer_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowTrueAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowVictoryScreen_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowVictoryScreen" />
+  </wsdl:message>
+  <wsdl:message name="IActiveGame_ShowVictoryScreen_InputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:ShowVictoryScreenResponse" />
   </wsdl:message>
   <wsdl:message name="IPlayerManager_AddPlayer_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayer" />
@@ -325,8 +337,14 @@
     <wsdl:operation name="ReadyToShowAnswer">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ReadyToShowAnswer" message="tns:IActiveGame_ReadyToShowAnswer_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GameEnded">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/GameEnded" message="tns:IActiveGame_GameEnded_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="WhoWon">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/WhoWon" message="tns:IActiveGame_WhoWon_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowWinner">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowWinner" message="tns:IActiveGame_ShowWinner_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateAnswers">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/UpdateAnswers" message="tns:IActiveGame_UpdateAnswers_OutputCallbackMessage" />
@@ -343,6 +361,10 @@
     <wsdl:operation name="ShowTrueAnswer">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswer" message="tns:IActiveGame_ShowTrueAnswer_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowTrueAnswerResponse" message="tns:IActiveGame_ShowTrueAnswer_InputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ShowVictoryScreen">
+      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowVictoryScreen" message="tns:IActiveGame_ShowVictoryScreen_OutputCallbackMessage" />
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse" message="tns:IActiveGame_ShowVictoryScreen_InputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IPlayerManager">
@@ -541,8 +563,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="GameEnded">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/GameEnded" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="WhoWon">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/WhoWon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ShowWinner">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowWinner" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -576,6 +610,15 @@
     </wsdl:operation>
     <wsdl:operation name="ShowTrueAnswer">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowTrueAnswer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ShowVictoryScreen">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowVictoryScreen" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
