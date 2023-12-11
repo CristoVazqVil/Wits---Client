@@ -859,5 +859,18 @@ namespace Wits
             victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
 
         }
+
+        public void TieBreaker()
+        {
+            rounds = 3;
+            labelRound.Visibility = Visibility.Collapsed;
+            PlayNextRound();
+
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            client.CleanWinners(gameId);
+
+
+        }
     }
 }

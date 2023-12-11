@@ -445,6 +445,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
         System.Threading.Tasks.Task ShowWinnerAsync(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/CleanWinners")]
+        void CleanWinners(int gameId);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/CleanWinners")]
+        System.Threading.Tasks.Task CleanWinnersAsync(int gameId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -464,6 +470,9 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowVictoryScreen", ReplyAction="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse")]
         void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/TieBreaker", ReplyAction="http://tempuri.org/IActiveGame/TieBreakerResponse")]
+        void TieBreaker();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -564,6 +573,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task ShowWinnerAsync(int gameId) {
             return base.Channel.ShowWinnerAsync(gameId);
+        }
+        
+        public void CleanWinners(int gameId) {
+            base.Channel.CleanWinners(gameId);
+        }
+        
+        public System.Threading.Tasks.Task CleanWinnersAsync(int gameId) {
+            return base.Channel.CleanWinnersAsync(gameId);
         }
     }
     

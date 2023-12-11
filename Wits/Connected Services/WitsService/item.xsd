@@ -81,6 +81,13 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="CleanWinners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateAnswers">
     <xs:complexType>
       <xs:sequence>
@@ -136,6 +143,16 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="ShowVictoryScreenResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TieBreaker">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TieBreakerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
