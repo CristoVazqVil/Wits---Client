@@ -119,5 +119,15 @@ namespace Wits
         {
             Console.WriteLine(":)");
         }
+
+        public void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
+        {
+            Console.WriteLine(":)");
+        }
+
+        public void TieBreaker()
+        {
+            Console.WriteLine(":)");
+        }
     }
 }
