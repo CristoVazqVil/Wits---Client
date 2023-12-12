@@ -140,6 +140,15 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="BeExpelled">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BeExpelledResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="ShowVictoryScreen">
     <xs:complexType>
       <xs:sequence>
@@ -155,7 +164,6 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="BeExpelledResponse">
   <xs:element name="TieBreaker">
     <xs:complexType>
       <xs:sequence />

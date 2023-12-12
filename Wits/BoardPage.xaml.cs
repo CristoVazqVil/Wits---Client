@@ -842,6 +842,7 @@ namespace Wits
         public void ShowTrueAnswer()
         {
             ShowAnswer();
+
         }
      
        private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)

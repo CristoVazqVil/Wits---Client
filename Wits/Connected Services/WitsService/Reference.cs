@@ -476,6 +476,7 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/BeExpelled", ReplyAction="http://tempuri.org/IActiveGame/BeExpelledResponse")]
         void BeExpelled();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowVictoryScreen", ReplyAction="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse")]
         void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score);
         
