@@ -140,28 +140,11 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="BeExpelled">
-  <xs:element name="ShowVictoryScreen">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="profilePictureId" type="xs:int" />
-        <xs:element minOccurs="0" name="celebrationId" type="xs:int" />
-        <xs:element minOccurs="0" name="score" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ShowVictoryScreenResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="BeExpelledResponse">
-  <xs:element name="TieBreaker">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="TieBreakerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

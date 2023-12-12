@@ -93,13 +93,13 @@ namespace Wits.WitsService {
         private int HighestScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PasswordField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ProfilePictureIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserField;
+        private string UserPasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -151,19 +151,6 @@ namespace Wits.WitsService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Password {
-            get {
-                return this.PasswordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
-                    this.PasswordField = value;
-                    this.RaisePropertyChanged("Password");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int ProfilePictureId {
             get {
                 return this.ProfilePictureIdField;
@@ -177,14 +164,27 @@ namespace Wits.WitsService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string User {
+        public string UserPassword {
             get {
-                return this.UserField;
+                return this.UserPasswordField;
             }
             set {
-                if ((object.ReferenceEquals(this.UserField, value) != true)) {
-                    this.UserField = value;
-                    this.RaisePropertyChanged("User");
+                if ((object.ReferenceEquals(this.UserPasswordField, value) != true)) {
+                    this.UserPasswordField = value;
+                    this.RaisePropertyChanged("UserPassword");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -222,21 +222,6 @@ namespace Wits.WitsService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TrueAnswerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string answerEN1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string answerES1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string questionEN1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string questionES1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int trueAnswer1Field;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -309,71 +294,6 @@ namespace Wits.WitsService {
                 if ((this.TrueAnswerField.Equals(value) != true)) {
                     this.TrueAnswerField = value;
                     this.RaisePropertyChanged("TrueAnswer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="answerEN")]
-        public string answerEN1 {
-            get {
-                return this.answerEN1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.answerEN1Field, value) != true)) {
-                    this.answerEN1Field = value;
-                    this.RaisePropertyChanged("answerEN1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="answerES")]
-        public string answerES1 {
-            get {
-                return this.answerES1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.answerES1Field, value) != true)) {
-                    this.answerES1Field = value;
-                    this.RaisePropertyChanged("answerES1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="questionEN")]
-        public string questionEN1 {
-            get {
-                return this.questionEN1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.questionEN1Field, value) != true)) {
-                    this.questionEN1Field = value;
-                    this.RaisePropertyChanged("questionEN1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="questionES")]
-        public string questionES1 {
-            get {
-                return this.questionES1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.questionES1Field, value) != true)) {
-                    this.questionES1Field = value;
-                    this.RaisePropertyChanged("questionES1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(Name="trueAnswer")]
-        public int trueAnswer1 {
-            get {
-                return this.trueAnswer1Field;
-            }
-            set {
-                if ((this.trueAnswer1Field.Equals(value) != true)) {
-                    this.trueAnswer1Field = value;
-                    this.RaisePropertyChanged("trueAnswer1");
                 }
             }
         }
@@ -476,6 +396,7 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/BeExpelled", ReplyAction="http://tempuri.org/IActiveGame/BeExpelledResponse")]
         void BeExpelled();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowVictoryScreen", ReplyAction="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse")]
         void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score);
         

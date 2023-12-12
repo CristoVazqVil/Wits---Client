@@ -245,7 +245,6 @@ namespace Wits
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
                 try
                 {
-                    
                     int playerNumber = client.JoinGame(existingGameId, UserSingleton.Instance.Username);
                     if (playerNumber > 0)
                     {

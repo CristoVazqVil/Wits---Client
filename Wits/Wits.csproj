@@ -509,7 +509,9 @@
     <Content Include="resources\CreatedUserEmail.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="resources\Invitation.html" />
+    <Content Include="resources\Invitation.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Videos\boardVideoBackground.mp4">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -601,7 +601,7 @@ namespace Wits.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The game does not exist or has reached the maximum number of players..
+        ///   Looks up a localized string similar to The game is not available or has reached the maximum number of players..
         /// </summary>
         public static string NotExistingGameMessage {
             get {

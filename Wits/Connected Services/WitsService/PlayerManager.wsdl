@@ -110,17 +110,6 @@
   </wsdl:message>
   <wsdl:message name="IActiveGame_BeExpelled_InputCallbackMessage">
     <wsdl:part name="parameters" element="tns:BeExpelledResponse" />
-  <wsdl:message name="IActiveGame_ShowVictoryScreen_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ShowVictoryScreen" />
-  </wsdl:message>
-  <wsdl:message name="IActiveGame_ShowVictoryScreen_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:ShowVictoryScreenResponse" />
-  </wsdl:message>
-  <wsdl:message name="IActiveGame_TieBreaker_OutputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:TieBreaker" />
-  </wsdl:message>
-  <wsdl:message name="IActiveGame_TieBreaker_InputCallbackMessage">
-    <wsdl:part name="parameters" element="tns:TieBreakerResponse" />
   </wsdl:message>
   <wsdl:message name="IActiveGame_ShowVictoryScreen_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:ShowVictoryScreen" />
@@ -412,13 +401,6 @@
     <wsdl:operation name="BeExpelled">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/BeExpelled" message="tns:IActiveGame_BeExpelled_OutputCallbackMessage" />
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/BeExpelledResponse" message="tns:IActiveGame_BeExpelled_InputCallbackMessage" />
-    <wsdl:operation name="ShowVictoryScreen">
-      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowVictoryScreen" message="tns:IActiveGame_ShowVictoryScreen_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse" message="tns:IActiveGame_ShowVictoryScreen_InputCallbackMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="TieBreaker">
-      <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/TieBreaker" message="tns:IActiveGame_TieBreaker_OutputCallbackMessage" />
-      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/TieBreakerResponse" message="tns:IActiveGame_TieBreaker_InputCallbackMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowVictoryScreen">
       <wsdl:output wsaw:Action="http://tempuri.org/IActiveGame/ShowVictoryScreen" message="tns:IActiveGame_ShowVictoryScreen_OutputCallbackMessage" />
@@ -701,17 +683,6 @@
     </wsdl:operation>
     <wsdl:operation name="BeExpelled">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/BeExpelled" style="document" />
-    <wsdl:operation name="ShowVictoryScreen">
-      <soap12:operation soapAction="http://tempuri.org/IActiveGame/ShowVictoryScreen" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="TieBreaker">
-      <soap12:operation soapAction="http://tempuri.org/IActiveGame/TieBreaker" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

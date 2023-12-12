@@ -298,7 +298,7 @@
     <value>Not Existing Game</value>
   </data>
   <data name="NotExistingGameMessage" xml:space="preserve">
-    <value>The game does not exist or has reached the maximum number of players.</value>
+    <value>The game is not available or has reached the maximum number of players.</value>
   </data>
   <data name="NotExistingPlayer" xml:space="preserve">
     <value>Not Existing Player</value>

@@ -184,9 +184,9 @@ namespace Wits
         private void CreateUser()
         {
             WitsService.Player newPlayer = new WitsService.Player();
-            newPlayer.User = textBoxUsername.Text;
+            newPlayer.Username = textBoxUsername.Text;
             newPlayer.Email = textBoxEmail.Text;
-            newPlayer.Password = EncryptPassword(passwordBoxPassword.Password);
+            newPlayer.UserPassword = EncryptPassword(passwordBoxPassword.Password);
             newPlayer.HighestScore = 0;
             newPlayer.ProfilePictureId = 1;
             newPlayer.CelebrationId = 1;

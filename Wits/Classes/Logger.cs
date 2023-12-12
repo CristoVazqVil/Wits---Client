@@ -20,9 +20,29 @@ namespace Wits.Classes
             XmlConfigurator.Configure(new System.IO.FileInfo(absoluteConfigPath));
         }
 
-        public static void LogException(Exception ex)
+        public static void LogDebugException(Exception ex)
+        {
+            log.Debug("Debug:", ex);
+        }
+
+        public static void LoginfoException(Exception ex)
+        {
+            log.Info("Info:", ex);
+        }
+
+        public static void LogWarnException(Exception ex)
+        {
+            log.Warn("Warning:", ex);
+        }
+
+        public static void LogErrorException(Exception ex)
         {
             log.Error("Error:", ex);
+        }
+
+        public static void LogFatalException(Exception ex)
+        {
+            log.Fatal("Fatal:", ex);
         }
     }
 }

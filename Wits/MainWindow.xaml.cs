@@ -257,9 +257,9 @@ namespace Wits
         private void EnterAsAGuest(object sender, MouseButtonEventArgs e)
         {
             WitsService.Player temporaryPlayer = new WitsService.Player();
-            temporaryPlayer.User = "Guest" + random.Next(1000, 10000).ToString();
+            temporaryPlayer.Username = "Guest" + random.Next(1000, 10000).ToString();
             temporaryPlayer.Email = random.Next(100000000, 1000000000).ToString();
-            temporaryPlayer.Password = random.Next(100000000, 1000000000).ToString();
+            temporaryPlayer.UserPassword = random.Next(100000000, 1000000000).ToString();
             temporaryPlayer.HighestScore = 0;
             temporaryPlayer.ProfilePictureId = 1;
             temporaryPlayer.CelebrationId = 1;
@@ -268,7 +268,7 @@ namespace Wits
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
                 if (client.AddPlayer(temporaryPlayer) == 1)
                 {
-                    UserSingleton.Instance.SetUsername(temporaryPlayer.User);
+                    UserSingleton.Instance.SetUsername(temporaryPlayer.Username);
                     GameWindow gameWindow = new GameWindow();
                     gameWindow.Show();
                     this.Close();

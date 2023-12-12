@@ -105,7 +105,7 @@ namespace Wits
             try
             {
                 WitsService.Player player = client.GetPlayerByUser(UserSingleton.Instance.Username);
-                if (player.Password.Equals(EncryptPassword(passwordBoxCurrentPassword.Password)))
+                if (player.UserPassword.Equals(EncryptPassword(passwordBoxCurrentPassword.Password)))
                 {
                     validator = true;
                 }
