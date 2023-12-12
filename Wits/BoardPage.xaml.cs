@@ -502,43 +502,49 @@ namespace Wits
 
         private void SaveAnswer(object sender, MouseButtonEventArgs e)
         {
-            labelInstrucion.Content = Properties.Resources.EnterAnswer;
-            gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-            string answerText = textBoxPlayersAnswer.Text;
-
-            try
+            if (string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
             {
-                InstanceContext context = new InstanceContext(this);
-                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-
-                int playerNumber = player;
-
-                client.SavePlayerAnswer(playerNumber, answerText, gameId);
-
-
+                return;
             }
-            catch (FaultException ex)
+            else
             {
-                Console.WriteLine(ex.ToString());
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (CommunicationException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+                labelInstrucion.Content = Properties.Resources.EnterAnswer;
+                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+                string answerText = textBoxPlayersAnswer.Text;
+                try
+                {
+                    InstanceContext context = new InstanceContext(this);
+                    WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
 
-            string labelName = "labelAnswer" + player;
-            var label = FindName(labelName) as System.Windows.Controls.Label;
+                    int playerNumber = player;
 
-            if (label != null)
-            {
-                label.Content = answerText;
+                    client.SavePlayerAnswer(playerNumber, answerText, gameId);
+
+
+                }
+                catch (FaultException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (CommunicationException ex)
+                {
+                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
+                string labelName = "labelAnswer" + player;
+                var label = FindName(labelName) as System.Windows.Controls.Label;
+
+                if (label != null)
+                {
+                    label.Content = answerText;
+                }
+                gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
             }
-            gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
         }
 
         public void UpdatePlayerAnswer(int playerNumber, string answer)
@@ -836,6 +842,7 @@ namespace Wits
         public void ShowTrueAnswer()
         {
             ShowAnswer();
+
         }
      
        private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
@@ -946,11 +953,13 @@ namespace Wits
         {
             rounds = 3;
             labelRound.Visibility = Visibility.Collapsed;
+            labelBonusRound.Visibility = Visibility.Visible;
             PlayNextRound();
 
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             client.CleanWinners(gameId);
+           
 
 
         }
