@@ -60,6 +60,15 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GameEnded">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+        <xs:element minOccurs="0" name="playerNumber" type="xs:int" />
+        <xs:element minOccurs="0" name="isRegistered" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="WhoWon">
     <xs:complexType>
       <xs:sequence>
@@ -69,6 +78,20 @@
         <xs:element minOccurs="0" name="idCelebration" type="xs:int" />
         <xs:element minOccurs="0" name="score" type="xs:int" />
         <xs:element minOccurs="0" name="idProfilePicture" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowWinner">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CleanWinners">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="gameId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,6 +145,31 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="BeExpelledResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowVictoryScreen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="profilePictureId" type="xs:int" />
+        <xs:element minOccurs="0" name="celebrationId" type="xs:int" />
+        <xs:element minOccurs="0" name="score" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ShowVictoryScreenResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TieBreaker">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TieBreakerResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
