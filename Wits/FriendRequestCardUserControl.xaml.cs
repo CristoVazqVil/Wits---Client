@@ -44,17 +44,13 @@ namespace Wits
                 Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
                 imageFriendProfile.Source = new BitmapImage(profilePictureUri);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
 
         }
@@ -72,18 +68,15 @@ namespace Wits
                 ButtonClicked?.Invoke(this, EventArgs.Empty);
 
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -98,18 +91,15 @@ namespace Wits
                 client.RejectRequest(rejectedPlayer, UserSingleton.Instance.Username);
                 ButtonClicked?.Invoke(this, EventArgs.Empty);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -121,18 +111,15 @@ namespace Wits
                 client.AddFriendship(UserSingleton.Instance.Username, acceptedPlayer);
                 client.AddFriendship(acceptedPlayer, UserSingleton.Instance.Username);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
     }

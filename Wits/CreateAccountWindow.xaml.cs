@@ -204,18 +204,16 @@ namespace Wits
                     MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
         }
 
@@ -308,6 +306,16 @@ namespace Wits
             scaleTransformBack.ScaleY = 1.0;
             translateTransformBack.X = 0;
             translateTransformBack.Y = 0;
+        }
+
+        public void RestartGame()
+        {
+            UserSingleton.Instance.ClearUsername();
+            GameSingleton.Instance.ClearGame();
+            var currentWindow = Window.GetWindow(this);
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            currentWindow.Close();
         }
     }
 }

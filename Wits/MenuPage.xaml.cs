@@ -59,17 +59,17 @@ namespace Wits
             {
                 client.AddConnectedUser(username);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
         }
 
@@ -104,17 +104,16 @@ namespace Wits
                 imageProfilePic.Source = new BitmapImage(profilePictureUri);
                 userName.Content = username;
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
             
         }
@@ -219,18 +218,16 @@ namespace Wits
                 LobbyPage lobbyPage = new LobbyPage();
                 this.NavigationService.Navigate(lobbyPage);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                Console.WriteLine(ex.ToString());
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
         }
 
@@ -258,18 +255,16 @@ namespace Wits
                         MessageBox.Show(Properties.Resources.NotExistingGameMessage, Properties.Resources.NotExistingGame, MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
-                catch (FaultException ex)
+                catch (TimeoutException ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Logger.LogErrorException(ex);
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    Logger.LogErrorException(ex);
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    RestartGame();
                 }
             }
         }
@@ -285,17 +280,16 @@ namespace Wits
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(profileCustomizationPage);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
             
         }
@@ -311,17 +305,16 @@ namespace Wits
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(myFriendsPage);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex); 
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
             
         }
@@ -341,17 +334,16 @@ namespace Wits
                     gridOnlineFriends.Children.Clear();
                     setFriendsMenu(connectedFriends);
                 }
-                catch (FaultException ex)
+                catch (TimeoutException ex)
                 {
+                    Logger.LogErrorException(ex);
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    Logger.LogErrorException(ex);
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    RestartGame();
                 }
             }
         }
@@ -367,17 +359,16 @@ namespace Wits
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(lobbyPage);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
             
         }
@@ -392,6 +383,16 @@ namespace Wits
                 gridOnlineFriends.Visibility = Visibility.Collapsed;
                 imageEditProfile.Visibility = Visibility.Collapsed;
             }
+        }
+
+        public void RestartGame()
+        {
+            UserSingleton.Instance.ClearUsername();
+            GameSingleton.Instance.ClearGame();
+            var currentWindow = Window.GetWindow(this);
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            currentWindow.Close();
         }
     }
 }

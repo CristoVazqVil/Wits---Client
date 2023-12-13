@@ -32,7 +32,7 @@ namespace Wits
 
         public void UpdateConnectedFriends()
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Friends Updated in Menu");
         }
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -49,17 +49,13 @@ namespace Wits
                     playerClient.DeletePlayer(UserSingleton.Instance.Username);
                 }
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
         }
     }

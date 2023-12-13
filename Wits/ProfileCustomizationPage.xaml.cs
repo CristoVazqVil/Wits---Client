@@ -36,7 +36,6 @@ namespace Wits
             currentVisibleRectangle = null;
             backgroundVideo.Play();
             celebrationsVideo.Play();
-
         }
 
         private void SetProfilePicture(string username)
@@ -69,19 +68,17 @@ namespace Wits
                     selectedRectangle.Stroke = (SolidColorBrush)(new BrushConverter().ConvertFrom("#FF00D233"));
                 }
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
-            
         }
 
 
@@ -108,8 +105,6 @@ namespace Wits
             TranslateTransform moveTransform = new TranslateTransform(1200, 0);
             imageContainer.RenderTransform = moveTransform;
             Celebrations.RenderTransform = moveTransform;
-
-
         }
 
         private void Rectangle_Click(object sender, MouseButtonEventArgs e)
@@ -173,17 +168,16 @@ namespace Wits
                  MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (CommunicationException ex)
             {
+                Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
             }
         }
 
@@ -204,5 +198,15 @@ namespace Wits
             ChangePasswordPage changePasswordPage = new ChangePasswordPage();
             this.NavigationService.Navigate(changePasswordPage);
         }
+
+        public void RestartGame()
+        {
+            UserSingleton.Instance.ClearUsername();
+            GameSingleton.Instance.ClearGame();
+            var currentWindow = Window.GetWindow(this);
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            currentWindow.Close();
+        }
     }
-    }
+}

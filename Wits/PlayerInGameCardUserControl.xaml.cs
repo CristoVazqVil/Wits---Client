@@ -44,17 +44,13 @@ namespace Wits
                 Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
                 imagePlayerProfile.Source = new BitmapImage(profilePictureUri);
             }
-            catch (FaultException ex)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (EndpointNotFoundException ex)
-            {
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                Logger.LogErrorException(ex);
             }
             
         }
@@ -79,55 +75,52 @@ namespace Wits
                         ButtonClicked?.Invoke(this, EventArgs.Empty);
                     }
                 }
-                catch (FaultException ex)
+                catch (TimeoutException ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    Logger.LogErrorException(ex);
                     MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (EndpointNotFoundException ex)
-                {
-                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    Logger.LogErrorException(ex);
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
         }
 
         public void UpdateAnswers(Dictionary<int, string> playerAnswers)
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Answers Updated in Game");
         }
 
         public void UpdateSelection(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Selection Updated In Game");
         }
 
         public void ShowEnterWager()
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Wager showed in game");
         }
 
         public void ShowTrueAnswer()
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Answer Showed in game");
         }
 
         public void BeExpelled()
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("The Player was expelled");
         }
 
         public void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Winner showed in game");
         }
 
         public void TieBreaker()
         {
-            Console.WriteLine(":)");
+            Console.WriteLine("Showed in game");
         }
     }
 }
