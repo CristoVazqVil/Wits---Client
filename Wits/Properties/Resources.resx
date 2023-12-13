@@ -261,6 +261,9 @@
   <data name="Go" xml:space="preserve">
     <value>Go!</value>
   </data>
+  <data name="HighestScore" xml:space="preserve">
+    <value>Your highest score:</value>
+  </data>
   <data name="HowMuch" xml:space="preserve">
     <value>How much will you wager?</value>
   </data>

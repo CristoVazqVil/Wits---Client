@@ -48,6 +48,8 @@
         </Label>
         <Label x:Name="labelGameId" HorizontalAlignment="Left" Foreground="White" FontFamily="Neon Tubes 2" FontSize="45" Margin="603,32,0,0" VerticalAlignment="Top" Width="432"/>
         <Image x:Name="imageBack" Source="/Images/backArrow.png" Margin="0,12,984,604" MouseDown="GoBack" RenderTransformOrigin="0.493,0.682" />
+        <Label x:Name="labelPlayersHighestScore" Content="Highest Score" Foreground="White" HorizontalAlignment="Left" Margin="48,240,0,0" VerticalAlignment="Top" FontSize="36"/>
+        <Label x:Name="labelYourHighestScore" Content="{x:Static p:Resources.HighestScore}" HorizontalAlignment="Left" Foreground="White" Margin="26,182,0,0" VerticalAlignment="Top" FontSize="40"/>
 
     </Grid>
 </Page>
