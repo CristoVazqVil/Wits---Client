@@ -33,9 +33,16 @@ namespace Wits
             labelGameId.Content = gameId;
             imageStartGame.Visibility = Visibility.Hidden;
             labelStartGame.Visibility = Visibility.Hidden;
+            string username = UserSingleton.Instance.Username;
             InstanceContext context = new InstanceContext(this);
             WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
             ValidateGameLeader();
+            WitsService.PlayerManagerClient clientPlayer = new WitsService.PlayerManagerClient();
+            WitsService.Player player = clientPlayer.GetPlayerByUser(username);
+
+
+            labelPlayersHighestScore.Content = player.HighestScore; 
+
 
             try
             {

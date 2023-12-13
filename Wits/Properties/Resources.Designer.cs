@@ -493,6 +493,15 @@ namespace Wits.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your highest score:.
+        /// </summary>
+        public static string HighestScore {
+            get {
+                return ResourceManager.GetString("HighestScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to How much will you wager?.
         /// </summary>
         public static string HowMuch {

@@ -49,7 +49,11 @@ namespace Wits
             SetProfilePicture();
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            
+            labelAnswer1.Content = "";
+            labelAnswer2.Content = "";
+            labelAnswer3.Content = "";
+            labelAnswer4.Content = "";
+
             bool isRegistered = false;
             client.GameEnded(gameId, player, isRegistered);
 
@@ -438,7 +442,8 @@ namespace Wits
             {
                 client.RemovePlayerInGame(gameId, userName);
                 GameSingleton.Instance.ClearGame();
-                this.NavigationService.GoBack();
+                this.NavigationService.Navigate(new Uri("MenuPage.xaml", UriKind.Relative));
+                mediaPlayer.Stop();
             }
             catch (TimeoutException ex)
             {
