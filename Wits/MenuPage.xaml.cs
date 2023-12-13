@@ -211,12 +211,15 @@ namespace Wits
             WitsService.GameManagerClient client = new WitsService.GameManagerClient();
             try
             {
-                
                 client.CreateGame(newGameId, UserSingleton.Instance.Username);
                 mediaPlayer.Stop();
                 GameSingleton.Instance.SetGame(newGameId, 1);
-                LobbyPage lobbyPage = new LobbyPage();
-                this.NavigationService.Navigate(lobbyPage);
+                OpenlobbyPage();
+            }
+            catch (ApplicationException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (TimeoutException ex)
             {
@@ -247,8 +250,7 @@ namespace Wits
                     {
                         mediaPlayer.Stop();
                         GameSingleton.Instance.SetGame(existingGameId, playerNumber);
-                        LobbyPage lobbyPage = new LobbyPage();
-                        this.NavigationService.Navigate(lobbyPage);
+                        OpenlobbyPage();
                     }
                     else
                     {
@@ -277,6 +279,7 @@ namespace Wits
 
             try
             {
+                mediaPlayer.Stop();
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(profileCustomizationPage);
             }
@@ -302,6 +305,7 @@ namespace Wits
 
             try
             {
+                mediaPlayer.Stop();
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(myFriendsPage);
             }
@@ -316,7 +320,6 @@ namespace Wits
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
             }
-            
         }
 
         public void UpdateConnectedFriends()
@@ -356,6 +359,7 @@ namespace Wits
 
             try
             {
+                mediaPlayer.Stop();
                 client.RemoveConnectedUserInMenu(username);
                 this.NavigationService.Navigate(lobbyPage);
             }

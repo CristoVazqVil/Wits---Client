@@ -38,15 +38,12 @@ namespace Wits
             WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
             ValidateGameLeader();
             WitsService.PlayerManagerClient clientPlayer = new WitsService.PlayerManagerClient();
-            WitsService.Player player = clientPlayer.GetPlayerByUser(username);
-
-
-            labelPlayersHighestScore.Content = player.HighestScore; 
-
 
             try
             {
                 client.RegisterUserContext(UserSingleton.Instance.Username);
+                WitsService.Player player = clientPlayer.GetPlayerByUser(username);
+                labelPlayersHighestScore.Content = player.HighestScore;
             }
             catch (TimeoutException ex)
             {

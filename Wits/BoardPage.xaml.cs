@@ -47,18 +47,17 @@ namespace Wits
             PlaySong();
             ValidateGameLeader();
             SetProfilePicture();
+            bool isRegistered = false;
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             labelAnswer1.Content = "";
             labelAnswer2.Content = "";
             labelAnswer3.Content = "";
             labelAnswer4.Content = "";
-
-            bool isRegistered = false;
-            client.GameEnded(gameId, player, isRegistered);
-
+            
             try
             {
+                client.GameEnded(gameId, player, isRegistered);
                 client.RegisterUserInGameContext(UserSingleton.Instance.Username);
                 Loaded += Page_Loaded;
                 bool isReady = false;
@@ -969,6 +968,7 @@ namespace Wits
 
         public void RestartGame()
         {
+            mediaPlayer.Stop();
             UserSingleton.Instance.ClearUsername();
             GameSingleton.Instance.ClearGame();
             var currentWindow = Window.GetWindow(this);

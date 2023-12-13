@@ -1,9 +1,11 @@
 ﻿D:\UV\Tecnologias\Wits\Wits\Wits\App.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\BoardPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\ChangePasswordPage.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\Classes\GameSingleton.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\Classes\Logger.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\Classes\Mail.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\Classes\UserSingleton.cs
-D:\UV\Tecnologias\Wits\Wits\Wits\CreateAccount.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\CreateAccountWindow.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\EnterPlayerUserWindow.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestCardUserControl.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\FriendRequestMenuUserControl.xaml.cs
@@ -17,6 +19,8 @@ D:\UV\Tecnologias\Wits\Wits\Wits\LobbyPage.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\MainWindow.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\MenuPage.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\MyFriendsPage.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\PlayerInGameCardUserControl.xaml.cs
+D:\UV\Tecnologias\Wits\Wits\Wits\PlayersInGameUserControl.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\ProfileCustomizationPage.xaml.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\AssemblyInfo.cs
 D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\1.mp4
@@ -29,6 +33,7 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\6.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\7.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\8.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Celebrations\9.mp4
+D:\UV\Tecnologias\Wits\Wits\Wits\Music\Elite Four Battle.wav
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song1.wav
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song2.wav
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Song3.wav
@@ -46,6 +51,7 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video6.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video7.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Video8.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\resources\CreatedUserEmail.html
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\Invitation.html
 D:\UV\Tecnologias\Wits\Wits\Wits\Videos\boardVideoBackground.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Videos\celebrationsMenu.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Videos\menuBackground.mp4
@@ -56,6 +62,7 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MainBackground.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.resx
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.es-ES.resx
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\log4net.config
 D:\UV\Tecnologias\Wits\Wits\Wits\resources\appsettings.json
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item.xsd
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item1.xsd
