@@ -306,10 +306,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.es-ES.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="resources\log4net.config" />
-    <None Include="resources\appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Connected Services\WitsService\item.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -328,6 +324,10 @@
     </None>
     <None Include="Connected Services\WitsService\Wits.WitsService.Question.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="resources\log4net.config" />
+    <None Include="resources\appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -365,7 +365,6 @@
   <ItemGroup>
     <Resource Include="Images\mainMenubg.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\orangeOval.png" />
   </ItemGroup>
@@ -384,15 +383,7 @@
     <Resource Include="Images\questionFrame.png" />
     <Resource Include="Images\answerFrame.png" />
     <Resource Include="Images\playersMenu.png" />
-    <None Include="Connected Services\WitsService\item.disco" />
-    <None Include="Connected Services\WitsService\configuration91.svcinfo" />
-    <None Include="Connected Services\WitsService\configuration.svcinfo" />
-    <None Include="Connected Services\WitsService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Resource Include="Images\okButton.png" />
-    <Resource Include="Connected Services\WitsService\pencil.png" />
     <Resource Include="Images\pencil.png" />
     <Resource Include="Images\pinkOval.png" />
     <Resource Include="Images\greenOval.png" />
@@ -442,6 +433,13 @@
     <Resource Include="Images\AnswerRectangle1.png" />
     <Resource Include="Images\AnswerRectangle3.png" />
     <Resource Include="Images\AnswerRectangle4.png" />
+    <None Include="Connected Services\WitsService\item.disco" />
+    <None Include="Connected Services\WitsService\configuration91.svcinfo" />
+    <None Include="Connected Services\WitsService\configuration.svcinfo" />
+    <None Include="Connected Services\WitsService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Music\Elite Four Battle.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

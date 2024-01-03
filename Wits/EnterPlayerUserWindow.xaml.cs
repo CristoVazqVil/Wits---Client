@@ -49,5 +49,13 @@ namespace Wits
                 this.Close();
             }
         }
+
+        private void DeleteSpaces(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

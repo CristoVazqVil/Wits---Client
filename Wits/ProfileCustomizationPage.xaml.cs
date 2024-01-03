@@ -33,6 +33,7 @@ namespace Wits
             InitializeComponent();
             labelUserName.Content = UserSingleton.Instance.Username;
             SetProfilePicture(UserSingleton.Instance.Username);
+            SetCelebration(UserSingleton.Instance.Username);
             currentVisibleRectangle = null;
             backgroundVideo.Play();
             celebrationsVideo.Play();
@@ -50,7 +51,27 @@ namespace Wits
                 string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
                 Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
                 imageCurrentPicture.Source = new BitmapImage(profilePictureUri);
+            }
+            catch (TimeoutException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (CommunicationException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+            }
+        }
 
+        private void SetCelebration(string username)
+        {
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+
+            try
+            {
+                Player playerData = playerManagerClient.GetPlayerByUser(username);
                 int celebrationId = playerData.CelebrationId;
                 selectedCelebrationId = celebrationId;
                 string rectangleName = "rectangleVideo" + celebrationId;
@@ -82,7 +103,6 @@ namespace Wits
         }
 
 
-
         private void ProfilePictureClick(object sender, MouseButtonEventArgs e)
         {
             if (sender is Image clickedImage)
@@ -94,9 +114,7 @@ namespace Wits
 
         private void OpenMainMenu(object sender, MouseButtonEventArgs e)
         {
-
             this.NavigationService.GoBack();
-
         }
 
 

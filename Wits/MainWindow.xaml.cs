@@ -65,10 +65,7 @@ namespace Wits
                             music.Stop();
                             music.Dispose();
                         }
-                        UserSingleton.Instance.SetUsername(textBoxUser.Text);
-                        GameWindow gameWindow = new GameWindow();
-                        gameWindow.Show();
-                        this.Close();
+                        OpenGameWindow(textBoxUser.Text);
                     }
                     else
                     {
@@ -90,6 +87,14 @@ namespace Wits
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private void OpenGameWindow(string username)
+        {
+            UserSingleton.Instance.SetUsername(username);
+            GameWindow gameWindow = new GameWindow();
+            gameWindow.Show();
+            this.Close();
         }
 
         private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
@@ -253,22 +258,13 @@ namespace Wits
 
         private void EnterAsAGuest(object sender, MouseButtonEventArgs e)
         {
-            WitsService.Player temporaryPlayer = new WitsService.Player();
-            temporaryPlayer.Username = "Guest" + random.Next(1000, 10000).ToString();
-            temporaryPlayer.Email = random.Next(100000000, 1000000000).ToString();
-            temporaryPlayer.UserPassword = random.Next(100000000, 1000000000).ToString();
-            temporaryPlayer.HighestScore = 0;
-            temporaryPlayer.ProfilePictureId = 1;
-            temporaryPlayer.CelebrationId = 1;
+            WitsService.Player temporaryPlayer = CreateTemporaryPlayer();
             try
             {
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
                 if (client.AddPlayer(temporaryPlayer) == 1)
                 {
-                    UserSingleton.Instance.SetUsername(temporaryPlayer.Username);
-                    GameWindow gameWindow = new GameWindow();
-                    gameWindow.Show();
-                    this.Close();
+                    OpenGameWindow(temporaryPlayer.Username);
                 }
             }
             catch (TimeoutException ex)
@@ -281,6 +277,20 @@ namespace Wits
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        private WitsService.Player CreateTemporaryPlayer()
+        {
+            WitsService.Player temporaryPlayer = new WitsService.Player();
+
+            temporaryPlayer.Username = "Guest" + random.Next(1000, 10000).ToString();
+            temporaryPlayer.Email = random.Next(100000000, 1000000000).ToString();
+            temporaryPlayer.UserPassword = random.Next(100000000, 1000000000).ToString();
+            temporaryPlayer.HighestScore = 0;
+            temporaryPlayer.ProfilePictureId = 1;
+            temporaryPlayer.CelebrationId = 1;
+
+            return temporaryPlayer;
         }
     }
 }

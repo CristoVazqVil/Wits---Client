@@ -183,18 +183,10 @@ namespace Wits
 
         private void CreateUser()
         {
-            WitsService.Player newPlayer = new WitsService.Player();
-            newPlayer.Username = textBoxUsername.Text;
-            newPlayer.Email = textBoxEmail.Text;
-            newPlayer.UserPassword = EncryptPassword(passwordBoxPassword.Password);
-            newPlayer.HighestScore = 0;
-            newPlayer.ProfilePictureId = 1;
-            newPlayer.CelebrationId = 1;
-
             try
             {
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                if (client.AddPlayer(newPlayer) == 1)
+                if (client.AddPlayer(SetPlayer()) == 1)
                 {
                     string sendedEmail = Mail.sendConfirmationMail(textBoxEmail.Text, textBoxUsername.Text);
                     MessageBox.Show(Properties.Resources.UserCreatedMessage + "\n" + sendedEmail, Properties.Resources.Success, MessageBoxButton.OK, MessageBoxImage.Information);
@@ -215,6 +207,20 @@ namespace Wits
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
             }
+        }
+
+        private WitsService.Player SetPlayer()
+        {
+            WitsService.Player newPlayer = new WitsService.Player();
+
+            newPlayer.Username = textBoxUsername.Text;
+            newPlayer.Email = textBoxEmail.Text;
+            newPlayer.UserPassword = EncryptPassword(passwordBoxPassword.Password);
+            newPlayer.HighestScore = 0;
+            newPlayer.ProfilePictureId = 1;
+            newPlayer.CelebrationId = 1;
+
+            return newPlayer;
         }
 
         private void DeleteEmailCharacters(object sender, TextCompositionEventArgs e)

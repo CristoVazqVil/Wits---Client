@@ -10,7 +10,7 @@
     <Grid>
         <MediaElement x:Name="backgroundVideo" Stretch="Fill" LoadedBehavior="Manual" Source="Videos\MainBackground.mp4" Grid.RowSpan="3" MediaEnded="RestartBackgroundVideo" />
         <Label x:Name="labelEnterId" Content="{x:Static p:Resources.EnterGameId}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="367"/>
-        <TextBox x:Name="textBoxGameId" Text="{x:Static p:Resources.TypeHere}" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" VerticalContentAlignment="Center" Foreground="White" FontSize="18" FontFamily="Beon" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="49" PreviewTextInput="OnlyNumbers"/>
+        <TextBox x:Name="textBoxGameId" Text="{x:Static p:Resources.TypeHere}" Background="#CC404040" BorderBrush="#01FFFF" BorderThickness="4" VerticalContentAlignment="Center" Foreground="White" FontSize="18" FontFamily="Beon" HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="49" PreviewTextInput="OnlyNumbers" PreviewKeyDown="DeleteSpaces"/>
         <Button x:Name="buttonSendId" Content="{x:Static p:Resources.Go}" BorderBrush="#01FFFF" Background="#373737" BorderThickness="4" FontFamily="Beon" FontSize="15" HorizontalAlignment="Left" Foreground="White" Margin="280,102,0,0" VerticalAlignment="Top" Height="28" Width="91" Click="buttonSendId_Click"/>
     </Grid>
 </Window>

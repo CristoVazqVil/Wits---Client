@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wits.Classes
 {
-    internal class Logger
+    public static class Logger
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Logger));
 

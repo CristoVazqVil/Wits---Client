@@ -26,18 +26,16 @@ namespace Wits
     public partial class LobbyPage : Page, WitsService.IChatManagerCallback
     {
         private int gameId = GameSingleton.Instance.GameId;
+        private string username = UserSingleton.Instance.Username;
         public LobbyPage()
         {
             InitializeComponent();
             backgroundVideo.Play();
             labelGameId.Content = gameId;
-            imageStartGame.Visibility = Visibility.Hidden;
-            labelStartGame.Visibility = Visibility.Hidden;
-            string username = UserSingleton.Instance.Username;
             InstanceContext context = new InstanceContext(this);
             WitsService.ChatManagerClient client = new WitsService.ChatManagerClient(context);
-            ValidateGameLeader();
             WitsService.PlayerManagerClient clientPlayer = new WitsService.PlayerManagerClient();
+            ValidateGameLeader();
 
             try
             {

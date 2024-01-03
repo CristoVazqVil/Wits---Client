@@ -232,6 +232,7 @@ namespace Wits
 
         private bool IsAExistingPlayer(string enteredUsername)
         {
+            bool validator = false;
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
 
             try
@@ -240,78 +241,75 @@ namespace Wits
 
                 if (enteredPlayer != null)
                 {
-                    return true;
+                    validator = true;
                 }
                 else
                 {
-                    return false;
+                    validator = false;
                 }
             }
             catch (TimeoutException ex)
             {
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                return false;
+                validator = false;
             }
             catch (CommunicationException ex)
             {
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
-                return false;
+                validator = false;
             }
-            
+
+            return validator;
         }
 
         public bool IsAValidPlayer(string enteredUsername)
         {
-            WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-            bool validator = false;
-
-            if (!enteredUsername.Equals(UserSingleton.Instance.Username))
-            {
-                if (IsAExistingPlayer(enteredUsername))
-                {
-                    try
-                    {
-                        if (!client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
-                        {
-                            if (!client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
-                            {
-                                validator = true;
-                                return validator;
-                            }
-                            else
-                            {
-                                MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
-                        }
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        Logger.LogErrorException(ex);
-                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        Logger.LogErrorException(ex);
-                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                        RestartGame();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show(Properties.Resources.NotExistingPlayerMessage, Properties.Resources.NotExistingPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            else
+            bool validator = true;
+            if (enteredUsername.Equals(UserSingleton.Instance.Username))
             {
                 MessageBox.Show(Properties.Resources.ThatIsYouMessage, Properties.Resources.ThatIsYou, MessageBoxButton.OK, MessageBoxImage.Information);
+                validator = false;
             }
+
+            WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
+
+            if (!IsAExistingPlayer(enteredUsername))
+            {
+                MessageBox.Show(Properties.Resources.NotExistingPlayerMessage, Properties.Resources.NotExistingPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                validator = false;
+            }
+
+            try
+            {
+                if (client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
+                {
+                    MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
+                    validator = false;
+                }
+
+                if (client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
+                {
+                    MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                    validator = false;
+                }
+            }
+            catch (TimeoutException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                validator = false;
+            }
+            catch (CommunicationException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+                validator = false;
+            }
+
             return validator;
         }
 

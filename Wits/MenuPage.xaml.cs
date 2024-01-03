@@ -216,7 +216,7 @@ namespace Wits
                 GameSingleton.Instance.SetGame(newGameId, 1);
                 OpenlobbyPage();
             }
-            catch (ApplicationException ex)
+            catch (InvalidOperationException ex)
             {
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);

@@ -50,10 +50,7 @@ namespace Wits
             bool isRegistered = false;
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            labelAnswer1.Content = "";
-            labelAnswer2.Content = "";
-            labelAnswer3.Content = "";
-            labelAnswer4.Content = "";
+            SetLabels();
             
             try
             {
@@ -76,6 +73,14 @@ namespace Wits
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
             }
+        }
+
+        private void SetLabels()
+        {
+            labelAnswer1.Content = "";
+            labelAnswer2.Content = "";
+            labelAnswer3.Content = "";
+            labelAnswer4.Content = "";
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -257,6 +262,23 @@ namespace Wits
             imageSelectionPlayer1.Visibility = Visibility.Visible;
         } 
 
+        private void SetSelectionVisibility()
+        {
+            imageSelectionPlayer1.Visibility = Visibility.Hidden;
+            imageSelectionPlayer2.Visibility = Visibility.Hidden;
+            imageSelectionPlayer3.Visibility = Visibility.Hidden;
+            imageSelectionPlayer4.Visibility = Visibility.Hidden;
+            imageAcceptWager.Visibility = Visibility.Hidden;
+        }
+
+        private void SetWinnersVisibility()
+        {
+            imageWinner1.Visibility = Visibility.Hidden;
+            imageWinner2.Visibility = Visibility.Hidden;
+            imageWinner3.Visibility = Visibility.Hidden;
+            imageWinner4.Visibility = Visibility.Hidden;
+            imageAcceptAnswer.Visibility = Visibility.Visible;
+        }
         
         private void PlayNextRound()
         {
@@ -264,16 +286,9 @@ namespace Wits
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             labelRound.Content = Properties.Resources.Round + rounds;
             textBoxPlayersAnswer.Text = "";
-            imageSelectionPlayer1.Visibility = Visibility.Hidden;
-            imageSelectionPlayer2.Visibility = Visibility.Hidden;
-            imageSelectionPlayer3.Visibility = Visibility.Hidden;
-            imageSelectionPlayer4.Visibility = Visibility.Hidden;
-            imageAcceptWager.Visibility = Visibility.Hidden;
+            SetSelectionVisibility();
             imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
-            labelAnswer1.Content = "";
-            labelAnswer2.Content = "";
-            labelAnswer3.Content = "";
-            labelAnswer4.Content = "";
+            SetLabels();
 
             try
             {
@@ -284,21 +299,11 @@ namespace Wits
                 client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
                 client.SavePlayerAnswer(player, "", gameId);
 
-                imageWinner1.Visibility = Visibility.Hidden;
-                imageWinner2.Visibility = Visibility.Hidden;
-                imageWinner3.Visibility = Visibility.Hidden;
-                imageWinner4.Visibility = Visibility.Hidden;
-                imageAcceptAnswer.Visibility = Visibility.Visible;
+                SetWinnersVisibility();
                 gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
                 correctPlayers.Clear();
 
                 ShowQuestion();
-
-                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-                Player playerData = playerManagerClient.GetPlayerByUser(userName);
-                int profilePictureId = playerData.ProfilePictureId;
-                int celebrationId = playerData.CelebrationId;
-              
             }
             catch (TimeoutException ex)
             {
@@ -320,14 +325,12 @@ namespace Wits
             backgroundVideo.Play();
         }
 
-        private async void SetQuestion()
+        private async Task SetQuestion()
         {
             if (questionIds == null || questionIds.Count == 0)
             {
                 GetQuestionIdsFromServer(gameId);
             }
-
-
 
             newQuestionId = questionIds.First();
             questionIds.RemoveAt(0);
@@ -363,31 +366,6 @@ namespace Wits
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
-            }
-        }
-
-        private int GetRandomQuestionIdFromServer()
-        {
-            WitsService.GameManagerClient client = new WitsService.GameManagerClient();
-
-            try
-            {
-                newQuestionId = client.GetRandomQuestionId();
-                return newQuestionId;
-            }
-            catch (TimeoutException ex)
-            {
-                Logger.LogErrorException(ex);
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                RestartGame();
-                return 0;
-            }
-            catch (CommunicationException ex)
-            {
-                Logger.LogErrorException(ex);
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                RestartGame();
-                return 0;
             }
         }
 
@@ -496,11 +474,7 @@ namespace Wits
 
         private void SaveAnswer(object sender, MouseButtonEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
-            {
-                return;
-            }
-            else
+            if (!string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
             {
                 labelInstrucion.Content = Properties.Resources.EnterAnswer;
                 gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
@@ -584,13 +558,11 @@ namespace Wits
         {
             string imageName = selectedImage?.Name;
 
-            if (imageName != null && imageName.StartsWith("imageAnswerPlayer"))
+            if (imageName != null && imageName.StartsWith("imageAnswerPlayer") && int.TryParse(imageName.Substring("imageAnswerPlayer".Length), out int imageNumber))
             {
-                if (int.TryParse(imageName.Substring("imageAnswerPlayer".Length), out int imageNumber))
-                {
-                    return imageNumber;
-                }
+                return imageNumber;
             }
+
             return 0;
         }
 

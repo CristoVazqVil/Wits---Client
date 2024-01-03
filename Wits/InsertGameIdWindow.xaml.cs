@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Wits.Classes;
 
 namespace Wits
 {
@@ -41,13 +42,20 @@ namespace Wits
 
         private void buttonSendId_Click(object sender, RoutedEventArgs e)
         {
-            string gameIdString = textBoxGameId.Text;
-            if (!string.IsNullOrEmpty(gameIdString))
+            try
             {
-                GameId = int.Parse(gameIdString);
+                string gameIdString = textBoxGameId.Text;
+                if (!string.IsNullOrEmpty(gameIdString))
+                {
+                    GameId = int.Parse(gameIdString);
 
-                this.DialogResult = true;
-                this.Close();
+                    this.DialogResult = true;
+                    this.Close();
+                }
+            }
+            catch (FormatException ex)
+            {
+                Logger.LogErrorException(ex);
             }
         }
 
@@ -60,6 +68,14 @@ namespace Wits
                     e.Handled = true;
                     return;
                 }
+            }
+        }
+
+        private void DeleteSpaces(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
             }
         }
     }
