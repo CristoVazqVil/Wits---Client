@@ -153,7 +153,7 @@ namespace Wits
 
         private bool IsEmailValid()
         {
-            if (Regex.IsMatch(textBoxEmail.Text, @"^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|estudiantes\.uv\.mx)$"))
+            if (Regex.IsMatch(textBoxEmail.Text, @"^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|outlook\.com|estudiantes\.uv\.mx|uv\.mx|yahoo\.com)$"))
             {
                 return true;
             }
