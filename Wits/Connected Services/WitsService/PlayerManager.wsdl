@@ -240,6 +240,9 @@
   <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConnectedUser" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_AddConnectedUserInMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddConnectedUserInMenu" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_RemoveConnectedUserInMenu_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveConnectedUserInMenu" />
   </wsdl:message>
@@ -492,6 +495,9 @@
   <wsdl:portType name="IConnectedUsers">
     <wsdl:operation name="AddConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUser" message="tns:IConnectedUsers_AddConnectedUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddConnectedUserInMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu" message="tns:IConnectedUsers_AddConnectedUserInMenu_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUserInMenu">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu" message="tns:IConnectedUsers_RemoveConnectedUserInMenu_InputMessage" />
@@ -889,6 +895,12 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="AddConnectedUser">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/AddConnectedUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="AddConnectedUserInMenu">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

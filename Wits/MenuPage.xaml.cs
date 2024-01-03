@@ -398,5 +398,15 @@ namespace Wits
             mainWindow.Show();
             currentWindow.Close();
         }
+
+        private void Logout(object sender, MouseButtonEventArgs e)
+        {
+            var currentWindow = Window.GetWindow(this);
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            currentWindow.Close();
+            UserSingleton.Instance.ClearUsername();
+            GameSingleton.Instance.ClearGame();
+        }
     }
 }

@@ -63,5 +63,6 @@
         </MediaElement>
         <Grid x:Name="gridOnlineFriends" Margin="10,465,540,10"/>
         <TextBlock x:Name="textBlockAllMyFriends" HorizontalAlignment="Left" TextAlignment="Justify" TextDecorations="Underline" Foreground="White" FontFamily="Neon Tubes 2" FontWeight="Bold" FontSize="35" Margin="10,406,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.FriendsAndRequests}" VerticalAlignment="Top" Width="536" Height="46" MouseDown="OpenMyFriendsPage"/>
+        <Image x:Name="imageLogout" Source="Images\logout.png" HorizontalAlignment="Left" Height="77" Margin="10,305,0,0" VerticalAlignment="Top" Width="75" MouseDown="Logout"/>
     </Grid>
 </Page>

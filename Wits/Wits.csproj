@@ -440,6 +440,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Resource Include="Images\logout.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Content Include="Music\Elite Four Battle.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

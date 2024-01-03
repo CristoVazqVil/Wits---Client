@@ -830,6 +830,12 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUser")]
         System.Threading.Tasks.Task AddConnectedUserAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu")]
+        void AddConnectedUserInMenu(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu")]
+        System.Threading.Tasks.Task AddConnectedUserInMenuAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu")]
         void RemoveConnectedUserInMenu(string username);
         
@@ -890,6 +896,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task AddConnectedUserAsync(string username) {
             return base.Channel.AddConnectedUserAsync(username);
+        }
+        
+        public void AddConnectedUserInMenu(string username) {
+            base.Channel.AddConnectedUserInMenu(username);
+        }
+        
+        public System.Threading.Tasks.Task AddConnectedUserInMenuAsync(string username) {
+            return base.Channel.AddConnectedUserInMenuAsync(username);
         }
         
         public void RemoveConnectedUserInMenu(string username) {
