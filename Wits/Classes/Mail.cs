@@ -110,7 +110,12 @@ namespace Wits.Classes
             catch (SmtpException ex)
             {
                 msge = ex.Message + Properties.Resources.Failed;
-                Console.WriteLine(msge);
+                Logger.LogErrorException(ex);
+            }
+            catch (ArgumentNullException ex)
+            {
+                msge = ex.Message + Properties.Resources.Failed;
+                Logger.LogErrorException(ex);
             }
 
             return msge;

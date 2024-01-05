@@ -249,6 +249,12 @@
   <wsdl:message name="IConnectedUsers_RemoveConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveConnectedUser" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveFromEverywhere_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromEverywhere" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveFromEverywhere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromEverywhereResponse" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriends" />
   </wsdl:message>
@@ -504,6 +510,10 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" message="tns:IConnectedUsers_RemoveConnectedUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromEverywhere">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" message="tns:IConnectedUsers_RemoveFromEverywhere_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse" message="tns:IConnectedUsers_RemoveFromEverywhere_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
@@ -916,6 +926,15 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromEverywhere">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedFriends" style="document" />

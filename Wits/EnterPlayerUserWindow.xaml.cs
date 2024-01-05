@@ -43,10 +43,14 @@ namespace Wits
         {
             PlayerUser = textBoxPlayerUser.Text;
 
-            if (!string.IsNullOrEmpty(PlayerUser))
+            if (!string.IsNullOrEmpty(PlayerUser) && !PlayerUser.Equals(Properties.Resources.TypeHere))
             {
                 this.DialogResult = true;
                 this.Close();
+            }
+            else
+            {
+                this.DialogResult = false;
             }
         }
 

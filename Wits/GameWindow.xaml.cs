@@ -43,7 +43,7 @@ namespace Wits
 
             try
             {
-                connectedClient.RemoveConnectedUser(UserSingleton.Instance.Username);
+                connectedClient.RemoveFromEverywhere(UserSingleton.Instance.Username);
                 if (UserSingleton.Instance.Username.Substring(0, 5).Equals("Guest"))
                 {
                     playerClient.DeletePlayer(UserSingleton.Instance.Username);

@@ -249,7 +249,7 @@ namespace Wits
                     WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
                     WitsService.Player invitedPlayer = client.GetPlayerByUser(invitedUser);
 
-                    if (invitedPlayer != null)
+                    if (invitedPlayer != null && invitedPlayer.Email != null && !invitedPlayer.Email.Equals(""))
                     {
                         string sendedEmail = Mail.sendInvitationMail(invitedPlayer.Email, gameId);
                         MessageBox.Show(Properties.Resources.PlayerInvitedMessage + "\n" + sendedEmail, Properties.Resources.Success, MessageBoxButton.OK, MessageBoxImage.Information);
