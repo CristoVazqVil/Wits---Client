@@ -38,6 +38,8 @@ namespace Wits
         private int trueAnswer = 0;
         private List<int> correctPlayers = new List<int>();
         private Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers;
+   
+
 
         public BoardPage()
         {
@@ -105,7 +107,7 @@ namespace Wits
                 string[] playersArray = client.GetPlayersOfGameExceptLeader(gameId, userName);
                 List<string> playerList = new List<string>(playersArray);
                 PlayersInGameUserControl players = new PlayersInGameUserControl();
-                players.ImageCloseClicked += Players_ImageCloseClicked;
+                players.ImageCloseClicked += PlayersImageCloseClicked;
                 players.SetPlayers(playerList);
                 gridPlayersInGame.Children.Add(players);
             }
@@ -123,7 +125,7 @@ namespace Wits
             }
         }
 
-        private void Players_ImageCloseClicked(object sender, EventArgs e)
+        private void PlayersImageCloseClicked(object sender, EventArgs e)
         {
             gridPlayersInGame.Margin = new Thickness(-899, -594, 1211, 858);
         }
@@ -169,12 +171,20 @@ namespace Wits
             await Task.Delay(1000);
 
             labelInstrucion.Content = Properties.Resources.EnterAnswer;
-            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            ShowEnterAnswer();
+
+            
+        }
+
+        private void HideAllAnswers()
+        {
+            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
+
         }
 
         private async Task ShowAnswer()
         {
-            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
+            HideAllAnswers();
             SetAnswer();
             await Task.Delay(1000);
 
@@ -200,29 +210,31 @@ namespace Wits
             }
             else
             {
-                labelRound.Content = "";
-
-                string scoreText = labelChips.Content.ToString();
-
-                InstanceContext context = new InstanceContext(this);
-                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-                Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
-                int profilePictureId = playerData.ProfilePictureId;
-                int celebrationId = playerData.CelebrationId;
-
-
-
-                if (int.TryParse(scoreText, out int score))
-                {
-
-                    bool isRegistered = true;
-                    client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId);
-                    client.GameEnded(gameId, player, isRegistered);
-                }
+                EndGame();
 
             }
 
+        }
+
+        private void EndGame()
+        {
+            labelRound.Content = "";
+
+            string scoreText = labelChips.Content.ToString();
+
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+            int profilePictureId = playerData.ProfilePictureId;
+            int celebrationId = playerData.CelebrationId;
+
+            if (int.TryParse(scoreText, out int score))
+            {
+                bool isRegistered = true;
+                client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId);
+                client.GameEnded(gameId, player, isRegistered);
+            }
         }
 
         private void SelectedAnswer(object sender, MouseButtonEventArgs e)
@@ -499,46 +511,57 @@ namespace Wits
         {
             if (string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
             {
-                return;
+                return; 
             }
-            else
+
+            SavePlayerAnswer();
+
+            UpdateAnswerLabel();
+            HideEnterAnswer();
+            ShowAllAnswers();
+        }
+
+        private void SavePlayerAnswer()
+        {
+            string answerText = textBoxPlayersAnswer.Text;
+
+            try
             {
-                labelInstrucion.Content = Properties.Resources.EnterAnswer;
-                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-                string answerText = textBoxPlayersAnswer.Text;
-                try
-                {
-                    InstanceContext context = new InstanceContext(this);
-                    WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
 
-                    int playerNumber = player;
-
-                    client.SavePlayerAnswer(playerNumber, answerText, gameId);
-
-
-                }
-                catch (TimeoutException ex)
-                {
-                    Logger.LogErrorException(ex);
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                    RestartGame();
-                }
-                catch (CommunicationException ex)
-                {
-                    Logger.LogErrorException(ex);
-                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                    RestartGame();
-                }
-
-                string labelName = "labelAnswer" + player;
-                var label = FindName(labelName) as System.Windows.Controls.Label;
-
-                if (label != null)
-                {
-                    label.Content = answerText;
-                }
-                gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
+                int playerNumber = player;
+                client.SavePlayerAnswer(playerNumber, answerText, gameId);
             }
+            catch (TimeoutException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+            }
+            catch (CommunicationException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+            }
+
+        }
+
+        private void UpdateAnswerLabel()
+        {
+            string labelName = "labelAnswer" + player;
+            var label = FindName(labelName) as System.Windows.Controls.Label;
+
+            if (label != null)
+            {
+                label.Content = textBoxPlayersAnswer.Text;
+            }
+        }
+
+        public void ShowAllAnswers()
+        {
+            gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
         }
 
         public void UpdatePlayerAnswer(int playerNumber, string answer)
@@ -611,14 +634,29 @@ namespace Wits
             gridRoundWinners.Margin = new Thickness(0, 0, 0, 0);
         }
 
+
+        private void HideEnterAnswer()
+        {
+            gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+        }
+
+        private void ShowEnterAnswer()
+        {
+            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void ShowWarning()
+        {
+            gridWarning.Margin = new Thickness(0, 0, 0, 0);
+            textBoxPlayersAnswer.Text = "";
+        }
+
         private void SaveWager(object sender, MouseButtonEventArgs e)
         {
             int chipsAvailable = int.Parse(labelChips.Content.ToString());
-
             if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount) && wagerAmount <= chipsAvailable)
             {
-                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-
+                HideEnterAnswer();
                 InstanceContext context = new InstanceContext(this);
                 WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
                 bool isReady = true;
@@ -644,10 +682,8 @@ namespace Wits
             }
             else
             {
-                gridWarning.Margin = new Thickness(0, 0, 0, 0);
-                textBoxPlayersAnswer.Text = "";
+                ShowWarning();
             }
-
         }
 
         private void AcceptWarning(object sender, MouseButtonEventArgs e)
@@ -825,10 +861,10 @@ namespace Wits
 
         public void ShowEnterWager()
         {
-            gridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
+            HideAllAnswers();
             textBoxPlayersAnswer.Text = "";
             imageAcceptWager.Visibility = Visibility.Visible;
-            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            ShowEnterAnswer();
             labelInstrucion.Content = Properties.Resources.HowMuch;
         }
 
@@ -837,8 +873,8 @@ namespace Wits
             ShowAnswer();
 
         }
-     
-       private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
+
+        private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
             int correctAnswer = trueAnswer;
             Dictionary<int, int> playerGuesses = new Dictionary<int, int>();
@@ -906,6 +942,7 @@ namespace Wits
 
             this.correctPlayers = correctPlayers;
         }
+
 
         public void BeExpelled()
         {

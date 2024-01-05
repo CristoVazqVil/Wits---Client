@@ -38,7 +38,7 @@
             <Image x:Name="imagePlayersAnswerGlow" Source="/Images/redBox.png" Margin="124,182,116,182" />
             <Image x:Name="imageAcceptAnswer" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveAnswer" />
             <TextBox x:Name="textBoxPlayersAnswer" Margin="194,251,184,250" Background="Black" BorderBrush="{x:Null}" FontSize="100" Foreground="White"
-            TextAlignment="Center" MaxLength="10" PreviewTextInput="AnswerIsNumber" SelectionBrush="{x:Null}" />
+            TextAlignment="Center" MaxLength="6" PreviewTextInput="AnswerIsNumber" SelectionBrush="{x:Null}" />
             <Label x:Name="labelInstrucion" Content="{x:Static p:Resources.EnterAnswer}" FontFamily="Beon" HorizontalAlignment="Left" Margin="194,150,0,0" VerticalAlignment="Top" Height="121" Width="724" Foreground="White" FontSize="60"/>
             <Image x:Name="imageAcceptWager" Source="/Images/okGreenBox.png" Margin="364,512,344,95" MouseDown="SaveWager" Visibility="Hidden" />
 
@@ -97,10 +97,10 @@
                 </Label.RenderTransform>
             </Label>
 
-            <Image x:Name="imageSelectionPlayer1" Source="/ProfilePictures/1.png" Margin="359,597,629,31" Visibility="Hidden"/>
-            <Image x:Name="imageSelectionPlayer2" Source="/ProfilePictures/5.png" Margin="468,597,520,31" Visibility="Hidden"/>
-            <Image x:Name="imageSelectionPlayer3" Source="/ProfilePictures/6.png" Margin="565,597,423,31" Visibility="Hidden"/>
-            <Image x:Name="imageSelectionPlayer4" Source="/ProfilePictures/12.png" Margin="676,597,312,31" Visibility="Hidden"/>
+            <Image x:Name="imageSelectionPlayer1" Source="/ProfilePictures/1.png" Margin="332,801,656,-173" />
+            <Image x:Name="imageSelectionPlayer2" Source="/ProfilePictures/5.png" Margin="441,801,547,-173" />
+            <Image x:Name="imageSelectionPlayer3" Source="/ProfilePictures/6.png" Margin="538,801,450,-173" />
+            <Image x:Name="imageSelectionPlayer4" Source="/ProfilePictures/12.png" Margin="649,801,339,-173" />
 
 
         </Grid>
