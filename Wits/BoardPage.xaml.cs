@@ -877,6 +877,19 @@ namespace Wits
         private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
             int correctAnswer = trueAnswer;
+            Dictionary<int, int> playerGuesses = GetPlayerGuesses();
+
+            List<int> closestAnswer = GetClosestAnswer(playerGuesses);
+
+            List<int> correctPlayers = GetCorrectPlayers(playerSelectedAnswers, closestAnswer);
+
+            UpdateChips(correctPlayers);
+
+            this.correctPlayers = correctPlayers;
+        }
+
+        private Dictionary<int, int> GetPlayerGuesses()
+        {
             Dictionary<int, int> playerGuesses = new Dictionary<int, int>();
 
             for (int i = 1; i <= 4; i++)
@@ -890,15 +903,20 @@ namespace Wits
                 }
             }
 
-            List<int> closestAnswer = new List<int>();
+            return playerGuesses;
+        }
+
+        private List<int> GetClosestAnswer(Dictionary<int, int> playerGuesses)
+        {
             int closestDifference = int.MaxValue;
+            List<int> closestAnswer = new List<int>();
 
             foreach (var kvp in playerGuesses)
             {
                 int answerNumber = kvp.Key;
                 int guess = kvp.Value;
 
-                int difference = Math.Abs(guess - correctAnswer);
+                int difference = Math.Abs(guess - trueAnswer);
 
                 if (difference < closestDifference)
                 {
@@ -912,6 +930,11 @@ namespace Wits
                 }
             }
 
+            return closestAnswer;
+        }
+
+        private List<int> GetCorrectPlayers(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers, List<int> closestAnswer)
+        {
             List<int> correctPlayers = new List<int>();
 
             foreach (var kvp in playerSelectedAnswers)
@@ -925,23 +948,20 @@ namespace Wits
                 }
             }
 
+            return correctPlayers;
+        }
+
+        private void UpdateChips(List<int> correctPlayers)
+        {
             if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount))
             {
                 int currentChips = int.Parse(labelChips.Content.ToString());
                 int newChips = currentChips + wagerAmount;
 
-                if (correctPlayers.Contains(player))
-                {
-                    labelChips.Content = newChips.ToString();
-                }
-                else
-                {
-                    labelChips.Content = (currentChips - wagerAmount).ToString();
-                }
+                labelChips.Content = correctPlayers.Contains(player) ? newChips.ToString() : (currentChips - wagerAmount).ToString();
             }
-
-            this.correctPlayers = correctPlayers;
         }
+
 
 
         public void BeExpelled()
