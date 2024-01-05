@@ -1,70 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" />
-  <xs:complexType name="ArrayOfKeyValueOfintstring">
-    <xs:annotation>
-      <xs:appinfo>
-        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-      </xs:appinfo>
-    </xs:annotation>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Player">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintstring">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Key" type="xs:int" />
-            <xs:element name="Value" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element minOccurs="0" name="CelebrationId" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HighestScore" type="xs:int" />
+      <xs:element minOccurs="0" name="ProfilePictureId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfKeyValueOfintstring" nillable="true" type="tns:ArrayOfKeyValueOfintstring" />
-  <xs:complexType name="ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz">
-    <xs:annotation>
-      <xs:appinfo>
-        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-      </xs:appinfo>
-    </xs:annotation>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="PlayerSelectedAnswer">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintPlayerSelectedAnswernChUn5Fz">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Key" type="xs:int" />
-            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" name="Value" nillable="true" type="q1:PlayerSelectedAnswer" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
+      <xs:element minOccurs="0" name="IdProfilePicture" type="xs:int" />
+      <xs:element minOccurs="0" name="SelectedAnswer" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" nillable="true" type="tns:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
-  <xs:complexType name="ArrayOfstring">
+  <xs:element name="PlayerSelectedAnswer" nillable="true" type="tns:PlayerSelectedAnswer" />
+  <xs:complexType name="Question">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AnswerES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionEN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QuestionES" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrueAnswer" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfstring" nillable="true" type="tns:ArrayOfstring" />
-  <xs:complexType name="ArrayOfKeyValueOfstringint">
-    <xs:annotation>
-      <xs:appinfo>
-        <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfstringint">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="Key" nillable="true" type="xs:string" />
-            <xs:element name="Value" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfKeyValueOfstringint" nillable="true" type="tns:ArrayOfKeyValueOfstringint" />
-  <xs:complexType name="ArrayOfint">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="int" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfint" nillable="true" type="tns:ArrayOfint" />
+  <xs:element name="Question" nillable="true" type="tns:Question" />
 </xs:schema>

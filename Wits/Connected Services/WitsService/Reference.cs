@@ -15,67 +15,6 @@ namespace Wits.WitsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerSelectedAnswer", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
-    [System.SerializableAttribute()]
-    public partial class PlayerSelectedAnswer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdProfilePictureField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SelectedAnswerField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdProfilePicture {
-            get {
-                return this.IdProfilePictureField;
-            }
-            set {
-                if ((this.IdProfilePictureField.Equals(value) != true)) {
-                    this.IdProfilePictureField = value;
-                    this.RaisePropertyChanged("IdProfilePicture");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int SelectedAnswer {
-            get {
-                return this.SelectedAnswerField;
-            }
-            set {
-                if ((this.SelectedAnswerField.Equals(value) != true)) {
-                    this.SelectedAnswerField = value;
-                    this.RaisePropertyChanged("SelectedAnswer");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
     [System.SerializableAttribute()]
     public partial class Player : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -185,6 +124,67 @@ namespace Wits.WitsService {
                 if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
                     this.UsernameField = value;
                     this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerSelectedAnswer", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class PlayerSelectedAnswer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProfilePictureField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SelectedAnswerField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProfilePicture {
+            get {
+                return this.IdProfilePictureField;
+            }
+            set {
+                if ((this.IdProfilePictureField.Equals(value) != true)) {
+                    this.IdProfilePictureField = value;
+                    this.RaisePropertyChanged("IdProfilePicture");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SelectedAnswer {
+            get {
+                return this.SelectedAnswerField;
+            }
+            set {
+                if ((this.SelectedAnswerField.Equals(value) != true)) {
+                    this.SelectedAnswerField = value;
+                    this.RaisePropertyChanged("SelectedAnswer");
                 }
             }
         }
@@ -361,10 +361,10 @@ namespace Wits.WitsService {
         System.Threading.Tasks.Task GameEndedAsync(int gameId, int playerNumber, bool isRegistered);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        void WhoWon(Wits.WitsService.Player playerData, System.Collections.Generic.Dictionary<string, int> gameData);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        System.Threading.Tasks.Task WhoWonAsync(Wits.WitsService.Player playerData, System.Collections.Generic.Dictionary<string, int> gameData);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
         void ShowWinner(int gameId);
@@ -496,12 +496,12 @@ namespace Wits.WitsService {
             return base.Channel.GameEndedAsync(gameId, playerNumber, isRegistered);
         }
         
-        public void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            base.Channel.WhoWon(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public void WhoWon(Wits.WitsService.Player playerData, System.Collections.Generic.Dictionary<string, int> gameData) {
+            base.Channel.WhoWon(playerData, gameData);
         }
         
-        public System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            return base.Channel.WhoWonAsync(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public System.Threading.Tasks.Task WhoWonAsync(Wits.WitsService.Player playerData, System.Collections.Generic.Dictionary<string, int> gameData) {
+            return base.Channel.WhoWonAsync(playerData, gameData);
         }
         
         public void ShowWinner(int gameId) {
