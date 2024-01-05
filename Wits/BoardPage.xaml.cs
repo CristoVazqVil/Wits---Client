@@ -49,23 +49,11 @@ namespace Wits
             PlaySong();
             ValidateGameLeader();
             SetProfilePicture();
-            InstanceContext context = new InstanceContext(this);
-            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            labelAnswer1.Content = "";
-            labelAnswer2.Content = "";
-            labelAnswer3.Content = "";
-            labelAnswer4.Content = "";
-
-            bool isRegistered = false;
-            client.GameEnded(gameId, player, isRegistered);
-
+            PrepareForGame();
+            ClearAllAnswersLabel();
             try
             {
-                client.RegisterUserInGameContext(UserSingleton.Instance.Username);
-                Loaded += Page_Loaded;
-                bool isReady = false;
-                client.ReadyToWager(gameId, player, isReady);
-                client.ReadyToShowAnswer(gameId, player, isReady);
+                ReadyToStart();
             }
             catch (TimeoutException ex)
             {
@@ -79,6 +67,33 @@ namespace Wits
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
             }
+        }
+
+        private void ClearAllAnswersLabel()
+        {
+            labelAnswer1.Content = "";
+            labelAnswer2.Content = "";
+            labelAnswer3.Content = "";
+            labelAnswer4.Content = "";
+        }
+
+        private void PrepareForGame()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            bool isRegistered = false;
+            client.GameEnded(gameId, player, isRegistered);
+        }
+
+        private void ReadyToStart()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            client.RegisterUserInGameContext(UserSingleton.Instance.Username);
+            Loaded += Page_Loaded;
+            bool isReady = false;
+            client.ReadyToWager(gameId, player, isReady);
+            client.ReadyToShowAnswer(gameId, player, isReady);
         }
 
         private void SongEnded(object sender, EventArgs e)

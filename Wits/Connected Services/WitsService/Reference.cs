@@ -830,6 +830,12 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUser")]
         System.Threading.Tasks.Task AddConnectedUserAsync(string username);
         
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu")]
+        void AddConnectedUserInMenu(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu")]
+        System.Threading.Tasks.Task AddConnectedUserInMenuAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu")]
         void RemoveConnectedUserInMenu(string username);
         
@@ -841,6 +847,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser")]
         System.Threading.Tasks.Task RemoveConnectedUserAsync(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse")]
+        void RemoveFromEverywhere(string user);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse")]
+        System.Threading.Tasks.Task RemoveFromEverywhereAsync(string user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
         string[] GetConnectedFriends(string principalPlayer);
@@ -892,6 +904,14 @@ namespace Wits.WitsService {
             return base.Channel.AddConnectedUserAsync(username);
         }
         
+        public void AddConnectedUserInMenu(string username) {
+            base.Channel.AddConnectedUserInMenu(username);
+        }
+        
+        public System.Threading.Tasks.Task AddConnectedUserInMenuAsync(string username) {
+            return base.Channel.AddConnectedUserInMenuAsync(username);
+        }
+        
         public void RemoveConnectedUserInMenu(string username) {
             base.Channel.RemoveConnectedUserInMenu(username);
         }
@@ -906,6 +926,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task RemoveConnectedUserAsync(string username) {
             return base.Channel.RemoveConnectedUserAsync(username);
+        }
+        
+        public void RemoveFromEverywhere(string user) {
+            base.Channel.RemoveFromEverywhere(user);
+        }
+        
+        public System.Threading.Tasks.Task RemoveFromEverywhereAsync(string user) {
+            return base.Channel.RemoveFromEverywhereAsync(user);
         }
         
         public string[] GetConnectedFriends(string principalPlayer) {

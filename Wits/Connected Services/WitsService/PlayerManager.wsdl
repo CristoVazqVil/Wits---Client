@@ -240,11 +240,20 @@
   <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConnectedUser" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_AddConnectedUserInMenu_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddConnectedUserInMenu" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_RemoveConnectedUserInMenu_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveConnectedUserInMenu" />
   </wsdl:message>
   <wsdl:message name="IConnectedUsers_RemoveConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:RemoveConnectedUser" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveFromEverywhere_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromEverywhere" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_RemoveFromEverywhere_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveFromEverywhereResponse" />
   </wsdl:message>
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriends" />
@@ -493,11 +502,18 @@
     <wsdl:operation name="AddConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUser" message="tns:IConnectedUsers_AddConnectedUser_InputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddConnectedUserInMenu">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu" message="tns:IConnectedUsers_AddConnectedUserInMenu_InputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUserInMenu">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu" message="tns:IConnectedUsers_RemoveConnectedUserInMenu_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveConnectedUser" message="tns:IConnectedUsers_RemoveConnectedUser_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromEverywhere">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" message="tns:IConnectedUsers_RemoveFromEverywhere_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse" message="tns:IConnectedUsers_RemoveFromEverywhere_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
@@ -893,6 +909,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="AddConnectedUserInMenu">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/AddConnectedUserInMenu" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="RemoveConnectedUserInMenu">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveConnectedUserInMenu" style="document" />
       <wsdl:input>
@@ -904,6 +926,15 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveFromEverywhere">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/GetConnectedFriends" style="document" />
