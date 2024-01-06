@@ -219,12 +219,13 @@ namespace Wits
 
             rounds++;
 
-            if (rounds < 7)
+            if (rounds < 5)
             {
                 PlayNextRound();
             }
             else
             {
+
                 EndGame();
             }
         }
@@ -242,18 +243,29 @@ namespace Wits
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
             Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+            int IdprofilePicture = playerData.ProfilePictureId;
+            int Idcelebration = playerData.CelebrationId;
+
+   
 
             if (int.TryParse(scoreText, out int score))
             {
-                Dictionary<string, int> gameData = new Dictionary<string, int>
+
+
+
+                Dictionary<string, object> playerGameData = new Dictionary<string, object>
                 {
-                    { "gameId", gameId },
-                    { "player", player },
-                    { "score", score }
+                    { "UserName", UserSingleton.Instance.Username },
+                    { "IdCelebration", Idcelebration },
+                    { "Score", score },
+                    { "IdProfilePicture", IdprofilePicture }
+                    // Agrega otros datos que necesites del jugador aquí...
                 };
 
                 bool isRegistered = true;
-                client.WhoWon(playerData,gameData );
+
+                //client.WhoWon(playerData, playerGameData);
+               client.WhoWon(gameId,player, userName, Idcelebration,score, IdprofilePicture);
                 client.GameEnded(gameId, player, isRegistered);
             }
         }
@@ -326,18 +338,41 @@ namespace Wits
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             labelRound.Content = Properties.Resources.Round + rounds;
             textBoxPlayersAnswer.Text = "";
-            HideAllImagesForNextRound();
-            ClearAllAnswersLabel();
-            UpdateQuestionFrame();
+            imageSelectionPlayer1.Visibility = Visibility.Hidden;
+            imageSelectionPlayer2.Visibility = Visibility.Hidden;
+            imageSelectionPlayer3.Visibility = Visibility.Hidden;
+            imageSelectionPlayer4.Visibility = Visibility.Hidden;
+            imageAcceptWager.Visibility = Visibility.Hidden;
+            imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
+            labelAnswer1.Content = "";
+            labelAnswer2.Content = "";
+            labelAnswer3.Content = "";
+            labelAnswer4.Content = "";
 
             try
             {
-                HideImageWinnerForNextRound();
-                HideGridRoundWinners();
+                bool isReady = false;
+                client.RegisterUserInGameContext(UserSingleton.Instance.Username);
+                client.ReadyToWager(gameId, player, isReady);
+                client.ReadyToShowAnswer(gameId, player, isReady);
+                client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
+                client.SavePlayerAnswer(player, "", gameId);
+
+                imageWinner1.Visibility = Visibility.Hidden;
+                imageWinner2.Visibility = Visibility.Hidden;
+                imageWinner3.Visibility = Visibility.Hidden;
+                imageWinner4.Visibility = Visibility.Hidden;
                 imageAcceptAnswer.Visibility = Visibility.Visible;
+                gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
                 correctPlayers.Clear();
 
                 ShowQuestion();
+
+                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+                Player playerData = playerManagerClient.GetPlayerByUser(userName);
+                int profilePictureId = playerData.ProfilePictureId;
+                int celebrationId = playerData.CelebrationId;
+
             }
             catch (TimeoutException ex)
             {
