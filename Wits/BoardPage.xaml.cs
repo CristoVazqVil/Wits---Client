@@ -336,19 +336,7 @@ namespace Wits
         {
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            labelRound.Content = Properties.Resources.Round + rounds;
-            textBoxPlayersAnswer.Text = "";
-            imageSelectionPlayer1.Visibility = Visibility.Hidden;
-            imageSelectionPlayer2.Visibility = Visibility.Hidden;
-            imageSelectionPlayer3.Visibility = Visibility.Hidden;
-            imageSelectionPlayer4.Visibility = Visibility.Hidden;
-            imageAcceptWager.Visibility = Visibility.Hidden;
-            imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
-            labelAnswer1.Content = "";
-            labelAnswer2.Content = "";
-            labelAnswer3.Content = "";
-            labelAnswer4.Content = "";
-
+            SetupVisualElementsForRound();
             try
             {
                 bool isReady = false;
@@ -357,14 +345,6 @@ namespace Wits
                 client.ReadyToShowAnswer(gameId, player, isReady);
                 client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
                 client.SavePlayerAnswer(player, "", gameId);
-
-                imageWinner1.Visibility = Visibility.Hidden;
-                imageWinner2.Visibility = Visibility.Hidden;
-                imageWinner3.Visibility = Visibility.Hidden;
-                imageWinner4.Visibility = Visibility.Hidden;
-                imageAcceptAnswer.Visibility = Visibility.Visible;
-                gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
-                correctPlayers.Clear();
 
                 ShowQuestion();
 
@@ -387,6 +367,24 @@ namespace Wits
                 RestartGame();
             }
         }
+
+        private void SetupVisualElementsForRound()
+        {
+
+          
+            HideAllImagesForNextRound();
+            labelRound.Content = Properties.Resources.Round + rounds;
+            textBoxPlayersAnswer.Text = "";
+            UpdateQuestionFrame();
+            ClearAllAnswersLabel();
+
+            HideImageWinnerForNextRound();
+            imageAcceptAnswer.Visibility = Visibility.Visible;
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            correctPlayers.Clear();
+        }
+
+
 
         private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
         {
