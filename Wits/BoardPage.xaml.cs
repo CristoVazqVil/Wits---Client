@@ -219,7 +219,7 @@ namespace Wits
 
             rounds++;
 
-            if (rounds < 5)
+            if (rounds < 7)
             {
                 PlayNextRound();
             }
@@ -1033,32 +1033,37 @@ namespace Wits
             this.NavigationService.Navigate(new Uri("MenuPage.xaml", UriKind.Relative));
         }
 
-        void IActiveGameCallback.ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
+        void IActiveGameCallback.ShowVictoryScreen(Dictionary<string, object> winnerInfo)
         {
             HideGridRoundWinners();
-            string profilePictureFileName = profilePictureId + ".png";
-            string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
 
-            Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
-            profilePicture.Source = new BitmapImage(profilePictureUri);
+            if (winnerInfo != null)
+            {
+                string userName = winnerInfo.ContainsKey("UserName") ? (string)winnerInfo["UserName"] : "";
+                int profilePictureId = winnerInfo.ContainsKey("IdProfilePicture") ? (int)winnerInfo["IdProfilePicture"] : 0;
+                int celebrationId = winnerInfo.ContainsKey("IdCelebration") ? (int)winnerInfo["IdCelebration"] : 0;
+                int score = winnerInfo.ContainsKey("Score") ? (int)winnerInfo["Score"] : 0;
 
+                string profilePictureFileName = profilePictureId + ".png";
+                string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
+                Uri profilePictureUri = new Uri(profilePicturePath, UriKind.Relative);
+                profilePicture.Source = new BitmapImage(profilePictureUri);
 
-            string celebrationFileName = celebrationId + ".mp4";
-            string celebrationPath = "Celebrations/" + celebrationFileName;
+                string celebrationFileName = celebrationId + ".mp4";
+                string celebrationPath = "Celebrations/" + celebrationFileName;
+                Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
+                celebrationVideo.Source = celebrationUri;
 
-            Uri celebrationUri = new Uri(celebrationPath, UriKind.Relative);
-            celebrationVideo.Source = celebrationUri;
+                labelWinner.Content = userName + Properties.Resources.Wins;
 
+                celebrationVideo.Play();
+                victoryScreen.Margin = new Thickness(0);
 
-            labelWinner.Content = userName + Properties.Resources.Wins;
-
-
-            celebrationVideo.Play();
-            victoryScreen.Margin = new Thickness(0);
-
-            DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
-            victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
+                DoubleAnimation showAnimation = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(2));
+                victoryScreen.BeginAnimation(OpacityProperty, showAnimation);
+            }
         }
+
 
         public void TieBreaker()
         {

@@ -404,7 +404,7 @@ namespace Wits.WitsService {
         void BeExpelled();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowVictoryScreen", ReplyAction="http://tempuri.org/IActiveGame/ShowVictoryScreenResponse")]
-        void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score);
+        void ShowVictoryScreen(System.Collections.Generic.Dictionary<string, object> winnerInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/TieBreaker", ReplyAction="http://tempuri.org/IActiveGame/TieBreakerResponse")]
         void TieBreaker();
