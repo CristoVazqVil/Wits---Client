@@ -282,16 +282,9 @@ namespace Wits
                 InstanceContext context = new InstanceContext(this);
                 WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
                 int profilePictureId = playerData.ProfilePictureId;
-                int playerNumber = player;
                 bool isReady = true;
 
-                Dictionary<string, object> answersInfo = new Dictionary<string, object>
-                {
-                    { "playerNumber", playerNumber },
-                    { "selectedAnswer", selectedAnswer },
-                    { "profilePictureId", profilePictureId },
-                    { "gameId", gameId }
-                };
+                Dictionary<string, object> answersInfo = CreateAnswersDictionary(player, selectedAnswer, profilePictureId);
 
                 client.ReceivePlayerSelectedAnswer(answersInfo);
                 
@@ -310,8 +303,21 @@ namespace Wits
                 RestartGame();
             }
             imageSelectionPlayer1.Visibility = Visibility.Visible;
-        } 
+        }
 
+
+        private Dictionary<string, object> CreateAnswersDictionary(int playerNumber, int selectedAnswer, int profilePictureId)
+        {
+            Dictionary<string, object> answersInfo = new Dictionary<string, object>
+            {
+                { "playerNumber", playerNumber },
+                { "selectedAnswer", selectedAnswer },
+                { "profilePictureId", profilePictureId },
+                { "gameId", gameId }
+            };
+
+            return answersInfo;
+        }
 
         private void HideAllImagesForNextRound()
         {
@@ -353,15 +359,10 @@ namespace Wits
                 client.ReadyToWager(gameId, player, isReady);
                 client.ReadyToShowAnswer(gameId, player, isReady);
 
-                Dictionary<string, object> answersInfo2 = new Dictionary<string, object>
-                {
-                    { "playerNumber", player },
-                    { "selectedAnswer", 0 },
-                    { "profilePictureId", 1 },
-                    { "gameId", gameId }
-                };
 
-                client.ReceivePlayerSelectedAnswer(answersInfo2);
+                Dictionary<string, object> newRound = CreateNewRoundDictionary(player, 0, 1);
+
+                client.ReceivePlayerSelectedAnswer(newRound);
                 client.SavePlayerAnswer(player, "", gameId);
 
                 ShowQuestion();
@@ -386,10 +387,25 @@ namespace Wits
             }
         }
 
-        private void SetupVisualElementsForRound()
-        {
 
-          
+
+
+        private Dictionary<string, object> CreateNewRoundDictionary(int playerNumber, int selectedAnswer, int profilePictureId)
+        {
+            Dictionary<string, object> newRound = new Dictionary<string, object>
+            {
+                { "playerNumber", player },
+                    { "selectedAnswer", 0 },
+                    { "profilePictureId", 1 },
+                    { "gameId", gameId }
+            };
+
+            return newRound;
+        }
+
+
+        private void SetupVisualElementsForRound()
+        { 
             HideAllImagesForNextRound();
             labelRound.Content = Properties.Resources.Round + rounds;
             textBoxPlayersAnswer.Text = "";
