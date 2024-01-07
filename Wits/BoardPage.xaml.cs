@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Profile;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -38,6 +39,8 @@ namespace Wits
         private int trueAnswer = 0;
         private List<int> correctPlayers = new List<int>();
         private Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers;
+   
+
 
         public BoardPage()
         {
@@ -47,19 +50,11 @@ namespace Wits
             PlaySong();
             ValidateGameLeader();
             SetProfilePicture();
-            bool isRegistered = false;
-            InstanceContext context = new InstanceContext(this);
-            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            SetLabels();
-            
+            PrepareForGame();
+            ClearAllAnswersLabel();
             try
             {
-                client.GameEnded(gameId, player, isRegistered);
-                client.RegisterUserInGameContext(UserSingleton.Instance.Username);
-                Loaded += Page_Loaded;
-                bool isReady = false;
-                client.ReadyToWager(gameId, player, isReady);
-                client.ReadyToShowAnswer(gameId, player, isReady);
+                ReadyToStart();
             }
             catch (TimeoutException ex)
             {
@@ -75,12 +70,31 @@ namespace Wits
             }
         }
 
-        private void SetLabels()
+        private void ClearAllAnswersLabel()
         {
             labelAnswer1.Content = "";
             labelAnswer2.Content = "";
             labelAnswer3.Content = "";
             labelAnswer4.Content = "";
+        }
+
+        private void PrepareForGame()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            bool isRegistered = false;
+            client.GameEnded(gameId, player, isRegistered);
+        }
+
+        private void ReadyToStart()
+        {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            client.RegisterUserInGameContext(UserSingleton.Instance.Username);
+            Loaded += Page_Loaded;
+            bool isReady = false;
+            client.ReadyToWager(gameId, player, isReady);
+            client.ReadyToShowAnswer(gameId, player, isReady);
         }
 
         private void SongEnded(object sender, EventArgs e)
@@ -109,7 +123,7 @@ namespace Wits
                 string[] playersArray = client.GetPlayersOfGameExceptLeader(gameId, userName);
                 List<string> playerList = new List<string>(playersArray);
                 PlayersInGameUserControl players = new PlayersInGameUserControl();
-                players.ImageCloseClicked += Players_ImageCloseClicked;
+                players.ImageCloseClicked += PlayersImageCloseClicked;
                 players.SetPlayers(playerList);
                 gridPlayersInGame.Children.Add(players);
             }
@@ -127,7 +141,7 @@ namespace Wits
             }
         }
 
-        private void Players_ImageCloseClicked(object sender, EventArgs e)
+        private void PlayersImageCloseClicked(object sender, EventArgs e)
         {
             gridPlayersInGame.Margin = new Thickness(-899, -594, 1211, 858);
         }
@@ -173,12 +187,19 @@ namespace Wits
             await Task.Delay(1000);
 
             labelInstrucion.Content = Properties.Resources.EnterAnswer;
-            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            ShowEnterAnswer();
+
+            
+        }
+
+        private void HideAllAnswers()
+        {
+            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
         }
 
         private async Task ShowAnswer()
         {
-            gridAllAnswers.Margin = new Thickness(0, 754, 0, -754);
+            HideAllAnswers();
             SetAnswer();
             await Task.Delay(1000);
 
@@ -198,35 +219,54 @@ namespace Wits
 
             rounds++;
 
-            if (rounds < 7)
+            if (rounds < 5)
             {
                 PlayNextRound();
             }
             else
             {
-                labelRound.Content = "";
 
-                string scoreText = labelChips.Content.ToString();
-
-                InstanceContext context = new InstanceContext(this);
-                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-                Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
-                int profilePictureId = playerData.ProfilePictureId;
-                int celebrationId = playerData.CelebrationId;
-
-
-
-                if (int.TryParse(scoreText, out int score))
-                {
-
-                    bool isRegistered = true;
-                    client.WhoWon(gameId, player, userName, celebrationId, score, profilePictureId);
-                    client.GameEnded(gameId, player, isRegistered);
-                }
-
+                EndGame();
             }
+        }
 
+        private void ClearLabelRound()
+        {
+            labelRound.Content = "";
+        }
+
+        private void EndGame()
+        {
+            ClearLabelRound();
+            string scoreText = labelChips.Content.ToString();
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+            int IdprofilePicture = playerData.ProfilePictureId;
+            int Idcelebration = playerData.CelebrationId;
+
+   
+
+            if (int.TryParse(scoreText, out int score))
+            {
+
+
+
+                Dictionary<string, object> playerGameData = new Dictionary<string, object>
+                {
+                    { "UserName", UserSingleton.Instance.Username },
+                    { "IdCelebration", Idcelebration },
+                    { "Score", score },
+                    { "IdProfilePicture", IdprofilePicture }
+                };
+
+                bool isRegistered = true;
+
+                //client.WhoWon(playerData, playerGameData);
+               client.WhoWon(gameId,player, userName, Idcelebration,score, IdprofilePicture);
+                client.GameEnded(gameId, player, isRegistered);
+            }
         }
 
         private void SelectedAnswer(object sender, MouseButtonEventArgs e)
@@ -262,7 +302,8 @@ namespace Wits
             imageSelectionPlayer1.Visibility = Visibility.Visible;
         } 
 
-        private void SetSelectionVisibility()
+
+        private void HideAllImagesForNextRound()
         {
             imageSelectionPlayer1.Visibility = Visibility.Hidden;
             imageSelectionPlayer2.Visibility = Visibility.Hidden;
@@ -270,26 +311,31 @@ namespace Wits
             imageSelectionPlayer4.Visibility = Visibility.Hidden;
             imageAcceptWager.Visibility = Visibility.Hidden;
         }
+        
+        private void UpdateQuestionFrame()
+        {
+            imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
+        }
 
-        private void SetWinnersVisibility()
+        private void HideImageWinnerForNextRound()
         {
             imageWinner1.Visibility = Visibility.Hidden;
             imageWinner2.Visibility = Visibility.Hidden;
             imageWinner3.Visibility = Visibility.Hidden;
             imageWinner4.Visibility = Visibility.Hidden;
-            imageAcceptAnswer.Visibility = Visibility.Visible;
         }
-        
+
+        private void HideGridRoundWinners()
+        {
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+
+        }
+
         private void PlayNextRound()
         {
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            labelRound.Content = Properties.Resources.Round + rounds;
-            textBoxPlayersAnswer.Text = "";
-            SetSelectionVisibility();
-            imageQuestionFrame.Source = new BitmapImage(new Uri("Images/questionFrame.png", UriKind.RelativeOrAbsolute));
-            SetLabels();
-
+            SetupVisualElementsForRound();
             try
             {
                 bool isReady = false;
@@ -299,11 +345,13 @@ namespace Wits
                 client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
                 client.SavePlayerAnswer(player, "", gameId);
 
-                SetWinnersVisibility();
-                gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
-                correctPlayers.Clear();
-
                 ShowQuestion();
+
+                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+                Player playerData = playerManagerClient.GetPlayerByUser(userName);
+                int profilePictureId = playerData.ProfilePictureId;
+                int celebrationId = playerData.CelebrationId;
+
             }
             catch (TimeoutException ex)
             {
@@ -319,6 +367,24 @@ namespace Wits
             }
         }
 
+        private void SetupVisualElementsForRound()
+        {
+
+          
+            HideAllImagesForNextRound();
+            labelRound.Content = Properties.Resources.Round + rounds;
+            textBoxPlayersAnswer.Text = "";
+            UpdateQuestionFrame();
+            ClearAllAnswersLabel();
+
+            HideImageWinnerForNextRound();
+            imageAcceptAnswer.Visibility = Visibility.Visible;
+            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            correctPlayers.Clear();
+        }
+
+
+
         private void RestartBackgroundVideo(object sender, RoutedEventArgs e)
         {
             backgroundVideo.Position = TimeSpan.Zero;
@@ -331,10 +397,8 @@ namespace Wits
             {
                 GetQuestionIdsFromServer(gameId);
             }
-
             newQuestionId = questionIds.First();
             questionIds.RemoveAt(0);
-
             try
             {
                 WitsService.GameManagerClient client = new WitsService.GameManagerClient();
@@ -474,44 +538,59 @@ namespace Wits
 
         private void SaveAnswer(object sender, MouseButtonEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
+            if (string.IsNullOrWhiteSpace(textBoxPlayersAnswer.Text))
             {
-                labelInstrucion.Content = Properties.Resources.EnterAnswer;
-                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-                string answerText = textBoxPlayersAnswer.Text;
-                try
-                {
-                    InstanceContext context = new InstanceContext(this);
-                    WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-
-                    int playerNumber = player;
-
-                    client.SavePlayerAnswer(playerNumber, answerText, gameId);
-
-
-                }
-                catch (TimeoutException ex)
-                {
-                    Logger.LogErrorException(ex);
-                    MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                    RestartGame();
-                }
-                catch (CommunicationException ex)
-                {
-                    Logger.LogErrorException(ex);
-                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                    RestartGame();
-                }
-
-                string labelName = "labelAnswer" + player;
-                var label = FindName(labelName) as System.Windows.Controls.Label;
-
-                if (label != null)
-                {
-                    label.Content = answerText;
-                }
-                gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
+                return; 
             }
+
+            SavePlayerAnswer();
+
+            UpdateAnswerLabel();
+            HideEnterAnswer();
+            ShowAllAnswers();
+        }
+
+        private void SavePlayerAnswer()
+        {
+            string answerText = textBoxPlayersAnswer.Text;
+
+            try
+            {
+                InstanceContext context = new InstanceContext(this);
+                WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+
+                int playerNumber = player;
+                client.SavePlayerAnswer(playerNumber, answerText, gameId);
+            }
+            catch (TimeoutException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+            }
+            catch (CommunicationException ex)
+            {
+                Logger.LogErrorException(ex);
+                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                RestartGame();
+            }
+
+        }
+
+        private void UpdateAnswerLabel()
+        {
+            string labelName = "labelAnswer" + player;
+            var label = FindName(labelName) as System.Windows.Controls.Label;
+
+            if (label != null)
+            {
+                label.Content = textBoxPlayersAnswer.Text;
+            }
+        }
+
+        public void ShowAllAnswers()
+        {
+            gridAllAnswers.Margin = new Thickness(0, 0, 0, 0);
         }
 
         public void UpdatePlayerAnswer(int playerNumber, string answer)
@@ -582,14 +661,29 @@ namespace Wits
             gridRoundWinners.Margin = new Thickness(0, 0, 0, 0);
         }
 
+
+        private void HideEnterAnswer()
+        {
+            gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
+        }
+
+        private void ShowEnterAnswer()
+        {
+            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+        }
+
+        private void ShowWarning()
+        {
+            gridWarning.Margin = new Thickness(0, 0, 0, 0);
+            textBoxPlayersAnswer.Text = "";
+        }
+
         private void SaveWager(object sender, MouseButtonEventArgs e)
         {
             int chipsAvailable = int.Parse(labelChips.Content.ToString());
-
             if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount) && wagerAmount <= chipsAvailable)
             {
-                gridEnterAnswer.Margin = new Thickness(1177, 0, -1177, 0);
-
+                HideEnterAnswer();
                 InstanceContext context = new InstanceContext(this);
                 WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
                 bool isReady = true;
@@ -615,10 +709,8 @@ namespace Wits
             }
             else
             {
-                gridWarning.Margin = new Thickness(0, 0, 0, 0);
-                textBoxPlayersAnswer.Text = "";
+                ShowWarning();
             }
-
         }
 
         private void AcceptWarning(object sender, MouseButtonEventArgs e)
@@ -796,22 +888,34 @@ namespace Wits
 
         public void ShowEnterWager()
         {
-            gridAllAnswers.Margin = new Thickness(-20, 754, 20, -754);
+            HideAllAnswers();
             textBoxPlayersAnswer.Text = "";
             imageAcceptWager.Visibility = Visibility.Visible;
-            gridEnterAnswer.Margin = new Thickness(0, 0, 0, 0);
+            ShowEnterAnswer();
             labelInstrucion.Content = Properties.Resources.HowMuch;
         }
 
         public void ShowTrueAnswer()
         {
             ShowAnswer();
-
         }
-     
-       private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
+
+        private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
             int correctAnswer = trueAnswer;
+            Dictionary<int, int> playerGuesses = GetPlayerGuesses();
+
+            List<int> closestAnswer = GetClosestAnswer(playerGuesses);
+
+            List<int> correctPlayers = GetCorrectPlayers(playerSelectedAnswers, closestAnswer);
+
+            UpdateChips(correctPlayers);
+
+            this.correctPlayers = correctPlayers;
+        }
+
+        private Dictionary<int, int> GetPlayerGuesses()
+        {
             Dictionary<int, int> playerGuesses = new Dictionary<int, int>();
 
             for (int i = 1; i <= 4; i++)
@@ -825,15 +929,20 @@ namespace Wits
                 }
             }
 
-            List<int> closestAnswer = new List<int>();
+            return playerGuesses;
+        }
+
+        private List<int> GetClosestAnswer(Dictionary<int, int> playerGuesses)
+        {
             int closestDifference = int.MaxValue;
+            List<int> closestAnswer = new List<int>();
 
             foreach (var kvp in playerGuesses)
             {
                 int answerNumber = kvp.Key;
                 int guess = kvp.Value;
 
-                int difference = Math.Abs(guess - correctAnswer);
+                int difference = Math.Abs(guess - trueAnswer);
 
                 if (difference < closestDifference)
                 {
@@ -847,6 +956,11 @@ namespace Wits
                 }
             }
 
+            return closestAnswer;
+        }
+
+        private List<int> GetCorrectPlayers(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers, List<int> closestAnswer)
+        {
             List<int> correctPlayers = new List<int>();
 
             foreach (var kvp in playerSelectedAnswers)
@@ -860,23 +974,21 @@ namespace Wits
                 }
             }
 
+            return correctPlayers;
+        }
+
+        private void UpdateChips(List<int> correctPlayers)
+        {
             if (int.TryParse(textBoxPlayersAnswer.Text, out int wagerAmount))
             {
                 int currentChips = int.Parse(labelChips.Content.ToString());
                 int newChips = currentChips + wagerAmount;
 
-                if (correctPlayers.Contains(player))
-                {
-                    labelChips.Content = newChips.ToString();
-                }
-                else
-                {
-                    labelChips.Content = (currentChips - wagerAmount).ToString();
-                }
+                labelChips.Content = correctPlayers.Contains(player) ? newChips.ToString() : (currentChips - wagerAmount).ToString();
             }
-
-            this.correctPlayers = correctPlayers;
         }
+
+
 
         public void BeExpelled()
         {
@@ -887,7 +999,7 @@ namespace Wits
 
         void IActiveGameCallback.ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
         {
-            gridRoundWinners.Margin = new Thickness(1177, 0, -1177, 0);
+            HideGridRoundWinners();
             string profilePictureFileName = profilePictureId + ".png";
             string profilePicturePath = "ProfilePictures/" + profilePictureFileName;
 
