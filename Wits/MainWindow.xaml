@@ -41,7 +41,7 @@
             </Image.RenderTransform>
         </Image>
         <MediaElement x:Name="logoVideo" LoadedBehavior="Manual" Source="Videos\witsLogo.mp4" HorizontalAlignment="Left" Height="196" Margin="382,51,0,0" VerticalAlignment="Top" Width="349" MediaEnded="RestartLogoVideo"/>
-        <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxUser" HorizontalAlignment="Left" Margin="377,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="339" Height="60" FontFamily="Beon" FontSize="22" Text="{x:Static p:Resources.EnterUser}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" PreviewKeyDown="DeleteSpaces"/>
         <Label x:Name="labelGo" MouseEnter="LoginHighlight" MouseLeave="UndoLoginHighlight" Content="{x:Static p:Resources.Go}" IsEnabled="False" IsHitTestVisible="False" FontFamily="Neon Tubes 2" FontSize="35" Foreground="White" HorizontalAlignment="Left" Margin="435,414,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="216" Height="66" RenderTransformOrigin="0.498,0.32">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -60,7 +60,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <Label x:Name="labelPlaysAsGuest" Content="{x:Static p:Resources.PlayAsGuest}" FontFamily="Neon Tubes 2" FontSize="22" Foreground="White" HorizontalAlignment="Left" Margin="390,581,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="288" Height="37" MouseDown="EnterAsAGuest"/>
-        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="339" Height="60" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="377,0,0,0"/>
+        <PasswordBox x:Name="passwordBoxPassword" VerticalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="339" Height="60" GotFocus="PasswordEntered" LostFocus="PasswordDeleted" Margin="377,0,0,0" PreviewKeyDown="DeleteSpaces"/>
         <TextBox x:Name="textBoxEnterPassword" Background="Transparent" FontFamily="Beon" FontSize="22" BorderThickness="0" VerticalContentAlignment="Center" Text="{x:Static p:Resources.EnterPassword}" Foreground="Black" IsEnabled="False" IsHitTestVisible="False" Margin="377,322,413,322"/>
     </Grid>
 </Window>

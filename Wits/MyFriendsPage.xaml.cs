@@ -239,7 +239,7 @@ namespace Wits
             {
                 WitsService.Player enteredPlayer = client.GetPlayerByUser(enteredUsername);
 
-                if (enteredPlayer != null)
+                if (enteredPlayer.Username != null)
                 {
                     validator = true;
                 }

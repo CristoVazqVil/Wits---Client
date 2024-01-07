@@ -56,7 +56,7 @@ namespace Wits
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
                 WitsService.Player player = client.GetPlayerByUserAndPassword(textBoxUser.Text, EncryptPassword(passwordBoxPassword.Password));
 
-                if (player != null)
+                if (player.Username != null && player.UserPassword != null)
                 {
                     if (!client.IsPlayerLogged(textBoxUser.Text))
                     {
@@ -291,6 +291,14 @@ namespace Wits
             temporaryPlayer.CelebrationId = 1;
 
             return temporaryPlayer;
+        }
+
+        private void DeleteSpaces(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
