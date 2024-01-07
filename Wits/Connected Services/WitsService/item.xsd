@@ -73,14 +73,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateHighestScore">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="userInGame" nillable="true" type="xs:string" />
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="winnerInfo" nillable="true" type="q3:ArrayOfKeyValueOfstringanyType" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="ShowWinner">
     <xs:complexType>
       <xs:sequence>
@@ -98,7 +90,7 @@
   <xs:element name="UpdateAnswers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerAnswers" nillable="true" type="q4:ArrayOfKeyValueOfintstring" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerAnswers" nillable="true" type="q3:ArrayOfKeyValueOfintstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,7 +102,7 @@
   <xs:element name="UpdateSelection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerSelectedAnswers" nillable="true" type="q5:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerSelectedAnswers" nillable="true" type="q4:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +144,7 @@
   <xs:element name="ShowVictoryScreen">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="winnerInfo" nillable="true" type="q6:ArrayOfKeyValueOfstringanyType" />
+        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="winnerInfo" nillable="true" type="q5:ArrayOfKeyValueOfstringanyType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -174,7 +166,7 @@
   <xs:element name="AddPlayer">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="player" nillable="true" type="q7:Player" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="player" nillable="true" type="q6:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -223,7 +215,7 @@
   <xs:element name="GetPlayerByUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserResult" nillable="true" type="q8:Player" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserResult" nillable="true" type="q7:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -238,7 +230,7 @@
   <xs:element name="GetPlayerByUserAndPasswordResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserAndPasswordResult" nillable="true" type="q9:Player" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" minOccurs="0" name="GetPlayerByUserAndPasswordResult" nillable="true" type="q8:Player" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -267,7 +259,7 @@
   <xs:element name="GetPlayerFriendsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPlayerFriendsResult" nillable="true" type="q10:ArrayOfstring" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetPlayerFriendsResult" nillable="true" type="q9:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -281,7 +273,7 @@
   <xs:element name="GetAllPlayerRequestsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllPlayerRequestsResult" nillable="true" type="q11:ArrayOfstring" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetAllPlayerRequestsResult" nillable="true" type="q10:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -448,6 +440,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="UpdateCelebrationResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHighestScore">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="userInGame" nillable="true" type="xs:string" />
+        <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="winnerInfo" nillable="true" type="q11:ArrayOfKeyValueOfstringanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateHighestScoreResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateHighestScoreResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

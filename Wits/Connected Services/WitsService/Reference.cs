@@ -366,12 +366,6 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
         System.Threading.Tasks.Task WhoWonAsync(System.Collections.Generic.Dictionary<string, object> gameEndInfo);
         
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UpdateHighestScore")]
-        void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
-        
-        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UpdateHighestScore")]
-        System.Threading.Tasks.Task UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
-        
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
         void ShowWinner(int gameId);
         
@@ -510,14 +504,6 @@ namespace Wits.WitsService {
             return base.Channel.WhoWonAsync(gameEndInfo);
         }
         
-        public void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
-            base.Channel.UpdateHighestScore(userInGame, winnerInfo);
-        }
-        
-        public System.Threading.Tasks.Task UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
-            return base.Channel.UpdateHighestScoreAsync(userInGame, winnerInfo);
-        }
-        
         public void ShowWinner(int gameId) {
             base.Channel.ShowWinner(gameId);
         }
@@ -652,6 +638,12 @@ namespace Wits.WitsService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateCelebration", ReplyAction="http://tempuri.org/IPlayerManager/UpdateCelebrationResponse")]
         System.Threading.Tasks.Task<bool> UpdateCelebrationAsync(string username, int celebrationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateHighestScore", ReplyAction="http://tempuri.org/IPlayerManager/UpdateHighestScoreResponse")]
+        int UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdateHighestScore", ReplyAction="http://tempuri.org/IPlayerManager/UpdateHighestScoreResponse")]
+        System.Threading.Tasks.Task<int> UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -831,6 +823,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task<bool> UpdateCelebrationAsync(string username, int celebrationId) {
             return base.Channel.UpdateCelebrationAsync(username, celebrationId);
+        }
+        
+        public int UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
+            return base.Channel.UpdateHighestScore(userInGame, winnerInfo);
+        }
+        
+        public System.Threading.Tasks.Task<int> UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
+            return base.Channel.UpdateHighestScoreAsync(userInGame, winnerInfo);
         }
     }
     

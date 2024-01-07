@@ -75,9 +75,6 @@
   <wsdl:message name="IActiveGame_WhoWon_InputMessage">
     <wsdl:part name="parameters" element="tns:WhoWon" />
   </wsdl:message>
-  <wsdl:message name="IActiveGame_UpdateHighestScore_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateHighestScore" />
-  </wsdl:message>
   <wsdl:message name="IActiveGame_ShowWinner_InputMessage">
     <wsdl:part name="parameters" element="tns:ShowWinner" />
   </wsdl:message>
@@ -240,6 +237,12 @@
   <wsdl:message name="IPlayerManager_UpdateCelebration_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCelebrationResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdateHighestScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHighestScore" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_UpdateHighestScore_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHighestScoreResponse" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_AddConnectedUser_InputMessage">
     <wsdl:part name="parameters" element="tns:AddConnectedUser" />
   </wsdl:message>
@@ -394,9 +397,6 @@
     <wsdl:operation name="WhoWon">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/WhoWon" message="tns:IActiveGame_WhoWon_InputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="UpdateHighestScore">
-      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateHighestScore" message="tns:IActiveGame_UpdateHighestScore_InputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="ShowWinner">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowWinner" message="tns:IActiveGame_ShowWinner_InputMessage" />
     </wsdl:operation>
@@ -508,6 +508,10 @@
     <wsdl:operation name="UpdateCelebration">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdateCelebration" message="tns:IPlayerManager_UpdateCelebration_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdateCelebrationResponse" message="tns:IPlayerManager_UpdateCelebration_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHighestScore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdateHighestScore" message="tns:IPlayerManager_UpdateHighestScore_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdateHighestScoreResponse" message="tns:IPlayerManager_UpdateHighestScore_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IConnectedUsers">
@@ -661,12 +665,6 @@
     </wsdl:operation>
     <wsdl:operation name="WhoWon">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/WhoWon" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
-    <wsdl:operation name="UpdateHighestScore">
-      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateHighestScore" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -914,6 +912,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateCelebration">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/UpdateCelebration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHighestScore">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/UpdateHighestScore" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

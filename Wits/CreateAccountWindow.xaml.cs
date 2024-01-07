@@ -164,7 +164,7 @@ namespace Wits
         private bool IsEmpty()
         {
             if ((string.IsNullOrEmpty(textBoxEmail.Text) || textBoxEmail.Text.Equals(Properties.Resources.EnterEmail)) ||
-                (string.IsNullOrEmpty(textBoxUsername.Text) || textBoxUsername.Text.Equals(Properties.Resources.EnterUser)) ||
+                (string.IsNullOrEmpty(textBoxUsername.Text) || textBoxUsername.Text.Length <= 5 || textBoxUsername.Text.Equals(Properties.Resources.EnterUser)) ||
                 string.IsNullOrEmpty(passwordBoxPassword.Password) || string.IsNullOrEmpty(passwordBoxConfirmPassword.Password))
             {
                 return true;
