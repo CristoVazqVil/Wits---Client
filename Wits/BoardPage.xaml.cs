@@ -259,7 +259,6 @@ namespace Wits
                     { "IdCelebration", Idcelebration },
                     { "Score", score },
                     { "IdProfilePicture", IdprofilePicture }
-                    // Agrega otros datos que necesites del jugador aquí...
                 };
 
                 bool isRegistered = true;
