@@ -361,10 +361,10 @@ namespace Wits.WitsService {
         System.Threading.Tasks.Task GameEndedAsync(int gameId, int playerNumber, bool isRegistered);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        void WhoWon(System.Collections.Generic.Dictionary<string, object> gameEndInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        System.Threading.Tasks.Task WhoWonAsync(System.Collections.Generic.Dictionary<string, object> gameEndInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UpdateHighestScore")]
         void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
@@ -502,12 +502,12 @@ namespace Wits.WitsService {
             return base.Channel.GameEndedAsync(gameId, playerNumber, isRegistered);
         }
         
-        public void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            base.Channel.WhoWon(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public void WhoWon(System.Collections.Generic.Dictionary<string, object> gameEndInfo) {
+            base.Channel.WhoWon(gameEndInfo);
         }
         
-        public System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            return base.Channel.WhoWonAsync(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public System.Threading.Tasks.Task WhoWonAsync(System.Collections.Generic.Dictionary<string, object> gameEndInfo) {
+            return base.Channel.WhoWonAsync(gameEndInfo);
         }
         
         public void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {

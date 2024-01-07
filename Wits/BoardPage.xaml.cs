@@ -263,10 +263,28 @@ namespace Wits
 
                 bool isRegistered = true;
 
-                //client.WhoWon(playerData, playerGameData);
-               client.WhoWon(gameId,player, userName, Idcelebration,score, IdprofilePicture);
+                Dictionary<string, object> gameEndInfo = CreateGameEndDictionary(gameId, player, userName, Idcelebration, score, IdprofilePicture);
+
+                client.WhoWon(gameEndInfo);
                 client.GameEnded(gameId, player, isRegistered);
             }
+        }
+
+
+
+        private Dictionary<string, object> CreateGameEndDictionary(int gameId, int player, string userName, int celebrationId, int score, int profilePictureId)
+        {
+            Dictionary<string, object> gameEndInfo = new Dictionary<string, object>
+            {
+                { "gameId", gameId },
+                { "player", player },
+                { "userName", userName },
+                { "celebrationId", celebrationId },
+                { "score", score },
+                { "profilePictureId", profilePictureId }
+            };
+
+            return gameEndInfo;
         }
 
         private void SelectedAnswer(object sender, MouseButtonEventArgs e)
@@ -360,7 +378,7 @@ namespace Wits
                 client.ReadyToShowAnswer(gameId, player, isReady);
 
 
-                Dictionary<string, object> newRound = CreateNewRoundDictionary(player, 0, 1);
+                Dictionary<string, object> newRound = CreateNewRoundDictionary();
 
                 client.ReceivePlayerSelectedAnswer(newRound);
                 client.SavePlayerAnswer(player, "", gameId);
@@ -390,7 +408,7 @@ namespace Wits
 
 
 
-        private Dictionary<string, object> CreateNewRoundDictionary(int playerNumber, int selectedAnswer, int profilePictureId)
+        private Dictionary<string, object> CreateNewRoundDictionary()
         {
             Dictionary<string, object> newRound = new Dictionary<string, object>
             {
@@ -399,7 +417,6 @@ namespace Wits
                     { "profilePictureId", 1 },
                     { "gameId", gameId }
             };
-
             return newRound;
         }
 
