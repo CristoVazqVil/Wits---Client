@@ -75,6 +75,9 @@
   <wsdl:message name="IActiveGame_WhoWon_InputMessage">
     <wsdl:part name="parameters" element="tns:WhoWon" />
   </wsdl:message>
+  <wsdl:message name="IActiveGame_UpdateHighestScore_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateHighestScore" />
+  </wsdl:message>
   <wsdl:message name="IActiveGame_ShowWinner_InputMessage">
     <wsdl:part name="parameters" element="tns:ShowWinner" />
   </wsdl:message>
@@ -255,6 +258,12 @@
   <wsdl:message name="IConnectedUsers_RemoveFromEverywhere_OutputMessage">
     <wsdl:part name="parameters" element="tns:RemoveFromEverywhereResponse" />
   </wsdl:message>
+  <wsdl:message name="IConnectedUsers_UpdateFriendsForAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFriendsForAll" />
+  </wsdl:message>
+  <wsdl:message name="IConnectedUsers_UpdateFriendsForAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateFriendsForAllResponse" />
+  </wsdl:message>
   <wsdl:message name="IConnectedUsers_GetConnectedFriends_InputMessage">
     <wsdl:part name="parameters" element="tns:GetConnectedFriends" />
   </wsdl:message>
@@ -384,6 +393,9 @@
     </wsdl:operation>
     <wsdl:operation name="WhoWon">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/WhoWon" message="tns:IActiveGame_WhoWon_InputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHighestScore">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/UpdateHighestScore" message="tns:IActiveGame_UpdateHighestScore_InputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ShowWinner">
       <wsdl:input wsaw:Action="http://tempuri.org/IActiveGame/ShowWinner" message="tns:IActiveGame_ShowWinner_InputMessage" />
@@ -515,6 +527,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" message="tns:IConnectedUsers_RemoveFromEverywhere_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse" message="tns:IConnectedUsers_RemoveFromEverywhere_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="UpdateFriendsForAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/UpdateFriendsForAll" message="tns:IConnectedUsers_UpdateFriendsForAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/UpdateFriendsForAllResponse" message="tns:IConnectedUsers_UpdateFriendsForAll_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetConnectedFriends">
       <wsdl:input wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends" message="tns:IConnectedUsers_GetConnectedFriends_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse" message="tns:IConnectedUsers_GetConnectedFriends_OutputMessage" />
@@ -645,6 +661,12 @@
     </wsdl:operation>
     <wsdl:operation name="WhoWon">
       <soap12:operation soapAction="http://tempuri.org/IActiveGame/WhoWon" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateHighestScore">
+      <soap12:operation soapAction="http://tempuri.org/IActiveGame/UpdateHighestScore" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -929,6 +951,15 @@
     </wsdl:operation>
     <wsdl:operation name="RemoveFromEverywhere">
       <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateFriendsForAll">
+      <soap12:operation soapAction="http://tempuri.org/IConnectedUsers/UpdateFriendsForAll" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

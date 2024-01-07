@@ -284,7 +284,17 @@ namespace Wits
                 int profilePictureId = playerData.ProfilePictureId;
                 int playerNumber = player;
                 bool isReady = true;
-                client.ReceivePlayerSelectedAnswer(playerNumber, selectedAnswer, profilePictureId, gameId);
+
+                Dictionary<string, object> answersInfo = new Dictionary<string, object>
+                {
+                    { "playerNumber", playerNumber },
+                    { "selectedAnswer", selectedAnswer },
+                    { "profilePictureId", profilePictureId },
+                    { "gameId", gameId }
+                };
+
+                client.ReceivePlayerSelectedAnswer(answersInfo);
+                
                 client.ReadyToWager(gameId, player, isReady);
             }
             catch (TimeoutException ex)
@@ -342,7 +352,16 @@ namespace Wits
                 client.RegisterUserInGameContext(UserSingleton.Instance.Username);
                 client.ReadyToWager(gameId, player, isReady);
                 client.ReadyToShowAnswer(gameId, player, isReady);
-                client.ReceivePlayerSelectedAnswer(player, 0, 1, gameId);
+
+                Dictionary<string, object> answersInfo2 = new Dictionary<string, object>
+                {
+                    { "playerNumber", player },
+                    { "selectedAnswer", 0 },
+                    { "profilePictureId", 1 },
+                    { "gameId", gameId }
+                };
+
+                client.ReceivePlayerSelectedAnswer(answersInfo2);
                 client.SavePlayerAnswer(player, "", gameId);
 
                 ShowQuestion();
