@@ -241,49 +241,34 @@ namespace Wits
             string scoreText = labelChips.Content.ToString();
             InstanceContext context = new InstanceContext(this);
             WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
-            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
-            int IdprofilePicture = playerData.ProfilePictureId;
-            int Idcelebration = playerData.CelebrationId;
-
-   
 
             if (int.TryParse(scoreText, out int score))
             {
-
-
-
-                Dictionary<string, object> playerGameData = new Dictionary<string, object>
-                {
-                    { "UserName", UserSingleton.Instance.Username },
-                    { "IdCelebration", Idcelebration },
-                    { "Score", score },
-                    { "IdProfilePicture", IdprofilePicture }
-                };
-
                 bool isRegistered = true;
-
-                Dictionary<string, object> gameEndInfo = CreateGameEndDictionary(gameId, player, userName, Idcelebration, score, IdprofilePicture);
-
+                Dictionary<string, object> gameEndInfo = CreateGameEndDictionary(player, userName, score);
                 client.WhoWon(gameEndInfo);
                 client.GameEnded(gameId, player, isRegistered);
             }
         }
 
-
-
-        private Dictionary<string, object> CreateGameEndDictionary(int gameId, int player, string userName, int celebrationId, int score, int profilePictureId)
+        private Dictionary<string, object> CreateGameEndDictionary(int player, string userName, int score)
         {
+            InstanceContext context = new InstanceContext(this);
+            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
+            WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
+            Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
+            int IdprofilePicture = playerData.ProfilePictureId;
+            int Idcelebration = playerData.CelebrationId;
+
             Dictionary<string, object> gameEndInfo = new Dictionary<string, object>
             {
                 { "gameId", gameId },
                 { "player", player },
                 { "userName", userName },
-                { "celebrationId", celebrationId },
+                { "celebrationId", Idcelebration },
                 { "score", score },
-                { "profilePictureId", profilePictureId }
+                { "profilePictureId", IdprofilePicture }
             };
-
             return gameEndInfo;
         }
 
@@ -333,7 +318,6 @@ namespace Wits
                 { "profilePictureId", profilePictureId },
                 { "gameId", gameId }
             };
-
             return answersInfo;
         }
 
