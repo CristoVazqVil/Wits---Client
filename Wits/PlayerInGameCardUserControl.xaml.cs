@@ -113,14 +113,16 @@ namespace Wits
             Console.WriteLine("The Player was expelled");
         }
 
-        public void ShowVictoryScreen(string userName, int profilePictureId, int celebrationId, int score)
-        {
-            Console.WriteLine("Winner showed in game");
-        }
 
         public void TieBreaker()
         {
             Console.WriteLine("Showed in game");
+        }
+
+        public void ShowVictoryScreen(Dictionary<string, object> winnerInfo)
+        {
+            Console.WriteLine("Winner showed in game");
+
         }
     }
 }
