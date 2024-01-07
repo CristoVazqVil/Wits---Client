@@ -337,10 +337,10 @@ namespace Wits.WitsService {
         System.Threading.Tasks.Task SavePlayerAnswerAsync(int playerNumber, string answer, int gameId);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer")]
-        void ReceivePlayerSelectedAnswer(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId);
+        void ReceivePlayerSelectedAnswer(System.Collections.Generic.Dictionary<string, object> answersInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReceivePlayerSelectedAnswer")]
-        System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId);
+        System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(System.Collections.Generic.Dictionary<string, object> answersInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ReadyToWager")]
         void ReadyToWager(int gameId, int playerNumber, bool isReady);
@@ -361,10 +361,16 @@ namespace Wits.WitsService {
         System.Threading.Tasks.Task GameEndedAsync(int gameId, int playerNumber, bool isRegistered);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        void WhoWon(System.Collections.Generic.Dictionary<string, object> gameEndInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/WhoWon")]
-        System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture);
+        System.Threading.Tasks.Task WhoWonAsync(System.Collections.Generic.Dictionary<string, object> gameEndInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UpdateHighestScore")]
+        void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/UpdateHighestScore")]
+        System.Threading.Tasks.Task UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IActiveGame/ShowWinner")]
         void ShowWinner(int gameId);
@@ -464,12 +470,12 @@ namespace Wits.WitsService {
             return base.Channel.SavePlayerAnswerAsync(playerNumber, answer, gameId);
         }
         
-        public void ReceivePlayerSelectedAnswer(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId) {
-            base.Channel.ReceivePlayerSelectedAnswer(playerNumber, selectedAnswer, idProfilePicture, gameId);
+        public void ReceivePlayerSelectedAnswer(System.Collections.Generic.Dictionary<string, object> answersInfo) {
+            base.Channel.ReceivePlayerSelectedAnswer(answersInfo);
         }
         
-        public System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(int playerNumber, int selectedAnswer, int idProfilePicture, int gameId) {
-            return base.Channel.ReceivePlayerSelectedAnswerAsync(playerNumber, selectedAnswer, idProfilePicture, gameId);
+        public System.Threading.Tasks.Task ReceivePlayerSelectedAnswerAsync(System.Collections.Generic.Dictionary<string, object> answersInfo) {
+            return base.Channel.ReceivePlayerSelectedAnswerAsync(answersInfo);
         }
         
         public void ReadyToWager(int gameId, int playerNumber, bool isReady) {
@@ -496,12 +502,20 @@ namespace Wits.WitsService {
             return base.Channel.GameEndedAsync(gameId, playerNumber, isRegistered);
         }
         
-        public void WhoWon(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            base.Channel.WhoWon(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public void WhoWon(System.Collections.Generic.Dictionary<string, object> gameEndInfo) {
+            base.Channel.WhoWon(gameEndInfo);
         }
         
-        public System.Threading.Tasks.Task WhoWonAsync(int gameId, int numberPlayer, string userName, int idCelebration, int score, int idProfilePicture) {
-            return base.Channel.WhoWonAsync(gameId, numberPlayer, userName, idCelebration, score, idProfilePicture);
+        public System.Threading.Tasks.Task WhoWonAsync(System.Collections.Generic.Dictionary<string, object> gameEndInfo) {
+            return base.Channel.WhoWonAsync(gameEndInfo);
+        }
+        
+        public void UpdateHighestScore(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
+            base.Channel.UpdateHighestScore(userInGame, winnerInfo);
+        }
+        
+        public System.Threading.Tasks.Task UpdateHighestScoreAsync(string userInGame, System.Collections.Generic.Dictionary<string, object> winnerInfo) {
+            return base.Channel.UpdateHighestScoreAsync(userInGame, winnerInfo);
         }
         
         public void ShowWinner(int gameId) {
@@ -854,6 +868,12 @@ namespace Wits.WitsService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/RemoveFromEverywhere", ReplyAction="http://tempuri.org/IConnectedUsers/RemoveFromEverywhereResponse")]
         System.Threading.Tasks.Task RemoveFromEverywhereAsync(string user);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/UpdateFriendsForAll", ReplyAction="http://tempuri.org/IConnectedUsers/UpdateFriendsForAllResponse")]
+        void UpdateFriendsForAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/UpdateFriendsForAll", ReplyAction="http://tempuri.org/IConnectedUsers/UpdateFriendsForAllResponse")]
+        System.Threading.Tasks.Task UpdateFriendsForAllAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IConnectedUsers/GetConnectedFriends", ReplyAction="http://tempuri.org/IConnectedUsers/GetConnectedFriendsResponse")]
         string[] GetConnectedFriends(string principalPlayer);
         
@@ -934,6 +954,14 @@ namespace Wits.WitsService {
         
         public System.Threading.Tasks.Task RemoveFromEverywhereAsync(string user) {
             return base.Channel.RemoveFromEverywhereAsync(user);
+        }
+        
+        public void UpdateFriendsForAll() {
+            base.Channel.UpdateFriendsForAll();
+        }
+        
+        public System.Threading.Tasks.Task UpdateFriendsForAllAsync() {
+            return base.Channel.UpdateFriendsForAllAsync();
         }
         
         public string[] GetConnectedFriends(string principalPlayer) {
