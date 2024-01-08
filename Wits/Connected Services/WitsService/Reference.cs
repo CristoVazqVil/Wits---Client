@@ -15,6 +15,67 @@ namespace Wits.WitsService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Game.PlayerGameKey", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
+    [System.SerializableAttribute()]
+    public partial class GamePlayerGameKey : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int GameIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PlayerNumberField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int GameId {
+            get {
+                return this.GameIdField;
+            }
+            set {
+                if ((this.GameIdField.Equals(value) != true)) {
+                    this.GameIdField = value;
+                    this.RaisePropertyChanged("GameId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PlayerNumber {
+            get {
+                return this.PlayerNumberField;
+            }
+            set {
+                if ((this.PlayerNumberField.Equals(value) != true)) {
+                    this.PlayerNumberField = value;
+                    this.RaisePropertyChanged("PlayerNumber");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerSelectedAnswer", Namespace="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts")]
     [System.SerializableAttribute()]
     public partial class PlayerSelectedAnswer : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -383,10 +444,10 @@ namespace Wits.WitsService {
     public interface IActiveGameCallback {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/UpdateAnswers", ReplyAction="http://tempuri.org/IActiveGame/UpdateAnswersResponse")]
-        void UpdateAnswers(System.Collections.Generic.Dictionary<int, string> playerAnswers);
+        void UpdateAnswers(System.Collections.Generic.Dictionary<Wits.WitsService.GamePlayerGameKey, string> playerAnswers);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/UpdateSelection", ReplyAction="http://tempuri.org/IActiveGame/UpdateSelectionResponse")]
-        void UpdateSelection(System.Collections.Generic.Dictionary<int, Wits.WitsService.PlayerSelectedAnswer> playerSelectedAnswers);
+        void UpdateSelection(System.Collections.Generic.Dictionary<Wits.WitsService.GamePlayerGameKey, Wits.WitsService.PlayerSelectedAnswer> playerSelectedAnswers);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActiveGame/ShowEnterWager", ReplyAction="http://tempuri.org/IActiveGame/ShowEnterWagerResponse")]
         void ShowEnterWager();

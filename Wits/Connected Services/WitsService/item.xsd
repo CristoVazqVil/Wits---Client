@@ -90,7 +90,7 @@
   <xs:element name="UpdateAnswers">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerAnswers" nillable="true" type="q3:ArrayOfKeyValueOfintstring" />
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerAnswers" nillable="true" type="q3:ArrayOfKeyValueOfGame.PlayerGameKeystringHi_PE4rOT" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -102,7 +102,7 @@
   <xs:element name="UpdateSelection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerSelectedAnswers" nillable="true" type="q4:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
+        <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="playerSelectedAnswers" nillable="true" type="q4:ArrayOfKeyValueOfGame.PlayerGameKeyPlayerSelectedAnswerpl_SG3Dxc" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

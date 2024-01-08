@@ -88,12 +88,13 @@ namespace Wits
             }
         }
 
-        public void UpdateAnswers(Dictionary<int, string> playerAnswers)
+        public void UpdateSelection(Dictionary<GamePlayerGameKey, PlayerSelectedAnswer> playerSelectedAnswers)
+
         {
             Console.WriteLine("Answers Updated in Game");
         }
 
-        public void UpdateSelection(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
+        public void UpdateAnswers(Dictionary<GamePlayerGameKey, string> gamePlayer)
         {
             Console.WriteLine("Selection Updated In Game");
         }

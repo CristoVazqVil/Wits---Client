@@ -778,13 +778,14 @@ namespace Wits
             gridPlayersInGame.Margin = new Thickness(48, 205, 212, 66);
         }
 
-        public void UpdateAnswers(Dictionary<int, string> playerAnswers)
+        public void UpdateAnswers(Dictionary<GamePlayerGameKey, string> playerAnswers)
         {
             foreach (var kvp in playerAnswers)
             {
-                int playerNumber = kvp.Key;
+                GamePlayerGameKey playerGameKey = kvp.Key;
                 string answer = kvp.Value;
 
+                int playerNumber = playerGameKey.PlayerNumber;
                 string labelName = "labelAnswer" + playerNumber;
 
                 var label = FindName(labelName) as System.Windows.Controls.Label;
@@ -796,11 +797,15 @@ namespace Wits
             }
         }
 
-        public void UpdateSelection(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
+
+
+        public void UpdateSelection(Dictionary<GamePlayerGameKey, PlayerSelectedAnswer> playerSelectedAnswers)
         {
             foreach (var kvp in playerSelectedAnswers)
             {
-                int playerNumber = kvp.Key;
+                GamePlayerGameKey gamePlayerKey = kvp.Key;
+                int playerNumber = gamePlayerKey.PlayerNumber;
+
                 PlayerSelectedAnswer selectedAnswerObject = kvp.Value;
                 int selectedAnswer = selectedAnswerObject.SelectedAnswer;
                 int IdProfilePicturePlayerSelection = selectedAnswerObject.IdProfilePicture;
@@ -911,8 +916,9 @@ namespace Wits
                         break;
                 }
             }
-
-            this.playerSelectedAnswers = playerSelectedAnswers;
+            this.playerSelectedAnswers = playerSelectedAnswers
+             .GroupBy(kvp => kvp.Key.PlayerNumber) 
+             .ToDictionary(group => group.Key, group => group.First().Value);
         }
 
         public void ShowEnterWager()

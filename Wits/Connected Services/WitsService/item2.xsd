@@ -19,42 +19,42 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfKeyValueOfstringanyType" nillable="true" type="tns:ArrayOfKeyValueOfstringanyType" />
-  <xs:complexType name="ArrayOfKeyValueOfintstring">
+  <xs:complexType name="ArrayOfKeyValueOfGame.PlayerGameKeystringHi_PE4rOT">
     <xs:annotation>
       <xs:appinfo>
         <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintstring">
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfGame.PlayerGameKeystringHi_PE4rOT">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Key" type="xs:int" />
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" name="Key" nillable="true" type="q1:Game.PlayerGameKey" />
             <xs:element name="Value" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfKeyValueOfintstring" nillable="true" type="tns:ArrayOfKeyValueOfintstring" />
-  <xs:complexType name="ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz">
+  <xs:element name="ArrayOfKeyValueOfGame.PlayerGameKeystringHi_PE4rOT" nillable="true" type="tns:ArrayOfKeyValueOfGame.PlayerGameKeystringHi_PE4rOT" />
+  <xs:complexType name="ArrayOfKeyValueOfGame.PlayerGameKeyPlayerSelectedAnswerpl_SG3Dxc">
     <xs:annotation>
       <xs:appinfo>
         <IsDictionary xmlns="http://schemas.microsoft.com/2003/10/Serialization/">true</IsDictionary>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfintPlayerSelectedAnswernChUn5Fz">
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValueOfGame.PlayerGameKeyPlayerSelectedAnswerpl_SG3Dxc">
         <xs:complexType>
           <xs:sequence>
-            <xs:element name="Key" type="xs:int" />
-            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" name="Value" nillable="true" type="q1:PlayerSelectedAnswer" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" name="Key" nillable="true" type="q2:Game.PlayerGameKey" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WitsClasses.Contracts" name="Value" nillable="true" type="q3:PlayerSelectedAnswer" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" nillable="true" type="tns:ArrayOfKeyValueOfintPlayerSelectedAnswernChUn5Fz" />
+  <xs:element name="ArrayOfKeyValueOfGame.PlayerGameKeyPlayerSelectedAnswerpl_SG3Dxc" nillable="true" type="tns:ArrayOfKeyValueOfGame.PlayerGameKeyPlayerSelectedAnswerpl_SG3Dxc" />
   <xs:complexType name="ArrayOfstring">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
