@@ -117,7 +117,7 @@
     <Property Name="sonaranalyzer-vbnet.pluginKey">vbnet</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">147B411E-AYvyg7DA4Nhc_WuS5TPV</Property>
-    <Property Name="sonar.core.startTime">13/12/2023 12:51:30 a. m.</Property>
+    <Property Name="sonar.core.startTime">07/01/2024 06:15:01 p. m.</Property>
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.host.url">http://localhost:9000</Property>
@@ -130,20 +130,20 @@
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.51.0.59060" StaticResourceName="SonarAnalyzer-8.51.0.59060.zip">
           <AssemblyPaths>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\Google.Protobuf.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CSharp.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\THIRD-PARTY-NOTICES.txt</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\Google.Protobuf.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.CSharp.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
         <AnalyzerPlugin Key="vbnet" Version="8.51.0.59060" StaticResourceName="SonarAnalyzer-8.51.0.59060.zip">
           <AssemblyPaths>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\Google.Protobuf.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.VisualBasic.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\THIRD-PARTY-NOTICES.txt</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\Google.Protobuf.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
       </AnalyzerPlugins>
@@ -158,20 +158,20 @@
       <AnalyzerPlugins>
         <AnalyzerPlugin Key="csharp" Version="8.51.0.59060" StaticResourceName="SonarAnalyzer-8.51.0.59060.zip">
           <AssemblyPaths>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\Google.Protobuf.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.CSharp.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\2\THIRD-PARTY-NOTICES.txt</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\Google.Protobuf.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.CSharp.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\4\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
         <AnalyzerPlugin Key="vbnet" Version="8.51.0.59060" StaticResourceName="SonarAnalyzer-8.51.0.59060.zip">
           <AssemblyPaths>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\Google.Protobuf.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.CFG.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\SonarAnalyzer.VisualBasic.dll</Path>
-            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\3\THIRD-PARTY-NOTICES.txt</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\Google.Protobuf.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.CFG.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\SonarAnalyzer.VisualBasic.dll</Path>
+            <Path>C:\Users\cris9\AppData\Local\Temp\.sonarqube\resources\5\THIRD-PARTY-NOTICES.txt</Path>
           </AssemblyPaths>
         </AnalyzerPlugin>
       </AnalyzerPlugins>

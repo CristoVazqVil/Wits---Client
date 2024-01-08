@@ -110,7 +110,7 @@ namespace Wits
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ShowQuestion();
+            _ = ShowQuestion();
             labelRound.Content = Properties.Resources.Round + 1;
         }
 
@@ -253,8 +253,6 @@ namespace Wits
 
         private Dictionary<string, object> CreateGameEndDictionary(int player, string userName, int score)
         {
-            InstanceContext context = new InstanceContext(this);
-            WitsService.ActiveGameClient client = new WitsService.ActiveGameClient(context);
             WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
             Player playerData = playerManagerClient.GetPlayerByUser(UserSingleton.Instance.Username);
             int IdprofilePicture = playerData.ProfilePictureId;
@@ -367,12 +365,7 @@ namespace Wits
                 client.ReceivePlayerSelectedAnswer(newRound);
                 client.SavePlayerAnswer(player, "", gameId);
 
-                ShowQuestion();
-
-                WitsService.PlayerManagerClient playerManagerClient = new WitsService.PlayerManagerClient();
-                Player playerData = playerManagerClient.GetPlayerByUser(userName);
-                int profilePictureId = playerData.ProfilePictureId;
-                int celebrationId = playerData.CelebrationId;
+                _ = ShowQuestion();
 
             }
             catch (TimeoutException ex)
@@ -427,7 +420,7 @@ namespace Wits
             backgroundVideo.Play();
         }
 
-        private async Task SetQuestion()
+        private void SetQuestion()
         {
             if (questionIds == null || questionIds.Count == 0)
             {
@@ -933,12 +926,11 @@ namespace Wits
 
         public void ShowTrueAnswer()
         {
-            ShowAnswer();
+            _ = ShowAnswer();
         }
 
         private void PayCorrectAnswer(Dictionary<int, PlayerSelectedAnswer> playerSelectedAnswers)
         {
-            int correctAnswer = trueAnswer;
             Dictionary<int, int> playerGuesses = GetPlayerGuesses();
 
             List<int> closestAnswer = GetClosestAnswer(playerGuesses);
@@ -1042,7 +1034,6 @@ namespace Wits
                 string userName = winnerInfo.ContainsKey("UserName") ? (string)winnerInfo["UserName"] : "";
                 int profilePictureId = winnerInfo.ContainsKey("IdProfilePicture") ? (int)winnerInfo["IdProfilePicture"] : 0;
                 int celebrationId = winnerInfo.ContainsKey("IdCelebration") ? (int)winnerInfo["IdCelebration"] : 0;
-                int score = winnerInfo.ContainsKey("Score") ? (int)winnerInfo["Score"] : 0;
 
                 string profilePictureFileName = profilePictureId + ".png";
                 string profilePicturePath = "ProfilePictures/" + profilePictureFileName;

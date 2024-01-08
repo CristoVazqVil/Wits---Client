@@ -62,8 +62,6 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Videos\MainBackground.mp4
 D:\UV\Tecnologias\Wits\Wits\Wits\Music\Death By Glamour - Undertale.wav
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.resx
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Resources.es-ES.resx
-D:\UV\Tecnologias\Wits\Wits\Wits\resources\log4net.config
-D:\UV\Tecnologias\Wits\Wits\Wits\resources\appsettings.json
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item.xsd
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item1.xsd
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item2.xsd
@@ -71,6 +69,8 @@ D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\item3.xsd
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\PlayerManager.wsdl
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\Wits.WitsService.Player.datasource
 D:\UV\Tecnologias\Wits\Wits\Wits\Connected Services\WitsService\Wits.WitsService.Question.datasource
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\log4net.config
+D:\UV\Tecnologias\Wits\Wits\Wits\resources\appsettings.json
 D:\UV\Tecnologias\Wits\Wits\Wits\packages.config
 D:\UV\Tecnologias\Wits\Wits\Wits\Properties\Settings.settings
 D:\UV\Tecnologias\Wits\Wits\Wits\App.config
