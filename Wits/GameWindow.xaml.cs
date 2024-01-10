@@ -49,7 +49,7 @@ namespace Wits
                     playerClient.DeletePlayer(UserSingleton.Instance.Username);
                 }
             }
-            catch (NullReferenceException ex)
+            catch (System.NullReferenceException ex)
             {
                 Logger.LogErrorException(ex);
             }

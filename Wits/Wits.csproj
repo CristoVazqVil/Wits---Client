@@ -433,7 +433,6 @@
     <Resource Include="Images\AnswerRectangle1.png" />
     <Resource Include="Images\AnswerRectangle3.png" />
     <Resource Include="Images\AnswerRectangle4.png" />
-    <None Include="Connected Services\WitsService\item.disco" />
     <None Include="Connected Services\WitsService\configuration91.svcinfo" />
     <None Include="Connected Services\WitsService\configuration.svcinfo" />
     <None Include="Connected Services\WitsService\Reference.svcmap">
@@ -443,6 +442,7 @@
     <Resource Include="Images\logout.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <None Include="Connected Services\WitsService\item.disco" />
     <Content Include="Music\Elite Four Battle.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

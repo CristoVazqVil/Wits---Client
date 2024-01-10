@@ -186,14 +186,23 @@ namespace Wits
             try
             {
                 WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
-                if (client.AddPlayer(SetPlayer()) == 1)
+                int result = client.AddPlayer(SetPlayer());
+                if (result == 1)
                 {
                     string sendedEmail = Mail.sendConfirmationMail(textBoxEmail.Text, textBoxUsername.Text);
                     MessageBox.Show(Properties.Resources.UserCreatedMessage + "\n" + sendedEmail, Properties.Resources.Success, MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
+                    if (result == 0)
+                    {
+                        MessageBox.Show(Properties.Resources.UsernameUsedMessage, Properties.Resources.Failed, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    
                 }
             }
             catch (TimeoutException ex)

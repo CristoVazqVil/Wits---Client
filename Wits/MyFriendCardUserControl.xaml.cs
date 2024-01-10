@@ -74,6 +74,10 @@ namespace Wits
                         MessageBox.Show(Properties.Resources.BlockPlayerMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
                         ImageClicked?.Invoke(this, EventArgs.Empty);
                     }
+                    else
+                    {
+                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
                 }
                 catch (TimeoutException ex)
                 {
@@ -95,20 +99,28 @@ namespace Wits
 
             if (result == MessageBoxResult.Yes)
             {
-                DeleteFriendships(enteredPlayer);
-                DeleteAcceptedRequests(enteredPlayer);
-                MessageBox.Show(Properties.Resources.FriendDeletedMessage, Properties.Resources.FriendDeleted, MessageBoxButton.OK, MessageBoxImage.Information);
-                ImageClicked?.Invoke(this, EventArgs.Empty);
+                if (DeleteFriendships(enteredPlayer) == 2)
+                {
+                    DeleteAcceptedRequests(enteredPlayer);
+                    MessageBox.Show(Properties.Resources.FriendDeletedMessage, Properties.Resources.FriendDeleted, MessageBoxButton.OK, MessageBoxImage.Information);
+                    ImageClicked?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
         }
 
-        private void DeleteFriendships(string enteredPlayer)
+        private int DeleteFriendships(string enteredPlayer)
         {
+            int result = 0;
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
+
             try
             {
-                client.DeleteFriendship(enteredPlayer, UserSingleton.Instance.Username);
-                client.DeleteFriendship(UserSingleton.Instance.Username, enteredPlayer);
+                result = client.DeleteFriendship(enteredPlayer, UserSingleton.Instance.Username);
+                result = result + client.DeleteFriendship(UserSingleton.Instance.Username, enteredPlayer);
             }
             catch (TimeoutException ex)
             {
@@ -120,6 +132,8 @@ namespace Wits
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
+            return result;  
         }
         private void DeleteAllRequests(string enteredPlayer)
         {

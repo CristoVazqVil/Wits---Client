@@ -230,9 +230,9 @@ namespace Wits
             
         }
 
-        private bool IsAExistingPlayer(string enteredUsername)
+        private int IsAExistingPlayer(string enteredUsername)
         {
-            bool validator = false;
+            int validator = 0;
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
 
             try
@@ -241,25 +241,25 @@ namespace Wits
 
                 if (enteredPlayer.Username != null)
                 {
-                    validator = true;
+                    validator = 1;
                 }
                 else
                 {
-                    validator = false;
+                    validator = 0;
                 }
             }
             catch (TimeoutException ex)
             {
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                validator = false;
+                validator = -1;
             }
             catch (CommunicationException ex)
             {
                 Logger.LogErrorException(ex);
                 MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
                 RestartGame();
-                validator = false;
+                validator = -1;
             }
 
             return validator;
@@ -275,39 +275,48 @@ namespace Wits
             }
 
             WitsService.PlayerManagerClient client = new WitsService.PlayerManagerClient();
+            int result = IsAExistingPlayer(enteredUsername);
 
-            if (!IsAExistingPlayer(enteredUsername))
+            if (result == 0)
             {
                 MessageBox.Show(Properties.Resources.NotExistingPlayerMessage, Properties.Resources.NotExistingPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
                 validator = false;
             }
-
-            try
+            else
             {
-                if (client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
+                if (result == -1)
                 {
-                    MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
                     validator = false;
                 }
-
-                if (client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
+                else
                 {
-                    MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
-                    validator = false;
+                    try
+                    {
+                        if (client.IsPlayerBlocked(enteredUsername, UserSingleton.Instance.Username))
+                        {
+                            MessageBox.Show(Properties.Resources.BlockedByMessage, Properties.Resources.BlockedBy, MessageBoxButton.OK, MessageBoxImage.Information);
+                            validator = false;
+                        }
+
+                        if (client.IsPlayerBlocked(UserSingleton.Instance.Username, enteredUsername))
+                        {
+                            MessageBox.Show(Properties.Resources.BlockedBeforeMessage, Properties.Resources.BlockedPlayer, MessageBoxButton.OK, MessageBoxImage.Information);
+                            validator = false;
+                        }
+                    }
+                    catch (TimeoutException ex)
+                    {
+                        Logger.LogErrorException(ex);
+                        MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                        validator = false;
+                    }
+                    catch (CommunicationException ex)
+                    {
+                        Logger.LogErrorException(ex);
+                        MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
+                        validator = false;
+                    }
                 }
-            }
-            catch (TimeoutException ex)
-            {
-                Logger.LogErrorException(ex);
-                MessageBox.Show(Properties.Resources.ServerProblemMessage, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                validator = false;
-            }
-            catch (CommunicationException ex)
-            {
-                Logger.LogErrorException(ex);
-                MessageBox.Show(Properties.Resources.ServerUnavailable, Properties.Resources.ServerProblem, MessageBoxButton.OK, MessageBoxImage.Information);
-                RestartGame();
-                validator = false;
             }
 
             return validator;
