@@ -123,9 +123,16 @@ namespace Wits.Classes
 
         static string Decrypt(string encryptedText)
         {
-            byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
-            byte[] decryptedBytes = ProtectedData.Unprotect(encryptedBytes, null, DataProtectionScope.CurrentUser);
-            return Encoding.UTF8.GetString(decryptedBytes);
+            try
+            {
+                byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+                byte[] decryptedBytes = ProtectedData.Unprotect(encryptedBytes, null, DataProtectionScope.CurrentUser);
+            }
+            catch (CryptographicException ex)
+            {
+                Logger.LogErrorException(ex);
+            }
+            return "";
         }
     }
 }
