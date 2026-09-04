@@ -388,7 +388,7 @@
     <value>The user was succesfully created, welcome!</value>
   </data>
   <data name="UsernameUsedMessage" xml:space="preserve">
-    <value>That username is already used, use another one</value>
+    <value>That username is already used or the DB manager is not available, try again</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning!</value>

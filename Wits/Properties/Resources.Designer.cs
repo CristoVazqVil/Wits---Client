@@ -871,7 +871,7 @@ namespace Wits.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to That username is already used, use another one.
+        ///   Looks up a localized string similar to That username is already used or the DB manager is not available, try again.
         /// </summary>
         public static string UsernameUsedMessage {
             get {

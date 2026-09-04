@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="g9tirqagmZb+EQXYTU0OZlgfr6Flixctij9yowfBwn4=">
+<SavedWcfConfigurationInformation xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="9.1" CheckSum="wRhNScR2P7gQ2XaCCB3FPdv+eqyrjtDBhBKX2Mi92bc=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="netTcpBinding" name="NetTcpBinding_IActiveGame">
       <properties>
@@ -593,10 +593,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="NetTcpBinding_IActiveGame" contract="WitsService.IActiveGame" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ActiveGame" bindingConfiguration="NetTcpBinding_IActiveGame">
+    <endpoint name="NetTcpBinding_IActiveGame" contract="WitsService.IActiveGame" bindingType="netTcpBinding" address="net.tcp://192.168.152.196:8081/ActiveGame" bindingConfiguration="NetTcpBinding_IActiveGame">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8081/ActiveGame</serializedValue>
+          <serializedValue>net.tcp://192.168.152.196:8081/ActiveGame</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -678,10 +678,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IPlayerManager" contract="WitsService.IPlayerManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/PlayerManager" bindingConfiguration="NetTcpBinding_IPlayerManager">
+    <endpoint name="NetTcpBinding_IPlayerManager" contract="WitsService.IPlayerManager" bindingType="netTcpBinding" address="net.tcp://192.168.152.196:8081/PlayerManager" bindingConfiguration="NetTcpBinding_IPlayerManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8081/PlayerManager</serializedValue>
+          <serializedValue>net.tcp://192.168.152.196:8081/PlayerManager</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -763,10 +763,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IConnectedUsers" contract="WitsService.IConnectedUsers" bindingType="netTcpBinding" address="net.tcp://localhost:8081/ConnectedUsers" bindingConfiguration="NetTcpBinding_IConnectedUsers">
+    <endpoint name="NetTcpBinding_IConnectedUsers" contract="WitsService.IConnectedUsers" bindingType="netTcpBinding" address="net.tcp://192.168.152.196:8081/ConnectedUsers" bindingConfiguration="NetTcpBinding_IConnectedUsers">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8081/ConnectedUsers</serializedValue>
+          <serializedValue>net.tcp://192.168.152.196:8081/ConnectedUsers</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -848,10 +848,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IGameManager" contract="WitsService.IGameManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/GameService" bindingConfiguration="NetTcpBinding_IGameManager">
+    <endpoint name="NetTcpBinding_IGameManager" contract="WitsService.IGameManager" bindingType="netTcpBinding" address="net.tcp://192.168.152.196:8081/GameService" bindingConfiguration="NetTcpBinding_IGameManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8081/GameService</serializedValue>
+          <serializedValue>net.tcp://192.168.152.196:8081/GameService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -933,10 +933,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="NetTcpBinding_IChatManager" contract="WitsService.IChatManager" bindingType="netTcpBinding" address="net.tcp://localhost:8081/GameService" bindingConfiguration="NetTcpBinding_IChatManager">
+    <endpoint name="NetTcpBinding_IChatManager" contract="WitsService.IChatManager" bindingType="netTcpBinding" address="net.tcp://192.168.152.196:8081/GameService" bindingConfiguration="NetTcpBinding_IChatManager">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>net.tcp://localhost:8081/GameService</serializedValue>
+          <serializedValue>net.tcp://192.168.152.196:8081/GameService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
